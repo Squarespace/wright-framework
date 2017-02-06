@@ -1,7 +1,9 @@
 Wright
 ------------------------------
 
-A versatile, all-purpose Squarespace Template Framework. Note that this code may only be used on websites hosted on Squarespace. For more information, see License section below.
+A versatile, all-purpose Squarespace Template Framework.
+
+*NOTICE: This code is licensed to you pursuant to Squarespace’s Developer Terms of Use. See license section below.*
 
 **Features**
 * Parallax scrolling images and background video
