@@ -1,0 +1,91 @@
+.mixin-cart(@option, @cart-color, @flag-color, @flag-text-color) {
+  position: relative;
+  white-space: nowrap;
+  line-height: 1em;
+
+  .Cart-inner {
+    display: block;
+    position: relative;
+  }
+  .Cart-label { display: none; }
+  .Icon--cart,
+  .Icon--bag { display: none; }
+}
+.mixin-cart(@option, @cart-color, @flag-color, @flag-text-color) when (@option = text) {
+
+  color: @cart-color;
+  line-height: 1em;
+
+  .Cart-label {
+    display: inline;
+    &:before {
+      content: 'Cart';
+    }
+  }
+  .sqs-cart-quantity {
+    display: inline;
+    &:before { content: ' ('; }
+    &:after { content: ') '; }
+  }
+
+}
+.mixin-cart(@option, @cart-color, @flag-color, @flag-text-color) when (@option = cart) {
+
+  fill: @cart-color; // for the wheels
+  stroke: @cart-color;
+  .Cart-inner { padding-top: 0.5em; padding-bottom: 0.5em; }
+  .Icon--cart { display: inline-block; }
+  .sqs-cart-quantity {
+    display: inline-block;
+    vertical-align: top;
+
+    min-width: 1em;
+    margin-top: -0.5em;
+    margin-left: -1em;
+    border-radius: 1em;
+    padding: 0.5em;
+
+    background-color: @flag-color;
+    .font-smoothing (@flag-color);
+    color: @flag-text-color;
+
+    text-align: center;
+    line-height: 1em;
+  }
+}
+.mixin-cart(@option, @cart-color, @flag-color, @flag-text-color) when (@option = bag) {
+
+  stroke: @cart-color;
+  .Icon--bag { display: block; }
+  .sqs-cart-quantity {
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    text-align: center;
+    line-height: 26px;
+    color: @cart-color;
+
+  }
+
+}
+
+
+.Header .Cart { .tweak-header-cart-font; }
+.tweak-header-cart-style-text .Header .Cart { .mixin-cart(text, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color); }
+.tweak-header-cart-style-cart .Header .Cart { .mixin-cart(cart, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color); }
+.tweak-header-cart-style-bag .Header .Cart { .mixin-cart(bag, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color); }
+.tweak-header-cart-style-text .Header.Header--overlay .Cart { .mixin-cart(text, @tweak-header-overlay-cart-color, @tweak-header-overlay-cart-flag-color, @tweak-header-overlay-cart-flag-text-color); }
+.tweak-header-cart-style-cart .Header.Header--overlay .Cart { .mixin-cart(cart, @tweak-header-overlay-cart-color, @tweak-header-overlay-cart-flag-color, @tweak-header-overlay-cart-flag-text-color); }
+.tweak-header-cart-style-bag .Header.Header--overlay .Cart { .mixin-cart(bag, @tweak-header-overlay-cart-color, @tweak-header-overlay-cart-flag-color, @tweak-header-overlay-cart-flag-text-color); }
+
+
+.Mobile-bar .Cart { .tweak-mobile-bar-cart-font; }
+.tweak-mobile-bar-cart-style-text .Mobile-bar .Cart { .mixin-cart(text, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
+.tweak-mobile-bar-cart-style-cart .Mobile-bar .Cart { .mixin-cart(cart, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
+.tweak-mobile-bar-cart-style-bag .Mobile-bar .Cart { .mixin-cart(bag, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
+
+
+

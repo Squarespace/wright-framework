@@ -1,0 +1,106 @@
+<svg id="uiIcons" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+  <symbol id="search-icon" viewBox="0 0 20 20">
+    <g class="svg-icon">
+      <line fill="none" stroke-miterlimit="10" stroke-linecap="butt" x1="13.9" y1="14" x2="18.6" y2="18.6"/>
+      <circle fill="none" stroke-miterlimit="10" cx="9" cy="9" r="7"/>
+    </g>
+  </symbol>
+
+  <symbol id="search-icon--small" viewBox="0 0 15 15">
+    <g class="svg-icon">
+      <line fill="none" stroke-miterlimit="10" stroke-linecap="butt" x1="9.7" y1="9.8" x2="13.6" y2="13.5"/>
+      <circle fill="none" stroke-miterlimit="10" cx="6.5" cy="6.5" r="4.5"/>
+    </g>
+  </symbol>
+
+  <symbol id="hamburger-icon--even" viewBox="0 0 24 18">
+    <g class="svg-icon">
+      <line fill="none" stroke-miterlimit="10" x1="0" y1="2" x2="24" y2="2"/>
+      <line fill="none" stroke-miterlimit="10" x1="0" y1="9" x2="24" y2="9"/>
+      <line fill="none" stroke-miterlimit="10" x1="0" y1="16" x2="24" y2="16"/>
+    </g>
+  </symbol>
+
+  <symbol id="hamburger-icon--odd" viewBox="0 0 24 18">
+    <g class="svg-icon">
+      <line fill="none" stroke-miterlimit="10" x1="0" y1="1.5" x2="24" y2="1.5"/>
+      <line fill="none" stroke-miterlimit="10" x1="0" y1="8.5" x2="24" y2="8.5"/>
+      <line fill="none" stroke-miterlimit="10" x1="0" y1="15.5" x2="24" y2="15.5"/>
+    </g>
+  </symbol>
+
+  <symbol id="close-icon" viewBox="0 0 16 16">
+    <g class="svg-icon">
+      <line fill="none" stroke-miterlimit="10" x1="1.4" y1="1.4" x2="14.4" y2="14.4"/>
+      <line fill="none" stroke-miterlimit="10" x1="1.4" y1="14.4" x2="14.4" y2="1.4"/>
+    </g>
+  </symbol>
+
+  <symbol id="caret-left-small-icon" viewBox="0 0 9 16">
+    <g class="svg-icon">
+      <polyline fill="none" stroke-miterlimit="10" points="7.3,14.7 2.5,8 7.3,1.2 "/>
+    </g>
+  </symbol>
+
+  <symbol id="caret-right-small-icon" viewBox="0 0 9 16">
+    <g class="svg-icon">
+      <polyline fill="none" stroke-miterlimit="10" points="1.6,1.2 6.5,7.9 1.6,14.7 "/>
+    </g>
+  </symbol>
+
+  <symbol id="caret-left-large-icon" viewBox="0 0 23 48">
+    <g class="svg-icon">
+      <polyline fill="none" stroke-miterlimit="10" points="21.5,1.3 2.6,23.4 21.5,45.7 "/>
+    </g>
+  </symbol>
+
+  <symbol id="caret-right-large-icon" viewBox="0 0 23 48">
+    <g class="svg-icon">
+      <polyline fill="none" stroke-miterlimit="10" points="1.5,45.7 20.4,23.5 1.5,1.3 "/>
+    </g>
+  </symbol>
+
+  <symbol id="caret-down-large-icon" viewBox="0 0 48 23">
+    <g class="svg-icon">
+      <polyline class="st0" points="1.8,1.6 24,20.4 46.2,1.6 "/>
+    </g>
+  </symbol>
+
+  <symbol id="bag-icon--even" viewBox="0 0 34 38">
+    <g class="svg-icon">
+      <path id="XMLID_2_" fill="none" stroke-miterlimit="10" d="M29,36H5c-1.7,0-3-1.6-3-3.5L4,15h26
+        l2,17.5C32,34.4,30.7,36,29,36z"/>
+      <path id="XMLID_1_" fill="none" stroke-miterlimit="10" d="M11.8,11c0-1.4,0.6-9,5.2-9s5,8.6,5,9
+        "/>
+    </g>
+  </symbol>
+
+  <symbol id="bag-icon--odd" viewBox="0 0 34 38">
+    <g class="svg-icon">
+      <path fill="none" stroke-miterlimit="10" d="M29.4,36.5H4.6
+        c-1.7,0-3.1-1.6-3.1-3.6l2.1-18.4h26.9l2.1,18.4C32.5,34.9,31.1,36.5,29.4,36.5z"/>
+      <path fill="none" stroke-miterlimit="10" d="M11.5,11c0-1.4,0.6-9.5,5.6-9.5
+        s5.4,9.1,5.4,9.5"/>
+    </g>
+  </symbol>
+
+  <symbol id="cart-icon--even" viewBox="0 0 31 26">
+    <g class="svg-icon">
+      <circle stroke-miterlimit="10" cx="23" cy="23" r="1"/>
+      <circle stroke-miterlimit="10" cx="9" cy="23" r="1"/>
+      <path fill="none" stroke-linejoin="round" stroke-miterlimit="10" d="M0,2h5
+          c0.6,0,1.1,0.4,1.1,1l1.7,13c0.1,0.5,0.6,1,1.1,1h15c0.5,0,1.2-0.4,1.4-0.9l3.3-8.1C28.8,7.4,28.5,7,28,7H12"/>
+    </g>
+  </symbol>
+
+  <symbol id="cart-icon--odd" viewBox="0 0 31 26">
+    <g class="svg-icon">
+      <circle stroke-miterlimit="10" cx="22.5" cy="21.5" r="1"/>
+      <circle stroke-miterlimit="10" cx="9.5" cy="21.5" r="1"/>
+      <path fill="none" stroke-miterlimit="10" d="M0,1.5h5c0.6,0,1.1,0.4,1.1,1l1.7,13
+        c0.1,0.5,0.6,1,1.1,1h15c0.5,0,1.2-0.4,1.4-0.9l3.3-8.1c0.2-0.5-0.1-0.9-0.6-0.9H12"/>
+    </g>
+  </symbol>
+
+</svg>

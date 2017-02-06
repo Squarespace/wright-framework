@@ -1,0 +1,836 @@
+
+// =======================================================
+// __          __   _       _     _
+// \ \        / /  (_)     | |   | |
+//  \ \  /\  / / __ _  __ _| |__ | |_
+//   \ \/  \/ / '__| |/ _` | '_ \| __|
+//    \  /\  /| |  | | (_| | | | | |_
+//     \/  \/ |_|  |_|\__, |_| |_|\__|
+//                     __/ |
+//                    |___/
+// =======================================================
+
+
+@media screen and (max-width: 640px) {
+  @import 'sqs-grid-breaker';
+}
+
+
+// =======================================================
+
+//    HTML & Body
+
+// =======================================================
+
+[data-ajax-loading] & {
+  cursor: progress;
+}
+
+html {
+  pointer-events: auto;
+}
+
+body {
+
+  &.tweak-site-width-option-constrained-width {
+
+    background-color: @tweak-site-body-background-color;
+    .font-smoothing(@tweak-site-body-background-color);
+
+  }
+
+  &.tweak-site-width-option-full-width,
+  &.tweak-site-width-option-full-background {
+
+    // // Full width, get background from site border
+    background-color: @tweak-site-border-color;
+    .font-smoothing(@tweak-site-border-color);
+
+    &:not(.tweak-site-border-show) {
+
+      // No site border, get background from footer bottom
+      background-color: @tweak-footer-color;
+      .font-smoothing(@tweak-footer-color);
+
+    }
+
+  }
+
+}
+
+// =======================================================
+
+//    Loader
+
+// =======================================================
+
+.Loader {
+
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: @tweak-site-ajax-loading-bar-width;
+  z-index: 9999;
+
+  background-color: transparent;
+  .transition2(background-color 0.3s ease-out, transform 0s 0.3s linear);
+
+
+  [data-mercury-loading] & {
+    background-color: @tweak-site-ajax-loading-bar-color;
+    .transition(transform 0.3s cubic-bezier(0, 0, 0, 0.618));
+    .transform(translatex(60%));
+  }
+  [data-mercury-loading='done'] & {
+    .transform(translatex(100%));
+  }
+
+
+  // Show
+  display: none;
+  .tweak-site-ajax-loading-enable.tweak-site-ajax-loading-bar-show & {
+    display: block;
+  }
+
+}
+
+.Intro-content,
+.Main-content,
+.Index-page-content {
+  .animation(anim-opacity-full 480ms ease-out);
+}
+
+
+// =======================================================
+
+//    Content Colors
+
+// =======================================================
+
+
+
+// -----------------------------------------
+
+//  Headings
+
+
+.mixin-template-heading-color (@h1-color, @h2-color, @h3-color) {
+
+  h1 {
+    color: @h1-color;
+    a { .link-style(@h1-color); }
+  }
+  h2 {
+    color: @h2-color;
+    a { .link-style(@h2-color); }
+  }
+  h3 {
+    color: @h3-color;
+    a { .link-style(@h3-color); }
+  }
+
+}
+
+
+
+// -----------------------------------------
+
+//  Links
+
+
+.mixin-template-link-color (@color) {
+
+  .sqs-block-html,
+  .sqs-block-markdown,
+  .sqs-block-image {
+    p,
+    blockquote,
+    ol,
+    ul {
+      a {
+        .link-color(@color);
+        .link-style(@color);
+      }
+    }
+  }
+
+  .sqs-block-twitter .tweet-text a { .link-color(@color); }
+
+}
+
+
+
+// -----------------------------------------
+
+//  Lines
+
+
+.mixin-template-line-color (@color) {
+
+  .sqs-block-horizontalrule hr {
+    color: @color;
+    background-color: @color;
+  }
+  .sqs-block-html,
+  .sqs-block-markdown {
+    blockquote { border-color: @color; }
+  }
+
+}
+
+
+
+
+// =======================================================
+
+//    Typography
+
+// =======================================================
+
+
+
+
+// -----------------------------------------
+
+//  Body Text
+
+body {
+
+  .tweak-body-font;
+  color: @tweak-body-text-color;
+
+}
+
+p {
+
+  &:first-child { margin-top: 0; }
+  &:last-child { margin-bottom: 0; }
+
+}
+
+
+
+// -----------------------------------------
+
+//  Headings
+
+.responsive-font-size-h1 {
+  @media screen and (max-width: 640px) {
+    .max-font-size (32px, @tweak-h1-font-font-size, @tweak-h1-font-letter-spacing);
+  }
+}
+.responsive-font-size-h2 {
+  @media screen and (max-width: 640px) {
+    .max-font-size (28px, @tweak-h2-font-font-size, @tweak-h2-font-letter-spacing);
+  }
+}
+.responsive-font-size-h3 {
+  @media screen and (max-width: 640px) {
+    .max-font-size (24px, @tweak-h3-font-font-size, @tweak-h3-font-letter-spacing);
+  }
+}
+
+h1, h2, h3 {
+
+  text-rendering: optimizeLegibility;
+
+  &:first-child { margin-top: 0; }
+  &:last-child { margin-bottom: 0; }
+
+}
+
+h1 {
+
+  .tweak-h1-font;
+  .responsive-font-size-h1;
+
+}
+
+h2 {
+
+  .tweak-h2-font;
+  .responsive-font-size-h2;
+
+}
+
+h3 {
+
+  .tweak-h3-font;
+  .responsive-font-size-h3;
+
+}
+
+h1 + h1, h1 + h2, h1 + h3,
+h2 + h1, h2 + h2, h2 + h3,
+h3 + h1, h3 + h2, h3 + h3 {
+
+  margin-top: 15px;
+
+}
+
+.mixin-template-heading-color(@tweak-h1-color, @tweak-h2-color, @tweak-h3-color);
+
+@media screen and (max-width: 640px) {
+  h1, h2, h3 {
+    .hyphens(auto);
+  }
+}
+
+
+
+// -----------------------------------------
+
+//  Links
+
+a {
+
+  color: inherit;
+  text-decoration: none;
+
+  &:active,
+  &:focus {
+
+    // Remove dotted outline
+    outline: 0;
+
+  }
+
+}
+
+.mixin-template-link-color(@tweak-link-color);
+
+
+
+// -----------------------------------------
+
+//  Lines
+
+.mixin-template-line-color(@tweak-line-color);
+
+
+
+
+// =======================================================
+
+//    Site
+
+// =======================================================
+
+
+.Site {
+
+  .mixin-site-border-mobile-bar-color-top (@border-color, @mobile-bar-color) when (rgba(red(@mobile-bar-color), green(@mobile-bar-color), blue(@mobile-bar-color), 1) = @border-color) {
+    border-top: 0;
+  }
+  .mixin-site-border-mobile-bar-color-bottom (@border-color, @mobile-bar-color) when (rgba(red(@mobile-bar-color), green(@mobile-bar-color), blue(@mobile-bar-color), 1) = @border-color) {
+    border-bottom: 0;
+  }
+
+  .tweak-site-border-show & {
+    border: @tweak-site-border-width solid @tweak-site-border-color;
+    .responsive-border(@tweak-site-border-width);
+
+
+    // Hide border on top/bottom if respective
+    // mobile bar background colors are the same
+    // as border color.
+    @media screen and (max-width: @tweak-mobile-breakpoint) {
+      .mixin-site-border-mobile-bar-color-top(@tweak-site-border-color, @tweak-mobile-bar-top-background-color);
+      .mixin-site-border-mobile-bar-color-bottom(@tweak-site-border-color, @tweak-mobile-bar-bottom-background-color);
+    }
+
+  }
+
+  .tweak-site-width-option-constrained-width & {
+
+    max-width: @tweak-site-width;
+    margin-left: auto; margin-right: auto;
+
+  }
+
+
+  &-inner {
+
+    position: relative;
+
+  }
+
+}
+
+
+// Width
+.Header-inner,
+.Intro-content,
+.Main-content,
+.Footer-inner,
+.Index-page-content {
+
+  .tweak-site-width-option-full-background & {
+
+    max-width: @tweak-site-width;
+    margin-left: auto; margin-right: auto;
+
+  }
+
+}
+
+
+
+
+
+
+
+
+// =======================================================
+
+//    Parallax
+
+// =======================================================
+
+
+
+.Parallax-host {
+  display: none;
+}
+
+.tweak-overlay-parallax-enabled {
+
+
+
+  // When parallax scrolling occurs, sometimes, the parallax container will
+  // lag behind the actual scroll, leading to body's color showing through. To
+  // solve this, we change body's background color to main color (color of
+  // Index-page, .Main-content) to make it less noticeable, but only on parallax
+  // pages. Can't apply this to constrained background though
+
+  &.has-parallax-images:not(.tweak-site-width-option-constrained-width) {
+    background-color: @tweak-main-background-color !important;
+  }
+
+  .Index-page--has-image,
+  .Intro--has-image {
+    background-color: transparent;
+  }
+  .Parallax-host {
+    display: block;
+  }
+  .Parallax-item {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    overflow: hidden;
+
+    background-color: rgba(red(@tweak-overlay-color), green(@tweak-overlay-color), blue(@tweak-overlay-color), 1);
+
+    -webkit-transform: translatez(0);
+    transform: translatez(0);
+    will-change: transform;
+
+    [data-parallax-image-wrapper] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      margin: 0; // Override
+
+      > img,
+      .video-background {
+        -webkit-transform: translatez(0);
+        transform: translatez(0);
+        will-change: transform;
+      }
+
+    }
+
+  }
+
+}
+
+
+
+
+
+
+// =======================================================
+
+//    Intro
+
+// =======================================================
+
+
+
+// -----------------------------------------
+
+//  Loading
+
+.enable-load-effects {
+  .Intro-image {
+    opacity: 0;
+    .transition(opacity 200ms ease-out);
+    &.loaded {
+      opacity: 1;
+    }
+  }
+}
+
+.Intro {
+
+  position: relative;
+  overflow: hidden;
+
+  background-color: @tweak-main-background-color;
+  .font-smoothing(@tweak-main-background-color);
+
+  &--has-image {
+
+    .font-smoothing(@tweak-overlay-color);
+    background-color: rgba(red(@tweak-overlay-color), green(@tweak-overlay-color), blue(@tweak-overlay-color), 1);
+
+    // Typography
+    color: @tweak-overlay-body-text-color;
+    .mixin-template-heading-color(@tweak-overlay-h1-color, @tweak-overlay-h2-color, @tweak-overlay-h3-color);
+    .mixin-template-link-color(@tweak-overlay-link-color);
+    .mixin-template-line-color(@tweak-overlay-line-color);
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+
+      width: 100%;
+      height: 100%;
+
+      background-color: @tweak-overlay-color;
+    }
+
+  }
+
+  &--has-image &-content {
+    position: relative;
+    z-index: 2;
+
+    padding-top: @tweak-main-intro-overlay-padding;
+    padding-bottom: @tweak-main-intro-overlay-padding;
+    .responsive-padding-vertical-large(@tweak-main-intro-overlay-padding);
+  }
+
+  &-content {
+    .border-box;
+    padding: @tweak-main-intro-padding @tweak-site-side-padding;
+    .responsive-padding-vertical-large(@tweak-main-intro-padding);
+    .responsive-padding-horizontal(@tweak-site-side-padding);
+
+  }
+
+  &:not(.Intro--has-image) &-content.empty {
+
+    // When there is no image and intro content is empty, .Main-content should
+    // behave as if intro is not there, and have its normal top padding.
+    // However, we don't have a parent selector in CSS, so the .Intro-content
+    // sqs-layout container can't tell its parent that it's empty, meaning
+    // the parent can't tell its sibling. As a workaround, we turn off
+    // padding-bottom on .Intro-content, letting its top padding serve as the
+    // top padding for .Main-content. This works because they share the same
+    // top padding and background color.
+    padding-bottom: 0;
+
+  }
+
+  &-image {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    margin: 0; // Override
+
+  }
+
+}
+
+.Intro:not(.Intro--has-image) + .Main .Main-content {
+  padding-top: 0;
+}
+
+
+
+
+
+
+// =======================================================
+
+//    Main
+
+// =======================================================
+
+
+.Main {
+
+  background-color: @tweak-main-background-color;
+  .font-smoothing(@tweak-main-background-color);
+
+
+  &-content {
+
+    .border-box;
+    padding: @tweak-main-content-padding @tweak-site-side-padding;
+    .responsive-padding-vertical-large(@tweak-main-content-padding);
+    .responsive-padding-horizontal(@tweak-site-side-padding);
+
+  }
+
+}
+
+
+// -----------------------------------------
+
+//  Content Inset
+
+
+// Mixins
+
+.mixin-min-width (@width, @min) when (@width < @min) {
+  width: @min;
+}
+
+// Each column is 8.333% (1/12) of the total width.  A content inset of 1
+// indicates 1 less column on each side, which is (1 - (2 * 0.0833)) as a
+// percentage, and so on.
+@content-inset-width: percentage(1 - (@tweak-main-content-inset * 0.1667));
+.responsive-content-inset-width {
+  @media screen and (max-width: 1200px) { .mixin-min-width(@content-inset-width, 66.6667%); }
+  @media screen and (max-width: 900px) { .mixin-min-width(@content-inset-width, 83.3333%); }
+  @media screen and (max-width: 600px) { .mixin-min-width(@content-inset-width, 100%); }
+}
+
+
+// Selectors below indicate the actual places where content inset is applied,
+// which in this case includes main intros, and all sqs-layouts in main content
+// except for events.
+
+// Intro
+.Intro-content,
+// Main content
+.Main:not(.Main--events-list):not(.Main--events-item):not(.Main--blog-list) .Main-content .sqs-layout,
+// Blog List
+.tweak-blog-list-style-stacked .BlogList--posts-full .sqs-layout,
+// Index pages
+.Index-page .sqs-layout,
+// Footer top and bottom
+.Footer-blocks--top,
+.Footer-blocks--bottom,
+// Footer middle
+.tweak-footer-layout-stacked .Footer-blocks--middle {
+
+  .sqs-col-12 {
+
+    > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram) {
+
+      .border-box;
+
+      width: @content-inset-width;
+      .responsive-content-inset-width;
+
+      margin-right: auto;
+      margin-left: auto;
+
+    }
+
+  }
+
+}
+
+
+
+// =======================================================
+
+//    System Overrides
+
+// =======================================================
+
+
+// -----------------------------------------
+
+//  Blog
+
+.tweak-blog-list-style-stacked .BlogList-item-excerpt {
+
+  // Limit excerpt width in stacked mode to content inset width.
+  .border-box;
+
+  width: @content-inset-width;
+  max-width: 100%;
+  .responsive-content-inset-width;
+
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+// -----------------------------------------
+
+//  Album
+
+.sqs-audio-playlist {
+
+  // Spacing
+  .album-title,
+  .album-artist-name,
+  .album-description { margin-bottom: 12px; }
+
+  // Description links
+  .album-description a {
+    .link-color(@tweak-link-color);
+    .link-style(@tweak-link-color);
+  }
+
+}
+
+
+// -----------------------------------------
+
+//  System Share
+
+.squarespace-social-buttons.inline-style {
+  .link-color(@tweak-link-color);
+  .ss-social-button-icon {
+    display: none !important;
+  }
+}
+
+
+
+// -----------------------------------------
+
+//  Blockquote (HTML block)
+
+.sqs-block-html,
+.sqs-block-markdown {
+
+  blockquote {
+
+    margin-left: 0;
+    margin-right: 0;
+    border-left: 1px solid #eeeeee;
+    padding-left: 1.618em;
+
+  }
+
+}
+
+
+// -----------------------------------------
+
+//  Quote Block
+
+.mixin-quote-block-alignment {
+  .tweak-quote-block-alignment-left & { text-align: left; }
+  .tweak-quote-block-alignment-center & { text-align: center; }
+  .tweak-quote-block-alignment-right & { text-align: right; }
+}
+
+.sqs-block-quote {
+
+  // Spacing
+  padding-bottom: 0.5em;
+
+  // Alignment
+  .mixin-quote-block-alignment;
+
+  // Typography
+  .tweak-quote-block-quote-font;
+
+  // Source (byline)
+  .source {
+
+    // Spacing
+    padding-top: 0.5em;
+
+    // Alignment
+    .mixin-quote-block-alignment;
+
+    // Typography
+    .tweak-quote-block-source-font;
+  }
+
+}
+
+
+// -----------------------------------------
+
+//  Announcement bar
+
+.sqs-announcement-bar {
+
+  // z-index of 1000 won't overlap
+  // the mobile overlay menu.
+  z-index: 1000;
+
+}
+
+
+
+// -----------------------------------------
+
+//  Mobile Info Bar
+
+.sqs-mobile-info-bar {
+
+  z-index: 1000;
+
+  .is-overlay-active & {
+
+    .transform(translate3d(0, 100px, 0));
+
+  }
+
+}
+
+
+// -----------------------------------------
+
+//  Gallery
+
+.enable-load-effects {
+  .sqs-system-gallery {
+    opacity: 0;
+    .transition(opacity 300ms ease-out);
+
+    &.sqs-system-gallery-ready { opacity: 1; }
+  }
+}
+
+
+
+
+// -----------------------------------------
+
+//  Cart page
+
+.sqs-fullpage-shopping-cart-content > h2 {
+  margin-top: 0;
+}
+
+
+
+
+
+// -----------------------------------------
+
+//  Force full-width spacer blocks on mobile
+
+@media only screen and (max-width: 640px) {
+  .sqs-layout .sqs-col-12 > .sqs-block-spacer {
+    display: block;
+  }
+}

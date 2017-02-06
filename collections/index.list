@@ -1,0 +1,106 @@
+{.section collection}
+
+  {.repeated section collections}
+
+    {.equal? typeName "gallery"}
+
+      <section id="{urlId}" class="Index-gallery" data-controller="IndexGallery" data-collection-id="{id}">
+
+        {.if items.0}<div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
+
+        {.repeated section items}
+
+          {.equal? @index 10}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
+          {.equal? @index 19}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
+          {.equal? @index 28}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
+          {.equal? @index 37}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
+          {.equal? @index 46}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
+          {.equal? @index 55}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
+          {.equal? @index 64}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
+          {.equal? @index 73}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
+          {.equal? @index 82}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
+          {.equal? @index 91}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
+          {.equal? @index 100}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
+
+          <article class="Index-gallery-item"{.video?} data-controller="IndexGalleryVideo"{.end}>
+
+            <div class="Index-gallery-item-inner">
+
+              {.if title || body}
+                <div class="Index-gallery-item-content">
+                  {.section title}<h2 class="Index-gallery-item-content-heading">{@}</h2>{.end}
+                  {.section body}<div class="Index-gallery-item-content-body">{@}</div>{.end}
+                  {.section clickthroughUrl}<a href="{@}" class="Index-gallery-item-content-link"></a>{.end}
+                  {.video?}<a href="#" class="Index-gallery-item-content-link"></a>{.end}
+                </div>
+              {.end}
+
+              {.section clickthroughUrl}
+                <a href="{@}" class="Index-gallery-item-image">
+              {.or}
+                {.video?}
+                  <a href="#" class="Index-gallery-item-image">
+                {.or}
+                  <figure class="Index-gallery-item-image">
+                {.end}
+              {.end}
+                <img {@|image-meta} data-load="false" />
+              {.section clickthroughUrl}
+                </a>
+              {.or}
+                {.video?}
+                  </a>
+                {.or}
+                  </figure>
+                {.end}
+              {.end}
+
+              {.video?}
+                {@|video}
+              {.end}
+
+            </div>
+
+          </article>
+
+        {.end}
+
+        {.if items.0}</div>{.end}
+
+      </section>
+
+    {.or}
+
+      <section id="{urlId}" class="Index-page{.section mainImage} Index-page--has-image{.or}{.background-source-video?} Index-page--has-image{.end}{.end}" {.section mainImage} data-parallax-original-element{.or}{.background-source-video?} data-parallax-original-element{.end}{.end} data-collection-id="{id}" data-parallax-id="{id}" data-edit-main-image="Background">
+        {.equal? @index 1}
+          <div class="Index-page-scroll-indicator hidden" data-controller="ScrollIndicator">
+            <div class="Index-page-scroll-indicator-text"></div>
+            <svg class="Index-page-scroll-indicator-arrow Icon Icon--caretLarge--down" viewBox="0 0 48 23">
+              <use xlink:href="/assets/ui-icons.svg#caret-down-large-icon"></use>
+            </svg>
+            <div class="Index-page-scroll-indicator-line"></div>
+          </div>
+        {.end}
+        <div class="Index-page-content {.section mainImage} sqs-alternate-block-style-container{.or}{.background-source-video?} sqs-alternate-block-style-container{.end}{.end}">
+          {mainContent}
+        </div>
+        {.background-source-video?}
+          <figure class="Index-page-image" data-parallax-image-wrapper>
+            {@|apply background-media.block}
+          </figure>
+        {.or}
+          {.section mainImage}
+            <figure class="Index-page-image" data-parallax-image-wrapper>
+              {@|apply background-media.block}
+            </figure>
+          {.end}
+        {.end}
+      </section>
+
+    {.end}
+
+
+
+  {.end}
+
+{.end}

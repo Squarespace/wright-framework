@@ -1,0 +1,1031 @@
+
+
+
+// =======================================================
+
+//    Site
+
+// =======================================================
+
+// tweak: { "category" : "Site", "label" : "Background", "title" : "tweak-site-body-background-color", "type" : "color", "disableTransparency" : "true", "showOnlyWhenPresent" : ".tweak-site-width-option-constrained-width" }
+@tweak-site-body-background-color: #f5f5f5;
+
+// tweak: { "category" : "Site", "label" : "Design", "title" : "tweak-site-width-option", "type" : "dropdown", "options" : [ "Full Width", "Full Background", "Constrained Width" ], "default" : "Full Background" }
+
+// tweak: { "category" : "Site", "label" : "Width", "title" : "tweak-site-width", "type" : "value", "step" : 10, "min" : 640, "max" : 1920, "showOnlyWhenPresent" : "body:not(.tweak-site-width-option-full-width)" }
+@tweak-site-width: 1440px;
+
+// tweak: { "category" : "Site", "label" : "Side Padding", "title" : "tweak-site-side-padding", "type" : "value", "step" : 1, "min" : 17, "max" : 240 }
+@tweak-site-side-padding: 40px;
+
+// tweak: { "category" : "Site", "label" : "Icons", "title" : "tweak-icon-weight", "type" : "dropdown", "options" : [ "Hairline", "Light", "Medium", "Heavy" ], "default" : "Hairline", "target" : ".Icon", "showOnlyWhenPresent" : ".Icon" }
+
+
+// -----------------------------------------
+
+//  Border
+
+// tweak: { "category" : "Site: Border", "label" : "Show Border", "title" : "tweak-site-border-show", "type" : "checkbox", "active" : false }
+
+// tweak: { "category" : "Site: Border", "label" : "Width", "title" : "tweak-site-border-width", "type" : "value", "step" : 1, "min" : 1, "max" : 120, "target" : ".Site", "showOnlyWhenPresent" : ".tweak-site-border-show" }
+@tweak-site-border-width: 5px;
+
+// tweak: { "category" : "Site: Border", "label" : "Color", "title" : "tweak-site-border-color", "type" : "color", "disableTransparency" : "true", "showOnlyWhenPresent" : ".tweak-site-border-show" }
+@tweak-site-border-color: #dddddd;
+
+
+
+// -----------------------------------------
+
+//  Ajax loading
+
+// tweak: { "category" : "Site: Loading", "label" : "Enable Ajax Loading", "title" : "tweak-site-ajax-loading-enable", "type" : "checkbox", "active" : false, "js" : "true" }
+
+// tweak: { "category" : "Site: Loading", "label" : "Show Loading Bar", "title" : "tweak-site-ajax-loading-bar-show", "type" : "checkbox", "active" : true, "showOnlyWhenPresent" : ".tweak-site-ajax-loading-enable" }
+
+// tweak: { "category" : "Site: Loading", "label" : "Width", "title" : "tweak-site-ajax-loading-bar-width", "type" : "value", "step" : 1, "min" : 1, "max" : 120, "showOnlyWhenPresent" : ".tweak-site-ajax-loading-enable.tweak-site-ajax-loading-bar-show" }
+@tweak-site-ajax-loading-bar-width: 5px;
+
+// tweak: { "category" : "Site: Loading", "label" : "Color", "title" : "tweak-site-ajax-loading-bar-color", "type" : "color", "showOnlyWhenPresent" : ".tweak-site-ajax-loading-enable.tweak-site-ajax-loading-bar-show" }
+@tweak-site-ajax-loading-bar-color: #ffffff;
+
+
+// =======================================================
+
+//    Header
+
+// =======================================================
+
+
+// -----------------------------------------
+
+//  Top
+
+
+// tweak: { "category": "Header: Top", "label" : "Background", "title" : "tweak-header-top-background-color", "type" : "color", "disableTransparency" : "true", "target" : ".Header--top", "showOnlyWhenPresent" : ".ancillary-header-branding-position-top-left, .ancillary-header-tagline-position-top-left, .ancillary-header-primary-nav-position-top-left, .ancillary-header-secondary-nav-position-top-left, .ancillary-header-social-position-top-left, .ancillary-header-search-position-top-left, .ancillary-header-cart-position-top-left, .ancillary-header-branding-position-top-center, .ancillary-header-tagline-position-top-center, .ancillary-header-primary-nav-position-top-center, .ancillary-header-secondary-nav-position-top-center, .ancillary-header-social-position-top-center, .ancillary-header-search-position-top-center, .ancillary-header-cart-position-top-center, .ancillary-header-branding-position-top-right, .ancillary-header-tagline-position-top-right, .ancillary-header-primary-nav-position-top-right, .ancillary-header-secondary-nav-position-top-right, .ancillary-header-social-position-top-right, .ancillary-header-search-position-top-right, .ancillary-header-cart-position-top-right" }
+@tweak-header-top-background-color: #222222;
+
+// tweak: { "category" : "Header: Top", "label" : "Padding", "title" : "tweak-header-top-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Header--top", "showOnlyWhenPresent" : ".ancillary-header-branding-position-top-left, .ancillary-header-tagline-position-top-left, .ancillary-header-primary-nav-position-top-left, .ancillary-header-secondary-nav-position-top-left, .ancillary-header-social-position-top-left, .ancillary-header-search-position-top-left, .ancillary-header-cart-position-top-left, .ancillary-header-branding-position-top-center, .ancillary-header-tagline-position-top-center, .ancillary-header-primary-nav-position-top-center, .ancillary-header-secondary-nav-position-top-center, .ancillary-header-social-position-top-center, .ancillary-header-search-position-top-center, .ancillary-header-cart-position-top-center, .ancillary-header-branding-position-top-right, .ancillary-header-tagline-position-top-right, .ancillary-header-primary-nav-position-top-right, .ancillary-header-secondary-nav-position-top-right, .ancillary-header-social-position-top-right, .ancillary-header-search-position-top-right, .ancillary-header-cart-position-top-right" }
+@tweak-header-top-padding: 10px;
+
+// tweak: { "category" : "Header: Top", "label": "Left Layout", "title" : "ancillary-header-top-left-layout", "type" : "dropdown", "options" : [ "Horizontal", "Stacked" ], "default" : "Horizontal", "target" : ".Header--top", "showOnlyWhenPresent" : ".ancillary-header-branding-position-top-left.ancillary-header-tagline-position-top-left, .ancillary-header-branding-position-top-left.ancillary-header-primary-nav-position-top-left, .ancillary-header-branding-position-top-left.ancillary-header-secondary-nav-position-top-left, .ancillary-header-branding-position-top-left.ancillary-header-social-position-top-left, .ancillary-header-branding-position-top-left.ancillary-header-search-position-top-left, .ancillary-header-branding-position-top-left.ancillary-header-cart-position-top-left, .ancillary-header-tagline-position-top-left.ancillary-header-primary-nav-position-top-left, .ancillary-header-tagline-position-top-left.ancillary-header-secondary-nav-position-top-left, .ancillary-header-tagline-position-top-left.ancillary-header-social-position-top-left, .ancillary-header-tagline-position-top-left.ancillary-header-search-position-top-left, .ancillary-header-tagline-position-top-left.ancillary-header-cart-position-top-left, .ancillary-header-primary-nav-position-top-left.ancillary-header-secondary-nav-position-top-left, .ancillary-header-primary-nav-position-top-left.ancillary-header-social-position-top-left, .ancillary-header-primary-nav-position-top-left.ancillary-header-search-position-top-left, .ancillary-header-primary-nav-position-top-left.ancillary-header-cart-position-top-left, .ancillary-header-secondary-nav-position-top-left.ancillary-header-social-position-top-left, .ancillary-header-secondary-nav-position-top-left.ancillary-header-search-position-top-left, .ancillary-header-secondary-nav-position-top-left.ancillary-header-cart-position-top-left, .ancillary-header-social-position-top-left.ancillary-header-cart-position-top-left, .ancillary-header-social-position-top-left.ancillary-header-search-position-top-left, .ancillary-header-search-position-top-left.ancillary-header-cart-position-top-left" }
+
+// tweak: { "category" : "Header: Top", "label": "Center Layout", "title" : "ancillary-header-top-center-layout", "type" : "dropdown", "options" : [ "Horizontal", "Stacked" ], "default" : "Horizontal", "target" : ".Header--top", "showOnlyWhenPresent" : ".ancillary-header-branding-position-top-center.ancillary-header-tagline-position-top-center, .ancillary-header-branding-position-top-center.ancillary-header-primary-nav-position-top-center, .ancillary-header-branding-position-top-center.ancillary-header-secondary-nav-position-top-center, .ancillary-header-branding-position-top-center.ancillary-header-social-position-top-center, .ancillary-header-branding-position-top-center.ancillary-header-search-position-top-center, .ancillary-header-branding-position-top-center.ancillary-header-cart-position-top-center, .ancillary-header-tagline-position-top-center.ancillary-header-primary-nav-position-top-center, .ancillary-header-tagline-position-top-center.ancillary-header-secondary-nav-position-top-center, .ancillary-header-tagline-position-top-center.ancillary-header-social-position-top-center, .ancillary-header-tagline-position-top-center.ancillary-header-search-position-top-center, .ancillary-header-tagline-position-top-center.ancillary-header-cart-position-top-center, .ancillary-header-primary-nav-position-top-center.ancillary-header-secondary-nav-position-top-center, .ancillary-header-primary-nav-position-top-center.ancillary-header-social-position-top-center, .ancillary-header-primary-nav-position-top-center.ancillary-header-search-position-top-center, .ancillary-header-primary-nav-position-top-center.ancillary-header-cart-position-top-center, .ancillary-header-secondary-nav-position-top-center.ancillary-header-social-position-top-center, .ancillary-header-secondary-nav-position-top-center.ancillary-header-search-position-top-center, .ancillary-header-secondary-nav-position-top-center.ancillary-header-cart-position-top-center, .ancillary-header-social-position-top-center.ancillary-header-cart-position-top-center, .ancillary-header-social-position-top-center.ancillary-header-search-position-top-center, .ancillary-header-search-position-top-center.ancillary-header-cart-position-top-center" }
+
+// tweak: { "category" : "Header: Top", "label": "Right Layout", "title" : "ancillary-header-top-right-layout", "type" : "dropdown", "options" : [ "Horizontal", "Stacked" ], "default" : "Horizontal", "target" : ".Header--top", "showOnlyWhenPresent" : ".ancillary-header-branding-position-top-right.ancillary-header-tagline-position-top-right, .ancillary-header-branding-position-top-right.ancillary-header-primary-nav-position-top-right, .ancillary-header-branding-position-top-right.ancillary-header-secondary-nav-position-top-right, .ancillary-header-branding-position-top-right.ancillary-header-social-position-top-right, .ancillary-header-branding-position-top-right.ancillary-header-search-position-top-right, .ancillary-header-branding-position-top-right.ancillary-header-cart-position-top-right, .ancillary-header-tagline-position-top-right.ancillary-header-primary-nav-position-top-right, .ancillary-header-tagline-position-top-right.ancillary-header-secondary-nav-position-top-right, .ancillary-header-tagline-position-top-right.ancillary-header-social-position-top-right, .ancillary-header-tagline-position-top-right.ancillary-header-search-position-top-right, .ancillary-header-tagline-position-top-right.ancillary-header-cart-position-top-right, .ancillary-header-primary-nav-position-top-right.ancillary-header-secondary-nav-position-top-right, .ancillary-header-primary-nav-position-top-right.ancillary-header-social-position-top-right, .ancillary-header-primary-nav-position-top-right.ancillary-header-search-position-top-right, .ancillary-header-primary-nav-position-top-right.ancillary-header-cart-position-top-right, .ancillary-header-secondary-nav-position-top-right.ancillary-header-social-position-top-right, .ancillary-header-secondary-nav-position-top-right.ancillary-header-search-position-top-right, .ancillary-header-secondary-nav-position-top-right.ancillary-header-cart-position-top-right, .ancillary-header-social-position-top-right.ancillary-header-cart-position-top-right, .ancillary-header-social-position-top-right.ancillary-header-search-position-top-right, .ancillary-header-search-position-top-right.ancillary-header-cart-position-top-right" }
+
+
+// -----------------------------------------
+
+//  Bottom
+
+// tweak: { "category" : "Header: Bottom", "label" : "Padding", "title" : "tweak-header-bottom-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Header--bottom", "showOnlyWhenPresent" : ".ancillary-header-branding-position-bottom-left, .ancillary-header-tagline-position-bottom-left, .ancillary-header-primary-nav-position-bottom-left, .ancillary-header-secondary-nav-position-bottom-left, .ancillary-header-social-position-bottom-left, .ancillary-header-search-position-bottom-left, .ancillary-header-cart-position-bottom-left, .ancillary-header-branding-position-bottom-center, .ancillary-header-tagline-position-bottom-center, .ancillary-header-primary-nav-position-bottom-center, .ancillary-header-secondary-nav-position-bottom-center, .ancillary-header-social-position-bottom-center, .ancillary-header-search-position-bottom-center, .ancillary-header-cart-position-bottom-center, .ancillary-header-branding-position-bottom-right, .ancillary-header-tagline-position-bottom-right, .ancillary-header-primary-nav-position-bottom-right, .ancillary-header-secondary-nav-position-bottom-right, .ancillary-header-social-position-bottom-right, .ancillary-header-search-position-bottom-right, .ancillary-header-cart-position-bottom-right" }
+@tweak-header-bottom-padding: 40px;
+
+// tweak: { "category" : "Header: Bottom", "label": "Left Layout", "title" : "ancillary-header-bottom-left-layout", "type" : "dropdown", "options" : [ "Horizontal", "Stacked" ], "default" : "Horizontal", "target" : ".Header--bottom", "showOnlyWhenPresent" : ".ancillary-header-branding-position-bottom-left.ancillary-header-tagline-position-bottom-left, .ancillary-header-branding-position-bottom-left.ancillary-header-primary-nav-position-bottom-left, .ancillary-header-branding-position-bottom-left.ancillary-header-secondary-nav-position-bottom-left, .ancillary-header-branding-position-bottom-left.ancillary-header-social-position-bottom-left, .ancillary-header-branding-position-bottom-left.ancillary-header-search-position-bottom-left, .ancillary-header-branding-position-bottom-left.ancillary-header-cart-position-bottom-left, .ancillary-header-tagline-position-bottom-left.ancillary-header-primary-nav-position-bottom-left, .ancillary-header-tagline-position-bottom-left.ancillary-header-secondary-nav-position-bottom-left, .ancillary-header-tagline-position-bottom-left.ancillary-header-social-position-bottom-left, .ancillary-header-tagline-position-bottom-left.ancillary-header-search-position-bottom-left, .ancillary-header-tagline-position-bottom-left.ancillary-header-cart-position-bottom-left, .ancillary-header-primary-nav-position-bottom-left.ancillary-header-secondary-nav-position-bottom-left, .ancillary-header-primary-nav-position-bottom-left.ancillary-header-social-position-bottom-left, .ancillary-header-primary-nav-position-bottom-left.ancillary-header-search-position-bottom-left, .ancillary-header-primary-nav-position-bottom-left.ancillary-header-cart-position-bottom-left, .ancillary-header-secondary-nav-position-bottom-left.ancillary-header-social-position-bottom-left, .ancillary-header-secondary-nav-position-bottom-left.ancillary-header-search-position-bottom-left, .ancillary-header-secondary-nav-position-bottom-left.ancillary-header-cart-position-bottom-left, .ancillary-header-social-position-bottom-left.ancillary-header-cart-position-bottom-left, .ancillary-header-social-position-bottom-left.ancillary-header-search-position-bottom-left, .ancillary-header-search-position-bottom-left.ancillary-header-cart-position-bottom-left" }
+
+// tweak: { "category" : "Header: Bottom", "label": "Center Layout", "title" : "ancillary-header-bottom-center-layout", "type" : "dropdown", "options" : [ "Horizontal", "Stacked" ], "default" : "Horizontal", "target" : ".Header--bottom", "showOnlyWhenPresent" : ".ancillary-header-branding-position-bottom-center.ancillary-header-tagline-position-bottom-center, .ancillary-header-branding-position-bottom-center.ancillary-header-primary-nav-position-bottom-center, .ancillary-header-branding-position-bottom-center.ancillary-header-secondary-nav-position-bottom-center, .ancillary-header-branding-position-bottom-center.ancillary-header-social-position-bottom-center, .ancillary-header-branding-position-bottom-center.ancillary-header-search-position-bottom-center, .ancillary-header-branding-position-bottom-center.ancillary-header-cart-position-bottom-center, .ancillary-header-tagline-position-bottom-center.ancillary-header-primary-nav-position-bottom-center, .ancillary-header-tagline-position-bottom-center.ancillary-header-secondary-nav-position-bottom-center, .ancillary-header-tagline-position-bottom-center.ancillary-header-social-position-bottom-center, .ancillary-header-tagline-position-bottom-center.ancillary-header-search-position-bottom-center, .ancillary-header-tagline-position-bottom-center.ancillary-header-cart-position-bottom-center, .ancillary-header-primary-nav-position-bottom-center.ancillary-header-secondary-nav-position-bottom-center, .ancillary-header-primary-nav-position-bottom-center.ancillary-header-social-position-bottom-center, .ancillary-header-primary-nav-position-bottom-center.ancillary-header-search-position-bottom-center, .ancillary-header-primary-nav-position-bottom-center.ancillary-header-cart-position-bottom-center, .ancillary-header-secondary-nav-position-bottom-center.ancillary-header-social-position-bottom-center, .ancillary-header-secondary-nav-position-bottom-center.ancillary-header-search-position-bottom-center, .ancillary-header-secondary-nav-position-bottom-center.ancillary-header-cart-position-bottom-center, .ancillary-header-social-position-bottom-center.ancillary-header-cart-position-bottom-center, .ancillary-header-social-position-bottom-center.ancillary-header-search-position-bottom-center, .ancillary-header-search-position-bottom-center.ancillary-header-cart-position-bottom-center" }
+
+// tweak: { "category" : "Header: Bottom", "label": "Right Layout", "title" : "ancillary-header-bottom-right-layout", "type" : "dropdown", "options" : [ "Horizontal", "Stacked" ], "default" : "Horizontal", "target" : ".Header--bottom", "showOnlyWhenPresent" : ".ancillary-header-branding-position-bottom-right.ancillary-header-tagline-position-bottom-right, .ancillary-header-branding-position-bottom-right.ancillary-header-primary-nav-position-bottom-right, .ancillary-header-branding-position-bottom-right.ancillary-header-secondary-nav-position-bottom-right, .ancillary-header-branding-position-bottom-right.ancillary-header-social-position-bottom-right, .ancillary-header-branding-position-bottom-right.ancillary-header-search-position-bottom-right, .ancillary-header-branding-position-bottom-right.ancillary-header-cart-position-bottom-right, .ancillary-header-tagline-position-bottom-right.ancillary-header-primary-nav-position-bottom-right, .ancillary-header-tagline-position-bottom-right.ancillary-header-secondary-nav-position-bottom-right, .ancillary-header-tagline-position-bottom-right.ancillary-header-social-position-bottom-right, .ancillary-header-tagline-position-bottom-right.ancillary-header-search-position-bottom-right, .ancillary-header-tagline-position-bottom-right.ancillary-header-cart-position-bottom-right, .ancillary-header-primary-nav-position-bottom-right.ancillary-header-secondary-nav-position-bottom-right, .ancillary-header-primary-nav-position-bottom-right.ancillary-header-social-position-bottom-right, .ancillary-header-primary-nav-position-bottom-right.ancillary-header-search-position-bottom-right, .ancillary-header-primary-nav-position-bottom-right.ancillary-header-cart-position-bottom-right, .ancillary-header-secondary-nav-position-bottom-right.ancillary-header-social-position-bottom-right, .ancillary-header-secondary-nav-position-bottom-right.ancillary-header-search-position-bottom-right, .ancillary-header-secondary-nav-position-bottom-right.ancillary-header-cart-position-bottom-right, .ancillary-header-social-position-bottom-right.ancillary-header-cart-position-bottom-right, .ancillary-header-social-position-bottom-right.ancillary-header-search-position-bottom-right, .ancillary-header-search-position-bottom-right.ancillary-header-cart-position-bottom-right" }
+
+
+
+// -----------------------------------------
+
+//  Layout
+
+// tweak: { "category" : "Header: Layout", "label" : "Element Spacing (Horizontal)", "title" : "tweak-header-element-spacing-horizontal", "type" : "value", "step" : 1, "min" : 2, "max" : 48, "target" : ".Header--top, .Header--bottom, .Header-branding, .Header-tagline, .Header-nav--primary, .Header-nav--secondary, .Header-search, .Header .Cart" }
+@tweak-header-element-spacing-horizontal: 10px;
+
+// tweak: { "category" : "Header: Layout", "label" : "Element Spacing (Vertical)", "title" : "tweak-header-element-spacing-vertical", "type" : "value", "step" : 1, "min" : 2, "max" : 48, "target" : ".Header--top, .Header--bottom, .Header-branding, .Header-tagline, .Header-nav--primary, .Header-nav--secondary, .Header-search, .Header .Cart" }
+@tweak-header-element-spacing-vertical: 10px;
+
+// tweak: { "category" : "Header: Layout", "label" : "Branding Position", "title" : "ancillary-header-branding-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right"], "default" : "Top Left", "target" : ".Header--top, .Header--bottom, .Header-branding" }
+
+// tweak: { "category" : "Header: Layout", "label" : "Tagline Position", "title" : "ancillary-header-tagline-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right"], "default" : "Top Left", "target" : ".Header--top, .Header--bottom, .Header-tagline", "showOnlyWhenPresent" : ".has-tagline" }
+
+// tweak: { "category" : "Header: Layout", "label" : "Primary Nav Position", "title" : "ancillary-header-primary-nav-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right"], "default" : "Top Left", "target" : ".Header--top, .Header--bottom, .Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav" }
+
+// tweak: { "category" : "Header: Layout", "label" : "Secondary Nav Position", "title" : "ancillary-header-secondary-nav-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right"], "default" : "Top Left", "target" : ".Header--top, .Header--bottom, .Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav" }
+
+// tweak: { "category" : "Header: Layout", "label" : "Social Position", "title" : "ancillary-header-social-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right"], "default" : "Hide", "target" : ".Header--top, .Header--bottom, .SocialLinks", "showOnlyWhenPresent" : ".has-social" }
+
+// tweak: { "category" : "Header: Layout", "label" : "Search Position", "title" : "ancillary-header-search-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right"], "default" : "Top Left", "target" : ".Header--top, .Header--bottom, .Header-search" }
+
+// tweak: { "category" : "Header: Layout", "label" : "Cart Position", "title" : "ancillary-header-cart-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right"], "default" : "Top Left", "target" : ".Header--top, .Header--bottom, .Header .Cart", "showOnlyWhenPresent" : ".has-cart" }
+
+
+
+// -----------------------------------------
+
+//  Branding
+
+
+// tweak: { "category" : "Header: Branding", "label" : "Logo Width", "title" : "tweak-header-logo-width", "type" : "value", "step" : 1, "min" : 20, "max" : 320, "target" : ".Header-branding", "property" : "width", "showOnlyWhenPresent" : ".has-logo-image:not(.ancillary-header-branding-position-hide)" }
+@tweak-header-logo-width: 120px;
+
+// tweak: { "category": "Header: Branding", "label" : "Font", "title" : "tweak-header-branding-site-title-font", "type" : "font", "target" : ".Header-branding", "showOnlyWhenPresent" : ".has-site-title:not(.ancillary-header-branding-position-hide)" }
+.tweak-header-branding-site-title-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 27px;
+  letter-spacing: 0em;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+// tweak: { "category": "Header: Branding", "label" : "Color", "title" : "tweak-header-branding-site-title-color", "type" : "color", "target" : ".Header-branding", "showOnlyWhenPresent" : ".has-site-title:not(.ancillary-header-branding-position-hide) .Header:not(.Header--overlay) .Header-branding" }
+@tweak-header-branding-site-title-color: #111111;
+
+// tweak: { "category": "Header: Branding", "label" : "Color (Overlay)", "title" : "tweak-header-overlay-branding-site-title-color", "type" : "color", "target" : ".Header-branding", "showOnlyWhenPresent" : ".has-site-title:not(.ancillary-header-branding-position-hide) .Header--overlay .Header-branding" }
+@tweak-header-overlay-branding-site-title-color: #111111;
+
+
+// -----------------------------------------
+
+//  Tag Line
+
+
+// tweak: { "category": "Header: Tag Line", "label" : "Font", "title" : "tweak-header-tagline-font", "type" : "font", "target" : ".Header-tagline", "showOnlyWhenPresent" : ".has-tagline:not(.ancillary-header-tagline-position-hide)" }
+.tweak-header-tagline-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 0em;
+  line-height: 1em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Header: Tag Line", "label" : "Color", "title" : "tweak-header-tagline-color", "type" : "color", "target" : ".Header-tagline", "showOnlyWhenPresent" : ".has-tagline:not(.ancillary-header-tagline-position-hide) .Header:not(.Header--overlay) .Header-tagline" }
+@tweak-header-tagline-color: #000000;
+
+
+// tweak: { "category": "Header: Tag Line", "label" : "Color (Overlay)", "title" : "tweak-header-overlay-tagline-color", "type" : "color", "target" : ".Header-tagline", "showOnlyWhenPresent" : ".has-tagline:not(.ancillary-header-tagline-position-hide) .Header--overlay .Header-tagline" }
+@tweak-header-overlay-tagline-color: #000000;
+
+
+
+
+// -----------------------------------------
+
+//  Primary Navigation
+
+
+// tweak: { "category" : "Header: Primary Navigation", "label": "Style", "title" : "tweak-header-primary-nav-hover-style", "type" : "dropdown", "options" : [ "Plain", "Fade", "Spotlight", "Active", "Button" ], "default" : "Spotlight", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav:not(.ancillary-header-primary-nav-position-hide)" }
+
+// tweak: { "category" : "Header: Primary Navigation", "label": "Button Style", "title" : "tweak-header-primary-nav-button-style", "type" : "dropdown", "options" : [ "Solid", "Outline", "Raised" ], "default" : "Solid", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav.tweak-header-primary-nav-hover-style-button:not(.ancillary-header-primary-nav-position-hide)" }
+
+// tweak: { "category" : "Header: Primary Navigation", "label": "Button Shape", "title" : "tweak-header-primary-nav-button-shape", "type" : "dropdown", "options" : [ "Square", "Rounded", "Pill" ], "default" : "Square", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav.tweak-header-primary-nav-hover-style-button:not(.ancillary-header-primary-nav-position-hide)" }
+
+// tweak: { "category": "Header: Primary Navigation", "label" : "Font", "title" : "tweak-header-primary-nav-font", "type" : "font", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav:not(.ancillary-header-primary-nav-position-hide)" }
+.tweak-header-primary-nav-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0em;
+  text-transform: uppercase;
+}
+
+// tweak: { "category": "Header: Primary Navigation", "label": "Color", "title" : "tweak-header-primary-nav-link-color", "type" : "color", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav:not(.ancillary-header-primary-nav-position-hide) .Header:not(.Header--overlay) .Header-nav--primary" }
+@tweak-header-primary-nav-link-color: #000000;
+
+// tweak: { "category": "Header: Primary Navigation", "label": "Active Color", "title" : "tweak-header-primary-nav-link-active-color", "type" : "color", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav.tweak-header-primary-nav-hover-style-active:not(.ancillary-header-primary-nav-position-hide) .Header:not(.Header--overlay) .Header-nav--primary" }
+@tweak-header-primary-nav-link-active-color: #000000;
+
+// tweak: { "category": "Header: Primary Navigation", "label": "Button Text Color", "title" : "tweak-header-primary-nav-button-text-color", "type" : "color", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav.tweak-header-primary-nav-hover-style-button:not(.ancillary-header-primary-nav-position-hide) .Header:not(.Header--overlay) .Header-nav--primary" }
+@tweak-header-primary-nav-button-text-color: #ffffff;
+
+// tweak: { "category": "Header: Primary Navigation", "label": "Folder Color", "title" : "tweak-header-primary-nav-folder-color", "type" : "color", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav:not(.ancillary-header-primary-nav-position-hide) .Header:not(.Header--overlay) .Header-nav--primary" }
+@tweak-header-primary-nav-folder-color: #000000;
+
+// tweak: { "category": "Header: Primary Navigation", "label": "Folder Text Color", "title" : "tweak-header-primary-nav-folder-link-color", "type" : "color", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav:not(.ancillary-header-primary-nav-position-hide) .Header:not(.Header--overlay) .Header-nav--primary" }
+@tweak-header-primary-nav-folder-link-color: #ffffff;
+
+// tweak: { "category": "Header: Primary Navigation", "label": "Color (Overlay)", "title" : "tweak-header-overlay-primary-nav-link-color", "type" : "color", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav:not(.ancillary-header-primary-nav-position-hide) .Header--overlay .Header-nav--primary" }
+@tweak-header-overlay-primary-nav-link-color: #000000;
+
+// tweak: { "category": "Header: Primary Navigation", "label": "Active Color (Overlay)", "title" : "tweak-header-overlay-primary-nav-link-active-color", "type" : "color", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav.tweak-header-primary-nav-hover-style-active.tweak-header-primary-nav-hover-style-active:not(.ancillary-header-primary-nav-position-hide) .Header--overlay .Header-nav--primary" }
+@tweak-header-overlay-primary-nav-link-active-color: #000000;
+
+// tweak: { "category": "Header: Primary Navigation", "label": "Button Text Color (Overlay)", "title" : "tweak-header-overlay-primary-nav-button-text-color", "type" : "color", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav.tweak-header-primary-nav-hover-style-button:not(.ancillary-header-primary-nav-position-hide) .Header--overlay .Header-nav--primary" }
+@tweak-header-overlay-primary-nav-button-text-color: #ffffff;
+
+// tweak: { "category": "Header: Primary Navigation", "label": "Folder Color (Overlay)", "title" : "tweak-header-overlay-primary-nav-folder-color", "type" : "color", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav:not(.ancillary-header-primary-nav-position-hide) .Header--overlay .Header-nav--primary" }
+@tweak-header-overlay-primary-nav-folder-color: #000000;
+
+// tweak: { "category": "Header: Primary Navigation", "label": "Folder Text Color (Overlay)", "title" : "tweak-header-overlay-primary-nav-folder-link-color", "type" : "color", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav:not(.ancillary-header-primary-nav-position-hide) .Header--overlay .Header-nav--primary" }
+@tweak-header-overlay-primary-nav-folder-link-color: #ffffff;
+
+
+// -----------------------------------------
+
+//  Secondary Navigation
+
+
+// tweak: { "category" : "Header: Secondary Navigation", "label" : "Inherit Primary Navigation Styles", "title" : "tweak-header-secondary-nav-inherit-styles", "type" : "checkbox", "active" : true, "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav:not(.ancillary-header-secondary-nav-position-hide)" }
+
+// tweak: { "category" : "Header: Secondary Navigation", "label": "Style", "title" : "tweak-header-secondary-nav-hover-style", "type" : "dropdown", "options" : [ "Plain", "Fade", "Spotlight", "Active", "Button" ], "default" : "Spotlight", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles)" }
+
+// tweak: { "category" : "Header: Secondary Navigation", "label": "Button Style", "title" : "tweak-header-secondary-nav-button-style", "type" : "dropdown", "options" : [ "Solid", "Outline", "Raised" ], "default" : "Solid", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav.tweak-header-secondary-nav-hover-style-button:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles)" }
+
+// tweak: { "category" : "Header: Secondary Navigation", "label": "Button Shape", "title" : "tweak-header-secondary-nav-button-shape", "type" : "dropdown", "options" : [ "Square", "Rounded", "Pill" ], "default" : "Square", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav.tweak-header-secondary-nav-hover-style-button:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles)" }
+
+// tweak: { "category": "Header: Secondary Navigation", "label" : "Font", "title" : "tweak-header-secondary-nav-font", "type" : "font", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles)" }
+.tweak-header-secondary-nav-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 0em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Header: Secondary Navigation", "label": "Color", "title" : "tweak-header-secondary-nav-link-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles) .Header:not(.Header--overlay) .Header-nav--secondary" }
+@tweak-header-secondary-nav-link-color: #ffffff;
+
+// tweak: { "category": "Header: Secondary Navigation", "label": "Active Color", "title" : "tweak-header-secondary-nav-link-active-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav.tweak-header-secondary-nav-hover-style-active.tweak-header-nav-secondary-hover-style-active:not(.ancillary-header-secondary-nav-position-hide) .Header:not(.Header--overlay) .Header-nav--secondary" }
+@tweak-header-secondary-nav-link-active-color: #000000;
+
+// tweak: { "category": "Header: Secondary Navigation", "label": "Button Text Color", "title" : "tweak-header-secondary-nav-button-text-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav.tweak-header-secondary-nav-hover-style-button:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles) .Header:not(.Header--overlay) .Header-nav--secondary" }
+@tweak-header-secondary-nav-button-text-color: #ffffff;
+
+// tweak: { "category": "Header: Secondary Navigation", "label": "Folder Color", "title" : "tweak-header-secondary-nav-folder-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles) .Header:not(.Header--overlay) .Header-nav--secondary" }
+@tweak-header-secondary-nav-folder-color: #ffffff;
+
+// tweak: { "category": "Header: Secondary Navigation", "label": "Folder Text Color", "title" : "tweak-header-secondary-nav-folder-link-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles) .Header:not(.Header--overlay) .Header-nav--secondary" }
+@tweak-header-secondary-nav-folder-link-color: #000000;
+
+// tweak: { "category": "Header: Secondary Navigation", "label": "Color (Overlay)", "title" : "tweak-header-overlay-secondary-nav-link-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles) .Header--overlay .Header-nav--secondary" }
+@tweak-header-overlay-secondary-nav-link-color: #ffffff;
+
+// tweak: { "category": "Header: Secondary Navigation", "label": "Active Color (Overlay)", "title" : "tweak-header-overlay-secondary-nav-link-active-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav.tweak-header-secondary-nav-hover-style-active.tweak-header-secondary-nav-hover-style-active:not(.ancillary-header-secondary-nav-position-hide) .Header--overlay .Header-nav--secondary" }
+@tweak-header-overlay-secondary-nav-link-active-color: #000000;
+
+// tweak: { "category": "Header: Secondary Navigation", "label": "Button Text Color (Overlay)", "title" : "tweak-header-overlay-secondary-nav-button-text-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav.tweak-header-secondary-nav-hover-style-button:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles) .Header--overlay .Header-nav--secondary" }
+@tweak-header-overlay-secondary-nav-button-text-color: #ffffff;
+
+// tweak: { "category": "Header: Secondary Navigation", "label": "Folder Color (Overlay)", "title" : "tweak-header-overlay-secondary-nav-folder-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles) .Header--overlay .Header-nav--secondary" }
+@tweak-header-overlay-secondary-nav-folder-color: #ffffff;
+
+// tweak: { "category": "Header: Secondary Navigation", "label": "Folder Text Color (Overlay)", "title" : "tweak-header-overlay-secondary-nav-folder-link-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles) .Header--overlay .Header-nav--secondary" }
+@tweak-header-overlay-secondary-nav-folder-link-color: #000000;
+
+
+
+// -----------------------------------------
+
+//  Social
+
+// tweak: { "category" : "Social Icons", "label" : "Color (Overlay)", "title" : "tweak-social-icons-overlay-color", "type" : "color", "target" : ".SocialLinks", "showOnlyWhenPresent" : "body:not(.ancillary-header-social-position-hide):not(.tweak-header-social-standard-color) .Header--overlay .SocialLinks" }
+@tweak-social-icons-overlay-color: #ffffff;
+
+
+// -----------------------------------------
+
+//  Search
+
+
+// tweak: { "category" : "Header: Search", "label" : "Style", "title" : "tweak-header-search-style", "type" : "dropdown", "options" : [ "Rectangle", "Underlined" ], "default" : "Underlined", "target" : ".Header-search", "showOnlyWhenPresent" : "body:not(.ancillary-header-search-position-hide)" }
+
+// tweak: { "category": "Header: Search", "label" : "Font", "title" : "tweak-header-search-font", "type" : "font", "target" : ".Header-search", "showOnlyWhenPresent" : "body:not(.ancillary-header-search-position-hide)" }
+.tweak-header-search-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 0em;
+  text-transform: uppercase;
+}
+
+// tweak: { "category": "Header: Search", "label" : "Icon Color", "title" : "tweak-header-search-icon-color", "type" : "color", "target" : ".Header-search", "showOnlyWhenPresent" : "body:not(.ancillary-header-search-position-hide) .Header:not(.Header--overlay) .Header-search" }
+@tweak-header-search-icon-color: #ffffff;
+
+// tweak: { "category": "Header: Search", "label" : "Background Color", "title" : "tweak-header-search-background-color", "type" : "color", "target" : ".Header-search", "showOnlyWhenPresent" : ".tweak-header-search-style-rectangle:not(.ancillary-header-search-position-hide) .Header:not(.Header--overlay) .Header-search" }
+@tweak-header-search-background-color: #ffffff;
+
+// tweak: { "category": "Header: Search", "label" : "Border Color", "title" : "tweak-header-search-border-color", "type" : "color", "target" : ".Header-search", "showOnlyWhenPresent" : ".tweak-header-search-style-underlined:not(.ancillary-header-search-position-hide) .Header:not(.Header--overlay) .Header-search" }
+@tweak-header-search-border-color: #ffffff;
+
+// tweak: { "category": "Header: Search", "label" : "Text Color", "title" : "tweak-header-search-text-color", "type" : "color", "target" : ".Header-search", "showOnlyWhenPresent" : "body:not(.ancillary-header-search-position-hide) .Header:not(.Header--overlay) .Header-search" }
+@tweak-header-search-text-color: #111111;
+
+// tweak: { "category": "Header: Search", "label" : "Icon Color (Overlay)", "title" : "tweak-header-overlay-search-icon-color", "type" : "color", "target" : ".Header-search", "showOnlyWhenPresent" : "body:not(.ancillary-header-search-position-hide) .Header--overlay .Header-search" }
+@tweak-header-overlay-search-icon-color: #ffffff;
+
+// tweak: { "category": "Header: Search", "label" : "Background Color (Overlay)", "title" : "tweak-header-overlay-search-background-color", "type" : "color", "target" : ".Header-search", "showOnlyWhenPresent" : ".tweak-header-search-style-rectangle:not(.ancillary-header-search-position-hide) .Header--overlay .Header-search" }
+@tweak-header-overlay-search-background-color: #ffffff;
+
+// tweak: { "category": "Header: Search", "label" : "Border Color (Overlay)", "title" : "tweak-header-overlay-search-border-color", "type" : "color", "target" : ".Header-search", "showOnlyWhenPresent" : ".tweak-header-search-style-underlined:not(.ancillary-header-search-position-hide) .Header--overlay .Header-search" }
+@tweak-header-overlay-search-border-color: #ffffff;
+
+// tweak: { "category": "Header: Search", "label" : "Text Color (Overlay)", "title" : "tweak-header-overlay-search-text-color", "type" : "color", "target" : ".Header-search", "showOnlyWhenPresent" : "body:not(.ancillary-header-search-position-hide) .Header--overlay .Header-search" }
+@tweak-header-overlay-search-text-color: #111111;
+
+
+
+// -----------------------------------------
+
+//  Cart
+
+
+// tweak: { "category" : "Header: Cart", "label" : "Style", "title" : "tweak-header-cart-style", "type" : "dropdown", "options" : [ "Text", "Cart", "Bag" ], "default" : "Text", "target" : ".Header .Cart", "showOnlyWhenPresent" : ".has-cart:not(.ancillary-header-cart-position-hide)" }
+
+// tweak: { "category": "Header: Cart", "label" : "Font", "title" : "tweak-header-cart-font", "type" : "font", "target" : ".Header .Cart", "showOnlyWhenPresent" : ".has-cart:not(.ancillary-header-cart-position-hide)" }
+.tweak-header-cart-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0em;
+  text-transform: uppercase;
+}
+
+// tweak: { "category": "Header: Cart", "label" : "Color", "title" : "tweak-header-cart-color", "type" : "color", "target" : ".Header .Cart", "showOnlyWhenPresent" : ".has-cart:not(.ancillary-header-cart-position-hide) .Header:not(.Header--overlay) .Cart" }
+@tweak-header-cart-color: #ffffff;
+
+// tweak: { "category": "Header: Cart", "label" : "Quantity Color", "title" : "tweak-header-cart-flag-color", "type" : "color", "target" : ".Header .Cart", "showOnlyWhenPresent" : ".has-cart.tweak-header-cart-style-cart:not(.ancillary-header-cart-position-hide) .Header:not(.Header--overlay) .Cart" }
+@tweak-header-cart-flag-color: #ff0000;
+
+// tweak: { "category": "Header: Cart", "label" : "Quantity Text Color", "title" : "tweak-header-cart-flag-text-color", "type" : "color", "target" : ".Header .Cart", "showOnlyWhenPresent" : ".has-cart.tweak-header-cart-style-cart:not(.ancillary-header-cart-position-hide) .Header:not(.Header--overlay) .Cart" }
+@tweak-header-cart-flag-text-color: #ffffff;
+
+// tweak: { "category": "Header: Cart", "label" : "Color (Overlay)", "title" : "tweak-header-overlay-cart-color", "type" : "color", "target" : ".Header .Cart", "showOnlyWhenPresent" : ".has-cart:not(.ancillary-header-cart-position-hide) .Header--overlay .Cart" }
+@tweak-header-overlay-cart-color: #ffffff;
+
+// tweak: { "category": "Header: Cart", "label" : "Quantity Color (Overlay)", "title" : "tweak-header-overlay-cart-flag-color", "type" : "color", "target" : ".Header .Cart", "showOnlyWhenPresent" : ".has-cart.tweak-header-cart-style-cart:not(.ancillary-header-cart-position-hide) .Header--overlay .Cart" }
+@tweak-header-overlay-cart-flag-color: #ff0000;
+
+// tweak: { "category": "Header: Cart", "label" : "Quantity Text Color (Overlay)", "title" : "tweak-header-overlay-cart-flag-text-color", "type" : "color", "target" : ".Header .Cart", "showOnlyWhenPresent" : ".has-cart.tweak-header-cart-style-cart:not(.ancillary-header-cart-position-hide) .Header--overlay .Cart" }
+@tweak-header-overlay-cart-flag-text-color: #ffffff;
+
+
+
+
+// =======================================================
+
+//    Main
+
+// =======================================================
+
+// tweak: { "category": "Main", "label" : "Color", "title" : "tweak-main-background-color", "type" : "color", "disableTransparency" : "true", "target" : ".Main-content, .Index-page:not(.Index-page--has-image)" }
+@tweak-main-background-color: #ffffff;
+
+// tweak: { "category" : "Main", "label" : "Intro Padding (No Background Image)", "title" : "tweak-main-intro-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 240, "target" : ".Intro", "showOnlyWhenPresent" : ".Intro:not(.Intro--has-image)" }
+@tweak-main-intro-padding: 48px;
+
+// tweak: { "category" : "Main", "label" : "Intro Padding (With Background Image)", "title" : "tweak-main-intro-overlay-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 240, "target" : ".Intro", "showOnlyWhenPresent" : ".Intro--has-image" }
+@tweak-main-intro-overlay-padding: 48px;
+
+// tweak: { "category" : "Main", "label" : "Content Section Padding", "title" : "tweak-main-content-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 240, "target" : ".Main", "showOnlyWhenPresent" : ".Main" }
+@tweak-main-content-padding: 48px;
+
+// tweak: { "category" : "Main", "label" : "Content Inset", "title" : "tweak-main-content-inset", "label" : "Content Inset", "type" : "value", "step" : 1, "min" : 0, "max" : 5, "target" : ".Intro--has-image, .Intro:not(.Intro--has-image), .Main-content, .Index-page.Index-page--has-image, .Index-page:not(.Index-page--has-image), .Footer-blocks--top, .Footer-blocks--bottom", "showOnlyWhenPresent" : ".Intro-content .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .Main:not(.Main--events-list):not(.Main--events-item):not(.Main--blog-list) .Main-content .sqs-layout .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .tweak-blog-list-style-stacked .BlogList--posts-full .sqs-layout .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .Index-page .sqs-layout .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .Footer-blocks--top .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .Footer-blocks--bottom .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .tweak-footer-layout-stacked .Footer-blocks--middle .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram)" }
+@tweak-main-content-inset: 3;
+
+
+
+// -----------------------------------------
+
+//  Overlay
+
+
+// tweak: { "category" : "Main: Overlay", "label" : "Enable Parallax", "title" : "tweak-overlay-parallax-enabled", "type" : "checkbox", "active" : true, "js" : true, "target" : ".Index-page--has-image, .Intro--has-image", "showOnlyWhenPresent" : ".Index-page--has-image, .Intro--has-image" }
+
+// offtweak: { "category" : "Main: Overlay", "label" : "Parallax Scrolling Factor", "title" : "tweak-overlay-parallax-factor", "type" : "value", "step" : 1, "min" : 1, "max" : 10, "js" : true, "target" : ".Index-page--has-image, .Intro--has-image", "showOnlyWhenPresent" : ".Index-page--has-image, .Intro--has-image" }
+@tweak-overlay-parallax-factor: 6;
+
+// tweak: { "category" : "Main: Overlay", "label" : "Overlay Color", "title" : "tweak-overlay-color", "type" : "color", "target" : ".Index-page--has-image, .Intro--has-image", "showOnlyWhenPresent" : ".Index-page--has-image, .Intro--has-image" }
+@tweak-overlay-color: rgba(0,0,0,0.3);
+
+
+
+
+// =======================================================
+
+//    Index
+
+// =======================================================
+
+
+
+
+// -----------------------------------------
+
+//  Index Page
+
+
+
+// tweak: { "category" : "Index: Page", "label" : "Padding", "title" : "tweak-index-page-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 240, "target" : ".Index-page:not(.Index-page--has-image)", "showOnlyWhenPresent" : ".Index-page:not(.Index-page--has-image)" }
+@tweak-index-page-padding: 48px;
+
+
+// tweak: { "category" : "Index: Page", "label" : "Padding (Overlay Pages)", "title" : "tweak-index-page-overlay-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 240, "target" : ".Index-page--has-image", "showOnlyWhenPresent" : ".Index-page--has-image" }
+@tweak-index-page-overlay-padding: 240px;
+
+// tweak: { "category" : "Index: Page", "label" : "Fullscreen Pages", "title" : "tweak-index-page-fullscreen", "type" : "dropdown", "options" : [ "None", "First Page Only", "Pages with Backgrounds Only", "All Pages" ], "default" : "None", "target" : ".Index-page", "showOnlyWhenPresent" : ".Index-page" }
+
+// tweak: { "category" : "Index: Scroll Indicator", "label" : "Option", "title" : "tweak-index-page-scroll-indicator", "type" : "dropdown", "options" : [ "None", "Icon Only", "Icon and Text" ], "default" : "None", "target" : ".Index-page-scroll-indicator", "showOnlyWhenPresent" : ".Index-page-scroll-indicator" }
+
+// tweak: { "category" : "Index: Scroll Indicator", "label" : "Icon", "title" : "tweak-index-page-scroll-indicator-icon", "type" : "dropdown", "options" : [ "Line", "Arrow" ], "default" : "Arrow", "target" : ".Index-page-scroll-indicator", "showOnlyWhenPresent" : "body:not(.tweak-index-page-scroll-indicator-none) .Index-page-scroll-indicator" }
+
+// tweak: { "category" : "Index: Scroll Indicator", "label" : "Icon Weight", "title" : "tweak-index-page-scroll-indicator-icon-weight", "type" : "dropdown", "options" : [ "Hairline", "Light", "Medium", "Heavy" ], "default" : "Hairline", "target" : ".Index-page-scroll-indicator", "showOnlyWhenPresent" : "body:not(.tweak-index-page-scroll-indicator-none) .Index-page-scroll-indicator" }
+
+// tweak: { "category": "Index: Scroll Indicator", "label" : "Font", "title" : "tweak-index-page-scroll-indicator-font", "type" : "font", "target" : ".Index-page-scroll-indicator", "showOnlyWhenPresent" : ".tweak-index-page-scroll-indicator-icon-and-text .Index-page-scroll-indicator" }
+.tweak-index-page-scroll-indicator-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 0em;
+  text-transform: uppercase;
+}
+
+// tweak: { "category" : "Index: Scroll Indicator", "label" : "Color", "title" : "tweak-index-page-scroll-indicator-color", "type" : "color", "target" : ".Index-page-scroll-indicator", "showOnlyWhenPresent" : "body:not(.tweak-index-page-scroll-indicator-none) .Index-page-scroll-indicator" }
+@tweak-index-page-scroll-indicator-color: #ffffff;
+
+
+
+
+// -----------------------------------------
+
+//  Index Gallery
+
+
+// tweak: { "category" : "Index: Gallery", "label" : "Layout", "title" : "tweak-index-gallery-layout", "type" : "dropdown", "options" : [ "Packed", "Split" ], "default" : "Packed", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
+
+// tweak: { "category" : "Index: Gallery", "label" : "Hover Style", "title" : "tweak-index-gallery-hover-style", "type" : "dropdown", "options" : [ "Plain", "Fade" ], "default" : "Plain", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
+
+// tweak: { "category" : "Index: Gallery", "label" : "Spacing", "title" : "tweak-index-gallery-spacing", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
+@tweak-index-gallery-spacing: 5px;
+
+// tweak: { "category" : "Index: Gallery", "label" : "Aspect Ratio", "title" : "tweak-index-gallery-aspect", "type" : "value", "step" : 1, "min" : 30, "max" : 160, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
+@tweak-index-gallery-aspect: 100;
+
+// tweak: { "category" : "Index: Gallery", "label" : "Image Overlay", "title" : "tweak-index-gallery-image-overlay-color", "type" : "color", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
+@tweak-index-gallery-image-overlay-color: rgba(0,0,0,0.3);
+
+// tweak: { "category" : "Index: Gallery", "label" : "Content Position", "title" : "tweak-index-gallery-content-position", "type" : "dropdown", "options" : [ "Top Left", "Top Center", "Top Right", "Middle Left", "Middle Center", "Middle Right", "Bottom Left", "Bottom Center", "Bottom Right" ], "default" : "Bottom Left", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+
+// tweak: { "category" : "Index: Gallery", "label" : "Content Offset (Top)", "title" : "tweak-index-gallery-content-offset-top", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-left .Index-gallery-item-content, .tweak-index-gallery-content-position-top-center .Index-gallery-item-content, .tweak-index-gallery-content-position-top-right .Index-gallery-item-content" }
+@tweak-index-gallery-content-offset-top: 12px;
+
+// tweak: { "category" : "Index: Gallery", "label" : "Content Offset (Right)", "title" : "tweak-index-gallery-content-offset-right", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-right .Index-gallery-item-content, .tweak-index-gallery-content-position-middle-right .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-right .Index-gallery-item-content" }
+@tweak-index-gallery-content-offset-right: 12px;
+
+// tweak: { "category" : "Index: Gallery", "label" : "Content Offset (Bottom)", "title" : "tweak-index-gallery-content-offset-bottom", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-bottom-left .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-center .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-right .Index-gallery-item-content" }
+@tweak-index-gallery-content-offset-bottom: 12px;
+
+// tweak: { "category" : "Index: Gallery", "label" : "Content Offset (Left)", "title" : "tweak-index-gallery-content-offset-left", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-left .Index-gallery-item-content, .tweak-index-gallery-content-position-middle-left .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-left .Index-gallery-item-content" }
+@tweak-index-gallery-content-offset-left: 12px;
+
+// tweak: { "category" : "Index: Gallery", "label" : "Content Padding", "title" : "tweak-index-gallery-content-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+@tweak-index-gallery-content-padding: 16px;
+
+// tweak: { "category" : "Index: Gallery", "label" : "Content Text Alignment", "title" : "tweak-index-gallery-content-text-alignment", "type" : "dropdown", "options" : [ "Left", "Center", "Right" ], "default" : "Left", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+
+// tweak: { "category" : "Index: Gallery", "label" : "Content Background", "title" : "tweak-index-gallery-content-background-color", "type" : "color", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+@tweak-index-gallery-content-background-color: rgba(255,255,255,1);
+
+// tweak: { "category": "Index: Gallery", "label" : "Title Font", "title" : "tweak-index-gallery-content-heading-font", "type" : "font", "target" : ".Index-gallery-item-content", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+.tweak-index-gallery-content-heading-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+  letter-spacing: 0em;
+  line-height: 1.0em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Index: Gallery", "label": "Title Color", "title" : "tweak-index-gallery-content-heading-color", "type" : "color", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+@tweak-index-gallery-content-heading-color: #000000;
+
+// tweak: { "category": "Index: Gallery", "label" : "Body Font", "title" : "tweak-index-gallery-content-body-font", "type" : "font", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+.tweak-index-gallery-content-body-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0em;
+  line-height: 1.6em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Index: Gallery", "label": "Body Color", "title" : "tweak-index-gallery-content-body-color", "type" : "color", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+@tweak-index-gallery-content-body-color: #000000;
+
+
+
+
+
+
+// =======================================================
+
+//    Content
+
+// =======================================================
+
+
+// -----------------------------------------
+
+//  Fonts
+
+
+// tweak: { "category" : "Content: Fonts", "label" : "Body Text", "title" : "tweak-body-font", "type" : "font", "loadAllVariants" : true, "target" : ".Intro:not(.Intro--has-image) .sqs-layout p, .Main-content .sqs-layout p, .Index-page:not(.Index-page--has-image) .sqs-layout p, .Intro--has-image .sqs-layout p, .Index-page--has-image .sqs-layout p, .Footer .sqs-layout p" }
+.tweak-body-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: 0em;
+  line-height: 1.6em;
+  text-transform: none;
+}
+
+// tweak: { "category" : "Content: Fonts", "label" : "Heading 1", "title" : "tweak-h1-font", "type" : "font", "loadAllVariants" : true, "target" : ".Intro:not(.Intro--has-image) .sqs-layout h1, .Main-content .sqs-layout h1, .Index-page:not(.Index-page--has-image) .sqs-layout h1, .Intro--has-image .sqs-layout h1, .Index-page--has-image .sqs-layout h1, .Footer .sqs-layout h1", "showOnlyWhenPresent" : ".sqs-layout h1" }
+.tweak-h1-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 32px;
+  letter-spacing: 0em;
+  line-height: 1.0em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Content: Fonts", "label" : "Heading 2", "title" : "tweak-h2-font", "type" : "font", "loadAllVariants" : true, "target" : ".Intro:not(.Intro--has-image) .sqs-layout h2, .Main-content .sqs-layout h2, .Index-page:not(.Index-page--has-image) .sqs-layout h2, .Intro--has-image .sqs-layout h2, .Index-page--has-image .sqs-layout h2, .Footer .sqs-layout h2", "showOnlyWhenPresent" : ".sqs-layout h2" }
+.tweak-h2-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+  letter-spacing: 0em;
+  line-height: 1.2em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Content: Fonts", "label" : "Heading 3", "title" : "tweak-h3-font", "type" : "font", "loadAllVariants" : true, "target" : ".Intro:not(.Intro--has-image) .sqs-layout h3, .Main-content .sqs-layout h3, .Index-page:not(.Index-page--has-image) .sqs-layout h3, .Intro--has-image .sqs-layout h3, .Index-page--has-image .sqs-layout h3, .Footer .sqs-layout h3", "showOnlyWhenPresent" : ".sqs-layout h3" }
+.tweak-h3-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  letter-spacing: 0em;
+  line-height: 1.2em;
+  text-transform: none;
+}
+
+
+
+// -----------------------------------------
+
+//  Colors
+
+
+// tweak: { "category": "Content: Colors", "label" : "Body Text", "title" : "tweak-body-text-color", "type" : "color", "target" : ".Intro:not(.Intro--has-image) .sqs-layout p, .Main-content .sqs-layout p, .Index-page:not(.Index-page--has-image) .sqs-layout p" }
+@tweak-body-text-color: #000000;
+
+// tweak: { "category": "Content: Colors", "label" : "Heading 1", "title" : "tweak-h1-color", "type" : "color", "target" : ".Intro:not(.Intro--has-image) .sqs-layout h1, .Main-content .sqs-layout h1, .Index-page:not(.Index-page--has-image) .sqs-layout h1", "showOnlyWhenPresent" : ".sqs-layout h1" }
+@tweak-h1-color: #000000;
+
+// tweak: { "category": "Content: Colors", "label" : "Heading 2", "title" : "tweak-h2-color", "type" : "color", "target" : ".Intro:not(.Intro--has-image) .sqs-layout h2, .Main-content .sqs-layout h2, .Index-page:not(.Index-page--has-image) .sqs-layout h2", "showOnlyWhenPresent" : ".sqs-layout h2" }
+@tweak-h2-color: #000000;
+
+// tweak: { "category": "Content: Colors", "label" : "Heading 3", "title" : "tweak-h3-color", "type" : "color", "target" : ".Intro:not(.Intro--has-image) .sqs-layout h3, .Main-content .sqs-layout h3, .Index-page:not(.Index-page--has-image) .sqs-layout h3", "showOnlyWhenPresent" : ".sqs-layout h3" }
+@tweak-h3-color: #000000;
+
+// tweak: { "category": "Content: Colors", "label" : "Links", "title" : "tweak-link-color", "type" : "color", "target" : ".Intro:not(.Intro--has-image) .sqs-layout p, .Main-content .sqs-layout p, .Index-page:not(.Index-page--has-image) .sqs-layout p", "showOnlyWhenPresent" : ".sqs-layout p a" }
+@tweak-link-color: #00aeef;
+
+// tweak: { "category" : "Content: Colors", "label" : "Lines", "title" : "tweak-line-color", "type" : "color", "target" : ".Main .sqs-block-horizontalrule, .Main .sqs-block-markdown blockquote, .Main .sqs-block-html blockquote, .Intro:not(.Intro--has-image) .sqs-block-horizontalrule, .Intro:not(.Intro--has-image) .sqs-block-html blockquote, .Intro:not(.Intro--has-image) .sqs-block-markdown blockquote, .Index-page:not(.Index-page--has-image) .sqs-block-horizontalrule, .Index-page:not(.Index-page--has-image) .sqs-block-html blockquote, .Index-page:not(.Index-page--has-image) .sqs-block-markdown blockquote", "showOnlyWhenPresent" : ".Main .sqs-block-horizontalrule, .Main .sqs-block-markdown blockquote, .Main .sqs-block-html blockquote, .Intro:not(.Intro--has-image) .sqs-block-horizontalrule, .Intro:not(.Intro--has-image) .sqs-block-html blockquote, .Intro:not(.Intro--has-image) .sqs-block-markdown blockquote, .Index-page:not(.Index-page--has-image) .sqs-block-horizontalrule, .Index-page:not(.Index-page--has-image) .sqs-block-html blockquote, .Index-page:not(.Index-page--has-image) .sqs-block-markdown blockquote" }
+@tweak-line-color: #dddddd;
+
+
+// tweak: { "category": "Content: Colors", "label" : "Body Text (Overlay)", "title" : "tweak-overlay-body-text-color", "type" : "color", "target" : ".Intro--has-image .sqs-layout p, .Index-page--has-image .sqs-layout p", "showOnlyWhenPresent" : ".Intro--has-image .sqs-layout:not(.empty), .Index-page--has-image .sqs-layout:not(.empty)" }
+@tweak-overlay-body-text-color: #000000;
+
+// tweak: { "category": "Content: Colors", "label" : "Heading 1 (Overlay)", "title" : "tweak-overlay-h1-color", "type" : "color", "target" : ".Intro--has-image .sqs-layout h1, .Index-page--has-image .sqs-layout h1", "showOnlyWhenPresent" : ".Intro--has-image .sqs-layout h1, .Index-page--has-image .sqs-layout h1" }
+@tweak-overlay-h1-color: #000000;
+
+// tweak: { "category": "Content: Colors", "label" : "Heading 2 (Overlay)", "title" : "tweak-overlay-h2-color", "type" : "color", "target" : ".Intro--has-image .sqs-layout h2, .Index-page--has-image .sqs-layout h2", "showOnlyWhenPresent" : ".Intro--has-image .sqs-layout h2, .Index-page--has-image .sqs-layout h2" }
+@tweak-overlay-h2-color: #000000;
+
+// tweak: { "category": "Content: Colors", "label" : "Heading 3 (Overlay)", "title" : "tweak-overlay-h3-color", "type" : "color", "target" : ".Intro--has-image .sqs-layout h3, .Index-page--has-image .sqs-layout h3", "showOnlyWhenPresent" : ".Intro--has-image .sqs-layout h3, .Index-page--has-image .sqs-layout h3" }
+@tweak-overlay-h3-color: #000000;
+
+// tweak: { "category": "Content: Colors", "label" : "Links (Overlay)", "title" : "tweak-overlay-link-color", "type" : "color", "target" : ".Intro--has-image .sqs-layout p, .Index-page--has-image .sqs-layout p", "showOnlyWhenPresent" : ".Intro--has-image .sqs-layout p, .Index-page--has-image .sqs-layout p" }
+@tweak-overlay-link-color: #00aeef;
+
+// tweak: { "category" : "Content: Colors", "label" : "Lines (Overlay)", "title" : "tweak-overlay-line-color", "type" : "color", "target" : ".Intro--has-image .sqs-block-horizontalrule, .Intro--has-image .sqs-block-html blockquote, .Intro--has-image .sqs-block-markdown blockquote, .Index-page--has-image .sqs-block-horizontalrule, .Index-page--has-image .sqs-block-html blockquote, .Index-page--has-image .sqs-block-markdown blockquote", "showOnlyWhenPresent" : ".Intro--has-image .sqs-block-horizontalrule, .Intro--has-image .sqs-block-html blockquote, .Intro--has-image .sqs-block-markdown blockquote, .Index-page--has-image .sqs-block-horizontalrule, .Index-page--has-image .sqs-block-html blockquote, .Index-page--has-image .sqs-block-markdown blockquote" }
+@tweak-overlay-line-color: #dddddd;
+
+
+
+
+// =======================================================
+
+//    Footer
+
+// =======================================================
+
+
+
+// -----------------------------------------
+
+//  Overall
+
+
+// tweak: { "category" : "Footer", "label" : "Layout", "title" : "tweak-footer-layout", "type" : "dropdown", "options" : [ "Stacked", "Columns" ], "default" : "Stacked", "target" : ".Footer", "js" : true }
+
+// tweak: { "category" : "Footer", "label" : "Padding", "title" : "tweak-footer-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Footer" }
+@tweak-footer-padding: 48px;
+
+// tweak: { "category" : "Footer", "label" : "Alignment", "title" : "tweak-footer-stacked-alignment", "type" : "dropdown", "options" : [ "Left", "Center", "Right" ], "default" : "Left", "target" : ".Footer", "showOnlyWhenPresent" : ".tweak-footer-layout-stacked" }
+
+// tweak: { "category": "Footer", "label": "Background Color", "title" : "tweak-footer-color", "type" : "color", "target" : ".Footer" }
+@tweak-footer-color: #000000;
+
+
+
+// -----------------------------------------
+
+//  Business
+
+
+// tweak: { "category" : "Footer: Business", "label" : "Show Business Info", "title" : "tweak-footer-business-info-show", "type" : "checkbox", "active" : false, "target" : ".Footer, .Footer-business-info" }
+
+// tweak: { "category": "Footer: Business", "label" : "Name Font", "title" : "tweak-footer-business-name-font", "type" : "font", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-business-info-show .Footer-business-info-item--name" }
+.tweak-footer-business-name-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  letter-spacing: 0em;
+  line-height: 1.0em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Footer: Business", "label": "Name Color", "title" : "tweak-footer-business-name-color", "type" : "color", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-business-info-show .Footer-business-info-item--name" }
+@tweak-footer-business-name-color: #000000;
+
+// tweak: { "category": "Footer: Business", "label" : "Info Font", "title" : "tweak-footer-business-info-font", "type" : "font", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-business-info-show .Footer-business-info-item:not(.Footer-business-info-item--name)" }
+.tweak-footer-business-info-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  letter-spacing: 0em;
+  line-height: 1.0em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Footer: Business", "label": "Info Color", "title" : "tweak-footer-business-info-color", "type" : "color", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-business-info-show .Footer-business-info-item:not(.Footer-business-info-item--name)" }
+@tweak-footer-business-info-color: #000000;
+
+
+// tweak: { "category" : "Footer: Business", "label" : "Show Business Hours", "title" : "tweak-footer-business-hours-show", "type" : "checkbox", "active" : false, "target" : ".Footer, .Footer-business-hours" }
+
+// tweak: { "category": "Footer: Business", "label" : "Hours Heading Font", "title" : "tweak-footer-business-hours-heading-font", "type" : "font", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-business-hours-show .Footer-business-hours-heading" }
+.tweak-footer-business-hours-heading-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  letter-spacing: 0em;
+  line-height: 1.0em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Footer: Business", "label": "Hours Heading Color", "title" : "tweak-footer-business-hours-heading-color", "type" : "color", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-business-hours-show .Footer-business-hours-heading" }
+@tweak-footer-business-hours-heading-color: #000000;
+
+// tweak: { "category": "Footer: Business", "label" : "Hours Font", "title" : "tweak-footer-business-hours-font", "type" : "font", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-business-hours-show .Footer-business-hours-item" }
+.tweak-footer-business-hours-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  letter-spacing: 0em;
+  line-height: 1.0em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Footer: Business", "label": "Hours Color", "title" : "tweak-footer-business-hours-color", "type" : "color", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-business-hours-show .Footer-business-hours-item" }
+@tweak-footer-business-hours-color: #000000;
+
+
+
+// -----------------------------------------
+
+//  Nav
+
+
+// tweak: { "category": "Footer: Navigation", "label" : "Navigation Heading Font", "title" : "tweak-footer-nav-heading-font", "type" : "font", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-layout-columns .Footer-nav-folder-heading" }
+.tweak-footer-nav-heading-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  letter-spacing: 0em;
+  line-height: 1.0em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Footer: Navigation", "label": "Navigation Heading Color", "title" : "tweak-footer-nav-heading-color", "type" : "color", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-layout-columns .Footer-nav-folder-heading" }
+@tweak-footer-nav-heading-color: #000000;
+
+// tweak: { "category": "Footer: Navigation", "label" : "Navigation Font", "title" : "tweak-footer-nav-font", "type" : "font", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".Footer-nav-item, .Footer-nav-folder-heading, .Footer-nav-folder-item" }
+.tweak-footer-nav-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  letter-spacing: 0em;
+  line-height: 1.0em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Footer: Navigation", "label": "Navigation Color", "title" : "tweak-footer-nav-color", "type" : "color", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".Footer-nav-item, .Footer-nav-folder-heading, .Footer-nav-folder-item" }
+@tweak-footer-nav-color: #000000;
+
+
+
+// -----------------------------------------
+
+//  Colors (Footer)
+
+
+// tweak: { "category": "Footer Content: Colors", "label" : "Body Text", "title" : "tweak-footer-body-text-color", "type" : "color", "target" : ".Footer .sqs-layout p", "showOnlyWhenPresent" : ".Footer .sqs-layout:not(.empty)" }
+@tweak-footer-body-text-color: #ffffff;
+
+// tweak: { "category": "Footer Content: Colors", "label" : "Heading 1", "title" : "tweak-footer-h1-color", "type" : "color", "target" : ".Footer .sqs-layout h1", "showOnlyWhenPresent" : ".Footer .sqs-layout h1" }
+@tweak-footer-h1-color: #ffffff;
+
+// tweak: { "category": "Footer Content: Colors", "label" : "Heading 2", "title" : "tweak-footer-h2-color", "type" : "color", "target" : ".Footer .sqs-layout h2", "showOnlyWhenPresent" : ".Footer .sqs-layout h2" }
+@tweak-footer-h2-color: #ffffff;
+
+// tweak: { "category": "Footer Content: Colors", "label" : "Heading 3", "title" : "tweak-footer-h3-color", "type" : "color", "target" : ".Footer .sqs-layout h3", "showOnlyWhenPresent" : ".Footer .sqs-layout h3" }
+@tweak-footer-h3-color: #ffffff;
+
+// tweak: { "category": "Footer Content: Colors", "label" : "Links", "title" : "tweak-footer-link-color", "type" : "color", "target" : ".Footer .sqs-layout p a", "showOnlyWhenPresent" : ".Footer .sqs-layout p a" }
+@tweak-footer-link-color: #ffffff;
+
+// tweak: { "category" : "Footer Content: Colors", "label" : "Lines", "title" : "tweak-footer-line-color", "type" : "color", "target" : ".Footer .sqs-block-horizontalrule, .Footer .sqs-block-html blockquote, .Footer .sqs-block-markdown blockquote", "showOnlyWhenPresent" : ".Footer .sqs-block-horizontalrule, .Footer .sqs-block-html blockquote, .Footer .sqs-block-markdown blockquote" }
+@tweak-footer-line-color: rgba(255,255,255,0.2);
+
+
+
+
+
+
+// =======================================================
+
+//    Mobile
+
+// =======================================================
+
+// tweak: { "category" : "Mobile", "label" : "Mobile Breakpoint", "title" : "tweak-mobile-breakpoint", "type" : "value", "step" : 10, "min" : 240, "max" : 1280, "js" : true }
+@tweak-mobile-breakpoint: 640px;
+
+// -----------------------------------------
+
+//  Top
+
+
+// tweak: { "category" : "Mobile: Top", "label" : "Fixed Mobile Top", "title" : "tweak-mobile-bar-top-fixed", "type" : "checkbox", "active" : false, "target" : ".Mobile-bar--top", "showOnlyWhenPresent" : ".ancillary-mobile-bar-branding-position-top-left, .ancillary-mobile-bar-branding-position-top-center, .ancillary-mobile-bar-branding-position-top-right, .ancillary-mobile-bar-menu-icon-position-top-left, .ancillary-mobile-bar-menu-icon-position-top-center, .ancillary-mobile-bar-menu-icon-position-top-right, .ancillary-mobile-bar-cart-position-top-left, .ancillary-mobile-bar-cart-position-top-center, .ancillary-mobile-bar-cart-position-top-right, .ancillary-mobile-bar-search-icon-position-top-left, .ancillary-mobile-bar-search-icon-position-top-center, .ancillary-mobile-bar-search-icon-position-top-right" }
+
+// tweak: { "category": "Mobile: Top", "label": "Top Background", "title" : "tweak-mobile-bar-top-background-color", "type" : "color", "target" : ".Mobile-bar--top", "showOnlyWhenPresent" : ".ancillary-mobile-bar-branding-position-top-left, .ancillary-mobile-bar-branding-position-top-center, .ancillary-mobile-bar-branding-position-top-right, .ancillary-mobile-bar-menu-icon-position-top-left, .ancillary-mobile-bar-menu-icon-position-top-center, .ancillary-mobile-bar-menu-icon-position-top-right, .ancillary-mobile-bar-cart-position-top-left, .ancillary-mobile-bar-cart-position-top-center, .ancillary-mobile-bar-cart-position-top-right, .ancillary-mobile-bar-search-icon-position-top-left, .ancillary-mobile-bar-search-icon-position-top-center, .ancillary-mobile-bar-search-icon-position-top-right" }
+@tweak-mobile-bar-top-background-color: #ffffff;
+
+
+
+// -----------------------------------------
+
+//  Bottom
+
+
+// tweak: { "category": "Mobile: Bottom", "label": "Bottom Background", "title" : "tweak-mobile-bar-bottom-background-color", "type" : "color", "target" : ".Mobile-bar--bottom", "showOnlyWhenPresent" : ".ancillary-mobile-bar-branding-position-bottom-left, .ancillary-mobile-bar-branding-position-bottom-center, .ancillary-mobile-bar-branding-position-bottom-right, .ancillary-mobile-bar-menu-icon-position-bottom-left, .ancillary-mobile-bar-menu-icon-position-bottom-center, .ancillary-mobile-bar-menu-icon-position-bottom-right, .ancillary-mobile-bar-cart-position-bottom-left, .ancillary-mobile-bar-cart-position-bottom-center, .ancillary-mobile-bar-cart-position-bottom-right, .ancillary-mobile-bar-search-icon-position-bottom-left, .ancillary-mobile-bar-search-icon-position-bottom-center, .ancillary-mobile-bar-search-icon-position-bottom-right" }
+@tweak-mobile-bar-bottom-background-color: #000000;
+
+
+
+// -----------------------------------------
+
+//  Branding
+
+
+// tweak: { "category" : "Mobile: Branding", "label" : "Position", "title" : "ancillary-mobile-bar-branding-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right" ], "default" : "Top Left", "target" : ".Mobile-bar-branding, .Mobile-bar--top, .Mobile-bar--bottom" }
+
+// tweak: { "category" : "Mobile: Branding", "label" : "Logo Width", "title" : "tweak-mobile-bar-branding-logo-width", "type" : "value", "step" : 1, "min" : 20, "max" : 240, "target" : ".Mobile-bar-branding .Branding-logo", "property" : "width", "showOnlyWhenPresent" : "body:not(.ancillary-mobile-bar-branding-position-hide)" }
+@tweak-mobile-bar-branding-logo-width: 80px;
+
+// tweak: { "category": "Mobile: Branding", "label" : "Font", "title" : "tweak-mobile-bar-branding-site-title-font", "type" : "font", "target" : ".Mobile-bar-branding", "showOnlyWhenPresent" : ".has-site-title:not(.ancillary-mobile-bar-branding-position-hide)" }
+.tweak-mobile-bar-branding-site-title-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 27px;
+  letter-spacing: 0em;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+// tweak: { "category": "Mobile: Branding", "label" : "Color", "title" : "tweak-mobile-bar-branding-site-title-color", "type" : "color", "target" : ".Mobile-bar-branding", "showOnlyWhenPresent" : ".has-site-title:not(.ancillary-mobile-bar-branding-position-hide)" }
+@tweak-mobile-bar-branding-site-title-color: #111111;
+
+
+
+// -----------------------------------------
+
+//  Menu Icon
+
+
+// tweak: { "category" : "Mobile: Menu Icon", "label" : "Menu Icon Position", "title" : "ancillary-mobile-bar-menu-icon-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right" ], "default" : "Top Left", "target" : ".Mobile-bar-menu, .Mobile-bar--top, .Mobile-bar--bottom" }
+
+// tweak: { "category": "Mobile: Menu Icon", "label" : "Menu Icon Color", "title" : "tweak-mobile-bar-menu-icon-color", "type" : "color", "target" : ".Mobile-bar-menu", "showOnlyWhenPresent" : "body:not(.ancillary-mobile-bar-menu-icon-position-hide)" }
+@tweak-mobile-bar-menu-icon-color: #ffffff;
+
+
+
+// -----------------------------------------
+
+//  Search Icon
+
+
+// tweak: { "category" : "Mobile: Search Icon", "label" : "Position", "title" : "ancillary-mobile-bar-search-icon-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right" ], "default" : "Top Left", "target" : ".Mobile-bar-search, .Mobile-bar--top, .Mobile-bar--bottom" }
+
+// tweak: { "category": "Mobile: Search Icon", "label" : "Color", "title" : "tweak-mobile-bar-search-icon-color", "type" : "color", "target" : ".Mobile-bar-search", "showOnlyWhenPresent" : "body:not(.ancillary-mobile-bar-search-icon-position-hide)" }
+@tweak-mobile-bar-search-icon-color: #ffffff;
+
+
+
+// -----------------------------------------
+
+//  Cart
+
+
+// tweak: { "category" : "Mobile: Cart", "label" : "Position", "title" : "ancillary-mobile-bar-cart-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right" ], "default" : "Top Left", "target" : ".Mobile-bar .Cart, .Mobile-bar--top, .Mobile-bar--bottom", "showOnlyWhenPresent" : ".has-cart" }
+
+// tweak: { "category" : "Mobile: Cart", "label" : "Style", "title" : "tweak-mobile-bar-cart-style", "type" : "dropdown", "options" : [ "Text", "Cart", "Bag" ], "default" : "Text", "target" : ".Mobile-bar .Cart", "showOnlyWhenPresent" : ".has-cart:not(.ancillary-mobile-bar-cart-position-hide)" }
+
+// tweak: { "category": "Mobile: Cart", "label" : "Font", "title" : "tweak-mobile-bar-cart-font", "type" : "font", "target" : ".Mobile-bar .Cart", "showOnlyWhenPresent" : ".has-cart:not(.ancillary-mobile-bar-cart-position-hide)" }
+.tweak-mobile-bar-cart-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0em;
+  text-transform: uppercase;
+}
+
+// tweak: { "category": "Mobile: Cart", "label" : "Color", "title" : "tweak-mobile-bar-cart-color", "type" : "color", "target" : ".Mobile-bar .Cart", "showOnlyWhenPresent" : ".has-cart:not(.ancillary-mobile-bar-cart-position-hide)" }
+@tweak-mobile-bar-cart-color: #ffffff;
+
+// tweak: { "category": "Mobile: Cart", "label" : "Quantity Color", "title" : "tweak-mobile-bar-cart-flag-color", "type" : "color", "target" : ".Mobile-bar .Cart", "showOnlyWhenPresent" : ".tweak-mobile-bar-cart-style-cart.has-cart:not(.ancillary-mobile-bar-cart-position-hide)" }
+@tweak-mobile-bar-cart-flag-color: #ff0000;
+
+// tweak: { "category": "Mobile: Cart", "label" : "Quantity Text Color", "title" : "tweak-mobile-bar-cart-flag-text-color", "type" : "color", "target" : ".Mobile-bar .Cart", "showOnlyWhenPresent" : ".tweak-mobile-bar-cart-style-cart.has-cart:not(.ancillary-mobile-bar-cart-position-hide)" }
+@tweak-mobile-bar-cart-flag-text-color: #ffffff;
+
+
+
+// =======================================================
+
+//    Menu
+
+// =======================================================
+
+
+// tweak: { "category" : "Mobile Menu: General", "label" : "Side", "title" : "tweak-mobile-overlay-slide-origin", "type" : "dropdown", "options" : [ "Left", "Right" ], "default" : "Left", "target" : ".Mobile-overlay-back" }
+
+// tweak: { "category": "Mobile Menu: General", "label": "Backdrop Color", "title" : "tweak-mobile-overlay-back-color", "type" : "color", "target" : ".Mobile-overlay-back" }
+@tweak-mobile-overlay-back-color: rgba(0, 0, 0, 0.8);
+
+// tweak: { "category" : "Mobile Menu: General", "label" : "Show Close Button", "title" : "tweak-mobile-overlay-close-show", "type" : "checkbox", "active" : true, "target" : ".Mobile-overlay-close" }
+
+// tweak: { "category": "Mobile Menu: General", "label": "Close Background Color", "title" : "tweak-mobile-overlay-close-background-color", "type" : "color", "target" : ".Mobile-overlay-close", "showOnlyWhenPresent" : ".tweak-mobile-overlay-close-show" }
+@tweak-mobile-overlay-close-background-color: #000000;
+
+// tweak: { "category": "Mobile Menu: General", "label": "Close Icon Color", "title" : "tweak-mobile-overlay-close-icon-color", "type" : "color", "target" : ".Mobile-overlay-close", "showOnlyWhenPresent" : ".tweak-mobile-overlay-close-show" }
+@tweak-mobile-overlay-close-icon-color: #ffffff;
+
+// tweak: { "category": "Mobile Menu: General", "label": "Menu Color", "title" : "tweak-mobile-overlay-menu-color", "type" : "color", "target" : ".Mobile-overlay-menu" }
+@tweak-mobile-overlay-menu-color: #ffffff;
+
+// tweak: { "category": "Mobile Menu: General", "label": "Indicator Color", "title" : "tweak-mobile-overlay-menu-indicator-color", "type" : "color", "target" : ".Mobile-overlay-menu" }
+@tweak-mobile-overlay-menu-indicator-color: rgba(0, 0, 0, 0.4);
+
+// tweak: { "category": "Mobile Menu: Primary", "label" : "Font", "title" : "tweak-mobile-overlay-menu-primary-font", "type" : "font", "target" : ".Mobile-overlay-menu" }
+.tweak-mobile-overlay-menu-primary-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: 0em;
+  line-height: 1em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Mobile Menu: Primary", "label": "Text Color", "title" : "tweak-mobile-overlay-menu-primary-text-color", "type" : "color", "target" : ".Mobile-overlay-menu" }
+@tweak-mobile-overlay-menu-primary-text-color: #000000;
+
+// tweak: { "category" : "Mobile Menu: Primary", "label" : "Convert Primary Nav to Buttons", "title" : "tweak-mobile-overlay-menu-primary-style-button", "type" : "checkbox", "active" : false, "target" : ".Mobile-overlay-menu" }
+
+// tweak: { "category" : "Mobile Menu: Primary", "label": "Button Style", "title" : "tweak-mobile-overlay-menu-primary-button-style", "type" : "dropdown", "options" : [ "Solid", "Outline", "Raised" ], "default" : "Solid", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-primary-style-button" }
+
+// tweak: { "category" : "Mobile Menu: Primary", "label": "Button Shape", "title" : "tweak-mobile-overlay-menu-primary-button-shape", "type" : "dropdown", "options" : [ "Square", "Rounded", "Pill" ], "default" : "Square", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-primary-style-button" }
+
+// tweak: { "category": "Mobile Menu: Primary", "label" : "Font", "title" : "tweak-mobile-overlay-menu-primary-button-font", "type" : "font", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": ".tweak-mobile-overlay-menu-primary-style-button" }
+.tweak-mobile-overlay-menu-primary-button-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: 0em;
+  line-height: 1em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Mobile Menu: Primary", "label": "Button Color", "title" : "tweak-mobile-overlay-menu-primary-button-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": ".tweak-mobile-overlay-menu-primary-style-button" }
+@tweak-mobile-overlay-menu-primary-button-color: #000000;
+
+// tweak: { "category": "Mobile Menu: Primary", "label": "Button Text Color", "title" : "tweak-mobile-overlay-menu-primary-button-text-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-primary-style-button:not(.tweak-mobile-overlay-menu-primary-button-style-outline)" }
+@tweak-mobile-overlay-menu-primary-button-text-color: #ffffff;
+
+
+
+
+// tweak: { "category": "Mobile Menu: Secondary", "label" : "Font", "title" : "tweak-mobile-overlay-menu-secondary-font", "type" : "font", "target" : ".Mobile-overlay-menu" }
+.tweak-mobile-overlay-menu-secondary-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: 0em;
+  line-height: 1em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Mobile Menu: Secondary", "label": "Text Color", "title" : "tweak-mobile-overlay-menu-secondary-text-color", "type" : "color", "target" : ".Mobile-overlay-menu" }
+@tweak-mobile-overlay-menu-secondary-text-color: #000000;
+
+// tweak: { "category" : "Mobile Menu: Secondary", "label" : "Convert Secondary Nav to Buttons", "title" : "tweak-mobile-overlay-menu-secondary-style-button", "type" : "checkbox", "active" : false, "target" : ".Mobile-overlay-menu" }
+
+// tweak: { "category" : "Mobile Menu: Secondary", "label": "Button Style", "title" : "tweak-mobile-overlay-menu-secondary-button-style", "type" : "dropdown", "options" : [ "Solid", "Outline", "Raised" ], "default" : "Solid", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button" }
+
+// tweak: { "category" : "Mobile Menu: Secondary", "label": "Button Shape", "title" : "tweak-mobile-overlay-menu-secondary-button-shape", "type" : "dropdown", "options" : [ "Square", "Rounded", "Pill" ], "default" : "Square", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button" }
+
+// tweak: { "category": "Mobile Menu: Secondary", "label" : "Font", "title" : "tweak-mobile-overlay-menu-secondary-button-font", "type" : "font", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": ".tweak-mobile-overlay-menu-secondary-style-button" }
+.tweak-mobile-overlay-menu-secondary-button-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: 0em;
+  line-height: 1em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Mobile Menu: Secondary", "label": "Button Color", "title" : "tweak-mobile-overlay-menu-secondary-button-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": ".tweak-mobile-overlay-menu-secondary-style-button" }
+@tweak-mobile-overlay-menu-secondary-button-color: #000000;
+
+// tweak: { "category": "Mobile Menu: Secondary", "label": "Button Text Color", "title" : "tweak-mobile-overlay-menu-secondary-button-text-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-button-style-outline)" }
+@tweak-mobile-overlay-menu-secondary-button-text-color: #ffffff;
+
+
+
+
+// =======================================================
+
+//    Quote Block
+
+// =======================================================
+
+
+// tweak: { "category" : "Quote Block", "label" : "Alignment", "title" : "tweak-quote-block-alignment", "type" : "dropdown", "options" : [ "Left", "Center", "Right" ], "default" : "Center", "target" : ".sqs-block-quote", "showOnlyWhenPresent" : ".sqs-block-quote" }
+
+// tweak: { "category": "Quote Block", "label" : "Quote Font", "title" : "tweak-quote-block-quote-font", "type" : "font", "target" : ".sqs-block-quote", "showOnlyWhenPresent" : ".sqs-block-quote" }
+.tweak-quote-block-quote-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0em;
+  line-height: 1.6em;
+  text-transform: none;
+}
+
+// tweak: { "category": "Quote Block", "label" : "Source Font", "title" : "tweak-quote-block-source-font", "type" : "font", "target" : ".sqs-block-quote", "showOnlyWhenPresent" : ".sqs-block-quote" }
+.tweak-quote-block-source-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0em;
+  line-height: 1.6em;
+  text-transform: none;
+}
+

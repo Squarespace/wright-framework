@@ -1,0 +1,7 @@
+{.background-source-video?}
+  <div data-controller="VideoBackground">
+    {@|apply sqs-video-background.block}
+  </div>
+{.or}
+  <img {mainImage|image-meta} data-load="false" />
+{.end}

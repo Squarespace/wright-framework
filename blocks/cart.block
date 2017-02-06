@@ -1,0 +1,18 @@
+{.if showCart}
+  <a href="{shoppingCart|cart-url}" class="Cart {squarespace.cart-classes}" data-nc-element="cart" data-test="template-cart">
+    <span class="Cart-inner">
+      <span class="Cart-label"></span>
+
+      <svg class="Icon Icon--bag" viewBox="0 0 34 38">
+        <use class="use--odd" xlink:href="/assets/ui-icons.svg#bag-icon--odd"></use>
+        <use class="use--even" xlink:href="/assets/ui-icons.svg#bag-icon--even"></use>
+      </svg>
+      <svg class="Icon Icon--cart" viewBox="0 0 31 26">
+        <use class="use--odd" xlink:href="/assets/ui-icons.svg#cart-icon--odd"></use>
+        <use class="use--even" xlink:href="/assets/ui-icons.svg#cart-icon--even"></use>
+      </svg>
+
+      {shoppingCart|cart-quantity}
+    </span>
+  </a>
+{.end}

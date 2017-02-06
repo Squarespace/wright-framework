@@ -1,0 +1,53 @@
+<footer class="Footer" role="contentinfo" data-controller="FooterBreakpoints">
+
+  <div class="Footer-inner clear">
+
+    <squarespace:block-field id="footerBlocksTop" class="Footer-blocks Footer-blocks--top sqs-alternate-block-style-container" columns="12" label="Footer Top Blocks" />
+
+    <div class="Footer-middle">
+      <div class="Footer-business">
+
+        {.if website.location.addressTitle || website.location.addressLine1 || website.location.addressLine2 || websiteSettings.contactPhoneNumber || websiteSettings.contactEmail}
+          <div class="Footer-business-info">
+            {.section website}
+              {.section location}
+                {.section addressTitle}<div class="Footer-business-info-item Footer-business-info-item--name">{@}</div>{.end}
+                {.if addressLine1}<div class="Footer-business-info-item">{addressLine1}{.if addressLine2 || addressCountry},{.end}</div>{.end}
+                {.if addressLine2}<div class="Footer-business-info-item">{addressLine2}{.if addressCountry},{.end}</div>{.end}
+                {.section addressCountry}<div class="Footer-business-info-item Footer-business-info-item--country">{@}</div>{.end}
+              {.end}
+            {.end}
+            {.section websiteSettings}
+              {.section contactPhoneNumber}<a href="tel:{@}" rel="tel" class="Footer-business-info-item Footer-business-info-item--phone">{@}</a>{.end}
+              {.section contactEmail}<a href="mailto:{@}" title="{@}" target="_blank" class="Footer-business-info-item Footer-business-info-item--email">{@}</a>{.end}
+            {.end}
+          </div>
+        {.end}
+
+        {.section websiteSettings}
+          {.section businessHours}
+            <div class="Footer-business-hours">
+              <div class="Footer-business-hours-heading">Hours</div>
+              {.section monday}<div class="Footer-business-hours-item">Mon {text}</div>{.end}
+              {.section tuesday}<div class="Footer-business-hours-item">Tue {text}</div>{.end}
+              {.section wednesday}<div class="Footer-business-hours-item">Wed {text}</div>{.end}
+              {.section thursday}<div class="Footer-business-hours-item">Thu {text}</div>{.end}
+              {.section friday}<div class="Footer-business-hours-item">Fri {text}</div>{.end}
+              {.section saturday}<div class="Footer-business-hours-item">Sat {text}</div>{.end}
+              {.section sunday}<div class="Footer-business-hours-item">Sun {text}</div>{.end}
+            </div>
+          {.end}
+        {.end}
+
+      </div>
+
+      <squarespace:block-field id="footerBlocksMiddle" class="Footer-blocks Footer-blocks--middle sqs-alternate-block-style-container" columns="12" label="Footer Middle Blocks" />
+
+      <squarespace:navigation navigationId="footerMainNavigation" template="footer-nav" />
+    </div>
+
+    <squarespace:block-field id="footerBlocksBottom" class="Footer-blocks Footer-blocks--bottom sqs-alternate-block-style-container" columns="12" label="Footer Bottom Blocks" />
+
+  </div>
+
+</footer>

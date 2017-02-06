@@ -1,0 +1,21 @@
+{.section items}
+  <nav class="Footer-nav" data-content-field="navigation">
+
+    <div class="Footer-nav-group">{.repeated section @}{.collection?}{.folder?}{.equal? @index 1}{.or}</div><div class="Footer-nav-group">{.end}<div class="Footer-nav-folder-heading">{collection.navigationTitle}</div>
+
+      {.repeated section items}
+
+        {.collection?}
+          <a href="{collection.fullUrl}" class="Footer-nav-folder-item">{collection.navigationTitle}</a>
+        {.or}
+          {.section externalLink}
+            <a href="{url}"{.section newWindow} target="_blank"{.end} class="Footer-nav-folder-item">{title}</a>
+          {.end}
+        {.end}
+
+      {.end}
+
+    </div><div class="Footer-nav-group">{.or}{.section collection}<a href="{fullUrl}" class="Footer-nav-item">{navigationTitle}</a>{.end}{.end}{.end}{.section externalLink}<a href="{url}"{.section newWindow} target="_blank"{.end} class="Footer-nav-item">{title}</a>{.end}{.end}</div>
+
+  </nav>
+{.end}

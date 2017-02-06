@@ -1,0 +1,14 @@
+<section class="Intro{.background-source-video?} Intro--has-image{.or}{.if mainImage} Intro--has-image{.end}{.end}" data-parallax-original-element data-parallax-id="{id}"{.background-source-video?} data-controller="Parallax"{.or}{.if mainImage} data-controller="Parallax"{.end}{.end}>
+  <squarespace:block-field id="{id}_intro" class="Intro-content{.background-source-video?} sqs-alternate-block-style-container{.or}{.if mainImage} sqs-alternate-block-style-container{.end}{.end}" columns="12" label="Intro" />
+  {.background-source-video?}
+    <figure class="Intro-image" data-parallax-image-wrapper>
+      {@|apply background-media.block}
+    </figure>
+  {.or}
+    {.if mainImage}
+      <figure class="Intro-image" data-parallax-image-wrapper>
+        {@|apply background-media.block}
+      </figure>
+    {.end}
+  {.end}
+</section>

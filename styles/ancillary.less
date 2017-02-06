@@ -1,0 +1,614 @@
+// -----------------------------------------
+
+//  Groups
+
+
+[data-nc-group] {
+  .nc-parent;
+  .nc-align(center);
+  .nc-justify(center);
+}
+
+
+// -----------------------------------------
+
+//  Containers
+
+[data-nc-container] {
+  .nc-parent;
+  .nc-align(center);
+
+  // <= 2 containers. Proportional container basis, which each container
+  // growing/shrinking according to the size of its contents.
+  .nc-flex(1 1 auto);
+
+  // Allow containers to be shrinkable below their intrinsic width.
+  min-width: 0;
+
+  // Prevent containers from expanding past width of entire group (like when
+  // there's only 1 container showing in the group)
+  max-width: 100%;
+}
+
+// Centered
+
+.nc-parent-center {
+  [data-nc-container] {
+
+    // > 2 containers. Containers in the middle have one size, and don't shrink
+    // or grow.
+    .nc-flex(0 0 auto);
+
+    &:first-child,
+    &:last-child {
+
+      // Containers on the sides grow and shrink, but don't have any inherent
+      // basis, in order to keep their widths equal.
+      .nc-flex(1 1 0px);
+    }
+  }
+
+  &[data-nc-collapse] [data-nc-container] {
+
+    // In collapse state, all containers grow and shrink, and have equal size.
+    .nc-flex(1 1 0px);
+  }
+}
+
+
+// -----------------------------------------
+
+//  Element
+
+
+[data-nc-element] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  .nc-flex(0 0 auto);
+}
+
+[data-nc-collapse] [data-nc-element] {
+  .nc-flex(0 1 auto);
+
+  // Prevent elements from expanding beyond the width of the entire container.
+  max-width: 100%;
+}
+
+
+
+// -----------------------------------------
+
+//  Mixins
+
+
+// nc-parent sets the group or container to be flex.
+.nc-parent {
+  display: -webkit-box; // Safari 6
+  display: -ms-flexbox; // IE 10
+  display: -webkit-flex;  // Safari 7+
+  display: flex; // Modern browsers
+
+  // Modernizr fallback
+  .no-flexbox & { display: block; }
+}
+
+// Shorthand for all flex properties
+.nc-flex(@string, @legacy: 1) {
+  -webkit-box-flex: @legacy; // Safari 6
+  -ms-flex: @string; // IE 10
+  -webkit-flex: @string; // Safari 7+
+  flex: @string; // Modern browsers
+}
+
+
+// Justify Content affects alignment of elements inside containers.
+.nc-justify(@string) when (@string = left) {
+  text-align: left;
+
+  -webkit-box-pack: start; // Safari 6
+  -ms-flex-pack: start; // IE 10
+  -webkit-justify-content: flex-start; // Safari 7+
+  justify-content: flex-start; // Modern browsers
+}
+.nc-justify(@string) when (@string = center) {
+  text-align: center;
+
+  -webkit-box-pack: center; // Safari 6
+  -ms-flex-pack: center; // IE 10
+  -webkit-justify-content: center; // Safari 7+
+  justify-content: center; // Modern browsers
+}
+.nc-justify(@string) when (@string = right) {
+  text-align: right;
+
+  -webkit-box-pack: end; // Safari 6
+  -ms-flex-pack: end; // IE 10
+  -webkit-justify-content: flex-end; // Safari 7+
+  justify-content: flex-end; // Modern browsers
+}
+.nc-justify(@string) when (@string = justify) {
+  -webkit-box-pack: justify; // Safari 6
+  -ms-flex-pack: justify; // IE 10
+  -webkit-justify-content: space-between; // Safari 7+
+  justify-content: space-between; // Modern browsers
+}
+
+// Stacked containers' children stack on top of each other
+.nc-direction(@string) when (@string = column) {
+  -webkit-box-orient: vertical; // Safari 6
+  -ms-flex-direction: column; // IE 10
+  -webkit-flex-direction: column; // Safari 7+
+  flex-direction: column; // Modern browsers
+}
+
+// Align is for alignment specifically when flex-direction is set to column
+.nc-align(@string) when (@string = left) {
+  -webkit-box-align: start; // Safari 6
+  -ms-flex-align: start; // IE 10
+  -webkit-align-items: flex-start; // Safari 7+
+  align-items: flex-start; // Modern browsers
+}
+.nc-align(@string) when (@string = center) {
+  -webkit-box-align: center; // Safari 6
+  -ms-flex-align: center; // IE 10
+  -webkit-align-items: center; // Safari 7+
+  align-items: center; // Modern browsers
+}
+.nc-align(@string) when (@string = right) {
+  -webkit-box-align: end; // Safari 6
+  -ms-flex-align: end; // IE 10
+  -webkit-align-items: flex-end; // Safari 7+
+  align-items: flex-end; // Modern browsers
+}
+
+// Order
+.nc-order(@num) {
+  -webkit-box-ordinal-group: @num; // Safari 6
+  -ms-flex-order: @num; // IE 10
+  -webkit-order: @num; // Safari 7+
+  order: @num; // Modern browsers
+}
+
+// Hidden, present in markup but not displayed.
+.nc-display(@string) when (@string = hide) {
+  display: none;
+}
+// Meant to override nc-hide
+.nc-display(@string) when (@string = show) {
+  &[data-nc-container] { .nc-parent; }
+  &[data-nc-element] { display: block; }
+}
+
+
+
+
+// -----------------------------------------
+
+//  Header
+
+
+[data-nc-base="header"] [data-nc-group="top"] { display: none; }
+[data-nc-base="header"] [data-nc-group="bottom"] { display: none; }
+
+@media screen and (min-width: @tweak-mobile-breakpoint) {
+
+  .ancillary-header-branding-position-top-left,
+  .ancillary-header-tagline-position-top-left.has-tagline,
+  .ancillary-header-primary-nav-position-top-left.has-primary-nav,
+  .ancillary-header-secondary-nav-position-top-left.has-secondary-nav,
+  .ancillary-header-social-position-top-left.has-social,
+  .ancillary-header-search-position-top-left,
+  .ancillary-header-cart-position-top-left.has-cart,
+  .ancillary-header-branding-position-top-center,
+  .ancillary-header-tagline-position-top-center.has-tagline,
+  .ancillary-header-primary-nav-position-top-center.has-primary-nav,
+  .ancillary-header-secondary-nav-position-top-center.has-secondary-nav,
+  .ancillary-header-social-position-top-center.has-social,
+  .ancillary-header-search-position-top-center,
+  .ancillary-header-cart-position-top-center.has-cart,
+  .ancillary-header-branding-position-top-right,
+  .ancillary-header-tagline-position-top-right.has-tagline,
+  .ancillary-header-primary-nav-position-top-right.has-primary-nav,
+  .ancillary-header-secondary-nav-position-top-right.has-secondary-nav,
+  .ancillary-header-social-position-top-right.has-social,
+  .ancillary-header-search-position-top-right,
+  .ancillary-header-cart-position-top-right.has-cart {
+    [data-nc-base="header"] [data-nc-group="top"] {
+      .nc-parent;
+    }
+  }
+  .ancillary-header-branding-position-bottom-left,
+  .ancillary-header-tagline-position-bottom-left.has-tagline,
+  .ancillary-header-primary-nav-position-bottom-left.has-primary-nav,
+  .ancillary-header-secondary-nav-position-bottom-left.has-secondary-nav,
+  .ancillary-header-social-position-bottom-left.has-social,
+  .ancillary-header-search-position-bottom-left,
+  .ancillary-header-cart-position-bottom-left.has-cart,
+  .ancillary-header-branding-position-bottom-center,
+  .ancillary-header-tagline-position-bottom-center.has-tagline,
+  .ancillary-header-primary-nav-position-bottom-center.has-primary-nav,
+  .ancillary-header-secondary-nav-position-bottom-center.has-secondary-nav,
+  .ancillary-header-social-position-bottom-center.has-social,
+  .ancillary-header-search-position-bottom-center,
+  .ancillary-header-cart-position-bottom-center.has-cart,
+  .ancillary-header-branding-position-bottom-right,
+  .ancillary-header-tagline-position-bottom-right.has-tagline,
+  .ancillary-header-primary-nav-position-bottom-right.has-primary-nav,
+  .ancillary-header-secondary-nav-position-bottom-right.has-secondary-nav,
+  .ancillary-header-social-position-bottom-right.has-social,
+  .ancillary-header-search-position-bottom-right,
+  .ancillary-header-cart-position-bottom-right.has-cart {
+    [data-nc-base="header"] [data-nc-group="bottom"] {
+      .nc-parent;
+    }
+  }
+}
+
+[data-nc-base="header"] [data-nc-container="top-left"] {
+  .nc-justify(left);
+  [data-nc-element="branding"] { .nc-order(1); }
+  [data-nc-element="search"] { .nc-order(2); }
+  [data-nc-element="primary-nav"] { .nc-order(3); }
+  [data-nc-element="secondary-nav"] { .nc-order(4); }
+  [data-nc-element="tagline"] { .nc-order(5); }
+  [data-nc-element="social"] { .nc-order(6); }
+  [data-nc-element="cart"] { .nc-order(7); }
+  .nc-display(hide);
+}
+.ancillary-header-top-left-layout-stacked [data-nc-base="header"] [data-nc-container="top-left"] {
+  .nc-direction(column);
+  .nc-align(left);
+  [data-nc-element="branding"] {
+    .nc-order(0);
+  }
+}
+.ancillary-header-branding-position-top-left,
+.ancillary-header-tagline-position-top-left.has-tagline,
+.ancillary-header-primary-nav-position-top-left.has-primary-nav,
+.ancillary-header-secondary-nav-position-top-left.has-secondary-nav,
+.ancillary-header-social-position-top-left.has-social,
+.ancillary-header-search-position-top-left,
+.ancillary-header-cart-position-top-left.has-cart {
+  [data-nc-base="header"] [data-nc-container="top-left"] {
+    .nc-display(show);
+  }
+}
+[data-nc-base="header"] [data-nc-container="top-center"] {
+  .nc-justify(center);
+  [data-nc-element="tagline"] { .nc-order(1); }
+  [data-nc-element="primary-nav"] { .nc-order(2); }
+  [data-nc-element="branding"] { .nc-order(3); }
+  [data-nc-element="secondary-nav"] { .nc-order(4); }
+  [data-nc-element="social"] { .nc-order(5); }
+  [data-nc-element="search"] { .nc-order(6); }
+  [data-nc-element="cart"] { .nc-order(7); }
+  .nc-display(hide);
+}
+.ancillary-header-top-center-layout-stacked [data-nc-base="header"] [data-nc-container="top-center"] {
+  .nc-direction(column);
+  .nc-align(center);
+  [data-nc-element="branding"] {
+    .nc-order(0);
+  }
+}
+.ancillary-header-branding-position-top-center,
+.ancillary-header-tagline-position-top-center.has-tagline,
+.ancillary-header-primary-nav-position-top-center.has-primary-nav,
+.ancillary-header-secondary-nav-position-top-center.has-secondary-nav,
+.ancillary-header-social-position-top-center.has-social,
+.ancillary-header-search-position-top-center,
+.ancillary-header-cart-position-top-center.has-cart {
+  [data-nc-base="header"] [data-nc-container="top-center"] {
+    .nc-display(show);
+  }
+  [data-nc-base="header"] [data-nc-group="top"] { .nc-parent-center; }
+  [data-nc-base="header"] [data-nc-container="top-left"] { .nc-display(show); }
+  [data-nc-base="header"] [data-nc-container="top-right"] { .nc-display(show); }
+  &:not(.ancillary-header-branding-position-top-left):not(.ancillary-header-branding-position-top-right):not(.ancillary-header-tagline-position-top-left.has-tagline):not(.ancillary-header-tagline-position-top-right.has-tagline):not(.ancillary-header-primary-nav-position-top-left.has-primary-nav):not(.ancillary-header-primary-nav-position-top-right.has-primary-nav):not(.ancillary-header-secondary-nav-position-top-left.has-secondary-nav):not(.ancillary-header-secondary-nav-position-top-right.has-secondary-nav):not(.ancillary-header-social-position-top-left.has-social):not(.ancillary-header-social-position-top-right.has-social):not(.ancillary-header-search-position-top-left):not(.ancillary-header-search-position-top-right):not(.ancillary-header-cart-position-top-left.has-cart):not(.ancillary-header-cart-position-top-right.has-cart) {
+    [data-nc-base="header"] [data-nc-container="top-left"] { .nc-display(hide); }
+    [data-nc-base="header"] [data-nc-container="top-right"] { .nc-display(hide); }
+  }
+}
+.ancillary-header-branding-position-top-center:not(.ancillary-header-top-center-layout-stacked) {
+  &.ancillary-header-tagline-position-top-center.ancillary-header-primary-nav-position-top-center {
+    [data-nc-base="header"] [data-nc-element="primary-nav"] { .nc-order(4); }
+  }
+  &.ancillary-header-secondary-nav-position-top-center.ancillary-header-social-position-top-center {
+    [data-nc-base="header"] [data-nc-element="secondary-nav"] { .nc-order(2); }
+  }
+  &.ancillary-header-secondary-nav-position-top-center.ancillary-header-search-position-top-center {
+    [data-nc-base="header"] [data-nc-element="secondary-nav"] { .nc-order(2); }
+  }
+  &.ancillary-header-secondary-nav-position-top-center.ancillary-header-cart-position-top-center {
+    [data-nc-base="header"] [data-nc-element="secondary-nav"] { .nc-order(2); }
+  }
+  &.ancillary-header-social-position-top-center.ancillary-header-search-position-top-center {
+    [data-nc-base="header"] [data-nc-element="social"] { .nc-order(2); }
+  }
+  &.ancillary-header-social-position-top-center.ancillary-header-cart-position-top-center {
+    [data-nc-base="header"] [data-nc-element="social"] { .nc-order(2); }
+  }
+  &.ancillary-header-search-position-top-center.ancillary-header-cart-position-top-center {
+    [data-nc-base="header"] [data-nc-element="search"] { .nc-order(2); }
+  }
+}
+[data-nc-base="header"] [data-nc-container="top-right"] {
+  .nc-justify(right);
+  [data-nc-element="tagline"] { .nc-order(1); }
+  [data-nc-element="primary-nav"] { .nc-order(2); }
+  [data-nc-element="secondary-nav"] { .nc-order(3); }
+  [data-nc-element="social"] { .nc-order(4); }
+  [data-nc-element="search"] { .nc-order(5); }
+  [data-nc-element="branding"] { .nc-order(6); }
+  [data-nc-element="cart"] { .nc-order(7); }
+  .nc-display(hide);
+}
+.ancillary-header-top-right-layout-stacked [data-nc-base="header"] [data-nc-container="top-right"] {
+  .nc-direction(column);
+  .nc-align(right);
+  [data-nc-element="branding"] {
+    .nc-order(0);
+  }
+}
+.ancillary-header-branding-position-top-right,
+.ancillary-header-tagline-position-top-right.has-tagline,
+.ancillary-header-primary-nav-position-top-right.has-primary-nav,
+.ancillary-header-secondary-nav-position-top-right.has-secondary-nav,
+.ancillary-header-social-position-top-right.has-social,
+.ancillary-header-search-position-top-right,
+.ancillary-header-cart-position-top-right.has-cart {
+  [data-nc-base="header"] [data-nc-container="top-right"] {
+    .nc-display(show);
+  }
+}
+[data-nc-base="header"] [data-nc-container="bottom-left"] {
+  .nc-justify(left);
+  [data-nc-element="branding"] { .nc-order(1); }
+  [data-nc-element="search"] { .nc-order(2); }
+  [data-nc-element="primary-nav"] { .nc-order(3); }
+  [data-nc-element="secondary-nav"] { .nc-order(4); }
+  [data-nc-element="tagline"] { .nc-order(5); }
+  [data-nc-element="social"] { .nc-order(6); }
+  [data-nc-element="cart"] { .nc-order(7); }
+  .nc-display(hide);
+}
+.ancillary-header-bottom-left-layout-stacked [data-nc-base="header"] [data-nc-container="bottom-left"] {
+  .nc-direction(column);
+  .nc-align(left);
+  [data-nc-element="branding"] {
+    .nc-order(0);
+  }
+}
+.ancillary-header-branding-position-bottom-left,
+.ancillary-header-tagline-position-bottom-left.has-tagline,
+.ancillary-header-primary-nav-position-bottom-left.has-primary-nav,
+.ancillary-header-secondary-nav-position-bottom-left.has-secondary-nav,
+.ancillary-header-social-position-bottom-left.has-social,
+.ancillary-header-search-position-bottom-left,
+.ancillary-header-cart-position-bottom-left.has-cart {
+  [data-nc-base="header"] [data-nc-container="bottom-left"] {
+    .nc-display(show);
+  }
+}
+[data-nc-base="header"] [data-nc-container="bottom-center"] {
+  .nc-justify(center);
+  [data-nc-element="tagline"] { .nc-order(1); }
+  [data-nc-element="primary-nav"] { .nc-order(2); }
+  [data-nc-element="branding"] { .nc-order(3); }
+  [data-nc-element="secondary-nav"] { .nc-order(4); }
+  [data-nc-element="social"] { .nc-order(5); }
+  [data-nc-element="search"] { .nc-order(6); }
+  [data-nc-element="cart"] { .nc-order(7); }
+  .nc-display(hide);
+}
+.ancillary-header-bottom-center-layout-stacked [data-nc-base="header"] [data-nc-container="bottom-center"] {
+  .nc-direction(column);
+  .nc-align(center);
+  [data-nc-element="branding"] {
+    .nc-order(0);
+  }
+}
+.ancillary-header-branding-position-bottom-center,
+.ancillary-header-tagline-position-bottom-center.has-tagline,
+.ancillary-header-primary-nav-position-bottom-center.has-primary-nav,
+.ancillary-header-secondary-nav-position-bottom-center.has-secondary-nav,
+.ancillary-header-social-position-bottom-center.has-social,
+.ancillary-header-search-position-bottom-center,
+.ancillary-header-cart-position-bottom-center.has-cart {
+  [data-nc-base="header"] [data-nc-container="bottom-center"] {
+    .nc-display(show);
+  }
+  [data-nc-base="header"] [data-nc-group="bottom"] { .nc-parent-center; }
+  [data-nc-base="header"] [data-nc-container="bottom-left"] { .nc-display(show); }
+  [data-nc-base="header"] [data-nc-container="bottom-right"] { .nc-display(show); }
+  &:not(.ancillary-header-branding-position-bottom-left):not(.ancillary-header-branding-position-bottom-right):not(.ancillary-header-tagline-position-bottom-left.has-tagline):not(.ancillary-header-tagline-position-bottom-right.has-tagline):not(.ancillary-header-primary-nav-position-bottom-left.has-primary-nav):not(.ancillary-header-primary-nav-position-bottom-right.has-primary-nav):not(.ancillary-header-secondary-nav-position-bottom-left.has-secondary-nav):not(.ancillary-header-secondary-nav-position-bottom-right.has-secondary-nav):not(.ancillary-header-social-position-bottom-left.has-social):not(.ancillary-header-social-position-bottom-right.has-social):not(.ancillary-header-search-position-bottom-left):not(.ancillary-header-search-position-bottom-right):not(.ancillary-header-cart-position-bottom-left.has-cart):not(.ancillary-header-cart-position-bottom-right.has-cart) {
+    [data-nc-base="header"] [data-nc-container="bottom-left"] { .nc-display(hide); }
+    [data-nc-base="header"] [data-nc-container="bottom-right"] { .nc-display(hide); }
+   }
+}
+.ancillary-header-branding-position-bottom-center:not(.ancillary-header-bottom-center-layout-stacked) {
+  &.ancillary-header-tagline-position-bottom-center.ancillary-header-primary-nav-position-bottom-center {
+    [data-nc-base="header"] [data-nc-element="primary-nav"] { .nc-order(4); }
+  }
+  &.ancillary-header-secondary-nav-position-bottom-center.ancillary-header-social-position-bottom-center {
+    [data-nc-base="header"] [data-nc-element="secondary-nav"] { .nc-order(2); }
+  }
+  &.ancillary-header-secondary-nav-position-bottom-center.ancillary-header-search-position-bottom-center {
+    [data-nc-base="header"] [data-nc-element="secondary-nav"] { .nc-order(2); }
+  }
+  &.ancillary-header-secondary-nav-position-bottom-center.ancillary-header-cart-position-bottom-center {
+    [data-nc-base="header"] [data-nc-element="secondary-nav"] { .nc-order(2); }
+  }
+  &.ancillary-header-social-position-bottom-center.ancillary-header-search-position-bottom-center {
+    [data-nc-base="header"] [data-nc-element="social"] { .nc-order(2); }
+  }
+  &.ancillary-header-social-position-bottom-center.ancillary-header-cart-position-bottom-center {
+    [data-nc-base="header"] [data-nc-element="social"] { .nc-order(2); }
+  }
+  &.ancillary-header-search-position-bottom-center.ancillary-header-cart-position-bottom-center {
+    [data-nc-base="header"] [data-nc-element="search"] { .nc-order(2); }
+  }
+}
+[data-nc-base="header"] [data-nc-container="bottom-right"] {
+  .nc-justify(right);
+  [data-nc-element="tagline"] { .nc-order(1); }
+  [data-nc-element="primary-nav"] { .nc-order(2); }
+  [data-nc-element="secondary-nav"] { .nc-order(3); }
+  [data-nc-element="social"] { .nc-order(4); }
+  [data-nc-element="search"] { .nc-order(5); }
+  [data-nc-element="branding"] { .nc-order(6); }
+  [data-nc-element="cart"] { .nc-order(7); }
+  .nc-display(hide);
+}
+.ancillary-header-bottom-right-layout-stacked [data-nc-base="header"] [data-nc-container="bottom-right"] {
+  .nc-direction(column);
+  .nc-align(right);
+  [data-nc-element="branding"] {
+    .nc-order(0);
+  }
+}
+.ancillary-header-branding-position-bottom-right,
+.ancillary-header-tagline-position-bottom-right.has-tagline,
+.ancillary-header-primary-nav-position-bottom-right.has-primary-nav,
+.ancillary-header-secondary-nav-position-bottom-right.has-secondary-nav,
+.ancillary-header-social-position-bottom-right.has-social,
+.ancillary-header-search-position-bottom-right,
+.ancillary-header-cart-position-bottom-right.has-cart {
+  [data-nc-base="header"] [data-nc-container="bottom-right"] {
+    .nc-display(show);
+  }
+}
+
+
+
+// -----------------------------------------
+
+//  Mobile bar
+
+@media screen and (min-width: @tweak-mobile-breakpoint) {
+  [data-nc-base="mobile-bar"] { display: none; }
+}
+[data-nc-base="mobile-bar"] [data-nc-container="top-left"] {
+  .nc-justify(left);
+  [data-nc-element="menu-icon"] { .nc-order(1); }
+  [data-nc-element="branding"] { .nc-order(2); }
+  [data-nc-element="search-icon"] { .nc-order(3); }
+  [data-nc-element="cart"] { .nc-order(4); }
+  .nc-display(hide);
+}
+.ancillary-mobile-bar-branding-position-top-left,
+.ancillary-mobile-bar-search-icon-position-top-left,
+.ancillary-mobile-bar-menu-icon-position-top-left,
+.ancillary-mobile-bar-cart-position-top-left.has-cart {
+  [data-nc-base="mobile-bar"] [data-nc-container="top-left"] {
+    .nc-display(show);
+  }
+}
+[data-nc-base="mobile-bar"] [data-nc-container="top-center"] {
+  .nc-justify(center);
+  [data-nc-element="menu-icon"] { .nc-order(1); }
+  [data-nc-element="branding"] { .nc-order(2); }
+  [data-nc-element="search-icon"] { .nc-order(3); }
+  [data-nc-element="cart"] { .nc-order(4); }
+  .nc-display(hide);
+}
+.ancillary-mobile-bar-branding-position-top-center,
+.ancillary-mobile-bar-search-icon-position-top-center,
+.ancillary-mobile-bar-menu-icon-position-top-center,
+.ancillary-mobile-bar-cart-position-top-center.has-cart {
+  [data-nc-base="mobile-bar"] [data-nc-container="top-center"] {
+    .nc-display(show);
+  }
+  [data-nc-base="mobile-bar"] [data-nc-group="top"] { .nc-parent-center; }
+  [data-nc-base="mobile-bar"] [data-nc-container="top-left"] { .nc-display(show); }
+  [data-nc-base="mobile-bar"] [data-nc-container="top-right"] { .nc-display(show); }
+  &:not(.ancillary-mobile-bar-branding-position-top-left):not(.ancillary-mobile-bar-branding-position-top-right):not(.ancillary-mobile-bar-search-icon-position-top-left):not(.ancillary-mobile-bar-search-icon-position-top-right):not(.ancillary-mobile-bar-menu-icon-position-top-left):not(.ancillary-mobile-bar-menu-icon-position-top-right):not(.ancillary-mobile-bar-cart-position-top-left.has-cart):not(.ancillary-mobile-bar-cart-position-top-right.has-cart) {
+    [data-nc-base="mobile-bar"] [data-nc-container="top-left"] { .nc-display(hide); }
+    [data-nc-base="mobile-bar"] [data-nc-container="top-right"] { .nc-display(hide); }
+   }
+}
+.ancillary-mobile-bar-branding-position-top-center {
+  &.ancillary-mobile-bar-search-icon-position-top-center.ancillary-mobile-bar-cart-position-top-center {
+    [data-nc-base="mobile-bar"] [data-nc-element="search-icon"] { .nc-order(2); }
+  }
+}
+[data-nc-base="mobile-bar"] [data-nc-container="top-right"] {
+  .nc-justify(right);
+  [data-nc-element="search-icon"] { .nc-order(1); }
+  [data-nc-element="cart"] { .nc-order(2); }
+  [data-nc-element="branding"] { .nc-order(3); }
+  [data-nc-element="menu-icon"] { .nc-order(4); }
+  .nc-display(hide);
+}
+.ancillary-mobile-bar-branding-position-top-right,
+.ancillary-mobile-bar-search-icon-position-top-right,
+.ancillary-mobile-bar-menu-icon-position-top-right,
+.ancillary-mobile-bar-cart-position-top-right.has-cart {
+  [data-nc-base="mobile-bar"] [data-nc-container="top-right"] {
+    .nc-display(show);
+  }
+}
+[data-nc-base="mobile-bar"] [data-nc-container="bottom-left"] {
+  .nc-justify(left);
+  [data-nc-element="menu-icon"] { .nc-order(1); }
+  [data-nc-element="branding"] { .nc-order(2); }
+  [data-nc-element="search-icon"] { .nc-order(3); }
+  [data-nc-element="cart"] { .nc-order(4); }
+  .nc-display(hide);
+}
+.ancillary-mobile-bar-branding-position-bottom-left,
+.ancillary-mobile-bar-search-icon-position-bottom-left,
+.ancillary-mobile-bar-menu-icon-position-bottom-left,
+.ancillary-mobile-bar-cart-position-bottom-left.has-cart {
+  [data-nc-base="mobile-bar"] [data-nc-container="bottom-left"] {
+    .nc-display(show);
+  }
+}
+[data-nc-base="mobile-bar"] [data-nc-container="bottom-center"] {
+  .nc-justify(center);
+  [data-nc-element="menu-icon"] { .nc-order(1); }
+  [data-nc-element="branding"] { .nc-order(2); }
+  [data-nc-element="search-icon"] { .nc-order(3); }
+  [data-nc-element="cart"] { .nc-order(4); }
+  .nc-display(hide);
+}
+.ancillary-mobile-bar-branding-position-bottom-center,
+.ancillary-mobile-bar-search-icon-position-bottom-center,
+.ancillary-mobile-bar-menu-icon-position-bottom-center,
+.ancillary-mobile-bar-cart-position-bottom-center.has-cart {
+  [data-nc-base="mobile-bar"] [data-nc-container="bottom-center"] {
+    .nc-display(show);
+  }
+  [data-nc-base="mobile-bar"] [data-nc-group="bottom"] { .nc-parent-center; }
+  [data-nc-base="mobile-bar"] [data-nc-container="bottom-left"] { .nc-display(show); }
+  [data-nc-base="mobile-bar"] [data-nc-container="bottom-right"] { .nc-display(show); }
+  &:not(.ancillary-mobile-bar-branding-position-bottom-left):not(.ancillary-mobile-bar-branding-position-bottom-right):not(.ancillary-mobile-bar-search-icon-position-bottom-left):not(.ancillary-mobile-bar-search-icon-position-bottom-right):not(.ancillary-mobile-bar-menu-icon-position-bottom-left):not(.ancillary-mobile-bar-menu-icon-position-bottom-right):not(.ancillary-mobile-bar-cart-position-bottom-left.has-cart):not(.ancillary-mobile-bar-cart-position-bottom-right.has-cart) {
+    [data-nc-base="mobile-bar"] [data-nc-container="bottom-left"] { .nc-display(hide); }
+    [data-nc-base="mobile-bar"] [data-nc-container="bottom-right"] { .nc-display(hide); }
+   }
+}
+.ancillary-mobile-bar-branding-position-bottom-center {
+  &.ancillary-mobile-bar-search-icon-position-bottom-center.ancillary-mobile-bar-cart-position-bottom-center {
+    [data-nc-base="mobile-bar"] [data-nc-element="search-icon"] { .nc-order(2); }
+  }
+}
+[data-nc-base="mobile-bar"] [data-nc-container="bottom-right"] {
+  .nc-justify(right);
+  [data-nc-element="search-icon"] { .nc-order(1); }
+  [data-nc-element="cart"] { .nc-order(2); }
+  [data-nc-element="branding"] { .nc-order(3); }
+  [data-nc-element="menu-icon"] { .nc-order(4); }
+  .nc-display(hide);
+}
+.ancillary-mobile-bar-branding-position-bottom-right,
+.ancillary-mobile-bar-search-icon-position-bottom-right,
+.ancillary-mobile-bar-menu-icon-position-bottom-right,
+.ancillary-mobile-bar-cart-position-bottom-right.has-cart {
+  [data-nc-base="mobile-bar"] [data-nc-container="bottom-right"] {
+    .nc-display(show);
+  }
+}
+
+

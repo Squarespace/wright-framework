@@ -1,0 +1,365 @@
+// =======================================================
+
+//    Shared
+
+// =======================================================
+
+
+@footer-spacing: 20px;
+
+.Footer {
+
+  // Background
+  background-color: @tweak-footer-color;
+  .font-smoothing(@tweak-footer-color);
+
+
+
+
+  // -----------------------------------------
+
+  //  Inner
+
+
+  &-inner {
+
+    .border-box;
+
+    padding: @tweak-footer-padding @tweak-site-side-padding;
+    .responsive-padding-vertical(@tweak-footer-padding);
+    .responsive-padding-horizontal(@tweak-site-side-padding);
+
+  }
+
+
+
+  // -----------------------------------------
+
+  //  Blocks
+
+  &-blocks {
+
+    &.empty { padding: 0 !important; }
+
+    color: @tweak-footer-body-text-color;
+    .mixin-template-heading-color(@tweak-footer-h1-color, @tweak-footer-h2-color, @tweak-footer-h3-color);
+    .mixin-template-link-color(@tweak-footer-link-color);
+    .mixin-template-line-color(@tweak-footer-line-color);
+
+  }
+
+
+
+  // -----------------------------------------
+
+  //  Business Info
+
+
+  &-business-info {
+
+    // Display
+    display: none;
+    .tweak-footer-business-info-show & { display: block; }
+
+    // Typography
+    .tweak-footer-business-info-font;
+    color: @tweak-footer-business-info-color;
+
+    // Name
+    &-item--name {
+
+      // Typography
+      .tweak-footer-business-name-font;
+      color: @tweak-footer-business-name-color;
+
+    }
+
+    // Phone
+    &-item--phone { display: block; }
+
+    // Email
+    &-item--email {
+
+      display: inline-block;
+      .link-color(@tweak-footer-business-info-color);
+
+    }
+
+  }
+
+
+
+
+  // -----------------------------------------
+
+  //  Business Hours
+
+
+  &-business-hours {
+
+    // Display
+    display: none;
+    .tweak-footer-business-hours-show & { display: block; }
+
+    // Typography
+    .tweak-footer-business-hours-font;
+    color: @tweak-footer-business-hours-color;
+
+
+    // Heading
+    &-heading {
+      .tweak-footer-business-hours-heading-font;
+      color: @tweak-footer-business-hours-heading-color;
+    }
+
+  }
+
+
+
+
+  // -----------------------------------------
+
+  //  Nav
+
+  &-nav {
+
+    // Typography
+    .tweak-footer-nav-font;
+    a { .link-color(@tweak-footer-nav-color); }
+
+    // Groups
+    // Because links in the Footer outside of folders should appear as a group
+    // and not have a ton of space between them, we essentially need to add a
+    // few extra Footer-groups and hide the empty ones.
+    &-group:empty { display: none !important; }
+
+    // Folder Heading
+    &-folder-heading {
+
+      // Display
+      display: none;
+
+      // Typography
+      .tweak-footer-nav-heading-font;
+      color: @tweak-footer-nav-heading-color;
+
+    }
+
+  }
+
+
+
+}
+
+
+// =======================================================
+
+//    Stacked
+
+// =======================================================
+
+
+.tweak-footer-layout-stacked {
+
+  .Footer {
+
+    // Top and bottom blocks spacing
+    &-blocks--top { padding-bottom: @footer-spacing; }
+    &-blocks--bottom { padding-top: @footer-spacing; }
+
+    // Display
+    &-business-info-item,
+    &-business-hours-heading,
+    &-business-hours-item,
+    &-nav-item,
+    &-nav-folder-item { display: inline-block; }
+
+    // Keep nav links with multiple words together, while allow breaking of
+    // nav-groups
+    &-nav-group { display: inline; }
+
+    // Spacing
+    &-business-info,
+    &-business-hours,
+    &-nav,
+    &-blocks--middle { padding: @footer-spacing 0; }
+
+    // Internal spacing
+    &-business-info-item--name,
+    &-business-info-item--country,
+    &-business-info-item--phone,
+    &-business-hours-heading,
+    &-business-hours-item {
+
+      padding-right: 0.618em;
+      &:last-child { padding-right: 0; }
+
+    }
+
+    // Internal spacing (nav)
+    &-nav-item,
+    &-nav-folder-item {
+      padding-right: 1em;
+    }
+    &-nav {
+      // Offset padding
+      margin-right: -1em;
+    }
+
+  }
+
+  // Alignment
+  &.tweak-footer-stacked-alignment-left {
+    .Footer-business, .Footer-nav { text-align: left; }
+  }
+  &.tweak-footer-stacked-alignment-center {
+    .Footer-business, .Footer-nav { text-align: center; }
+  }
+  &.tweak-footer-stacked-alignment-right {
+    .Footer-business, .Footer-nav { text-align: right; }
+  }
+
+}
+
+
+// =======================================================
+
+//    Columns
+
+// =======================================================
+
+.tweak-footer-layout-columns {
+
+  .Footer {
+
+    &-inner {
+      overflow: hidden;
+    }
+
+    // Top and bottom blocks spacing
+    &-blocks--top { padding-bottom: @footer-spacing * 2; }
+    &-blocks--bottom { padding-top: @footer-spacing * 2; }
+
+    // Container
+    &-middle {
+      margin: (-1 * @footer-spacing);
+
+      .flex-parent();
+      .flex-direction(row);
+    }
+
+    // Paddings
+    &-business-info,
+    &-business-hours,
+    &-nav-group,
+    &-blocks--middle {
+      padding: @footer-spacing;
+    }
+
+    // Business
+    &-business { .flex(0 0 auto); }
+    &-business-info,
+    &-business-hours {
+      float: left;
+    }
+    &-business-info-item { padding-bottom: 0.382em; }
+    &-business-info-item--name { padding-bottom: 1em; }
+    &-business-info-item--phone { padding-top: 0.618em; }
+    &-business-info-item--email { max-width: 10em; }
+    &-business-hours-heading { padding-bottom: 1em; }
+    &-business-hours-item { padding-bottom: 0.618em; }
+
+
+    // Nav
+    &-nav {
+      .flex(1 1 0px);
+      min-width: 0;
+    }
+    &-nav-group {
+      float: left;
+    }
+    &-nav-folder-heading,
+    &-nav-item,
+    &-nav-folder-item {
+      display: block;
+      max-width: 16em;
+    }
+    &-nav-folder-heading { padding-bottom: 1em; }
+    &-nav-item,
+    &-nav-folder-item { padding-bottom: 0.618em; }
+
+    // Blocks
+    &-blocks--middle {
+      .flex(0 0 33%);
+      .flex-order(1);
+      &.empty:not(.sqs-editing) { .flex(0 1 0px); }
+    }
+
+
+  }
+
+  .mixin-footer-mid-styles() {
+    .Footer {
+      // Business
+      &-business-info,
+      &-business-hours { float: none; }
+      // Nav
+      &-nav-group {
+        width: 10em;
+      }
+      // Blocks
+      &-blocks--middle {
+        .flex(0 1 300px);
+        &.empty:not(.sqs-editing) { .flex(0 1 0px); }
+      }
+    }
+  }
+
+  .mixin-footer-compact-styles() {
+    .Footer {
+      // Container
+      &-middle {
+        margin: 0;
+        .flex-direction(column);
+      }
+      // Business
+      &-business { .flex(0 0 auto); }
+      &-business-info,
+      &-business-hours { float: none; }
+      &-business-info-item--email { max-width: 100%; }
+      // Nav
+      &-nav { .flex(0 0 auto); }
+      &-nav-group {
+        float: none;
+        width: auto;
+      }
+      &-nav-folder-heading,
+      &-nav-item,
+      &-nav-folder-item {
+        max-width: none;
+      }
+      // Blocks
+      &-blocks--middle { .flex(0 0 auto); }
+
+    }
+  }
+
+  .Footer--mid {
+    .mixin-footer-mid-styles();
+  }
+  .Footer--mid.Footer--compact {
+    .mixin-footer-compact-styles();
+  }
+
+  &:not(.has-footer-nav) {
+    @media screen and (max-width: 479px) {
+      .mixin-footer-compact-styles();
+    }
+    @media screen and (min-width: 480px) and (max-width: 599px) {
+      .mixin-footer-mid-styles();
+    }
+
+  }
+
+
+}

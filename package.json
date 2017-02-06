@@ -1,0 +1,45 @@
+{
+  "name": "wright-framework",
+  "version": "1.0.0",
+  "author": "Squarespace, Inc.",
+  "description": "Wright Framework",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Squarespace/wright-framework.git"
+  },
+  "scripts": {
+    "build": "squarespace assemble && webpack",
+    "clean": "squarespace clean",
+    "deploy": "squarespace setup && squarespace deploy",
+    "lint": "eslint scripts",
+    "start": "squarespace setup && (npm run watch & npm run server)",
+    "server": "squarespace runserver",
+    "server:auth": "npm run server -- --run-authenticated",
+    "watch": "squarespace assemble --watch & webpack --watch"
+  },
+  "dependencies": {
+    "@squarespace/ancillary": "1.0.0",
+    "@squarespace/controller": "1.0.0",
+    "@squarespace/core": "1.0.1",
+    "@squarespace/darwin": "1.0.1",
+    "@squarespace/mercury": "1.0.0",
+    "@squarespace/social-links": "1.0.0",
+    "@squarespace/video-background": "1.0.0",
+    "babel-runtime": "6.22.0",
+    "jump.js": "1.0.2",
+    "raf": "3.3.0"
+  },
+  "devDependencies": {
+    "@squarespace/toolbelt": "^0.7.5",
+    "babel-core": "^6.17.0",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.22.0",
+    "eslint": "^3.14.1",
+    "eslint-config-squarespace": "^1.0.0",
+    "webpack": "^1.14.0"
+  }
+}

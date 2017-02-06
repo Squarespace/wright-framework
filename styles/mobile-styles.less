@@ -1,0 +1,653 @@
+// =======================================================
+
+//    Mobile Styles
+
+// =======================================================
+
+
+@mobile-padding: 8px;
+
+
+// Reset
+.Mobile-bar-menu { .button-style-reset; }
+
+
+.Mobile {
+
+  // -----------------------------------------
+
+  //  Bars
+
+  &-bar {
+
+    .border-box;
+    width: 100%;
+    padding: 0 @tweak-site-side-padding;
+    .responsive-padding-horizontal(@tweak-site-side-padding, -1 * @mobile-padding);
+
+    &--top {
+
+      background: @tweak-mobile-bar-top-background-color;
+      .font-smoothing(@tweak-mobile-bar-top-background-color);
+
+      // Padding
+      .ancillary-mobile-bar-branding-position-top-left &,
+      .ancillary-mobile-bar-branding-position-top-center &,
+      .ancillary-mobile-bar-branding-position-top-right &,
+      .ancillary-mobile-bar-menu-icon-position-top-left &,
+      .ancillary-mobile-bar-menu-icon-position-top-center &,
+      .ancillary-mobile-bar-menu-icon-position-top-right &,
+      .ancillary-mobile-bar-search-icon-position-top-left &,
+      .ancillary-mobile-bar-search-icon-position-top-center &,
+      .ancillary-mobile-bar-search-icon-position-top-right &,
+      .ancillary-mobile-bar-cart-position-top-left &,
+      .ancillary-mobile-bar-cart-position-top-center &,
+      .ancillary-mobile-bar-cart-position-top-right & {
+        padding-top: @mobile-padding;
+        padding-bottom: @mobile-padding;
+      }
+
+
+      // Fixed
+      .tweak-mobile-bar-top-fixed & {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1001;
+      }
+
+    }
+
+    &--bottom {
+
+      // Padding
+      .ancillary-mobile-bar-branding-position-bottom-left &,
+      .ancillary-mobile-bar-branding-position-bottom-center &,
+      .ancillary-mobile-bar-branding-position-bottom-right &,
+      .ancillary-mobile-bar-menu-icon-position-bottom-left &,
+      .ancillary-mobile-bar-menu-icon-position-bottom-center &,
+      .ancillary-mobile-bar-menu-icon-position-bottom-right &,
+      .ancillary-mobile-bar-search-icon-position-bottom-left &,
+      .ancillary-mobile-bar-search-icon-position-bottom-center &,
+      .ancillary-mobile-bar-search-icon-position-bottom-right &,
+      .ancillary-mobile-bar-cart-position-bottom-left &,
+      .ancillary-mobile-bar-cart-position-bottom-center &,
+      .ancillary-mobile-bar-cart-position-bottom-right & {
+        padding-top: @mobile-padding;
+        padding-bottom: @mobile-padding;
+      }
+
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 1001;
+
+      width: 100%;
+
+      background: @tweak-mobile-bar-bottom-background-color;
+      .font-smoothing(@tweak-mobile-bar-bottom-background-color);
+
+
+    }
+
+
+
+    // -----------------------------------------
+
+    //  Elements
+
+    &-branding,
+    &-search,
+    &-menu,
+    .Cart {
+
+      padding: @mobile-padding;
+      line-height: 0;
+
+    }
+
+
+    // -----------------------------------------
+
+    //  Branding
+
+    &-branding {
+
+      .has-site-title & {
+        text-rendering: optimizeLegibility;
+
+        .tweak-mobile-bar-branding-site-title-font;
+        color: @tweak-mobile-bar-branding-site-title-color;
+      }
+
+      .has-logo-image & {
+        line-height: 0;
+      }
+
+      &-logo {
+        width: @tweak-mobile-bar-branding-logo-width;
+      }
+
+    }
+
+
+    // -----------------------------------------
+
+    //  Menu
+
+    &-menu {
+
+      .no-select;
+      stroke: @tweak-mobile-bar-menu-icon-color;
+
+    }
+
+
+    // -----------------------------------------
+
+    //  Search
+
+    &-search {
+
+      stroke: @tweak-mobile-bar-search-icon-color;
+
+    }
+
+
+    // -----------------------------------------
+
+    //  Cart
+
+    //  See cart.less
+
+  }
+
+}
+
+
+
+
+
+// =======================================================
+
+//    Overlays
+
+// =======================================================
+
+
+
+// Fix body when overlay active
+.is-mobile-overlay-active {
+
+  position: fixed;
+  width: 100%;
+
+}
+
+
+
+.Mobile-overlay {
+
+
+  @mobile-overlay-menu-offset: 20px + 2 * @mobile-padding + @icon--hamburger-width;
+  @mobile-overlay-padding: 36px;
+  @mobile-overlay-duration: 350ms;
+  @mobile-overlay-delay: @mobile-overlay-duration * 0.5;
+  @mobile-overlay-timing-function: cubic-bezier(.55,0,.1,1);
+
+  position: fixed;
+  top: 0;
+  left: -99999px;
+  bottom: 0;
+  z-index: 1010;
+  width: 100%;
+  .transition2(left 0s (@mobile-overlay-duration + @mobile-overlay-delay), background-color @mobile-overlay-duration @mobile-overlay-timing-function @mobile-overlay-delay);
+
+  // Active state
+  .is-mobile-overlay-active & {
+
+    left: 0;
+    background-color: @tweak-mobile-overlay-back-color;
+    .transition2(left 0s, background-color @mobile-overlay-duration @mobile-overlay-timing-function);
+
+  }
+
+
+  // HACK - load animation is added here for
+  // mobile webkit, which apparently renders
+  // transforms after the page has loaded,
+  // meaning the menu will show up on the page,
+  // and then slide out, even though it should
+  // start in the collapsed state.
+
+  .enable-load-effects & {
+
+    .animation (~"anim-opacity-99" (@mobile-overlay-duration + @mobile-overlay-delay) ~"linear");
+
+  }
+
+
+
+  // -----------------------------------------
+
+  //  Back
+
+  &-back {
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+
+  }
+
+
+
+  // -----------------------------------------
+
+  //  Close
+
+  &-close {
+
+    .button-style-reset;
+    display: none;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+
+    padding: ceil((@mobile-overlay-menu-offset - @icon--close-width) / 2);
+    line-height: 0;
+    stroke: transparent;
+
+    .transition2(stroke @mobile-overlay-duration @mobile-overlay-timing-function, background-color @mobile-overlay-duration @mobile-overlay-timing-function);
+
+    .tweak-mobile-overlay-close-show & { display: block; }
+
+    .tweak-mobile-overlay-slide-origin-left & { right: 0; }
+    .tweak-mobile-overlay-slide-origin-right & { left: 0; }
+
+    .is-mobile-overlay-active & {
+
+      background-color: @tweak-mobile-overlay-close-background-color;
+      stroke: @tweak-mobile-overlay-close-icon-color;
+      .transition2(stroke @mobile-overlay-duration @mobile-overlay-timing-function @mobile-overlay-delay, background-color @mobile-overlay-duration @mobile-overlay-timing-function @mobile-overlay-delay);
+
+    }
+
+    .Icon--close {
+
+      // For some reason, not making this display: block results in a subpixel
+      // width being calculated.
+      display: block;
+
+    }
+
+  }
+
+
+
+  // -----------------------------------------
+
+  //  Menu container
+
+  &-menu {
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 80%;
+    width: ~"calc(100% - " @mobile-overlay-menu-offset ~")";
+    overflow: hidden;
+    background-color: @tweak-mobile-overlay-menu-color;
+    .font-smoothing(@tweak-mobile-overlay-menu-color);
+
+
+    .tweak-mobile-overlay-slide-origin-left & {
+      .transform(translate3d(-100%, 0, 0));
+      .transition-webkit(-webkit-transform @mobile-overlay-duration @mobile-overlay-timing-function @mobile-overlay-delay);
+      .transition(transform @mobile-overlay-duration @mobile-overlay-timing-function @mobile-overlay-delay);
+    }
+
+    .tweak-mobile-overlay-slide-origin-left.is-mobile-overlay-active & {
+      .transform(translate3d(0, 0, 0));
+      .transition-webkit(-webkit-transform @mobile-overlay-duration @mobile-overlay-timing-function);
+      .transition(transform @mobile-overlay-duration @mobile-overlay-timing-function);
+    }
+
+    .tweak-mobile-overlay-slide-origin-right & {
+      right: 0;
+      .transform(translate3d(100%, 0, 0));
+      .transition-webkit(-webkit-transform @mobile-overlay-duration @mobile-overlay-timing-function @mobile-overlay-delay);
+      .transition(transform @mobile-overlay-duration @mobile-overlay-timing-function @mobile-overlay-delay);
+    }
+
+    .tweak-mobile-overlay-slide-origin-right.is-mobile-overlay-active & {
+      .transform(translate3d(0, 0, 0));
+      .transition-webkit(-webkit-transform @mobile-overlay-duration @mobile-overlay-timing-function);
+      .transition(transform @mobile-overlay-duration @mobile-overlay-timing-function);
+    }
+
+
+    &-main {
+
+      .border-box;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 3;
+      width: 100%;
+      padding: @mobile-overlay-padding;
+      overflow: auto;
+
+      .transition-webkit(-webkit-transform @mobile-overlay-duration @mobile-overlay-timing-function);
+      .transition(transform @mobile-overlay-duration @mobile-overlay-timing-function);
+
+      .has-active-folder & { .transform(translate3d(-100%, 0, 0)); }
+
+    }
+
+  }
+
+
+  // -----------------------------------------
+
+  //  Nav & Folder (Shared)
+
+  // First reset button styles for
+  // nav-item--folder and folder-item--toggle.
+  &-nav-item--folder,
+  &-folder-item--toggle {
+    .button-style-reset;
+  }
+
+  &-nav-item,
+  &-folder-item {
+
+    .border-box;
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 0.618em;
+    text-align: left;
+
+  }
+
+
+  // -----------------------------------------
+
+  //  Nav
+
+  &-nav {
+
+    &-item {
+
+      &--folder {
+
+        // &-label { vertical-align: middle; }
+
+        &:after {
+          content: '\00BB';
+          // vertical-align: middle;
+          font-family: sans-serif;
+          color: @tweak-mobile-overlay-menu-indicator-color;
+        }
+
+      }
+
+    }
+
+    &--secondary &-item:first-child {
+
+      padding-top: 1em;
+
+    }
+
+  }
+
+
+  // -----------------------------------------
+
+  //  Folders
+
+  &-folder {
+
+    .border-box;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    padding: @mobile-overlay-padding;
+    overflow: auto;
+
+    .transform(translate3d(100%, 0, 0));
+    .transition-webkit(-webkit-transform @mobile-overlay-duration @mobile-overlay-timing-function);
+    .transition(transform @mobile-overlay-duration @mobile-overlay-timing-function);
+
+    &.is-active-folder {
+
+      z-index: 2;
+      .transform(translate3d(0, 0, 0));
+
+    }
+
+    &-item {
+
+      &--toggle {
+
+        padding-bottom: 1.618em;
+
+        // &-label { vertical-align: middle; }
+
+        &:before {
+
+          content: '\00AB';
+          // vertical-align: middle;
+          font-family: sans-serif;
+          color: @tweak-mobile-overlay-menu-indicator-color;
+
+        }
+
+      }
+
+    }
+
+  }
+
+
+
+  // -----------------------------------------
+
+  //  Typography
+
+  &-folder-item {
+    .tweak-mobile-overlay-menu-primary-font;
+  }
+
+  &-folder-item {
+    color: @tweak-mobile-overlay-menu-primary-text-color;
+  }
+
+  &-folder-item--toggle {
+    .tweak-mobile-overlay-menu-secondary-font;
+  }
+
+  &-folder-item--toggle {
+    color: @tweak-mobile-overlay-menu-secondary-text-color;
+  }
+
+}
+
+
+// -----------------------------------------
+
+//  Button Styles
+
+
+.mixin-mobile-nav-style-button() {
+  display: table;
+  width: auto;
+  padding: 12px 18px;
+  margin-bottom: 6px;
+}
+
+.mixin-mobile-nav-button-style-colors(@style) when (@style = solid) {
+  background-color: @button-color;
+  .font-smoothing(@button-color);
+  color: @button-text-color;
+  &--folder:after {
+    color: @button-text-color;
+  }
+}
+
+.mixin-mobile-nav-button-style-colors(@style) when (@style = outline) {
+  border: 2px solid @button-color;
+  background-color: transparent;
+  color: @button-color;
+  &--folder:after {
+    color: @button-color;
+  }
+}
+
+.mixin-mobile-nav-button-style-colors(@style) when (@style = raised) {
+  @lightened-button-color: lighten(@button-color, 3%);
+  @darkened-button-color: darken(@button-color, 8%);
+  position: relative;
+  box-shadow: 0 2px 0 0 @darkened-button-color;
+  background-color: @button-color;
+  .font-smoothing(@button-color);
+  color: @button-text-color;
+  &--folder:after {
+    color: @button-text-color;
+  }
+  &:active {
+    top: 1px;
+    box-shadow: 0 1px 0 0 @darkened-button-color;
+  }
+}
+
+.mixin-mobile-nav-button-shape(@shape) when (@shape = rounded) {
+  border-radius: 3px;
+}
+.mixin-mobile-nav-button-shape(@shape) when (@shape = pill) {
+  border-radius: 300px;
+}
+
+.mixin-mobile-nav-button-style(@name, @button-style: solid) when (@name = primary) {
+  @button-color:        @tweak-mobile-overlay-menu-primary-button-color;
+  @button-text-color:   @tweak-mobile-overlay-menu-primary-button-text-color;
+  .mixin-mobile-nav-button-style-colors(@button-style);
+}
+
+.mixin-mobile-nav-button-style(@name, @button-style: solid) when (@name = secondary) {
+  @button-color:        @tweak-mobile-overlay-menu-secondary-button-color;
+  @button-text-color:   @tweak-mobile-overlay-menu-secondary-button-text-color;
+  .mixin-mobile-nav-button-style-colors(@button-style);
+}
+
+
+body:not(.tweak-mobile-overlay-menu-primary-style-button) {
+  .Mobile-overlay-nav--primary .Mobile-overlay-nav-item {
+    .tweak-mobile-overlay-menu-primary-font;
+    color: @tweak-mobile-overlay-menu-primary-text-color;
+  }
+}
+
+.tweak-mobile-overlay-menu-primary-style-button {
+
+  // General
+  .Mobile-overlay-nav--primary .Mobile-overlay-nav-item {
+    .tweak-mobile-overlay-menu-primary-button-font;
+    .mixin-mobile-nav-style-button();
+  }
+
+  // Shape
+  &.tweak-mobile-overlay-menu-primary-button-shape-square {
+    .Mobile-overlay-nav--primary .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-shape(square);
+    }
+  }
+  &.tweak-mobile-overlay-menu-primary-button-shape-rounded {
+    .Mobile-overlay-nav--primary .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-shape(rounded);
+    }
+  }
+  &.tweak-mobile-overlay-menu-primary-button-shape-pill {
+    .Mobile-overlay-nav--primary .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-shape(pill);
+    }
+  }
+
+  // Style
+  &.tweak-mobile-overlay-menu-primary-button-style-solid {
+    .Mobile-overlay-nav--primary .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-style(primary, solid);
+    }
+  }
+  &.tweak-mobile-overlay-menu-primary-button-style-outline {
+    .Mobile-overlay-nav--primary .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-style(primary, outline);
+    }
+  }
+  &.tweak-mobile-overlay-menu-primary-button-style-raised {
+    .Mobile-overlay-nav--primary .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-style(primary, raised);
+    }
+  }
+
+}
+
+
+
+body:not(.tweak-mobile-overlay-menu-secondary-style-button) {
+  .Mobile-overlay-nav--secondary .Mobile-overlay-nav-item {
+    .tweak-mobile-overlay-menu-secondary-font;
+    color: @tweak-mobile-overlay-menu-secondary-text-color;
+  }
+}
+
+.tweak-mobile-overlay-menu-secondary-style-button {
+
+  // General
+  .Mobile-overlay-nav--secondary .Mobile-overlay-nav-item {
+    .tweak-mobile-overlay-menu-secondary-button-font;
+    .mixin-mobile-nav-style-button();
+  }
+
+  // Shape
+  &.tweak-mobile-overlay-menu-secondary-button-shape-square {
+    .Mobile-overlay-nav--secondary .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-shape(square);
+    }
+  }
+  &.tweak-mobile-overlay-menu-secondary-button-shape-rounded {
+    .Mobile-overlay-nav--secondary .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-shape(rounded);
+    }
+  }
+  &.tweak-mobile-overlay-menu-secondary-button-shape-pill {
+    .Mobile-overlay-nav--secondary .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-shape(pill);
+    }
+  }
+
+  // Style
+  &.tweak-mobile-overlay-menu-secondary-button-style-solid {
+    .Mobile-overlay-nav--secondary .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-style(secondary, solid);
+    }
+  }
+  &.tweak-mobile-overlay-menu-secondary-button-style-outline {
+    .Mobile-overlay-nav--secondary .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-style(secondary, outline);
+    }
+  }
+  &.tweak-mobile-overlay-menu-secondary-button-style-raised {
+    .Mobile-overlay-nav--secondary .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-style(secondary, raised);
+    }
+  }
+
+}

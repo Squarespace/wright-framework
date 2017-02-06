@@ -1,0 +1,156 @@
+<!doctype html>
+<html {.if authenticatedAccount}data-authenticated-account{.end}>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1">
+
+    {squarespace-headers}
+  </head>
+  <body id="{squarespace.page-id}" class="{squarespace.page-classes}{.if website.logoImageUrl} has-logo-image{.or} has-site-title{.end}{.if website.siteTagLine} has-tagline{.end}{.if website.socialAccounts.0} has-social{.end}{.if showCart} has-cart{.end}{.if item}{.or}{.equal? collection.typeName "index"}{.section collection}{.repeated section collections}{.background-source-video?} has-parallax-images{.or}{.section mainImage} has-parallax-images{.end}{.end}{.end}{.end}{.or}{.section collection}{.background-source-video?} has-parallax-images{.or}{.section mainImage} has-parallax-images{.end}{.end}{.end}{.end}{.end} enable-load-effects<squarespace:navigation navigationId="mainNavigation">{.if items.0} has-primary-nav{.end}</squarespace:navigation><squarespace:navigation navigationId="secondaryNavigation">{.if items.0} has-secondary-nav{.end}</squarespace:navigation><squarespace:navigation navigationId="footerMainNavigation">{.if items.0} has-footer-nav{.end}</squarespace:navigation>" data-controller="SiteLoader, MobileClassname">
+
+    <div class="Loader"></div>
+
+    {@|apply mobile.block}
+
+    <div class="Parallax-host-outer">
+      <div class="Parallax-host" data-parallax-host>
+        {.equal? collection.typeName "index"}
+          {.section collection}
+            {.repeated section collections}
+              {.var @collectionId id}
+              {.background-source-video?}
+                <div class="Parallax-item" data-parallax-item data-parallax-id="{@collectionId}"></div>
+              {.or}
+                {.section mainImage}
+                  <div class="Parallax-item" data-parallax-item data-parallax-id="{@collectionId}"></div>
+                {.end}
+              {.end}
+            {.end}
+          {.end}
+        {.or}
+          {.if item}{.or}
+            {.section collection}
+              {.var @collectionId id}
+              {.background-source-video?}
+                <div class="Parallax-item" data-parallax-item data-parallax-id="{@collectionId}"></div>
+              {.or}
+                {.section mainImage}
+                  <div class="Parallax-item" data-parallax-item data-parallax-id="{@collectionId}"></div>
+                {.end}
+              {.end}
+            {.end}
+          {.end}
+        {.end}
+      </div>
+    </div>
+
+    <div class="Site" data-nc-base="header" data-controller="AncillaryLayout">
+      <div class="sqs-announcement-bar-dropzone"></div>
+
+      <header class="Header Header--top">
+        <div class="Header-inner Header-inner--top" data-nc-group="top">
+          <div data-nc-container="top-left">
+
+            <div class="Header-search" data-nc-element="search">
+              <form class="Header-search-form" action="/search" method="get">
+                <input class="Header-search-form-input" name="q" type="text" spellcheck="false" value="" autocomplete="off" placeholder="Search" />
+                <button class="Header-search-form-submit" type="submit" data-test="template-search">
+                  <svg class="Icon Icon--search--small" viewBox="0 0 20 20">
+                    <use xlink:href="/assets/ui-icons.svg#search-icon--small"></use>
+                  </svg>
+                  <svg class="Icon Icon--search" viewBox="0 0 20 20">
+                    <use xlink:href="/assets/ui-icons.svg#search-icon"></use>
+                  </svg>
+                </button>
+              </form>
+            </div>
+
+          </div>
+          <div data-nc-container="top-center">
+            {.if website.socialAccounts.0}
+              <div class="Header-social" data-nc-element="social">
+                {@|apply social-links.block}
+              </div>
+            {.end}
+          </div>
+          <div data-nc-container="top-right">
+
+            {@|apply cart.block}
+
+          </div>
+        </div>
+      </header>
+
+      <div class="Site-inner{.equal? collection.typeName "index"} Site-inner--index{.end}"{.equal? collection.typeName "index"}{.section collection}{.section collections.0}{.equal? typeName "page"}{.background-source-video?} data-controller="HeaderOverlay"{.or}{.section mainImage} data-controller="HeaderOverlay"{.end}{.end}{.end}{.end}{.end}{.or}{.if item}{.or}{.section collection}{.background-source-video?} data-controller="HeaderOverlay"{.or}{.section mainImage} data-controller="HeaderOverlay"{.end}{.end}{.end}{.end}{.end}>
+
+        <header class="Header Header--bottom{.if item}{.or}{.equal? collection.typeName "index"}{.section collection}{.section collections.0}{.equal? typeName "page"}{.background-source-video?} Header--overlay{.or}{.section mainImage} Header--overlay{.end}{.end}{.end}{.end}{.end}{.or}{.section collection}{.background-source-video?} Header--overlay{.or}{.section mainImage} Header--overlay{.end}{.end}{.end}{.end}{.end}">
+          <div class="Header-inner Header-inner--bottom" data-nc-group="bottom">
+            <div data-nc-container="bottom-left">
+              <nav class="Header-nav Header-nav--primary" data-nc-element="primary-nav" data-content-field="navigation">
+                <squarespace:navigation navigationId="mainNavigation" template="header-nav" />
+              </nav>
+            </div>
+            <div data-nc-container="bottom-center">
+
+              <a href="/" class="Header-branding" data-nc-element="branding" data-content-field="site-title">
+                {.section website}
+                  {.section logoImageUrl}
+                    <img src="{logoImageUrl}?format=1500w" alt="{siteTitle}" class="Header-branding-logo" />
+                  {.or}
+                    {siteTitle}
+                  {.end}
+                {.end}
+              </a>
+              {.section website}{.section siteTagLine}<div class="Header-tagline" data-nc-element="tagline">{@}</div>{.end}{.end}
+
+            </div>
+            <div data-nc-container="bottom-right">
+
+              <nav class="Header-nav Header-nav--secondary" data-nc-element="secondary-nav" data-content-field="navigation">
+                <squarespace:navigation navigationId="secondaryNavigation" template="header-nav" />
+              </nav>
+
+            </div>
+          </div>
+        </header>
+
+        <div class="Content-outer">
+          {.if collection}{.if item}{.or}{.equal? collection.typeName "index"}{.or}
+            {.equal? collection.typeName "page"}
+              {.section collection}
+                {.background-source-video?}
+                  {@|apply intro.block}
+                {.or}
+                  {.if mainImage}
+                    {@|apply intro.block}
+                  {.end}
+                {.end}
+              {.end}
+            {.or}
+              {collection|apply intro.block}
+            {.end}
+          {.end}{.end}{.end}
+
+          <main class="{.equal? collection.typeName "index"}Index{.or}Main{.if collection.typeName} Main--{collection.typeName}{.equal? collection.typeName "page"}{.or}{.if item}-item{.or}-list{.end}{.end}{.end}{.end}" {.equal? collection.typeName "index"}data-collection-id="{collection.id}"{.end}{.equal? collection.typeName "index"} data-controller="Parallax"{.end}>
+            {.equal? collection.typeName "index"}
+              {squarespace.main-content}
+            {.or}
+              <section class="Main-content" data-content-field="main-content">
+                {squarespace.main-content}
+              </section>
+            {.end}
+          </main>
+
+        </div>
+      </div>
+
+      {@|apply footer.block}
+
+    </div>
+
+    <squarespace:script src="site-bundle.js" combo="false" />
+
+    {squarespace-footers}
+
+  </body>
+</html>

@@ -1,0 +1,30 @@
+{.section items}
+  {.repeated section @}
+    {.collection?}
+      {.folder?}
+        {.index?}
+          {.section collection}
+            <a href="{fullUrl}" class="Mobile-overlay-nav-item">
+              {navigationTitle}
+            </a>
+          {.end}
+        {.or}
+          <button class="Mobile-overlay-nav-item Mobile-overlay-nav-item--folder" data-controller-folder-toggle="{collection.urlId}">
+            <span class="Mobile-overlay-nav-item--folder-label">{collection.navigationTitle}</span>
+          </button>
+        {.end}
+      {.or}
+        {.section collection}
+          <a href="{fullUrl}" class="Mobile-overlay-nav-item">
+            {navigationTitle}
+          </a>
+        {.end}
+      {.end}
+    {.end}
+    {.section externalLink}
+      <a href="{url}"{.section newWindow} target="_blank"{.end} class="Mobile-overlay-nav-item">
+        {title}
+      </a>
+    {.end}
+  {.end}
+{.end}
