@@ -19,13 +19,13 @@
     "watch": "squarespace assemble --watch & webpack --watch"
   },
   "dependencies": {
-    "@squarespace/ancillary": "1.0.0",
-    "@squarespace/controller": "1.0.0",
+    "@squarespace/ancillary": "1.0.1",
+    "@squarespace/controller": "1.0.1",
     "@squarespace/core": "1.0.1",
-    "@squarespace/darwin": "1.0.1",
-    "@squarespace/mercury": "1.0.0",
-    "@squarespace/social-links": "1.0.0",
-    "@squarespace/video-background": "1.0.0",
+    "@squarespace/darwin": "1.0.2",
+    "@squarespace/mercury": "1.1.1",
+    "@squarespace/social-links": "1.0.2",
+    "@squarespace/video-background": "1.0.2",
     "babel-runtime": "6.22.0",
     "jump.js": "1.0.2",
     "raf": "3.3.0"
