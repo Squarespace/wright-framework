@@ -14,7 +14,7 @@
     "deploy": "squarespace setup && squarespace deploy",
     "lint": "eslint scripts",
     "start": "squarespace setup && (npm run watch & npm run server)",
-    "server": "squarespace runserver",
+    "server": "squarespace runserver --auth",
     "server:auth": "npm run server -- --run-authenticated",
     "watch": "squarespace assemble --watch & webpack --watch"
   },
