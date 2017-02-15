@@ -31,7 +31,7 @@
     "raf": "3.3.0"
   },
   "devDependencies": {
-    "@squarespace/toolbelt": "^0.7.5",
+    "@squarespace/toolbelt": "^0.7.6",
     "babel-core": "^6.17.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
@@ -41,5 +41,8 @@
     "eslint": "^3.14.1",
     "eslint-config-squarespace": "^1.0.0",
     "webpack": "^1.14.0"
+  },
+  "squarespace": {
+    "templateId": "brine-demo"
   }
 }
