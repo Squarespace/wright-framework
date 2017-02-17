@@ -201,6 +201,7 @@
   .ancillary-header-social-position-top-left.has-social,
   .ancillary-header-search-position-top-left,
   .ancillary-header-cart-position-top-left.has-cart,
+  .ancillary-header-account-position-top-left.has-user-accounts,
   .ancillary-header-branding-position-top-center,
   .ancillary-header-tagline-position-top-center.has-tagline,
   .ancillary-header-primary-nav-position-top-center.has-primary-nav,
@@ -208,13 +209,15 @@
   .ancillary-header-social-position-top-center.has-social,
   .ancillary-header-search-position-top-center,
   .ancillary-header-cart-position-top-center.has-cart,
+  .ancillary-header-account-position-top-center.has-user-accounts,
   .ancillary-header-branding-position-top-right,
   .ancillary-header-tagline-position-top-right.has-tagline,
   .ancillary-header-primary-nav-position-top-right.has-primary-nav,
   .ancillary-header-secondary-nav-position-top-right.has-secondary-nav,
   .ancillary-header-social-position-top-right.has-social,
   .ancillary-header-search-position-top-right,
-  .ancillary-header-cart-position-top-right.has-cart {
+  .ancillary-header-cart-position-top-right.has-cart,
+  .ancillary-header-account-position-top-right.has-user-accounts {
     [data-nc-base="header"] [data-nc-group="top"] {
       .nc-parent;
     }
@@ -226,6 +229,7 @@
   .ancillary-header-social-position-bottom-left.has-social,
   .ancillary-header-search-position-bottom-left,
   .ancillary-header-cart-position-bottom-left.has-cart,
+  .ancillary-header-account-position-bottom-left.has-user-accounts,
   .ancillary-header-branding-position-bottom-center,
   .ancillary-header-tagline-position-bottom-center.has-tagline,
   .ancillary-header-primary-nav-position-bottom-center.has-primary-nav,
@@ -233,13 +237,15 @@
   .ancillary-header-social-position-bottom-center.has-social,
   .ancillary-header-search-position-bottom-center,
   .ancillary-header-cart-position-bottom-center.has-cart,
+  .ancillary-header-account-position-bottom-center.has-user-accounts,
   .ancillary-header-branding-position-bottom-right,
   .ancillary-header-tagline-position-bottom-right.has-tagline,
   .ancillary-header-primary-nav-position-bottom-right.has-primary-nav,
   .ancillary-header-secondary-nav-position-bottom-right.has-secondary-nav,
   .ancillary-header-social-position-bottom-right.has-social,
   .ancillary-header-search-position-bottom-right,
-  .ancillary-header-cart-position-bottom-right.has-cart {
+  .ancillary-header-cart-position-bottom-right.has-cart,
+  .ancillary-header-account-position-bottom-right.has-user-accounts {
     [data-nc-base="header"] [data-nc-group="bottom"] {
       .nc-parent;
     }
@@ -255,6 +261,7 @@
   [data-nc-element="tagline"] { .nc-order(5); }
   [data-nc-element="social"] { .nc-order(6); }
   [data-nc-element="cart"] { .nc-order(7); }
+  [data-nc-element="account"] { .nc-order(8); }
   .nc-display(hide);
 }
 .ancillary-header-top-left-layout-stacked [data-nc-base="header"] [data-nc-container="top-left"] {
@@ -270,7 +277,8 @@
 .ancillary-header-secondary-nav-position-top-left.has-secondary-nav,
 .ancillary-header-social-position-top-left.has-social,
 .ancillary-header-search-position-top-left,
-.ancillary-header-cart-position-top-left.has-cart {
+.ancillary-header-cart-position-top-left.has-cart,
+.ancillary-header-account-position-top-left.has-user-accounts {
   [data-nc-base="header"] [data-nc-container="top-left"] {
     .nc-display(show);
   }
@@ -284,6 +292,7 @@
   [data-nc-element="social"] { .nc-order(5); }
   [data-nc-element="search"] { .nc-order(6); }
   [data-nc-element="cart"] { .nc-order(7); }
+  [data-nc-element="account"] { .nc-order(8); }
   .nc-display(hide);
 }
 .ancillary-header-top-center-layout-stacked [data-nc-base="header"] [data-nc-container="top-center"] {
@@ -299,7 +308,8 @@
 .ancillary-header-secondary-nav-position-top-center.has-secondary-nav,
 .ancillary-header-social-position-top-center.has-social,
 .ancillary-header-search-position-top-center,
-.ancillary-header-cart-position-top-center.has-cart {
+.ancillary-header-cart-position-top-center.has-cart,
+.ancillary-header-account-position-top-center.has-user-accounts {
   [data-nc-base="header"] [data-nc-container="top-center"] {
     .nc-display(show);
   }
@@ -324,14 +334,26 @@
   &.ancillary-header-secondary-nav-position-top-center.ancillary-header-cart-position-top-center {
     [data-nc-base="header"] [data-nc-element="secondary-nav"] { .nc-order(2); }
   }
+  &.ancillary-header-secondary-nav-position-top-center.ancillary-header-account-position-top-center {
+    [data-nc-base="header"] [data-nc-element="secondary-nav"] { .nc-order(2); }
+  }
   &.ancillary-header-social-position-top-center.ancillary-header-search-position-top-center {
     [data-nc-base="header"] [data-nc-element="social"] { .nc-order(2); }
   }
   &.ancillary-header-social-position-top-center.ancillary-header-cart-position-top-center {
     [data-nc-base="header"] [data-nc-element="social"] { .nc-order(2); }
   }
+  &.ancillary-header-social-position-top-center.ancillary-header-account-position-top-center {
+    [data-nc-base="header"] [data-nc-element="social"] { .nc-order(2); }
+  }
   &.ancillary-header-search-position-top-center.ancillary-header-cart-position-top-center {
     [data-nc-base="header"] [data-nc-element="search"] { .nc-order(2); }
+  }
+  &.ancillary-header-search-position-top-center.ancillary-header-account-position-top-center {
+    [data-nc-base="header"] [data-nc-element="search"] { .nc-order(2); }
+  }
+  &.ancillary-header-cart-position-top-center.ancillary-header-account-position-top-center {
+    [data-nc-base="header"] [data-nc-element="cart"] { .nc-order(2); }
   }
 }
 [data-nc-base="header"] [data-nc-container="top-right"] {
@@ -343,6 +365,7 @@
   [data-nc-element="search"] { .nc-order(5); }
   [data-nc-element="branding"] { .nc-order(6); }
   [data-nc-element="cart"] { .nc-order(7); }
+  [data-nc-element="account"] { .nc-order(7); }
   .nc-display(hide);
 }
 .ancillary-header-top-right-layout-stacked [data-nc-base="header"] [data-nc-container="top-right"] {
@@ -358,7 +381,8 @@
 .ancillary-header-secondary-nav-position-top-right.has-secondary-nav,
 .ancillary-header-social-position-top-right.has-social,
 .ancillary-header-search-position-top-right,
-.ancillary-header-cart-position-top-right.has-cart {
+.ancillary-header-cart-position-top-right.has-cart,
+.ancillary-header-account-position-top-right.has-user-accounts {
   [data-nc-base="header"] [data-nc-container="top-right"] {
     .nc-display(show);
   }
@@ -372,6 +396,7 @@
   [data-nc-element="tagline"] { .nc-order(5); }
   [data-nc-element="social"] { .nc-order(6); }
   [data-nc-element="cart"] { .nc-order(7); }
+  [data-nc-element="account"] { .nc-order(8); }
   .nc-display(hide);
 }
 .ancillary-header-bottom-left-layout-stacked [data-nc-base="header"] [data-nc-container="bottom-left"] {
@@ -387,7 +412,8 @@
 .ancillary-header-secondary-nav-position-bottom-left.has-secondary-nav,
 .ancillary-header-social-position-bottom-left.has-social,
 .ancillary-header-search-position-bottom-left,
-.ancillary-header-cart-position-bottom-left.has-cart {
+.ancillary-header-cart-position-bottom-left.has-cart,
+.ancillary-header-account-position-bottom-left.has-user-accounts {
   [data-nc-base="header"] [data-nc-container="bottom-left"] {
     .nc-display(show);
   }
@@ -401,6 +427,7 @@
   [data-nc-element="social"] { .nc-order(5); }
   [data-nc-element="search"] { .nc-order(6); }
   [data-nc-element="cart"] { .nc-order(7); }
+  [data-nc-element="account"] { .nc-order(8); }
   .nc-display(hide);
 }
 .ancillary-header-bottom-center-layout-stacked [data-nc-base="header"] [data-nc-container="bottom-center"] {
@@ -416,7 +443,8 @@
 .ancillary-header-secondary-nav-position-bottom-center.has-secondary-nav,
 .ancillary-header-social-position-bottom-center.has-social,
 .ancillary-header-search-position-bottom-center,
-.ancillary-header-cart-position-bottom-center.has-cart {
+.ancillary-header-cart-position-bottom-center.has-cart,
+.ancillary-header-account-position-bottom-center.has-user-accounts {
   [data-nc-base="header"] [data-nc-container="bottom-center"] {
     .nc-display(show);
   }
@@ -441,14 +469,26 @@
   &.ancillary-header-secondary-nav-position-bottom-center.ancillary-header-cart-position-bottom-center {
     [data-nc-base="header"] [data-nc-element="secondary-nav"] { .nc-order(2); }
   }
+  &.ancillary-header-secondary-nav-position-bottom-center.ancillary-header-account-position-bottom-center {
+    [data-nc-base="header"] [data-nc-element="secondary-nav"] { .nc-order(2); }
+  }
   &.ancillary-header-social-position-bottom-center.ancillary-header-search-position-bottom-center {
     [data-nc-base="header"] [data-nc-element="social"] { .nc-order(2); }
   }
   &.ancillary-header-social-position-bottom-center.ancillary-header-cart-position-bottom-center {
     [data-nc-base="header"] [data-nc-element="social"] { .nc-order(2); }
   }
+  &.ancillary-header-social-position-bottom-center.ancillary-header-account-position-bottom-center {
+    [data-nc-base="header"] [data-nc-element="social"] { .nc-order(2); }
+  }
   &.ancillary-header-search-position-bottom-center.ancillary-header-cart-position-bottom-center {
     [data-nc-base="header"] [data-nc-element="search"] { .nc-order(2); }
+  }
+  &.ancillary-header-search-position-bottom-center.ancillary-header-account-position-bottom-center {
+    [data-nc-base="header"] [data-nc-element="search"] { .nc-order(2); }
+  }
+  &.ancillary-header-cart-position-bottom-center.ancillary-header-account-position-bottom-center {
+    [data-nc-base="header"] [data-nc-element="cart"] { .nc-order(2); }
   }
 }
 [data-nc-base="header"] [data-nc-container="bottom-right"] {
@@ -460,6 +500,7 @@
   [data-nc-element="search"] { .nc-order(5); }
   [data-nc-element="branding"] { .nc-order(6); }
   [data-nc-element="cart"] { .nc-order(7); }
+  [data-nc-element="account"] { .nc-order(8); }
   .nc-display(hide);
 }
 .ancillary-header-bottom-right-layout-stacked [data-nc-base="header"] [data-nc-container="bottom-right"] {
@@ -475,7 +516,8 @@
 .ancillary-header-secondary-nav-position-bottom-right.has-secondary-nav,
 .ancillary-header-social-position-bottom-right.has-social,
 .ancillary-header-search-position-bottom-right,
-.ancillary-header-cart-position-bottom-right.has-cart {
+.ancillary-header-cart-position-bottom-right.has-cart,
+.ancillary-header-account-position-bottom-right.has-user-accounts {
   [data-nc-base="header"] [data-nc-container="bottom-right"] {
     .nc-display(show);
   }

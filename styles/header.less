@@ -854,3 +854,32 @@ body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secon
 
 
 
+
+
+// =======================================================
+
+//    User Accounts
+
+// =======================================================
+
+.Header-account {
+  // Override
+  outline: 0;
+  background: transparent;
+  border: 0;
+  padding: 0;
+
+  display: none;
+  white-space: nowrap;
+  .tweak-header-account-font;
+  color: @tweak-header-account-color;
+  .Header--overlay & {
+    color: @tweak-header-overlay-account-color;
+  }
+
+  &.loaded {
+    display: inline-block;
+  }
+}
+
+

@@ -17,7 +17,8 @@ const desktopLayoutTweaks = [
   'ancillary-header-secondary-nav-position',
   'ancillary-header-social-position',
   'ancillary-header-search-position',
-  'ancillary-header-cart-position'
+  'ancillary-header-cart-position',
+  'ancillary-header-account-position'
 ];
 
 

@@ -113,6 +113,8 @@
 // tweak: { "category" : "Header: Layout", "label" : "Search Position", "title" : "ancillary-header-search-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right"], "default" : "Top Left", "target" : ".Header--top, .Header--bottom, .Header-search" }
 
 // tweak: { "category" : "Header: Layout", "label" : "Cart Position", "title" : "ancillary-header-cart-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right"], "default" : "Top Left", "target" : ".Header--top, .Header--bottom, .Header .Cart", "showOnlyWhenPresent" : ".has-cart" }
+//
+// tweak: { "category" : "Header: Layout", "label" : "User Account Link Position", "title" : "ancillary-header-account-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right"], "default" : "Hide", "target" : ".Header--top, .Header--bottom, .Header-account", "showOnlyWhenPresent" : ".has-user-accounts" }
 
 
 
@@ -372,6 +374,28 @@
 // tweak: { "category": "Header: Cart", "label" : "Quantity Text Color (Overlay)", "title" : "tweak-header-overlay-cart-flag-text-color", "type" : "color", "target" : ".Header .Cart", "showOnlyWhenPresent" : ".has-cart.tweak-header-cart-style-cart:not(.ancillary-header-cart-position-hide) .Header--overlay .Cart" }
 @tweak-header-overlay-cart-flag-text-color: #ffffff;
 
+
+
+// -----------------------------------------
+
+//  User Accounts
+
+// tweak: { "category": "Header: User Account Link", "label" : "Font", "title" : "tweak-header-account-font", "type" : "font", "target" : ".Header-account", "showOnlyWhenPresent" : ".has-site-title:not(.ancillary-header-branding-position-hide)" }
+.tweak-header-account-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0em;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+// tweak: { "category": "Header: User Account Link", "label" : "Color", "title" : "tweak-header-account-color", "type" : "color", "target" : ".Header-account", "showOnlyWhenPresent" : ".has-user-accounts:not(.ancillary-header-account-position-hide) .Header:not(.Header--overlay) .Header-account" }
+@tweak-header-account-color: #111111;
+
+// tweak: { "category": "Header: User Account Link", "label" : "Color (Overlay)", "title" : "tweak-header-overlay-account-color", "type" : "color", "target" : ".Header-account", "showOnlyWhenPresent" : ".has-user-accounts:not(.ancillary-header-account-position-hide) .Header--overlay .Header-account" }
+@tweak-header-overlay-account-color: #ffffff;
 
 
 
