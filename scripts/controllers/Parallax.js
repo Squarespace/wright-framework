@@ -207,33 +207,13 @@ function Parallax(element) {
     });
   };
 
-  /**
-   * Based on whether parallax is enabled or not, move elements into the proper
-   * containers (or remove them), position them, size them, and load images.
-   * @param  {Boolean} force  Here you can force all elements to update even if
-   *                          updateAllMatrixItems hasn't picked up any changes
-   *                          to their position or size. Useful for changes
-   *                          propagated by /config
-   */
-  const syncParallax = (force) => {
+  const moveParallaxElements = () => {
     const parallaxHost = document.body.querySelector('[data-parallax-host]');
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    windowHeight = window.innerHeight;
 
-    const hasUpdated = updateAllMatrixItems();
-    if (!hasUpdated && force === false) {
-      return;
-    }
-
-    matrix.filter((matrixItem) => {
+    matrix = matrix.filter((matrixItem) => {
       const {
         originalNode,
-        mediaWrapper,
-        mediaElement,
-        top,
-        left,
-        width,
-        height
+        mediaWrapper
       } = matrixItem;
       let { parallaxItem } = matrixItem;
 
@@ -263,6 +243,31 @@ function Parallax(element) {
           parallaxItem.appendChild(mediaWrapper);
         }
 
+      } else if (mediaWrapper.parentNode !== originalNode) {
+        // Parallax is off, so if the mediaWrapper is not in its original
+        // node, move it back.
+        originalNode.appendChild(mediaWrapper);
+      }
+
+      return true;
+    });
+  };
+
+  const applyParallaxStyles = () => {
+
+    matrix.forEach((matrixItem) => {
+      const {
+        mediaWrapper,
+        mediaElement,
+        top,
+        left,
+        width,
+        height
+      } = matrixItem;
+      let { parallaxItem } = matrixItem;
+
+      if (isParallaxEnabled()) {
+
         // Apply styles to parallaxItem so it has the right position
         parallaxItem.style.top = top + 'px';
         parallaxItem.style.left = left + 'px';
@@ -272,18 +277,7 @@ function Parallax(element) {
         // Offset top of mediaWrapper to allow for room to scroll
         mediaWrapper.style.top = (-1 * parallaxOffset) + 'px';
 
-        // Load image only
-        loadImage(mediaElement);
-
-        // Add loaded class
-        mediaWrapper.classList.add('loaded');
-
       } else {
-        // Parallax is off, so if the mediaWrapper is not in its original
-        // node, move it back.
-        if (mediaWrapper.parentNode !== originalNode) {
-          originalNode.appendChild(mediaWrapper);
-        }
 
         // Parallax is off, but if it was on at some point, we'll need to
         // clear styles from affected elements
@@ -308,9 +302,29 @@ function Parallax(element) {
 
       // Add loaded class
       mediaWrapper.classList.add('loaded');
-
-      return true;
     });
+
+  };
+
+  /**
+   * Based on whether parallax is enabled or not, move elements into the proper
+   * containers (or remove them), position them, size them, and load images.
+   * @param  {Boolean} force  Here you can force all elements to update even if
+   *                          updateAllMatrixItems hasn't picked up any changes
+   *                          to their position or size. Useful for changes
+   *                          propagated by /config
+   */
+  const syncParallax = (force = false) => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    windowHeight = window.innerHeight;
+
+    const hasUpdated = updateAllMatrixItems();
+    if (!hasUpdated && force === false) {
+      return;
+    }
+
+    moveParallaxElements();
+    applyParallaxStyles();
 
     // Calculate proper position of images by calling scroll
     if (isParallaxEnabled()) {
@@ -366,6 +380,7 @@ function Parallax(element) {
    */
   const init = () => {
     initParallax();
+    moveParallaxElements();
     window.requestAnimationFrame(syncParallax);
     bindListeners();
     darwin = new Darwin({
