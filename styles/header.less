@@ -601,9 +601,6 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
 
 .mixin-header-search(@option, @text-color, @icon-color, @border-color, @background-color) {
   .Header-search {
-    color: @text-color;
-    .placeholder-color(@text-color, 0.5);
-
     // Force stroke alpha to 1 because overlapping
     // handle and circle strokes will look bad with
     // semi-transparent colors. Apply alpha as opacity
@@ -613,6 +610,10 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
   .Header-search-form-submit:hover { opacity: alpha(@icon-color); }
 }
 .mixin-header-search(@option, @text-color, @icon-color, @border-color, @background-color) when (@option = underlined) {
+  .Header-search {
+    color: @text-color;
+    .placeholder-color(@text-color, 0.5);
+  }
   .Header-search-form-input {
     border-color: rgba(red(@border-color), green(@border-color), blue(@border-color), alpha(@border-color));
   }
@@ -621,6 +622,10 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
 }
 
 .mixin-header-search(@option, @text-color, @icon-color, @border-color, @background-color) when (@option = rectangle) {
+  .Header-search {
+    color: @text-color;
+    .placeholder-color(@text-color, 0.5);
+  }
   .Header-search-form {
     background-color: @background-color;
     .font-smoothing(@background-color);
@@ -628,6 +633,15 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
   // Show small search icon
   .Header-search .Icon--search--small { display: block; }
 }
+
+.mixin-header-search(@option, @text-color, @icon-color, @border-color, @background-color) when (@option = icon) {
+  .Header-search-form-input {
+    display: none;
+  }
+  // Show small search icon
+  .Header-search .Icon--search--small { display: block; }
+}
+
 
 .Header-search {
   @header-search-padding: 0.5em;
@@ -638,6 +652,7 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
 
     display: inline-block;
     vertical-align: middle;
+    line-height: 0;
 
     &-input {
 
@@ -649,13 +664,13 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
       max-width: 100%;
       outline: 0;
       border: 0;
-      padding: @header-search-padding 0;
       background-color: transparent;
 
       @{header-collapse-selector} & { width: 5em; }
 
       .tweak-header-search-style-underlined & {
         border-bottom: 1px solid;
+        padding-bottom: 0.5em;
       }
 
     }
@@ -670,16 +685,24 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
     }
 
     .tweak-header-search-style-rectangle & {
-
-      padding-left: @header-search-padding;
-      padding-right: @header-search-padding;
-
+      padding: 0.5em 0.8em;
     }
 
   }
 
-  .Icon { display: none; }
+  .tweak-header-search-style-icon-only & {
+    line-height: 0;
+  }
 
+  .Icon { display: none; }
+  .Icon--search {
+    width: round(@icon--search-width * @tweak-header-search-icon-scale);
+    height: round(@icon--search-width * @tweak-header-search-icon-scale);
+  }
+  .Icon--search--small {
+    width: round(@icon--search--small-width * @tweak-header-search-icon-scale);
+    height: round(@icon--search--small-width * @tweak-header-search-icon-scale);
+  }
 }
 
 .Header-search { .tweak-header-search-font; }
@@ -690,6 +713,10 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
 .tweak-header-search-style-rectangle {
   .mixin-header-search(rectangle, @tweak-header-search-text-color, @tweak-header-search-icon-color, @tweak-header-search-border-color, @tweak-header-search-background-color);
   .Header--overlay { .mixin-header-search(rectangle, @tweak-header-overlay-search-text-color, @tweak-header-overlay-search-icon-color, @tweak-header-overlay-search-border-color, @tweak-header-overlay-search-background-color); }
+}
+.tweak-header-search-style-icon-only {
+  .mixin-header-search(icon, @tweak-header-search-text-color, @tweak-header-search-icon-color, @tweak-header-search-border-color, @tweak-header-search-background-color);
+  .Header--overlay { .mixin-header-search(icon, @tweak-header-overlay-search-text-color, @tweak-header-overlay-search-icon-color, @tweak-header-overlay-search-border-color, @tweak-header-overlay-search-background-color); }
 }
 
 
