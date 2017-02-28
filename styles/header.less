@@ -204,6 +204,15 @@
 
 // =======================================================
 
+.mixin-header-nav(@name, @colors, @option, @button-style: solid) when (@name = primary) {
+  .Header-nav-inner { margin: (-1 * @tweak-header-primary-nav-link-spacing); }
+  .Header-nav-item { margin: @tweak-header-primary-nav-link-spacing; }
+}
+
+.mixin-header-nav(@name, @colors, @option, @button-style: solid) when (@name = secondary) {
+  .Header-nav-inner { margin: (-1 * @tweak-header-secondary-nav-link-spacing); }
+  .Header-nav-item { margin: @tweak-header-secondary-nav-link-spacing; }
+}
 
 .mixin-header-nav(@name, @colors, @option, @button-style: solid) when (@name = primary) and (@colors = regular) {
   @link-color:          @tweak-header-primary-nav-link-color;
@@ -266,10 +275,8 @@
 }
 
 .mixin-header-nav-style-button() {
-  margin: -6px;
   .Header-nav-item {
     padding: 12px 18px;
-    margin: 6px;
   }
   .Header-nav-folder {
     min-width: 100%;
@@ -370,15 +377,10 @@
 
 .Header-nav {
 
-  @header-nav-item-padding: 0.618em;
 
   white-space: nowrap;
   line-height: 1em;
   @{header-collapse-selector} & { white-space: normal; }
-
-  &-inner {
-    margin: (-1 * @header-nav-item-padding);
-  }
 
   &-item,
   &-folder-item {
@@ -388,7 +390,6 @@
   &-item {
 
     display: inline-block;
-    padding: @header-nav-item-padding;
     vertical-align: middle;
 
     &--folder { position: relative; }
