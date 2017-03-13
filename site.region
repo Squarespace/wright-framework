@@ -67,7 +67,7 @@
 
           </div>
           <div data-nc-container="top-center">
-            {.if websiteSettings.userAccountsSettings}
+            {.if websiteSettings.userAccountsSettings.loginAllowed}
               <button class="Header-account" data-nc-element="account" data-controller="UserAccountLink">Login</button>
             {.end}
             {.if website.socialAccounts.0}
