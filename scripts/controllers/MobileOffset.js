@@ -41,6 +41,10 @@ function MobileOffset(element) {
 
   applyOffset();
 
+  return {
+    sync: applyOffset
+  };
+
 }
 
 

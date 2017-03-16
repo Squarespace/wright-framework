@@ -15,6 +15,10 @@ function MobileClassname(element) {
 
   resizeEnd(setClassname);
   setClassname();
+
+  return {
+    sync: setClassname
+  };
 }
 
 export default MobileClassname;
