@@ -368,7 +368,9 @@ function Parallax(element) {
       'tweak-site-width-option',
       'tweak-site-width',
       'tweak-index-page-padding',
-      'tweak-index-page-overlay-padding'
+      'tweak-index-page-overlay-padding',
+      'tweak-index-page-fullscreen',
+      'tweak-index-page-min-height'
     ], () => {
       syncParallax(true);
     });
