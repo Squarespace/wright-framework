@@ -10,6 +10,7 @@ function HeaderNavFolderTouch(element) {
 
   const handleClick = (e) => {
     e.preventDefault();
+    e.stopImmediatePropagation();
   };
 
   const bindListeners = () => {
