@@ -39,7 +39,7 @@
     .tweak-index-page-fullscreen-pages-with-backgrounds-only &--has-image,
     .tweak-index-page-fullscreen-all-pages & {
       display: flex;
-      min-height: 100vh;
+      min-height: @tweak-index-page-min-height;
       .Index-page-content {
         display: flex;
         width: 100%;
@@ -52,7 +52,7 @@
     .tweak-index-page-fullscreen-first-page-only &--has-image:first-child,
     .tweak-index-page-fullscreen-pages-with-backgrounds-only &--has-image:first-child,
     .tweak-index-page-fullscreen-all-pages &--has-image:first-child {
-      min-height: calc(~'100vh -' @tweak-site-border-width) !important;
+      min-height: calc(@tweak-index-page-min-height ~'-' @tweak-site-border-width) !important;
     }
 
     &-scroll-indicator {

@@ -432,11 +432,13 @@
 // tweak: { "category" : "Index: Page", "label" : "Padding", "title" : "tweak-index-page-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 240, "target" : ".Index-page:not(.Index-page--has-image)", "showOnlyWhenPresent" : ".Index-page:not(.Index-page--has-image)" }
 @tweak-index-page-padding: 48px;
 
-
 // tweak: { "category" : "Index: Page", "label" : "Padding (Overlay Pages)", "title" : "tweak-index-page-overlay-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 240, "target" : ".Index-page--has-image", "showOnlyWhenPresent" : ".Index-page--has-image" }
 @tweak-index-page-overlay-padding: 240px;
 
-// tweak: { "category" : "Index: Page", "label" : "Fullscreen Pages", "title" : "tweak-index-page-fullscreen", "type" : "dropdown", "options" : [ "None", "First Page Only", "Pages with Backgrounds Only", "All Pages" ], "default" : "None", "target" : ".Index-page", "showOnlyWhenPresent" : ".Index-page" }
+// tweak: { "category" : "Index: Page", "label" : "Apply Minimum Height", "title" : "tweak-index-page-fullscreen", "type" : "dropdown", "options" : [ "None", "First Page Only", "Pages with Backgrounds Only", "All Pages" ], "default" : "None", "target" : ".Index-page", "showOnlyWhenPresent" : ".Index-page" }
+
+// tweak: { "category" : "Index: Page", "label" : "Minimum Height", "title" : "tweak-index-page-min-height", "type" : "value", "step" : 1, "min" : 50, "max" : 100, "target" : ".Index-page", "showOnlyWhenPresent" : ".Index-page" }
+@tweak-index-page-min-height: 100vh;
 
 // tweak: { "category" : "Index: Scroll Indicator", "label" : "Option", "title" : "tweak-index-page-scroll-indicator", "type" : "dropdown", "options" : [ "None", "Icon Only", "Icon and Text" ], "default" : "None", "target" : ".Index-page-scroll-indicator", "showOnlyWhenPresent" : ".Index-page-scroll-indicator" }
 
