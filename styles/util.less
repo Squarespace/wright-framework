@@ -56,12 +56,16 @@
 //  Search
 
 
-.placeholder-color (@color, @opacity: 1) {
+.placeholder-color(@color, @opacity: 1) {
   ::-webkit-input-placeholder { .alpha-color(@color, @opacity); }
   ::-moz-placeholder { .alpha-color(@color, @opacity); }
   :-ms-input-placeholder { .alpha-color(@color, @opacity); }
 }
-
+.hide-placeholder() {
+  ::-webkit-input-placeholder { visibility: hidden; }
+  ::-moz-placeholder { visibility: hidden; }
+  :-ms-input-placeholder { visibility: hidden; }
+}
 
 // -----------------------------------------
 

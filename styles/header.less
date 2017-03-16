@@ -695,6 +695,10 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
     line-height: 0;
   }
 
+  body:not(.tweak-header-search-placeholder-show) & {
+    .hide-placeholder();
+  }
+
   .Icon { display: none; }
   .Icon--search {
     width: round(@icon--search-width * @tweak-header-search-icon-scale);
