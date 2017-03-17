@@ -495,46 +495,50 @@
 //   }
 // }
 
-.mixin-gallery-grid-item-width(@n) {
-  @minWidth: @tweak-index-gallery-min-item-width * @n + 1;
-  @maxWidth: (@n + 1) * @tweak-index-gallery-min-item-width;
-  @media screen and (min-width: @minWidth) and (max-width: @maxWidth) {
-    width: unit(100 / @n, '%');
-  }
-}
-.mixin-gallery-responsive-grid(@n) when (@n > 1) {
-  .mixin-gallery-grid-item-width(1);
-  .mixin-gallery-grid-item-width(2);
-}
-.mixin-gallery-responsive-grid(@n) when (@n > 2) {
-  .mixin-gallery-grid-item-width(3);
-}
-.mixin-gallery-responsive-grid(@n) when (@n > 3) {
-  .mixin-gallery-grid-item-width(4);
-}
-.mixin-gallery-responsive-grid(@n) when (@n > 4) {
-  .mixin-gallery-grid-item-width(5);
-}
-.mixin-gallery-responsive-grid(@n) when (@n > 5) {
-  .mixin-gallery-grid-item-width(6);
-}
-.mixin-gallery-responsive-grid(@n) when (@n > 6) {
-  .mixin-gallery-grid-item-width(7);
-}
-.mixin-gallery-responsive-grid(@n) when (@n > 7) {
-  .mixin-gallery-grid-item-width(8);
-}
-.mixin-gallery-responsive-grid(@n) when (@n > 8) {
-  .mixin-gallery-grid-item-width(9);
-}
-.mixin-gallery-responsive-grid(@n) when (@n > 9) {
-  .mixin-gallery-grid-item-width(10);
-}
-
 
 .tweak-index-gallery-layout-grid {
-  .Index-gallery-item {
+
+  .mixin-gallery-responsive-grid(@n) when (@n = 1) {
+    width: 100%;
+  }
+
+  .mixin-gallery-responsive-grid(@n) when (@n = 2) {
+    @one-column-spacing-offset: 3 * @tweak-index-gallery-spacing;
+    @one-column-max: @tweak-index-gallery-min-item-width * 2 + @one-column-spacing-offset;
+
+    width: 50%;
+    @media screen and (max-width: @one-column-max) { width: 100%; }
+  }
+
+  .mixin-gallery-responsive-grid(@n) when (@n = 3) {
+    @one-column-spacing-offset: 4 * @tweak-index-gallery-spacing;
+    @one-column-max: @tweak-index-gallery-min-item-width * 3 + @one-column-spacing-offset;
+
+    width: 33.33%;
+    @media screen and (max-width: @one-column-max) { width: 100%; }
+  }
+
+  .mixin-gallery-responsive-grid(@n) when (@n = 4) {
+    @one-column-spacing-offset: 3 * @tweak-index-gallery-spacing;
+    @one-column-max: @tweak-index-gallery-min-item-width * 2 + @one-column-spacing-offset;
+    @two-column-spacing-offset: 5 * @tweak-index-gallery-spacing;
+    @two-column-min: @one-column-max + 1;
+    @two-column-max: @tweak-index-gallery-min-item-width * 4 + @two-column-spacing-offset;
+
+    width: 25%;
+    @media screen and (max-width: @one-column-max) { width: 100%; }
+    @media screen and (min-width: @two-column-min) and (max-width: @two-column-max) { width: 50%; }
+  }
+
+  // We max out the slider at 4, so this is a fallback state more than an actual
+  // valid option.
+  .mixin-gallery-responsive-grid(@n) when (@n > 4) {
+    @one-column-max: @tweak-index-gallery-min-item-width * (@n + 1);
     width: unit(100 / @tweak-index-gallery-items-per-row, '%');
+    @media screen and (max-width: @one-column-max) { width: 100%; }
+  }
+
+  .Index-gallery-item {
     .mixin-gallery-responsive-grid(@tweak-index-gallery-items-per-row);
   }
 }
