@@ -467,7 +467,13 @@
 //  Index Gallery
 
 
-// tweak: { "category" : "Index: Gallery", "label" : "Layout", "title" : "tweak-index-gallery-layout", "type" : "dropdown", "options" : [ "Packed", "Split" ], "default" : "Packed", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
+// tweak: { "category" : "Index: Gallery", "label" : "Layout", "title" : "tweak-index-gallery-layout", "type" : "dropdown", "options" : [ "Packed", "Split", "Grid", "Slideshow" ], "default" : "Packed", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery", "js": true }
+
+// tweak: { "category" : "Index: Gallery", "label" : "Max Items Per Row", "title" : "tweak-index-gallery-items-per-row", "type" : "value", "step" : 1, "min" : 1, "max" : 10, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-grid .Index-gallery" }
+@tweak-index-gallery-items-per-row: 4;
+
+// tweak: { "category" : "Index: Gallery", "label" : "Min Item Width", "title" : "tweak-index-gallery-min-item-width", "type" : "value", "step" : 1, "min" : 100, "max" : 2000, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-grid .Index-gallery" }
+@tweak-index-gallery-min-item-width: 400px;
 
 // tweak: { "category" : "Index: Gallery", "label" : "Hover Style", "title" : "tweak-index-gallery-hover-style", "type" : "dropdown", "options" : [ "Plain", "Fade" ], "default" : "Plain", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
 

@@ -2,8 +2,6 @@ import { Tweak, ImageLoader } from '@squarespace/core';
 import { authenticated } from '../constants';
 import { isMobileUA, resizeEnd } from '../util';
 
-const imageQuantityAttr = 'data-index-gallery-images';
-const itemSelector = '.Index-gallery-item';
 
 /**
  * Bootstraps the index gallery, ensuring that it will always have a smooth
@@ -12,9 +10,12 @@ const itemSelector = '.Index-gallery-item';
  * Safari rendering bug where the images "jiggle".
  */
 function IndexGallery(element) {
-  const sections = Array.from(element.querySelectorAll('.Index-gallery-inner'));
 
-  if (sections.length === 0) {
+  const galleryItems = Array.from(element.querySelectorAll('.Index-gallery-item'));
+  const numWrappers = Math.floor(galleryItems.length / 9) + 1;
+  const numLastWrapperItems = galleryItems.length % 9;
+
+  if (galleryItems.length === 0) {
     return null;
   }
 
@@ -38,24 +39,18 @@ function IndexGallery(element) {
     });
   };
 
-  const buildGrid = () => {
-    // If there's more than 1 section, ensure there are at least 3 items in the last section
-    const lastSection = sections[sections.length - 1];
-    const lastSectionItems = lastSection.querySelectorAll(itemSelector);
+  const wrapGalleryItems = () => {
+    for (let i = 0; i < numWrappers; i++) {
+      const wrapper = document.createElement('div');
+      const numWrapperItems = i === numWrappers - 1 ? numLastWrapperItems : 9;
+      wrapper.className = 'Index-gallery-inner clear';
+      wrapper.setAttribute('data-index-gallery-images', numWrapperItems);
 
-    if (sections.length > 1 && lastSectionItems.length < 3) {
-      const secondToLastSection = sections[sections.length - 2];
-      const secondToLastSectionItems = Array.from(secondToLastSection.querySelectorAll(itemSelector));
-
-      for (let i = lastSectionItems.length; i < 3; i++) {
-        lastSection.insertBefore(secondToLastSectionItems[8 - i], lastSection.firstChild);
-      }
-
-      secondToLastSection.setAttribute(imageQuantityAttr, 6 + lastSectionItems.length);
-      lastSection.setAttribute(imageQuantityAttr, 3);
-
-    } else {
-      lastSection.setAttribute(imageQuantityAttr, lastSectionItems.length);
+      const currentWrapperItems = galleryItems.slice(i * 9, (i + 1) * 9);
+      currentWrapperItems.forEach((galleryItem) => {
+        wrapper.appendChild(galleryItem);
+      });
+      element.appendChild(wrapper);
     }
   };
 
@@ -69,20 +64,32 @@ function IndexGallery(element) {
     promoteLayers();
   };
 
-  if (authenticated) {
-    Tweak.watch([
-      'tweak-index-gallery-layout',
-      'tweak-index-gallery-spacing',
-      'tweak-index-gallery-aspect'
-    ], loadImages);
-  }
+  const sync = () => {
+    const layout = Tweak.getValue('tweak-index-gallery-layout');
+    if (layout === 'Packed' || layout === 'Split') {
+      wrapGalleryItems();
+    }
+    loadImages();
+    element.classList.add('loaded');
+  };
 
-  resizeEnd(loadImages);
+  const bindListeners = () => {
+    if (authenticated) {
+      Tweak.watch([
+        'tweak-index-gallery-layout',
+        'tweak-index-gallery-items-per-row',
+        'tweak-index-gallery-min-item-width',
+        'tweak-index-gallery-spacing',
+        'tweak-index-gallery-aspect'
+      ], sync);
+    }
+
+    resizeEnd(loadImages);
+  };
 
   // Init
-  buildGrid();
-  loadImages();
-  element.classList.add('loaded');
+  sync();
+  bindListeners();
 
 }
 

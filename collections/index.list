@@ -4,23 +4,9 @@
 
     {.equal? typeName "gallery"}
 
-      <section id="{urlId}" class="Index-gallery" data-controller="IndexGallery" data-collection-id="{id}">
-
-        {.if items.0}<div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
+      <section id="{urlId}" class="Index-gallery clear" data-controller="IndexGallery" data-collection-id="{id}">
 
         {.repeated section items}
-
-          {.equal? @index 10}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
-          {.equal? @index 19}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
-          {.equal? @index 28}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
-          {.equal? @index 37}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
-          {.equal? @index 46}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
-          {.equal? @index 55}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
-          {.equal? @index 64}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
-          {.equal? @index 73}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
-          {.equal? @index 82}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
-          {.equal? @index 91}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
-          {.equal? @index 100}</div><div class="Index-gallery-inner clear" data-index-gallery-images="9">{.end}
 
           <article class="Index-gallery-item"{.video?} data-controller="IndexGalleryVideo"{.end}>
 
@@ -64,8 +50,6 @@
           </article>
 
         {.end}
-
-        {.if items.0}</div>{.end}
 
       </section>
 
