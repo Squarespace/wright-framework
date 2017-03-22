@@ -1,3 +1,4 @@
+import Slideshow from '@squarespace/layout-slideshow';
 import { Tweak, ImageLoader } from '@squarespace/core';
 import { authenticated } from '../constants';
 import { isMobileUA, resizeEnd } from '../util';
@@ -12,6 +13,10 @@ import { isMobileUA, resizeEnd } from '../util';
 function IndexGallery(element) {
 
   const galleryItems = Array.from(element.querySelectorAll('.Index-gallery-item'));
+  const galleryIndicators = element.querySelector('.Index-gallery-indicators');
+  const galleryIndicatorsItems = Array.from(element.querySelectorAll('.Index-gallery-indicators-item'));
+  // const galleryIndicators = Array.from(element.querySelectorAll('.Index-gallery-indicator'));
+  const innerWrapper = element.querySelector('.Index-gallery-wrapper');
   const numWrappers = Math.floor(galleryItems.length / 9) + 1;
   const numLastWrapperItems = galleryItems.length % 9;
 
@@ -50,7 +55,7 @@ function IndexGallery(element) {
       currentWrapperItems.forEach((galleryItem) => {
         wrapper.appendChild(galleryItem);
       });
-      element.appendChild(wrapper);
+      innerWrapper.appendChild(wrapper);
     }
   };
 
@@ -66,8 +71,40 @@ function IndexGallery(element) {
 
   const sync = () => {
     const layout = Tweak.getValue('tweak-index-gallery-layout');
+    const areIndicatorsLines = Tweak.getValue('tweak-index-gallery-indicators') === 'Lines';
+    const isAutoplayEnabled = Tweak.getValue('tweak-index-gallery-autoplay-enable') === 'true';
     if (layout === 'Packed' || layout === 'Split') {
       wrapGalleryItems();
+    }
+    if (layout === 'Slideshow') {
+      const slideshow = new Slideshow(innerWrapper, {
+        elementSelector: '.Index-gallery-item',
+        autoplay: {
+          enabled: isAutoplayEnabled,
+          delay: parseFloat(Tweak.getValue('tweak-index-gallery-autoplay-duration')) * 1000
+        },
+        controls: {
+          previous: '.Index-gallery-control--left',
+          next: '.Index-gallery-control--right',
+          indicators: '.Index-gallery-indicators-item'
+        },
+        afterInteractionEnd: () => {
+          if (!isAutoplayEnabled || !areIndicatorsLines) {
+            return;
+          }
+
+          // We need to add and remove the animation-reset classname because we
+          // want to restart the animation at the beginning after interaction
+          // end to reflect that the timer for the next slide starts over at
+          // the beginning. The offsetWidth expression is in there to force a
+          // repaint - without it, the animation-reset doesn't work.
+          const activeIndicator = galleryIndicatorsItems[slideshow.index];
+          activeIndicator.classList.add('animation-reset');
+          void activeIndicator.offsetWidth;
+          activeIndicator.classList.remove('animation-reset');
+        }
+      });
+      slideshow.layout();
     }
     loadImages();
     element.classList.add('loaded');

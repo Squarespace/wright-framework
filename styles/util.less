@@ -160,6 +160,9 @@
 .max-padding-right (@padding, @max) when (@padding > @max) {
   padding-right: @max;
 }
+.max-padding-left (@padding, @max) when (@padding > @max) {
+  padding-left: @max;
+}
 .max-position-horizontal (@position, @max) when (@position > @max) {
   left: @max;
   right: @max;
@@ -303,6 +306,23 @@
   }
   // @media screen and (max-width: 480px) {
   //   .max-padding-bottom (@padding, @paddingXS);
+  // }
+}
+.responsive-padding-left (@padding) {
+  @media screen and (max-width: 1024px) {
+    .max-padding-left (@padding, @paddingXL);
+  }
+  @media screen and (max-width: 960px) {
+    .max-padding-left (@padding, @paddingL);
+  }
+  @media screen and (max-width: 768px) {
+    .max-padding-left (@padding, @paddingM);
+  }
+  @media screen and (max-width: 640px) {
+    .max-padding-left (@padding, @paddingS);
+  }
+  // @media screen and (max-width: 480px) {
+  //   .max-padding-right (@padding, @paddingXS);
   // }
 }
 

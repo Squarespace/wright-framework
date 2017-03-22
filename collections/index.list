@@ -4,53 +4,68 @@
 
     {.equal? typeName "gallery"}
 
-      <section id="{urlId}" class="Index-gallery clear" data-controller="IndexGallery" data-collection-id="{id}">
+      <section id="{urlId}" class="Index-gallery" data-controller="IndexGallery" data-collection-id="{id}">
+        <div class="Index-gallery-wrapper">
+          {.repeated section items}
 
-        {.repeated section items}
+            <article class="Index-gallery-item"{.video?} data-controller="IndexGalleryVideo"{.end}>
 
-          <article class="Index-gallery-item"{.video?} data-controller="IndexGalleryVideo"{.end}>
+              <div class="Index-gallery-item-inner">
 
-            <div class="Index-gallery-item-inner">
-
-              {.if title || body}
-                <div class="Index-gallery-item-content">
-                  {.section title}<h2 class="Index-gallery-item-content-heading">{@}</h2>{.end}
-                  {.section body}<div class="Index-gallery-item-content-body">{@}</div>{.end}
-                  {.section clickthroughUrl}<a href="{@}" class="Index-gallery-item-content-link"></a>{.end}
-                  {.video?}<a href="#" class="Index-gallery-item-content-link"></a>{.end}
-                </div>
-              {.end}
-
-              {.section clickthroughUrl}
-                <a href="{@}" class="Index-gallery-item-image">
-              {.or}
-                {.video?}
-                  <a href="#" class="Index-gallery-item-image">
-                {.or}
-                  <figure class="Index-gallery-item-image">
+                {.if title || body}
+                  <div class="Index-gallery-item-content">
+                    {.section title}<h2 class="Index-gallery-item-content-heading">{@}</h2>{.end}
+                    {.section body}<div class="Index-gallery-item-content-body">{@}</div>{.end}
+                    {.section clickthroughUrl}<a href="{@}" class="Index-gallery-item-content-link"></a>{.end}
+                    {.video?}<a href="#" class="Index-gallery-item-content-link"></a>{.end}
+                  </div>
                 {.end}
-              {.end}
-                <img {@|image-meta} data-load="false" />
-              {.section clickthroughUrl}
-                </a>
-              {.or}
-                {.video?}
+
+                {.section clickthroughUrl}
+                  <a href="{@}" class="Index-gallery-item-image">
+                {.or}
+                  {.video?}
+                    <a href="#" class="Index-gallery-item-image">
+                  {.or}
+                    <figure class="Index-gallery-item-image">
+                  {.end}
+                {.end}
+                  <img {@|image-meta} data-load="false" />
+                {.section clickthroughUrl}
                   </a>
                 {.or}
-                  </figure>
+                  {.video?}
+                    </a>
+                  {.or}
+                    </figure>
+                  {.end}
                 {.end}
-              {.end}
 
-              {.video?}
-                {@|video}
-              {.end}
+                {.video?}
+                  {@|video}
+                {.end}
 
+              </div>
+
+            </article>
+
+          {.end}
+          <button class="Index-gallery-control Index-gallery-control--left">
+            <svg class="Icon Icon--caretLarge--left" viewBox="0 0 23 48">
+              <use xlink:href="/assets/ui-icons.svg#caret-left-icon--large"></use>
+            </svg>
+          </button>
+          <button class="Index-gallery-control Index-gallery-control--right">
+            <svg class="Icon Icon--caretLarge--right" viewBox="0 0 23 48">
+              <use xlink:href="/assets/ui-icons.svg#caret-right-icon--large"></use>
+            </svg>
+          </button>
+          {.section items}
+            <div class="Index-gallery-indicators">
+              {.repeated section @}<button class="Index-gallery-indicators-item"><span class="Index-gallery-indicators-item-inner"></span></button>{.end}
             </div>
-
-          </article>
-
-        {.end}
-
+          {.end}
+        </div>
       </section>
 
     {.or}
