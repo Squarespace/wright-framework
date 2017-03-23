@@ -4,7 +4,7 @@
 
     {.equal? typeName "gallery"}
 
-      <section id="{urlId}" class="Index-gallery" data-controller="IndexGallery" data-collection-id="{id}">
+      <section id="{urlId}" class="Index-gallery" data-controller="IndexGallery{.equal? @index 1}, IndexFirstPageHeight{.end}" data-collection-id="{id}">
         <div class="Index-gallery-wrapper">
           {.repeated section items}
 

@@ -16,6 +16,7 @@ function IndexFirstPageHeight(element) {
   const site = document.querySelector('.Site');
   const headerTop = document.querySelector('.Header--top');
   const announcementBar = document.querySelector('.sqs-announcement-bar-dropzone');
+  const isGallery = element.classList.contains('Index-gallery');
 
   const getBorderHeight = () => {
     if (Tweak.getValue('tweak-site-border-show') !== 'true') {
@@ -27,29 +28,60 @@ function IndexFirstPageHeight(element) {
     return parseFloat(window.getComputedStyle(site).borderWidth);
   };
 
-  const setMinHeight = () => {
-    const fullscreenSetting = Tweak.getValue('tweak-index-page-fullscreen');
-    if (fullscreenSetting === 'None') {
-      element.style.height = '';
-      return;
-    }
-    if (fullscreenSetting === 'Pages with Backgrounds Only' && !element.classList.contains('Index-page--has-image')) {
-      element.style.height = '';
+  const applyHeight = (height, el = element, prop = 'minHeight') => {
+    if (!height) {
+      el.style[prop] = '';
       return;
     }
 
-
-    const vhHeight = Tweak.getValue('tweak-index-page-min-height');
     const borderHeight = getBorderHeight();
     const headerHeight = headerTop.offsetHeight;
     const announcementBarHeight = announcementBar ? announcementBar.offsetHeight : 0;
 
     const totalHeight = borderHeight + headerHeight + announcementBarHeight;
     if (totalHeight > 0) {
-      element.style.minHeight = `calc(${vhHeight} - ${totalHeight}px)`;
+      el.style[prop] = `calc(${height} - ${totalHeight}px)`;
     } else {
-      element.style.height = '';
+      el.style[prop] = '';
     }
+  };
+
+  const parseValue = (val) => {
+    const [ number, unit ] = val.match(/([\d\.])+|([A-Za-z])+/g);
+    return { number: parseFloat(number), unit };
+  };
+
+  const setMinHeight = () => {
+
+    if (isGallery) {
+      const isSlideshow = Tweak.getValue('tweak-index-gallery-layout') === 'Slideshow';
+      const isFixedHeight = Tweak.getValue('tweak-index-gallery-fixed-height') === 'true';
+      const height = Tweak.getValue('tweak-index-gallery-height');
+      const { unit } = parseValue(height);
+
+      const innerWrapper = element.querySelector('.Index-gallery-wrapper');
+
+      if (!isSlideshow || !isFixedHeight || unit !== 'vh') {
+        applyHeight(0, innerWrapper, 'height');
+        return;
+      }
+
+      applyHeight(height, innerWrapper, 'height');
+      return;
+    }
+
+    const fullscreenSetting = Tweak.getValue('tweak-index-page-fullscreen');
+    if (fullscreenSetting === 'None') {
+      applyHeight(0);
+      return;
+    }
+    if (fullscreenSetting === 'Pages with Backgrounds Only' && !element.classList.contains('Index-page--has-image')) {
+      applyHeight(0);
+      return;
+    }
+
+    const vhHeight = Tweak.getValue('tweak-index-page-min-height');
+    applyHeight(vhHeight);
   };
 
   const bindListeners = () => {
