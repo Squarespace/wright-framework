@@ -536,7 +536,6 @@
 //  Gallery: Slideshow
 
 .Index-gallery-control {
-  @padding: 16px;
 
   // Override
   background: transparent;
@@ -549,20 +548,37 @@
   position: absolute;
   top: 50%;
   z-index: 3;
-  margin-top: -(24px + 16px);
-  padding: @padding;
+  padding: @tweak-index-gallery-controls-padding;
   stroke: @tweak-index-gallery-controls-color;
   background-color: @tweak-index-gallery-controls-background-color;
 
+  .tweak-index-gallery-controls-icon-weight-hairline & .Icon { stroke-width: 1; }
+  .tweak-index-gallery-controls-icon-weight-light & .Icon { stroke-width: 2; }
+  .tweak-index-gallery-controls-icon-weight-medium & .Icon { stroke-width: 3; }
+  .tweak-index-gallery-controls-icon-weight-heavy & .Icon { stroke-width: 4; }
+
   &--left {
-    left: 0;
-    padding-right: @padding * 1.2;
+    left: @tweak-index-gallery-controls-offset;
   }
   &--right {
-    right: 0;
-    padding-left: @padding * 1.2;
+    right: @tweak-index-gallery-controls-offset;
+  }
+  .tweak-index-gallery-controls-large-arrows & {
+    margin-top: @icon--caretLarge-height / -2 + @tweak-index-gallery-controls-padding;
+    .Icon--caretSmall--left,
+    .Icon--caretSmall--right {
+      display: none;
+    }
+  }
+  .tweak-index-gallery-controls-small-arrows & {
+    margin-top: @icon--caretSmall-height / -2 + @tweak-index-gallery-controls-padding;
+    .Icon--caretLarge--left,
+    .Icon--caretLarge--right {
+      display: none;
+    }
   }
 }
+
 
 .Index-gallery-indicators {
   display: none;
@@ -596,7 +612,7 @@
 .tweak-index-gallery-indicators-dots {
   .Index-gallery-indicators-item {
     display: inline-block;
-    padding: (@tweak-index-gallery-indicators-spacing / 2);
+    padding: 8px (@tweak-index-gallery-indicators-spacing / 2) @tweak-index-gallery-indicators-offset;
     .Index-gallery-indicators-item-inner {
       content: '';
       display: block;
@@ -615,7 +631,7 @@
 
   .Index-gallery-indicators-item {
     display: inline-block;
-    padding: 20px (@tweak-index-gallery-indicators-spacing / 2);
+    padding: 8px (@tweak-index-gallery-indicators-spacing / 2) @tweak-index-gallery-indicators-offset;
   }
   .Index-gallery-indicators-item-inner {
     display: block;

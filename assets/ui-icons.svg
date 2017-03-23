@@ -37,13 +37,13 @@
     </g>
   </symbol>
 
-  <symbol id="caret-left-small-icon" viewBox="0 0 9 16">
+  <symbol id="caret-left-icon--small" viewBox="0 0 9 16">
     <g class="svg-icon">
       <polyline fill="none" stroke-miterlimit="10" points="7.3,14.7 2.5,8 7.3,1.2 "/>
     </g>
   </symbol>
 
-  <symbol id="caret-right-small-icon" viewBox="0 0 9 16">
+  <symbol id="caret-right-icon--small" viewBox="0 0 9 16">
     <g class="svg-icon">
       <polyline fill="none" stroke-miterlimit="10" points="1.6,1.2 6.5,7.9 1.6,14.7 "/>
     </g>

@@ -504,29 +504,40 @@
 
 //  Index Slideshow Gallery
 
-// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Next/Previous Controls", "title" : "tweak-index-gallery-controls", "type" : "dropdown", "options" : [ "None", "Arrows" ], "default" : "Arrows", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Next/Previous Controls", "title" : "tweak-index-gallery-controls", "type" : "dropdown", "options" : [ "None", "Large Arrows", "Small Arrows" ], "default" : "Small Arrows", "target" : ".Index-gallery-item, .Index-gallery-control", "showOnlyWhenPresent" : ".Index-gallery" }
 
-// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Controls Color", "title" : "tweak-index-gallery-controls-color", "type" : "color", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-controls-none) .Index-gallery" }
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Controls Offset", "title" : "tweak-index-gallery-controls-offset", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item, .Index-gallery-control", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-controls-none) .Index-gallery" }
+@tweak-index-gallery-controls-offset: 5px;
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Controls Padding", "title" : "tweak-index-gallery-controls-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item, .Index-gallery-control", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-controls-none) .Index-gallery" }
+@tweak-index-gallery-controls-padding: 5px;
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Controls Weight", "title" : "tweak-index-gallery-controls-icon-weight", "type" : "dropdown", "options" : [ "Hairline", "Light", "Medium", "Heavy" ], "default" : "Hairline", "target" : ".Index-gallery-item, .Index-gallery-control", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-controls-none) .Index-gallery" }
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Controls Color", "title" : "tweak-index-gallery-controls-color", "type" : "color", "target" : ".Index-gallery-item, .Index-gallery-control", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-controls-none) .Index-gallery" }
 @tweak-index-gallery-controls-color: rgba(255, 255, 255, 1);
 
-// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Controls Background Color", "title" : "tweak-index-gallery-controls-background-color", "type" : "color", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-controls-none) .Index-gallery" }
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Controls Background Color", "title" : "tweak-index-gallery-controls-background-color", "type" : "color", "target" : ".Index-gallery-item, .Index-gallery-control", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-controls-none) .Index-gallery" }
 @tweak-index-gallery-controls-background-color: rgba(255, 255, 255, 0);
 
-// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicators", "title" : "tweak-index-gallery-indicators", "type" : "dropdown", "options" : [ "None", "Dots", "Lines" ], "default" : "Lines", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery", "js": true }
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicators", "title" : "tweak-index-gallery-indicators", "type" : "dropdown", "options" : [ "None", "Dots", "Lines" ], "default" : "Lines", "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : ".Index-gallery", "js": true }
 
-// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Width", "title" : "tweak-index-gallery-indicators-width", "type" : "value", "step" : 1, "min" : 1, "max" : 160, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-indicators-lines .Index-gallery" }
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicators Offset", "title" : "tweak-index-gallery-indicators-offset", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
+@tweak-index-gallery-indicators-offset: 5px;
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Width", "title" : "tweak-index-gallery-indicators-width", "type" : "value", "step" : 1, "min" : 1, "max" : 160, "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : ".tweak-index-gallery-indicators-lines .Index-gallery" }
 @tweak-index-gallery-indicators-width: 5px;
 
-// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Height", "title" : "tweak-index-gallery-indicators-height", "type" : "value", "step" : 1, "min" : 1, "max" : 20, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Height", "title" : "tweak-index-gallery-indicators-height", "type" : "value", "step" : 1, "min" : 1, "max" : 20, "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
 @tweak-index-gallery-indicators-height: 5px;
 
-// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Spacing", "title" : "tweak-index-gallery-indicators-spacing", "type" : "value", "step" : 1, "min" : 0, "max" : 40, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Spacing", "title" : "tweak-index-gallery-indicators-spacing", "type" : "value", "step" : 1, "min" : 0, "max" : 40, "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
 @tweak-index-gallery-indicators-spacing: 5px;
 
-// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Color", "title" : "tweak-index-gallery-indicators-color", "type" : "color", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Color", "title" : "tweak-index-gallery-indicators-color", "type" : "color", "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
 @tweak-index-gallery-indicators-color: rgba(255, 255, 255, 0.3);
 
-// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Color (Active)", "title" : "tweak-index-gallery-indicators-active-color", "type" : "color", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Color (Active)", "title" : "tweak-index-gallery-indicators-active-color", "type" : "color", "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : "body:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
 @tweak-index-gallery-indicators-active-color: rgba(255, 255, 255, 1);
 
 // tweak: { "category" : "Index: Slideshow Gallery", "label" : "Autoplay", "title" : "tweak-index-gallery-autoplay-enable", "type" : "checkbox", "active" : true, "target" : ".Index-gallery-item", "showOnlyWhenPresent": ".tweak-index-gallery-layout-slideshow .Index-gallery", "js": true }

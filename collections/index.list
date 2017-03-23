@@ -54,10 +54,16 @@
             <svg class="Icon Icon--caretLarge--left" viewBox="0 0 23 48">
               <use xlink:href="/assets/ui-icons.svg#caret-left-icon--large"></use>
             </svg>
+            <svg class="Icon Icon--caretSmall--left" viewBox="0 0 9 16">
+              <use xlink:href="/assets/ui-icons.svg#caret-left-icon--small"></use>
+            </svg>
           </button>
           <button class="Index-gallery-control Index-gallery-control--right">
             <svg class="Icon Icon--caretLarge--right" viewBox="0 0 23 48">
               <use xlink:href="/assets/ui-icons.svg#caret-right-icon--large"></use>
+            </svg>
+            <svg class="Icon Icon--caretSmall--left" viewBox="0 0 9 16">
+              <use xlink:href="/assets/ui-icons.svg#caret-right-icon--small"></use>
             </svg>
           </button>
           {.section items}
