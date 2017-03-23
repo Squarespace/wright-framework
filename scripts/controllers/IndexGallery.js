@@ -21,6 +21,7 @@ function IndexGallery(element) {
   const numLastWrapperItems = galleryItems.length % 9;
 
   let slideshow;
+  let galleryInnerWrappers = [];
 
   if (galleryItems.length === 0) {
     return null;
@@ -58,7 +59,18 @@ function IndexGallery(element) {
         wrapper.appendChild(galleryItem);
       });
       innerWrapper.appendChild(wrapper);
+      galleryInnerWrappers.push(wrapper);
     }
+  };
+
+  const unwrapGalleryItems = () => {
+    galleryItems.forEach((galleryItem) => {
+      innerWrapper.appendChild(galleryItem);
+    });
+    galleryInnerWrappers = galleryInnerWrappers.reduce((acc, wrapper) => {
+      wrapper.parentNode.removeChild(wrapper);
+      return acc;
+    }, []);
   };
 
   const loadImages = () => {
@@ -73,15 +85,23 @@ function IndexGallery(element) {
 
   const sync = () => {
     const layout = Tweak.getValue('tweak-index-gallery-layout');
-    const areIndicatorsLines = Tweak.getValue('tweak-index-gallery-indicators') === 'Lines';
-    const isAutoplayEnabled = Tweak.getValue('tweak-index-gallery-autoplay-enable') === 'true';
+
+    if (slideshow instanceof Slideshow) {
+      slideshow.destroy();
+      slideshow = null;
+    }
+    if (galleryInnerWrappers.length > 0) {
+      unwrapGalleryItems();
+    }
+
     if (layout === 'Packed' || layout === 'Split') {
       wrapGalleryItems();
     }
     if (layout === 'Slideshow') {
-      if (slideshow instanceof Slideshow) {
-        slideshow.destroy();
-      }
+      const areIndicatorsLines = Tweak.getValue('tweak-index-gallery-indicators') === 'Lines';
+      const isAutoplayEnabled = Tweak.getValue('tweak-index-gallery-autoplay-enable') === 'true';
+      const hasTransition = Tweak.getValue('tweak-index-gallery-transition') !== 'None';
+      const transitionDurationFromTweak = parseFloat(Tweak.getValue('tweak-index-gallery-transition-duration'));
       slideshow = new Slideshow(innerWrapper, {
         elementSelector: '.Index-gallery-item',
         autoplay: {
@@ -93,7 +113,7 @@ function IndexGallery(element) {
           next: '.Index-gallery-control--right',
           indicators: '.Index-gallery-indicators-item'
         },
-        transitionDuration: parseFloat(Tweak.getValue('tweak-index-gallery-transition-duration')),
+        transitionDuration: hasTransition ? transitionDurationFromTweak : null,
         afterInteractionEnd: () => {
           if (!isAutoplayEnabled || !areIndicatorsLines) {
             return;
@@ -127,14 +147,7 @@ function IndexGallery(element) {
       'spacing',
       'aspect',
       'controls',
-      'controls-color',
-      'controls-background-color',
       'indicators',
-      'indicators-width',
-      'indicators-height',
-      'indicators-spacing',
-      'indicators-color',
-      'indicators-active-color',
       'autoplay-enable',
       'autoplay-duration',
       'transition',
