@@ -20,6 +20,8 @@ function IndexGallery(element) {
   const numWrappers = Math.floor(galleryItems.length / 9) + 1;
   const numLastWrapperItems = galleryItems.length % 9;
 
+  let slideshow;
+
   if (galleryItems.length === 0) {
     return null;
   }
@@ -77,7 +79,10 @@ function IndexGallery(element) {
       wrapGalleryItems();
     }
     if (layout === 'Slideshow') {
-      const slideshow = new Slideshow(innerWrapper, {
+      if (slideshow instanceof Slideshow) {
+        slideshow.destroy();
+      }
+      slideshow = new Slideshow(innerWrapper, {
         elementSelector: '.Index-gallery-item',
         autoplay: {
           enabled: isAutoplayEnabled,
@@ -88,6 +93,7 @@ function IndexGallery(element) {
           next: '.Index-gallery-control--right',
           indicators: '.Index-gallery-indicators-item'
         },
+        transitionDuration: parseFloat(Tweak.getValue('tweak-index-gallery-transition-duration')),
         afterInteractionEnd: () => {
           if (!isAutoplayEnabled || !areIndicatorsLines) {
             return;
@@ -105,20 +111,39 @@ function IndexGallery(element) {
         }
       });
       slideshow.layout();
+    } else {
+      // Slideshow handles its own image loading logic, so we don't need to call
+      // loadImages for it.
+      loadImages();
     }
-    loadImages();
     element.classList.add('loaded');
   };
 
   const bindListeners = () => {
+    const tweaksToWatch = [
+      'layout',
+      'items-per-row',
+      'min-item-width',
+      'spacing',
+      'aspect',
+      'controls',
+      'controls-color',
+      'controls-background-color',
+      'indicators',
+      'indicators-width',
+      'indicators-height',
+      'indicators-spacing',
+      'indicators-color',
+      'indicators-active-color',
+      'autoplay-enable',
+      'autoplay-duration',
+      'transition',
+      'transition-duration'
+    ].map((str) => {
+      return 'tweak-index-gallery-' + str;
+    });
     if (authenticated) {
-      Tweak.watch([
-        'tweak-index-gallery-layout',
-        'tweak-index-gallery-items-per-row',
-        'tweak-index-gallery-min-item-width',
-        'tweak-index-gallery-spacing',
-        'tweak-index-gallery-aspect'
-      ], sync);
+      Tweak.watch(tweaksToWatch, sync);
     }
 
     resizeEnd(loadImages);

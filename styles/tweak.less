@@ -534,6 +534,12 @@
 // tweak: { "category" : "Index: Slideshow Gallery", "label" : "Autoplay Duration (Seconds)", "title" : "tweak-index-gallery-autoplay-duration", "type" : "value", "step" : 0.1, "min" : 0.1, "max" : 10, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow .Index-gallery", "js": true }
 @tweak-index-gallery-autoplay-duration: 2;
 
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Transitions", "title" : "tweak-index-gallery-transition", "type" : "dropdown", "options" : [ "None", "Fade", "Slide" ], "default" : "Fade", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow .Index-gallery" }
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Transition Duration (Milliseconds)", "title" : "tweak-index-gallery-transition-duration", "type" : "value", "step" : 1, "min" : 20, "max" : 1000, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow .Index-gallery", "js": true }
+@tweak-index-gallery-transition-duration: 500;
+
+
 
 
 
@@ -544,16 +550,16 @@
 
 // tweak: { "category" : "Index: Gallery Content", "label" : "Content Position", "title" : "tweak-index-gallery-content-position", "type" : "dropdown", "options" : [ "Top Left", "Top Center", "Top Right", "Middle Left", "Middle Center", "Middle Right", "Bottom Left", "Bottom Center", "Bottom Right" ], "default" : "Bottom Left", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
 
-// tweak: { "category" : "Index: Gallery Content", "label" : "Content Offset (Top)", "title" : "tweak-index-gallery-content-offset-top", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-left .Index-gallery-item-content, .tweak-index-gallery-content-position-top-center .Index-gallery-item-content, .tweak-index-gallery-content-position-top-right .Index-gallery-item-content" }
+// tweak: { "category" : "Index: Gallery Content", "label" : "Content Offset (Top)", "title" : "tweak-index-gallery-content-offset-top", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-left .Index-gallery-item-content, .tweak-index-gallery-content-position-top-center .Index-gallery-item-content, .tweak-index-gallery-content-position-top-right .Index-gallery-item-content" }
 @tweak-index-gallery-content-offset-top: 12px;
 
-// tweak: { "category" : "Index: Gallery Content", "label" : "Content Offset (Right)", "title" : "tweak-index-gallery-content-offset-right", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-right .Index-gallery-item-content, .tweak-index-gallery-content-position-middle-right .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-right .Index-gallery-item-content" }
+// tweak: { "category" : "Index: Gallery Content", "label" : "Content Offset (Right)", "title" : "tweak-index-gallery-content-offset-right", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-right .Index-gallery-item-content, .tweak-index-gallery-content-position-middle-right .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-right .Index-gallery-item-content" }
 @tweak-index-gallery-content-offset-right: 12px;
 
-// tweak: { "category" : "Index: Gallery Content", "label" : "Content Offset (Bottom)", "title" : "tweak-index-gallery-content-offset-bottom", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-bottom-left .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-center .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-right .Index-gallery-item-content" }
+// tweak: { "category" : "Index: Gallery Content", "label" : "Content Offset (Bottom)", "title" : "tweak-index-gallery-content-offset-bottom", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-bottom-left .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-center .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-right .Index-gallery-item-content" }
 @tweak-index-gallery-content-offset-bottom: 12px;
 
-// tweak: { "category" : "Index: Gallery Content", "label" : "Content Offset (Left)", "title" : "tweak-index-gallery-content-offset-left", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-left .Index-gallery-item-content, .tweak-index-gallery-content-position-middle-left .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-left .Index-gallery-item-content" }
+// tweak: { "category" : "Index: Gallery Content", "label" : "Content Offset (Left)", "title" : "tweak-index-gallery-content-offset-left", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-left .Index-gallery-item-content, .tweak-index-gallery-content-position-middle-left .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-left .Index-gallery-item-content" }
 @tweak-index-gallery-content-offset-left: 12px;
 
 // tweak: { "category" : "Index: Gallery Content", "label" : "Content Max Width", "title" : "tweak-index-gallery-content-max-width", "type" : "value", "step" : 1, "min" : 10, "max" : 100, "target" : ".Index-gallery-item-content", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
