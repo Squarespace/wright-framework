@@ -1,11 +1,9 @@
-import { Tweak } from '@squarespace/core';
 import { resizeEnd } from '../util';
 import { indexEditEvents } from '../constants';
 
 const overlayClassname = 'Header--overlay';
 const indexContentSelector = '.Index-page--has-image:first-child .Index-page-content';
 const introContentSelector = '.Intro--has-image .Intro-content';
-const indexGalleryContentSelector = '.Index-gallery-item-content';
 
 /**
  * Manages overlay header in two ways:
@@ -22,7 +20,6 @@ const indexGalleryContentSelector = '.Index-gallery-item-content';
  */
 function HeaderOverlay(element) {
   const header = element.querySelector('.Header--bottom');
-  const indexGalleryContents = Array.from(element.querySelectorAll(indexGalleryContentSelector));
 
   /**
    * Given an offset element, applies a margin top of the header height to
@@ -42,18 +39,6 @@ function HeaderOverlay(element) {
    * classname and applies offset where appropriate.
    */
   const sync = () => {
-    const indexGalleryLayout = Tweak.getValue('tweak-index-gallery-layout');
-    const overlayOnIndexGallery = Tweak.getValue('tweak-header-bottom-overlay-on-index-gallery') === 'true';
-    const isOverIndexGallery = header.classList.contains('Header--index-gallery');
-
-    if (indexGalleryLayout === 'Slideshow' && overlayOnIndexGallery && isOverIndexGallery) {
-      header.classList.add(overlayClassname);
-      indexGalleryContents.forEach((content) => {
-        applyOffset(content);
-      });
-      return;
-    }
-
     const indexPageContent = element.querySelector(indexContentSelector);
     const introContent = element.querySelector(introContentSelector);
     const offsetElement = indexPageContent || introContent;
