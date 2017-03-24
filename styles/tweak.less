@@ -731,15 +731,16 @@
 
 //  Overall
 
+// tweak: { "category" : "Footer", "label" : "Show Footer", "title" : "tweak-footer-show", "type" : "checkbox", "active" : true, "target" : ".Footer" }
 
-// tweak: { "category" : "Footer", "label" : "Layout", "title" : "tweak-footer-layout", "type" : "dropdown", "options" : [ "Stacked", "Columns" ], "default" : "Stacked", "target" : ".Footer", "js" : true }
+// tweak: { "category" : "Footer", "label" : "Layout", "title" : "tweak-footer-layout", "type" : "dropdown", "options" : [ "Stacked", "Columns" ], "default" : "Stacked", "target" : ".Footer", "showOnlyWhenPresent": ".tweak-footer-show", "js" : true }
 
-// tweak: { "category" : "Footer", "label" : "Padding", "title" : "tweak-footer-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Footer" }
+// tweak: { "category" : "Footer", "label" : "Padding", "title" : "tweak-footer-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Footer", "showOnlyWhenPresent": ".tweak-footer-show" }
 @tweak-footer-padding: 48px;
 
-// tweak: { "category" : "Footer", "label" : "Alignment", "title" : "tweak-footer-stacked-alignment", "type" : "dropdown", "options" : [ "Left", "Center", "Right" ], "default" : "Left", "target" : ".Footer", "showOnlyWhenPresent" : ".tweak-footer-layout-stacked" }
+// tweak: { "category" : "Footer", "label" : "Alignment", "title" : "tweak-footer-stacked-alignment", "type" : "dropdown", "options" : [ "Left", "Center", "Right" ], "default" : "Left", "target" : ".Footer", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-layout-stacked" }
 
-// tweak: { "category": "Footer", "label": "Background Color", "title" : "tweak-footer-color", "type" : "color", "target" : ".Footer" }
+// tweak: { "category": "Footer", "label": "Background Color", "title" : "tweak-footer-color", "type" : "color", "target" : ".Footer", "showOnlyWhenPresent": ".tweak-footer-show" }
 @tweak-footer-color: #000000;
 
 
@@ -749,9 +750,9 @@
 //  Business
 
 
-// tweak: { "category" : "Footer: Business", "label" : "Show Business Info", "title" : "tweak-footer-business-info-show", "type" : "checkbox", "active" : false, "target" : ".Footer, .Footer-business-info" }
+// tweak: { "category" : "Footer: Business", "label" : "Show Business Info", "title" : "tweak-footer-business-info-show", "type" : "checkbox", "active" : false, "target" : ".Footer, .Footer-business-info", "showOnlyWhenPresent": ".tweak-footer-show" }
 
-// tweak: { "category": "Footer: Business", "label" : "Name Font", "title" : "tweak-footer-business-name-font", "type" : "font", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-business-info-show .Footer-business-info-item--name" }
+// tweak: { "category": "Footer: Business", "label" : "Name Font", "title" : "tweak-footer-business-name-font", "type" : "font", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-info-show .Footer-business-info-item--name" }
 .tweak-footer-business-name-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -762,10 +763,10 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Footer: Business", "label": "Name Color", "title" : "tweak-footer-business-name-color", "type" : "color", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-business-info-show .Footer-business-info-item--name" }
+// tweak: { "category": "Footer: Business", "label": "Name Color", "title" : "tweak-footer-business-name-color", "type" : "color", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-info-show .Footer-business-info-item--name" }
 @tweak-footer-business-name-color: #000000;
 
-// tweak: { "category": "Footer: Business", "label" : "Info Font", "title" : "tweak-footer-business-info-font", "type" : "font", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-business-info-show .Footer-business-info-item:not(.Footer-business-info-item--name)" }
+// tweak: { "category": "Footer: Business", "label" : "Info Font", "title" : "tweak-footer-business-info-font", "type" : "font", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-info-show .Footer-business-info-item:not(.Footer-business-info-item--name)" }
 .tweak-footer-business-info-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -776,13 +777,13 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Footer: Business", "label": "Info Color", "title" : "tweak-footer-business-info-color", "type" : "color", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-business-info-show .Footer-business-info-item:not(.Footer-business-info-item--name)" }
+// tweak: { "category": "Footer: Business", "label": "Info Color", "title" : "tweak-footer-business-info-color", "type" : "color", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-info-show .Footer-business-info-item:not(.Footer-business-info-item--name)" }
 @tweak-footer-business-info-color: #000000;
 
 
-// tweak: { "category" : "Footer: Business", "label" : "Show Business Hours", "title" : "tweak-footer-business-hours-show", "type" : "checkbox", "active" : false, "target" : ".Footer, .Footer-business-hours" }
+// tweak: { "category" : "Footer: Business", "label" : "Show Business Hours", "title" : "tweak-footer-business-hours-show", "type" : "checkbox", "active" : false, "target" : ".Footer, .Footer-business-hours", "showOnlyWhenPresent": ".tweak-footer-show" }
 
-// tweak: { "category": "Footer: Business", "label" : "Hours Heading Font", "title" : "tweak-footer-business-hours-heading-font", "type" : "font", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-business-hours-show .Footer-business-hours-heading" }
+// tweak: { "category": "Footer: Business", "label" : "Hours Heading Font", "title" : "tweak-footer-business-hours-heading-font", "type" : "font", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-hours-show .Footer-business-hours-heading" }
 .tweak-footer-business-hours-heading-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -793,10 +794,10 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Footer: Business", "label": "Hours Heading Color", "title" : "tweak-footer-business-hours-heading-color", "type" : "color", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-business-hours-show .Footer-business-hours-heading" }
+// tweak: { "category": "Footer: Business", "label": "Hours Heading Color", "title" : "tweak-footer-business-hours-heading-color", "type" : "color", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-hours-show .Footer-business-hours-heading" }
 @tweak-footer-business-hours-heading-color: #000000;
 
-// tweak: { "category": "Footer: Business", "label" : "Hours Font", "title" : "tweak-footer-business-hours-font", "type" : "font", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-business-hours-show .Footer-business-hours-item" }
+// tweak: { "category": "Footer: Business", "label" : "Hours Font", "title" : "tweak-footer-business-hours-font", "type" : "font", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-hours-show .Footer-business-hours-item" }
 .tweak-footer-business-hours-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -807,7 +808,7 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Footer: Business", "label": "Hours Color", "title" : "tweak-footer-business-hours-color", "type" : "color", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-business-hours-show .Footer-business-hours-item" }
+// tweak: { "category": "Footer: Business", "label": "Hours Color", "title" : "tweak-footer-business-hours-color", "type" : "color", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-hours-show .Footer-business-hours-item" }
 @tweak-footer-business-hours-color: #000000;
 
 
@@ -817,7 +818,7 @@
 //  Nav
 
 
-// tweak: { "category": "Footer: Navigation", "label" : "Navigation Heading Font", "title" : "tweak-footer-nav-heading-font", "type" : "font", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-layout-columns .Footer-nav-folder-heading" }
+// tweak: { "category": "Footer: Navigation", "label" : "Navigation Heading Font", "title" : "tweak-footer-nav-heading-font", "type" : "font", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-layout-columns .Footer-nav-folder-heading" }
 .tweak-footer-nav-heading-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -828,10 +829,10 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Footer: Navigation", "label": "Navigation Heading Color", "title" : "tweak-footer-nav-heading-color", "type" : "color", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-layout-columns .Footer-nav-folder-heading" }
+// tweak: { "category": "Footer: Navigation", "label": "Navigation Heading Color", "title" : "tweak-footer-nav-heading-color", "type" : "color", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-layout-columns .Footer-nav-folder-heading" }
 @tweak-footer-nav-heading-color: #000000;
 
-// tweak: { "category": "Footer: Navigation", "label" : "Navigation Font", "title" : "tweak-footer-nav-font", "type" : "font", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".Footer-nav-item, .Footer-nav-folder-heading, .Footer-nav-folder-item" }
+// tweak: { "category": "Footer: Navigation", "label" : "Navigation Font", "title" : "tweak-footer-nav-font", "type" : "font", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-show .Footer-nav-item, .tweak-footer-show .Footer-nav-folder-heading, .tweak-footer-show .Footer-nav-folder-item" }
 .tweak-footer-nav-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -842,7 +843,7 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Footer: Navigation", "label": "Navigation Color", "title" : "tweak-footer-nav-color", "type" : "color", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".Footer-nav-item, .Footer-nav-folder-heading, .Footer-nav-folder-item" }
+// tweak: { "category": "Footer: Navigation", "label": "Navigation Color", "title" : "tweak-footer-nav-color", "type" : "color", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-show .Footer-nav-item, .tweak-footer-show .Footer-nav-folder-heading, .tweak-footer-show .Footer-nav-folder-item" }
 @tweak-footer-nav-color: #000000;
 
 
@@ -852,22 +853,22 @@
 //  Colors (Footer)
 
 
-// tweak: { "category": "Footer Content: Colors", "label" : "Body Text", "title" : "tweak-footer-body-text-color", "type" : "color", "target" : ".Footer .sqs-layout p", "showOnlyWhenPresent" : ".Footer .sqs-layout:not(.empty)" }
+// tweak: { "category": "Footer Content: Colors", "label" : "Body Text", "title" : "tweak-footer-body-text-color", "type" : "color", "target" : ".Footer .sqs-layout p", "showOnlyWhenPresent" : ".tweak-footer-show .Footer .sqs-layout:not(.empty)" }
 @tweak-footer-body-text-color: #ffffff;
 
-// tweak: { "category": "Footer Content: Colors", "label" : "Heading 1", "title" : "tweak-footer-h1-color", "type" : "color", "target" : ".Footer .sqs-layout h1", "showOnlyWhenPresent" : ".Footer .sqs-layout h1" }
+// tweak: { "category": "Footer Content: Colors", "label" : "Heading 1", "title" : "tweak-footer-h1-color", "type" : "color", "target" : ".Footer .sqs-layout h1", "showOnlyWhenPresent" : ".tweak-footer-show .Footer .sqs-layout h1" }
 @tweak-footer-h1-color: #ffffff;
 
-// tweak: { "category": "Footer Content: Colors", "label" : "Heading 2", "title" : "tweak-footer-h2-color", "type" : "color", "target" : ".Footer .sqs-layout h2", "showOnlyWhenPresent" : ".Footer .sqs-layout h2" }
+// tweak: { "category": "Footer Content: Colors", "label" : "Heading 2", "title" : "tweak-footer-h2-color", "type" : "color", "target" : ".Footer .sqs-layout h2", "showOnlyWhenPresent" : ".tweak-footer-show .Footer .sqs-layout h2" }
 @tweak-footer-h2-color: #ffffff;
 
-// tweak: { "category": "Footer Content: Colors", "label" : "Heading 3", "title" : "tweak-footer-h3-color", "type" : "color", "target" : ".Footer .sqs-layout h3", "showOnlyWhenPresent" : ".Footer .sqs-layout h3" }
+// tweak: { "category": "Footer Content: Colors", "label" : "Heading 3", "title" : "tweak-footer-h3-color", "type" : "color", "target" : ".Footer .sqs-layout h3", "showOnlyWhenPresent" : ".tweak-footer-show .Footer .sqs-layout h3" }
 @tweak-footer-h3-color: #ffffff;
 
-// tweak: { "category": "Footer Content: Colors", "label" : "Links", "title" : "tweak-footer-link-color", "type" : "color", "target" : ".Footer .sqs-layout p a", "showOnlyWhenPresent" : ".Footer .sqs-layout p a" }
+// tweak: { "category": "Footer Content: Colors", "label" : "Links", "title" : "tweak-footer-link-color", "type" : "color", "target" : ".Footer .sqs-layout p a", "showOnlyWhenPresent" : ".tweak-footer-show .Footer .sqs-layout p a" }
 @tweak-footer-link-color: #ffffff;
 
-// tweak: { "category" : "Footer Content: Colors", "label" : "Lines", "title" : "tweak-footer-line-color", "type" : "color", "target" : ".Footer .sqs-block-horizontalrule, .Footer .sqs-block-html blockquote, .Footer .sqs-block-markdown blockquote", "showOnlyWhenPresent" : ".Footer .sqs-block-horizontalrule, .Footer .sqs-block-html blockquote, .Footer .sqs-block-markdown blockquote" }
+// tweak: { "category" : "Footer Content: Colors", "label" : "Lines", "title" : "tweak-footer-line-color", "type" : "color", "target" : ".Footer .sqs-block-horizontalrule, .Footer .sqs-block-html blockquote, .Footer .sqs-block-markdown blockquote", "showOnlyWhenPresent" : ".tweak-footer-show .Footer .sqs-block-horizontalrule, .tweak-footer-show .Footer .sqs-block-html blockquote, .tweak-footer-show .Footer .sqs-block-markdown blockquote" }
 @tweak-footer-line-color: rgba(255,255,255,0.2);
 
 

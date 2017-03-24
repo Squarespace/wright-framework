@@ -42,11 +42,11 @@ body {
   &.tweak-site-width-option-full-width,
   &.tweak-site-width-option-full-background {
 
-    // // Full width, get background from site border
+    // Full width, get background from site border
     background-color: @tweak-site-border-color;
     .font-smoothing(@tweak-site-border-color);
 
-    &:not(.tweak-site-border-show) {
+    &.tweak-footer-show:not(.tweak-site-border-show) {
 
       // No site border, get background from footer bottom
       background-color: @tweak-footer-color;
