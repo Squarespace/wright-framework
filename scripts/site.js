@@ -6,6 +6,7 @@ import './polyfills/classList';
 
 import AncillaryLayout from './controllers/AncillaryLayout';
 import FooterBreakpoints from './controllers/FooterBreakpoints';
+import HashManager from './controllers/HashManager';
 import IndexFirstPageHeight from './controllers/IndexFirstPageHeight';
 import IndexGallery from './controllers/IndexGallery';
 import IndexGalleryVideo from './controllers/IndexGalleryVideo';
@@ -21,6 +22,7 @@ import SiteLoader from './controllers/SiteLoader';
 
 controller.register('AncillaryLayout', AncillaryLayout);
 controller.register('FooterBreakpoints', FooterBreakpoints);
+controller.register('HashManager', HashManager);
 controller.register('IndexFirstPageHeight', IndexFirstPageHeight);
 controller.register('IndexGallery', IndexGallery);
 controller.register('IndexGalleryVideo', IndexGalleryVideo);

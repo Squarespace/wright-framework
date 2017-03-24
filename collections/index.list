@@ -1,5 +1,9 @@
 {.section collection}
-
+  <nav class="Index-nav">
+    {.repeated section collections}
+      <a href="#{urlId}" class="Index-nav-link">{urlId}</a>
+    {.end}
+  </nav>
   {.repeated section collections}
 
     {.equal? typeName "gallery"}
