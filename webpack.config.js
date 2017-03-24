@@ -28,7 +28,11 @@ var config = {
   resolve: {
     modulesDirectories: [
       path.resolve(__dirname, 'node_modules')
-    ]
+    ],
+    alias: {
+      '@squarespace/layout-base': path.resolve(__dirname, 'node_modules/@squarespace/layout-slideshow/node_modules/@squarespace/layout-base'),
+      'lodash/debounce': path.resolve(__dirname, 'node_modules/lodash/function/debounce')
+    }
   },
   resolveLoader: {
     modulesDirectories: [

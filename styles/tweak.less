@@ -442,6 +442,8 @@
 // tweak: { "category" : "Index: Page", "label" : "Minimum Height", "title" : "tweak-index-page-min-height", "type" : "value", "step" : 1, "min" : 50, "max" : 100, "target" : ".Index-page", "showOnlyWhenPresent" : ".Index-page", "js": true }
 @tweak-index-page-min-height: 100vh;
 
+// tweak: { "category" : "Index: Page", "label" : "Mirror Border Below First Page", "title" : "tweak-index-page-apply-bottom-spacing", "type" : "checkbox", "active" : false, "target" : ".Index-page", "showOnlyWhenPresent": ".tweak-site-border-show.tweak-index-page-fullscreen-first-page-only .Index-page:first-child, .tweak-site-border-show.tweak-index-page-fullscreen-all-pages .Index-page:first-child, .tweak-site-border-show.tweak-index-page-fullscreen-pages-with-backgrounds-only .Index-page--has-image:first-child", "js": true }
+
 // tweak: { "category" : "Index: Scroll Indicator", "label" : "Option", "title" : "tweak-index-page-scroll-indicator", "type" : "dropdown", "options" : [ "None", "Icon Only", "Icon and Text" ], "default" : "None", "target" : ".Index-page-scroll-indicator", "showOnlyWhenPresent" : ".Index-page-scroll-indicator" }
 
 // tweak: { "category" : "Index: Scroll Indicator", "label" : "Icon", "title" : "tweak-index-page-scroll-indicator-icon", "type" : "dropdown", "options" : [ "Line", "Arrow" ], "default" : "Arrow", "target" : ".Index-page-scroll-indicator", "showOnlyWhenPresent" : "body:not(.tweak-index-page-scroll-indicator-none) .Index-page-scroll-indicator" }
@@ -482,6 +484,8 @@
 
 // tweak: { "category" : "Index: Gallery", "label" : "Fixed Height", "title" : "tweak-index-gallery-height", "type" : "value", "step" : 1, "min" : 10, "max" : 100, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow.tweak-index-gallery-fixed-height .Index-gallery", "js": true }
 @tweak-index-gallery-height: 100vh;
+
+// tweak: { "category" : "Index: Gallery", "label" : "Mirror Border Below First Gallery", "title" : "tweak-index-gallery-apply-bottom-spacing", "type" : "checkbox", "active" : true, "target" : ".Index-gallery", "showOnlyWhenPresent": ".tweak-site-border-show.tweak-index-gallery-fixed-height .Index-gallery:first-child", "js": true }
 
 // tweak: { "category" : "Index: Gallery", "label" : "Aspect Ratio", "title" : "tweak-index-gallery-aspect", "type" : "value", "step" : 1, "min" : 30, "max" : 160, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow:not(.tweak-index-gallery-fixed-height) .Index-gallery, body:not(.tweak-index-gallery-layout-slideshow) .Index-gallery" }
 @tweak-index-gallery-aspect: 100;

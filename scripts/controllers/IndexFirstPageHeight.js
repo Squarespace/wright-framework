@@ -25,12 +25,20 @@ function IndexFirstPageHeight(element) {
     if (parseFloat(Tweak.getValue('tweak-site-border-width')) <= 0) {
       return 0;
     }
-    return parseFloat(window.getComputedStyle(site).borderWidth);
+    const borderWidth = parseFloat(window.getComputedStyle(site).borderWidth);
+    const doubleBorderGallery = isGallery && Tweak.getValue('tweak-index-gallery-apply-bottom-spacing') === 'true';
+    const doubleBorderPage = !isGallery && Tweak.getValue('tweak-index-page-apply-bottom-spacing') === 'true';
+    if (doubleBorderGallery || doubleBorderPage) {
+      return borderWidth * 2;
+    }
+    return borderWidth;
   };
 
-  const applyHeight = (height, el = element, prop = 'minHeight') => {
+  const applyHeight = (height, heightElement = element) => {
+    const prop = isGallery ? 'height' : 'minHeight';
+
     if (!height) {
-      el.style[prop] = '';
+      heightElement.style[prop] = '';
       return;
     }
 
@@ -40,9 +48,9 @@ function IndexFirstPageHeight(element) {
 
     const totalHeight = borderHeight + headerHeight + announcementBarHeight;
     if (totalHeight > 0) {
-      el.style[prop] = `calc(${height} - ${totalHeight}px)`;
+      heightElement.style[prop] = `calc(${height} - ${totalHeight}px)`;
     } else {
-      el.style[prop] = '';
+      heightElement.style[prop] = '';
     }
   };
 
@@ -62,11 +70,11 @@ function IndexFirstPageHeight(element) {
       const innerWrapper = element.querySelector('.Index-gallery-wrapper');
 
       if (!isSlideshow || !isFixedHeight || unit !== 'vh') {
-        applyHeight(0, innerWrapper, 'height');
+        applyHeight(0, innerWrapper);
         return;
       }
 
-      applyHeight(height, innerWrapper, 'height');
+      applyHeight(height, innerWrapper);
       return;
     }
 
@@ -87,7 +95,11 @@ function IndexFirstPageHeight(element) {
   const bindListeners = () => {
     Tweak.watch([
       'tweak-index-page-fullscreen',
-      'tweak-index-page-min-height'
+      'tweak-index-page-min-height',
+      'tweak-index-page-apply-bottom-spacing',
+      'tweak-index-gallery-fixed-height',
+      'tweak-index-gallery-height',
+      'tweak-index-gallery-apply-bottom-spacing'
     ], setMinHeight);
     darwin = new Darwin({
       targets: [
