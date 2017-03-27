@@ -44,7 +44,7 @@ export const isMobileUA = () => {
 };
 
 
-const scrollFunctions = [];
+let scrollFunctions = [];
 let handleScroll = () => {};
 let scrollTimeout;
 
@@ -95,6 +95,8 @@ export const rafScroll = (fn) => {
   window.addEventListener('scroll', handleScroll);
 
   window.addEventListener('mercury:unload', () => {
+    scrollFunctions = [];
+    handleScroll = () => {};
     clearTimeout(scrollTimeout);
     window.removeEventListener('scroll', handleScroll);
   });

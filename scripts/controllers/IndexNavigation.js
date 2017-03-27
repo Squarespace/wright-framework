@@ -11,8 +11,6 @@ function IndexNavigation(element) {
     return acc;
   }, {});
 
-  // window.addEventListener('scroll', );
-
 
   const scroll = () => {
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
