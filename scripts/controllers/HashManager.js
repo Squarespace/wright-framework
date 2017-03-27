@@ -38,6 +38,8 @@ function HashManager(element) {
       e.preventDefault();
       e.stopImmediatePropagation();
 
+      window.history.replaceState(undefined, undefined, '#' + hash);
+
       jump(hashElement.getBoundingClientRect().top, {
         duration: 500
       });

@@ -103,13 +103,20 @@
 
     {.end}
 
-
-
   {.end}
 
-  <nav class="Index-nav">
-    {.repeated section collections}
-      <a href="#{urlId}" class="Index-nav-link">{urlId}</a>
-    {.end}
-  </nav>
+  {.section collections}
+    <nav class="Index-nav">
+      <div class="Index-nav-inner">
+        {.repeated section @}
+          <a href="#{urlId}" class="Index-nav-item">
+            <div class="Index-nav-indicator"></div>
+            <div class="Index-nav-text">{urlId}</div>
+          </a>
+        {.end}
+      </div>
+    </nav>
+  {.end}
+
+
 {.end}

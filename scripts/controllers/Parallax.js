@@ -1,6 +1,7 @@
 import { ImageLoader, Tweak } from '@squarespace/core';
 import Darwin from '@squarespace/darwin';
-import { resizeEnd } from '../util';
+import { resizeEnd, rafScroll } from '../util';
+import { getIndexSectionDOMInfo, invalidateSectionCache } from '../indexUtils';
 import { indexEditEvents } from '../constants';
 
 const parallaxOffset = 500;
@@ -63,21 +64,16 @@ function Parallax(element) {
    * @return {Boolean}            Whether or not it was udpated
    */
   const updateMatrixItem = (matrixItem) => {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const rect = matrixItem.originalNode.getBoundingClientRect();
+    // const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    // const rect = matrixItem.originalNode.getBoundingClientRect();
 
-    const currentDims = {
-      top: rect.top + scrollTop,
-      left: rect.left,
-      width: matrixItem.originalNode.offsetWidth,
-      height: matrixItem.originalNode.offsetHeight
-    };
+    const currentDims = getIndexSectionDOMInfo(matrixItem.originalNode);
 
     for (const prop in currentDims) {
       if (matrixItem[prop] !== currentDims[prop]) {
         matrixItem.top = currentDims.top;
-        matrixItem.right = rect.right;
-        matrixItem.bottom = rect.bottom + scrollTop;
+        matrixItem.right = currentDims.right;
+        matrixItem.bottom = currentDims.bottom;
         matrixItem.left = currentDims.left;
         matrixItem.width = currentDims.width;
         matrixItem.height = currentDims.height;
@@ -160,34 +156,36 @@ function Parallax(element) {
     });
   };
 
-  /**
-   * A wrapper for the scroll logic that can be called recursively by raf.
-   */
-  const scrollCallback = () => {
-    scroll(window.pageYOffset);
-    if (scrolling === true) {
-      window.requestAnimationFrame(scrollCallback);
-    }
-  };
+  rafScroll(scroll);
 
-  /**
-   * The actual scroll handler that wraps the scroll callback and starts the
-   * raf calls.
-   */
-  const handleScroll = () => {
-    if (scrolling === false) {
-      scrolling = true;
-      document.documentElement.style.pointerEvents = 'none';
-      scrollCallback();
-    }
-    if (scrollTimeout) {
-      clearTimeout(scrollTimeout);
-    }
-    scrollTimeout = setTimeout(() => {
-      scrolling = false;
-      document.documentElement.style.pointerEvents = 'auto';
-    }, 100);
-  };
+  // /**
+  //  * A wrapper for the scroll logic that can be called recursively by raf.
+  //  */
+  // const scrollCallback = () => {
+  //   scroll(window.pageYOffset);
+  //   if (scrolling === true) {
+  //     window.requestAnimationFrame(scrollCallback);
+  //   }
+  // };
+
+  // /**
+  //  * The actual scroll handler that wraps the scroll callback and starts the
+  //  * raf calls.
+  //  */
+  // const handleScroll = () => {
+  //   if (scrolling === false) {
+  //     scrolling = true;
+  //     document.documentElement.style.pointerEvents = 'none';
+  //     scrollCallback();
+  //   }
+  //   if (scrollTimeout) {
+  //     clearTimeout(scrollTimeout);
+  //   }
+  //   scrollTimeout = setTimeout(() => {
+  //     scrolling = false;
+  //     document.documentElement.style.pointerEvents = 'auto';
+  //   }, 100);
+  // };
 
   /**
    * Uses ImageLoader to load the image for a given media element.
@@ -355,8 +353,11 @@ function Parallax(element) {
    * listeners, and tweak watcher.
    */
   const bindListeners = () => {
-    window.addEventListener('scroll', handleScroll);
-    resizeEnd(syncParallax);
+    // window.addEventListener('scroll', handleScroll);
+    resizeEnd(() => {
+      invalidateSectionCache();
+      syncParallax();
+    });
 
     window.addEventListener(indexEditEvents.enabled, handleIndexEditEnabled);
     window.addEventListener(indexEditEvents.disabled, handleIndexEditDisabled);
@@ -393,7 +394,10 @@ function Parallax(element) {
         '.Header',
         '.sqs-announcement-bar-dropzone'
       ],
-      callback: syncParallax
+      callback: () => {
+        invalidateSectionCache();
+        syncParallax();
+      }
     });
     if (darwin) {
       darwin.init();
@@ -409,7 +413,7 @@ function Parallax(element) {
       darwin.destroy();
       darwin = null;
     }
-    window.removeEventListener('scroll', handleScroll);
+    // window.removeEventListener('scroll', handleScroll);
 
     window.removeEventListener(indexEditEvents.enabled, handleIndexEditEnabled);
     window.removeEventListener(indexEditEvents.disabled, handleIndexEditDisabled);

@@ -36,12 +36,38 @@
   //  Nav
 
   &-nav {
-    position: fixed;
-    left: 0;
-    top: 50%;
-    z-index: 10;
+    display: flex;
+    align-items: center;
 
-    &-link {
+    // TODO: responsive border
+    position: fixed;
+    top: 0;
+    right: @tweak-site-border-width;
+    bottom: 0;
+    z-index: 10;
+    width: 0;
+
+    &-inner {
+      position: absolute;
+      right: 100%;
+      width: auto;
+    }
+
+    &-item {
+      display: block;
+      position: relative;
+    }
+
+    &-indicator {
+      width: 20px;
+      height: 20px;
+      border-radius: 300px;
+      background: white;
+    }
+
+    &-text {
+      position: absolute;
+      left: 1000px;
       display: block;
       color: salmon;
     }
