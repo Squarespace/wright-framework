@@ -1,10 +1,17 @@
 let map = {};
 
+/**
+ * Function to get the bounding client rect for any section in the index. Since
+ * this logic is shared between multiple controllers that affect the index, this
+ * is memoized so we don't have to do the function call unnecessarily.
+ *
+ * @param  {HTMLElement} section  The section to measure
+ * @return {Object}               Object with bounding box measurements
+ */
 export const getIndexSectionRect = (section) => {
   const id = section.getAttribute('id');
 
   if (map[id]) {
-    console.log('returning stored value for ' + id);
     return map[id];
   }
 
@@ -20,10 +27,15 @@ export const getIndexSectionRect = (section) => {
     height: section.offsetHeight
   };
 
-  console.log('returning new value for ' + id);
   return map[id];
 };
 
+/**
+ * Clears the stored bounding client rect values.
+ *
+ * NOTE: This should be called only from Parallax.js, which is arbitrarily
+ * designated to handle cache invalidation.
+ */
 export const invalidateIndexSectionRectCache = () => {
   map = {};
 };
