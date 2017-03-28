@@ -16,7 +16,8 @@ function IndexFirstPageHeight(element) {
   const site = document.querySelector('.Site');
   const headerTop = document.querySelector('.Header--top');
   const announcementBar = document.querySelector('.sqs-announcement-bar-dropzone');
-  const isGallery = element.classList.contains('Index-gallery');
+  const firstSection = element.querySelector('.Index-page, .Index-gallery');
+  const isGallery = firstSection.classList.contains('Index-gallery');
 
   const getBorderHeight = () => {
     if (Tweak.getValue('tweak-site-border-show') !== 'true') {
@@ -34,7 +35,7 @@ function IndexFirstPageHeight(element) {
     return borderWidth;
   };
 
-  const applyHeight = (height, heightElement = element) => {
+  const applyHeight = (height, heightElement = firstSection) => {
     const prop = isGallery ? 'height' : 'minHeight';
 
     if (!height) {
@@ -67,7 +68,7 @@ function IndexFirstPageHeight(element) {
       const height = Tweak.getValue('tweak-index-gallery-height');
       const { unit } = parseValue(height);
 
-      const innerWrapper = element.querySelector('.Index-gallery-wrapper');
+      const innerWrapper = firstSection.querySelector('.Index-gallery-wrapper');
 
       if (!isSlideshow || !isFixedHeight || unit !== 'vh') {
         applyHeight(0, innerWrapper);
@@ -83,7 +84,7 @@ function IndexFirstPageHeight(element) {
       applyHeight(0);
       return;
     }
-    if (fullscreenSetting === 'Pages with Backgrounds Only' && !element.classList.contains('Index-page--has-image')) {
+    if (fullscreenSetting === 'Pages with Backgrounds Only' && !firstSection.classList.contains('Index-page--has-image')) {
       applyHeight(0);
       return;
     }

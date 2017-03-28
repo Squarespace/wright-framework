@@ -25,23 +25,6 @@ function IndexNavigation(element) {
   };
 
   rafScroll(scroll);
-
-  // const items = Array.from(element.querySelectorAll('.Index-nav-item'));
-  // let activeItem = items[0];
-
-  // const itemMap = items.reduce((acc, item) => {
-  //   const url = new URL(item.href);
-  //   acc[url.hash] = item;
-  //   return acc;
-  // }, {});
-
-  // console.log(itemMap);
-
-  // window.addEventListener('hashchange', () => {
-  //   activeItem.classList.remove('active');
-  //   activeItem = itemMap[window.location.hash];
-  //   activeItem.classList.add('active');
-  // });
 }
 
 export default IndexNavigation;

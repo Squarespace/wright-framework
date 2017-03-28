@@ -4,7 +4,7 @@ export const getIndexSectionDOMInfo = (section) => {
   const id = section.getAttribute('id');
 
   if (map[id]) {
-    console.log('returning stored value');
+    console.log('returning stored value for ' + id);
     return map[id];
   }
 
@@ -20,7 +20,7 @@ export const getIndexSectionDOMInfo = (section) => {
     height: section.offsetHeight
   };
 
-  console.log('returning new value');
+  console.log('returning new value for ' + id);
   return map[id];
 };
 
