@@ -35,7 +35,20 @@
 
   //  Nav
 
+
+
   &-nav {
+    @offset: 20px;
+    @spacing: 14px;
+    @color: rgba(0,0,0,0.5);
+    @activeColor: rgb(17, 17, 17);
+    @overlayColor: rgba(255,255,255,0.5);
+    @overlayActiveColor: white;
+    @duration: 170ms;
+    @easing: ease-out;
+    @textColor: rgb(17, 17, 17);
+    @overlayTextColor: white;
+
     display: flex;
     align-items: center;
 
@@ -48,29 +61,124 @@
     width: 0;
 
     &-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       position: absolute;
       right: 100%;
       width: auto;
+      padding-right: @offset;
     }
 
     &-item {
       display: block;
       position: relative;
+      padding: 0;
+      margin-bottom: @spacing;
+      transition: padding @duration @easing;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     &-indicator {
-      width: 20px;
-      height: 20px;
       border-radius: 300px;
-      background: white;
+      border-width: 1px;
+      border-style: solid;
+      border-color: @color;
+      width: 12px;
+      height: 12px;
+      margin: 0px;
+      transform: scale(0.95);
+      &:before {
+        content: '';
+        display: block;
+        width: 4px;
+        height: 4px;
+        margin: 4px;
+        border-radius: 300px;
+        background-color: @activeColor;
+        transform: scale(0);
+        transition: transform @duration @easing;
+      }
+      transition: border-color @duration @easing, transform @duration @easing, margin @duration @easing;
+    }
+    &.overlay &-indicator {
+      border-color: @overlayColor;
+      &:before {
+        background-color: @overlayActiveColor;
+      }
+    }
+    &-item.active &-indicator,
+    &-item:hover &-indicator {
+      border-color: @activeColor;
+    }
+    &-item.active &-indicator {
+      margin: 2px 0;
+    }
+    &.overlay &-item.active &-indicator,
+    &.overlay &-item:hover &-indicator {
+      border-color: @overlayActiveColor;
+    }
+    &-item.active &-indicator {
+      transform: scale(1.4);
+      &:before {
+        transform: scale(1);
+      }
     }
 
     &-text {
-      position: absolute;
-      left: 1000px;
       display: block;
-      color: salmon;
+      position: absolute;
+      right: 100vw;
+      top: 50%;
+
+      height: 100%;
+      margin-right: 20px;
+      margin-top: -8px; // TEMP
+
+      white-space: nowrap;
+      text-align: right;
+      line-height: 100%;
+
+      .font-smoothing(@tweak-main-background-color);
+      font-size: 16px;
+      color: @textColor;
+      opacity: 0;
+      transform: translatex(20%);
+
+      transition: opacity @duration @easing, transform @duration @easing, right 0s @duration;
+
+      &:after {
+        content: '\2014';
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 8px; // TEMP
+        line-height: 100%;
+      }
+
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        max-width: 100px; // TEMP
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 100%;
+      }
     }
+    &.overlay &-text {
+      color: @overlayTextColor;
+      .font-smoothing(rgba(red(@tweak-overlay-color), green(@tweak-overlay-color), blue(@tweak-overlay-color), 1));
+    }
+    &-item:hover &-text {
+      right: 100%;
+      opacity: 1;
+      transform: translatex(0);
+
+      transition: opacity @duration @easing, transform @duration @easing, right 0s 0s;
+    }
+
   }
 
 

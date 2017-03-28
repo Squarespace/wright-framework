@@ -109,9 +109,9 @@
     <nav class="Index-nav">
       <div class="Index-nav-inner">
         {.repeated section @}
-          <a href="#{urlId}" class="Index-nav-item">
+          <a href="#{urlId}" class="Index-nav-item{.equal? @index 1} active{.end}">
             <div class="Index-nav-indicator"></div>
-            <div class="Index-nav-text">{urlId}</div>
+            <div class="Index-nav-text"><span>{title}</span></div>
           </a>
         {.end}
       </div>
