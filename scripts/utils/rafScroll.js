@@ -1,5 +1,6 @@
 let handleScroll = () => {};
-let scrollFunctions = [];
+let destructor = () => {};
+let scrollHandlers = [];
 let scrollTimeout;
 
 /**
@@ -15,7 +16,10 @@ const getUnifiedScrollHandler = () => {
 
   const scroll = () => {
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    scrollFunctions.forEach((fn) => {
+    scrollHandlers.forEach(({ fn, type }) => {
+      if (!type === 'scroll') {
+        return;
+      }
       fn(scrollTop);
     });
   };
@@ -30,6 +34,12 @@ const getUnifiedScrollHandler = () => {
   return () => {
     if (scrolling === false) {
       scrolling = true;
+      scrollHandlers.forEach(({ fn, type }) => {
+        if (!type === 'start') {
+          return;
+        }
+        fn();
+      });
       document.documentElement.style.pointerEvents = 'none';
       scrollCallback();
     }
@@ -38,6 +48,12 @@ const getUnifiedScrollHandler = () => {
     }
     scrollTimeout = setTimeout(() => {
       scrolling = false;
+      scrollHandlers.forEach(({ fn, type }) => {
+        if (!type === 'end') {
+          return;
+        }
+        fn();
+      });
       document.documentElement.style.pointerEvents = 'auto';
     }, 100);
   };
@@ -45,23 +61,72 @@ const getUnifiedScrollHandler = () => {
 };
 
 /**
- * The scroll method through which functions are added to the unified scroll
- * handler. Also handles unbinding and clearing out on mercury unload.
+ * Given a scroll handler, get the destructor for that scroll handler.
+ * @param  {Function} fn   Scroll Handler.
+ * @return {Function}      Destructor
+ */
+const getScrollDestructor = (fn) => {
+  return () => {
+    scrollHandlers = [];
+    handleScroll = () => {};
+    clearTimeout(scrollTimeout);
+    window.removeEventListener('scroll', fn);
+  };
+};
+
+/**
+ * When a new function is added, unbind and rebind the event listeners for
+ * scroll and mercury:unload.
+ */
+const rebindListeners = () => {
+  window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener('mercury:unload', destructor);
+
+  handleScroll = getUnifiedScrollHandler(scrollHandlers);
+  destructor = getScrollDestructor(handleScroll);
+
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('mercury:unload', destructor);
+};
+
+/**
+ * Add a function to the unified scroll handler to be run each frame during
+ * scroll.
  *
  * @param  {Function} fn   Function to bind to scroll
  */
-const rafScroll = (fn) => {
-  scrollFunctions.push(fn);
-  window.removeEventListener('scroll', handleScroll);
-  handleScroll = getUnifiedScrollHandler(scrollFunctions);
-  window.addEventListener('scroll', handleScroll);
-
-  window.addEventListener('mercury:unload', () => {
-    scrollFunctions = [];
-    handleScroll = () => {};
-    clearTimeout(scrollTimeout);
-    window.removeEventListener('scroll', handleScroll);
+export const rafScroll = (fn) => {
+  scrollHandlers.push({
+    fn,
+    type: 'scroll'
   });
+  rebindListeners();
+};
+
+/**
+ * Add a function to the unified scroll handler to be run when scroll starts.
+ *
+ * @param  {Function} fn   Function to bind to scroll start
+ */
+export const rafScrollStart = (fn) => {
+  scrollHandlers.push({
+    fn,
+    type: 'start'
+  });
+  rebindListeners();
+};
+
+/**
+ * Add a function to the unified scroll handler to be run when scroll ends.
+ *
+ * @param  {Function} fn   Function to bind to scroll start
+ */
+export const rafScrollEnd = (fn) => {
+  scrollHandlers.push({
+    fn,
+    type: 'end'
+  });
+  rebindListeners();
 };
 
 export default rafScroll;

@@ -3,6 +3,7 @@ import { Tweak, ImageLoader } from '@squarespace/core';
 import { authenticated } from '../constants';
 import resizeEnd from '../utils/resizeEnd';
 import isMobileUA from '../utils/isMobileUA';
+import { rafScrollStart, rafScrollEnd } from '../utils/rafScroll';
 
 
 /**
@@ -159,6 +160,18 @@ function IndexGallery(element) {
     if (authenticated) {
       Tweak.watch(tweaksToWatch, sync);
     }
+
+    rafScrollStart(() => {
+      if (slideshow instanceof Slideshow) {
+        slideshow.stopAutoplay();
+      }
+    });
+
+    rafScrollEnd(() => {
+      if (slideshow instanceof Slideshow) {
+        slideshow.startAutoplay();
+      }
+    });
 
     resizeEnd(loadImages);
   };
