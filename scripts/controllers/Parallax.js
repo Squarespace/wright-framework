@@ -104,8 +104,7 @@ function Parallax(element) {
    * setting a transform. Most of the heavy lifting occurs in syncParallax.
    * @param  {Number} scrollTop  Current scrollTop (passed in for performance)
    */
-  const scroll = function (scrollTop) {
-    scrollTop = scrollTop || (document.documentElement.scrollTop || document.body.scrollTop);
+  const handleScroll = (scrollTop) => {
 
     if (!isParallaxEnabled()) {
       return;
@@ -155,36 +154,6 @@ function Parallax(element) {
     });
   };
 
-  rafScroll(scroll);
-
-  // /**
-  //  * A wrapper for the scroll logic that can be called recursively by raf.
-  //  */
-  // const scrollCallback = () => {
-  //   scroll(window.pageYOffset);
-  //   if (scrolling === true) {
-  //     window.requestAnimationFrame(scrollCallback);
-  //   }
-  // };
-
-  // /**
-  //  * The actual scroll handler that wraps the scroll callback and starts the
-  //  * raf calls.
-  //  */
-  // const handleScroll = () => {
-  //   if (scrolling === false) {
-  //     scrolling = true;
-  //     document.documentElement.style.pointerEvents = 'none';
-  //     scrollCallback();
-  //   }
-  //   if (scrollTimeout) {
-  //     clearTimeout(scrollTimeout);
-  //   }
-  //   scrollTimeout = setTimeout(() => {
-  //     scrolling = false;
-  //     document.documentElement.style.pointerEvents = 'auto';
-  //   }, 100);
-  // };
 
   /**
    * Uses ImageLoader to load the image for a given media element.
@@ -325,7 +294,7 @@ function Parallax(element) {
 
     // Calculate proper position of images by calling scroll
     if (isParallaxEnabled()) {
-      scroll(scrollTop);
+      handleScroll(scrollTop);
     }
   };
 
@@ -352,7 +321,8 @@ function Parallax(element) {
    * listeners, and tweak watcher.
    */
   const bindListeners = () => {
-    // window.addEventListener('scroll', handleScroll);
+    rafScroll(handleScroll);
+
     resizeEnd(() => {
       invalidateIndexSectionRectCache();
       syncParallax();

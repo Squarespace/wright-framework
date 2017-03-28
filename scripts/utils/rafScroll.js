@@ -14,8 +14,9 @@ const getUnifiedScrollHandler = () => {
   let scrolling = false;
 
   const scroll = () => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     scrollFunctions.forEach((fn) => {
-      fn();
+      fn(scrollTop);
     });
   };
 

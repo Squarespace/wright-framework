@@ -15,8 +15,7 @@ function IndexNavigation(element) {
     }, {});
   };
 
-  const handleScroll = () => {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const handleScroll = (scrollTop) => {
     Object.keys(sectionRects).forEach((id) => {
       const { top, bottom } = sectionRects[id];
       if (currentId !== id && scrollTop >= top && scrollTop < bottom) {
