@@ -1,7 +1,8 @@
 import { ImageLoader, Tweak } from '@squarespace/core';
 import Darwin from '@squarespace/darwin';
-import { resizeEnd, rafScroll } from '../util';
-import { getIndexSectionDOMInfo, invalidateSectionCache } from '../indexUtils';
+import { getIndexSectionRect, invalidateIndexSectionRectCache } from '../utils/getIndexSectionRect';
+import rafScroll from '../utils/rafScroll';
+import resizeEnd from '../utils/resizeEnd';
 import { indexEditEvents } from '../constants';
 
 const parallaxOffset = 500;
@@ -14,8 +15,6 @@ const parallaxOffset = 500;
 function Parallax(element) {
 
   let darwin;
-  let scrolling = false;
-  let scrollTimeout;
   let windowHeight;
   let matrix = [];
   let isEditingIndex = false;
@@ -67,7 +66,7 @@ function Parallax(element) {
     // const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     // const rect = matrixItem.originalNode.getBoundingClientRect();
 
-    const currentDims = getIndexSectionDOMInfo(matrixItem.originalNode);
+    const currentDims = getIndexSectionRect(matrixItem.originalNode);
 
     for (const prop in currentDims) {
       if (matrixItem[prop] !== currentDims[prop]) {
@@ -355,7 +354,7 @@ function Parallax(element) {
   const bindListeners = () => {
     // window.addEventListener('scroll', handleScroll);
     resizeEnd(() => {
-      invalidateSectionCache();
+      invalidateIndexSectionRectCache();
       syncParallax();
     });
 
@@ -395,7 +394,7 @@ function Parallax(element) {
         '.sqs-announcement-bar-dropzone'
       ],
       callback: () => {
-        invalidateSectionCache();
+        invalidateIndexSectionRectCache();
         syncParallax();
       }
     });

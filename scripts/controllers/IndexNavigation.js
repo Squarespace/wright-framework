@@ -1,12 +1,12 @@
 import URL from 'url-parse';
-import { rafScroll } from '../util';
-import { getIndexSectionDOMInfo } from '../indexUtils';
+import { getIndexSectionRect } from '../utils/getIndexSectionRect';
+import rafScroll from '../utils/rafScroll';
 
 function IndexNavigation(element) {
   let currentId;
   const sections = Array.from(element.querySelectorAll('.Index-page, .Index-gallery'));
   const sectionInfo = sections.reduce((acc, section) => {
-    const { top, bottom } = getIndexSectionDOMInfo(section);
+    const { top, bottom } = getIndexSectionRect(section);
     acc[section.getAttribute('id')] = { top, bottom };
     return acc;
   }, {});

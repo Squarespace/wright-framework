@@ -1,5 +1,5 @@
 import { Tweak } from '@squarespace/core';
-import { resizeEnd } from '../util';
+import resizeEnd from '../utils/resizeEnd';
 
 const mobileOverlayActiveClassname = 'is-mobile-overlay-active';
 const mobileOverlayTweaks = [

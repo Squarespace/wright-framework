@@ -1,5 +1,5 @@
 import { Tweak } from '@squarespace/core';
-import { resizeEnd } from '../util';
+import resizeEnd from '../utils/resizeEnd';
 import { indexEditEvents } from '../constants';
 
 const overlayClassname = 'Header--overlay';

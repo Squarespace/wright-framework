@@ -1,5 +1,5 @@
 import { Tweak } from '@squarespace/core';
-import { resizeEnd } from '../util';
+import resizeEnd from '../utils/resizeEnd';
 
 const midClassname = 'Footer--mid';
 const compactClassname = 'Footer--compact';

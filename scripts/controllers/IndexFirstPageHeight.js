@@ -1,6 +1,6 @@
 import { Tweak } from '@squarespace/core';
 import Darwin from '@squarespace/darwin';
-import { resizeEnd } from '../util';
+import resizeEnd from '../utils/resizeEnd';
 
 /**
  * If min-height tweak is applied to the first index page, we need to account

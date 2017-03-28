@@ -1,5 +1,5 @@
 import { Tweak } from '@squarespace/core';
-import { resizeEnd } from '../util';
+import resizeEnd from '../utils/resizeEnd';
 
 /**
  * In mobile, we need to set a margin on body in order to offset the fixed top/

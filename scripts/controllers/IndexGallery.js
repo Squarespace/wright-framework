@@ -1,7 +1,8 @@
 import Slideshow from '@squarespace/layout-slideshow';
 import { Tweak, ImageLoader } from '@squarespace/core';
 import { authenticated } from '../constants';
-import { isMobileUA, resizeEnd } from '../util';
+import resizeEnd from '../utils/resizeEnd';
+import isMobileUA from '../utils/isMobileUA';
 
 
 /**

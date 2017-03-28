@@ -1,6 +1,6 @@
 import jump from 'jump.js';
 import { Tweak } from '@squarespace/core';
-import { rafScroll } from '../util';
+import rafScroll from '../utils/rafScroll';
 
 const tweaks = [
   'indicator',
