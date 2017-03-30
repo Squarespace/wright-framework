@@ -28,153 +28,311 @@
   }
 }
 
-.Index {
 
+// -----------------------------------------
 
-  // -----------------------------------------
-
-  //  Nav
+//  Nav
 
 
 
-  &-nav {
-    @offset: 20px;
-    @spacing: 14px;
-    @color: rgba(0,0,0,0.5);
-    @activeColor: rgb(17, 17, 17);
-    @overlayColor: rgba(255,255,255,0.5);
-    @overlayActiveColor: white;
-    @duration: 170ms;
-    @easing: ease-out;
-    @textColor: rgb(17, 17, 17);
-    @overlayTextColor: white;
+.Index-nav {
+  @duration: 170ms;
+  @easing: ease-out;
 
+  display: none;
+  body:not(.tweak-index-nav-style-none) & {
     display: flex;
-    align-items: center;
-
-    // TODO: responsive border
-    position: fixed;
-    top: 0;
-    right: @tweak-site-border-width;
-    bottom: 0;
-    z-index: 10;
-    width: 0;
-
-    &-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: absolute;
-      right: 100%;
-      width: auto;
-      padding-right: @offset;
-    }
-
-    &-item {
-      display: block;
-      position: relative;
-      padding: (@spacing / 2);
-    }
-
-    &-indicator {
-      border-radius: 300px;
-      border-width: 1px;
-      border-style: solid;
-      border-color: @color;
-      width: 12px;
-      height: 12px;
-      margin: 0px;
-      transform: scale(0.95);
-      &:before {
-        content: '';
-        display: block;
-        width: 4px;
-        height: 4px;
-        margin: 4px;
-        border-radius: 300px;
-        background-color: @activeColor;
-        transform: scale(0);
-        transition: transform @duration @easing;
-      }
-      transition: border-color @duration @easing, transform @duration @easing, margin @duration @easing;
-    }
-    &.overlay &-indicator {
-      border-color: @overlayColor;
-      &:before {
-        background-color: @overlayActiveColor;
-      }
-    }
-    &-item.active &-indicator,
-    &-item:hover &-indicator {
-      border-color: @activeColor;
-    }
-    &-item.active &-indicator {
-      margin: 2px 0;
-    }
-    &.overlay &-item.active &-indicator,
-    &.overlay &-item:hover &-indicator {
-      border-color: @overlayActiveColor;
-    }
-    &-item.active &-indicator {
-      transform: scale(1.4);
-      &:before {
-        transform: scale(1);
-      }
-    }
-
-    &-text {
-      display: block;
-      position: absolute;
-      right: 100vw;
-      top: 50%;
-
-      height: 100%;
-      margin-right: 20px;
-      margin-top: -8px; // TEMP
-
-      white-space: nowrap;
-      text-align: right;
-      line-height: 100%;
-
-      .font-smoothing(@tweak-main-background-color);
-      font-size: 16px;
-      color: @textColor;
-      opacity: 0;
-      transform: translatex(20%);
-
-      transition: opacity @duration @easing, transform @duration @easing, right 0s @duration;
-
-      &:after {
-        content: '\2014';
-        display: inline-block;
-        vertical-align: middle;
-        margin-left: 8px; // TEMP
-        line-height: 100%;
-      }
-
-      span {
-        display: inline-block;
-        vertical-align: middle;
-        max-width: 100px; // TEMP
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        line-height: 100%;
-      }
-    }
-    &.overlay &-text {
-      color: @overlayTextColor;
-      .font-smoothing(rgba(red(@tweak-overlay-color), green(@tweak-overlay-color), blue(@tweak-overlay-color), 1));
-    }
-    &-item:hover &-text {
-      right: 100%;
-      opacity: 1;
-      transform: translatex(0);
-
-      transition: opacity @duration @easing, transform @duration @easing, right 0s 0s;
-    }
-
   }
+
+  align-items: center;
+
+  // TODO: responsive border
+  position: fixed;
+  top: 0;
+  right: @tweak-site-border-width;
+  bottom: 0;
+  z-index: 10;
+  width: 0;
+
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    right: 100%;
+    width: auto;
+    padding-right: @tweak-index-nav-offset;
+  }
+
+  &-item {
+    display: block;
+    position: relative;
+    padding: (@tweak-index-nav-spacing / 2) 0;
+  }
+
+  &-text {
+    display: none;
+    position: absolute;
+    right: 100vw;
+    top: 50%;
+
+    height: @tweak-index-nav-font-font-size;
+    margin-top: (-0.5 * @tweak-index-nav-font-font-size);
+
+    white-space: nowrap;
+    text-align: right;
+    line-height: @tweak-index-nav-font-font-size;
+
+    .font-smoothing(@tweak-main-background-color);
+    .tweak-index-nav-font;
+    color: @tweak-index-nav-text-color;
+    opacity: 0;
+    transform: translatex(20%);
+
+    transition: opacity @duration @easing, transform @duration @easing, right 0s @duration;
+
+    &:after {
+      content: '';
+      display: inline-block;
+      position: relative;
+      top: calc((-0.5 * @tweak-index-nav-font-font-size) ~'-' 0.5px);
+      width: 20px;
+      height: 1px;
+      margin: 0 @tweak-index-nav-font-font-size;
+      background-color: @tweak-index-nav-text-color;
+    }
+
+    span {
+      display: inline-block;
+      vertical-align: baseline;
+      max-width: (@tweak-index-nav-font-font-size * 10);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 100%;
+    }
+  }
+  &.overlay &-text {
+    color: @tweak-index-nav-overlay-text-color;
+    .font-smoothing(rgba(red(@tweak-overlay-color), green(@tweak-overlay-color), blue(@tweak-overlay-color), 1));
+    &:after {
+      background-color: @tweak-index-nav-overlay-text-color;
+    }
+  }
+  &-item:hover &-text {
+    right: 100%;
+    opacity: 1;
+    transform: translatex(0);
+
+    transition: opacity @duration @easing, transform @duration @easing, right 0s 0s;
+  }
+
+  .tweak-index-nav-text-show &-text {
+    display: block;
+  }
+
+}
+
+.tweak-index-nav-style-radio {
+  @duration: 170ms;
+  @easing: ease-out;
+  @dot-size: (@tweak-index-nav-indicator-size / 3);
+
+  .Index-nav-indicator {
+    border-radius: 300px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: @tweak-index-nav-indicator-color;
+    width: @tweak-index-nav-indicator-size;
+    height: @tweak-index-nav-indicator-size;
+    transform: scale(0.95);
+    &:before {
+      content: '';
+      display: block;
+      width: @dot-size;
+      height: @dot-size;
+      margin: @dot-size;
+      border-radius: 300px;
+      background-color: @tweak-index-nav-indicator-active-color;
+      transform: scale(0);
+      transition: transform @duration @easing;
+    }
+    transition: border-color @duration @easing, transform @duration @easing, margin @duration @easing;
+  }
+  .Index-nav.overlay .Index-nav-indicator {
+    border-color: @tweak-index-nav-overlay-indicator-color;
+    &:before {
+      background-color: @tweak-index-nav-overlay-indicator-active-color;
+    }
+  }
+  .Index-nav-item.active .Index-nav-indicator,
+  .Index-nav-item:hover .Index-nav-indicator {
+    border-color: @tweak-index-nav-indicator-active-color;
+  }
+  .Index-nav-item.active .Index-nav-indicator {
+    margin: (@tweak-index-nav-indicator-size / 6) 0;
+  }
+  .Index-nav.overlay .Index-nav-item.active .Index-nav-indicator,
+  .Index-nav.overlay .Index-nav-item:hover .Index-nav-indicator {
+    border-color: @tweak-index-nav-overlay-indicator-active-color;
+  }
+  .Index-nav-item.active .Index-nav-indicator {
+    transform: scale(1.4);
+    &:before {
+      transform: scale(1);
+    }
+  }
+}
+
+.tweak-index-nav-style-filled-dots {
+  @duration: 170ms;
+  @easing: ease-out;
+
+  .Index-nav-indicator {
+    width: @tweak-index-nav-indicator-size;
+    height: @tweak-index-nav-indicator-size;
+    border-radius: 300px;
+    border-width: (@tweak-index-nav-indicator-size / 6);
+    border-style: solid;
+    border-color: @tweak-index-nav-indicator-color;
+    transition: border-color @duration @easing, background-color @duration @easing;
+  }
+  .Index-nav.overlay .Index-nav-indicator {
+    border-color: @tweak-index-nav-overlay-indicator-color;
+  }
+  .Index-nav-item.active .Index-nav-indicator,
+  .Index-nav-item:hover .Index-nav-indicator {
+    border-color: @tweak-index-nav-indicator-active-color;
+  }
+  .Index-nav.overlay .Index-nav-item.active .Index-nav-indicator,
+  .Index-nav.overlay .Index-nav-item:hover .Index-nav-indicator {
+    border-color: @tweak-index-nav-overlay-indicator-active-color;
+  }
+  .Index-nav-item.active .Index-nav-indicator {
+    background-color: @tweak-index-nav-indicator-active-color;
+  }
+  .Index-nav.overlay .Index-nav-item.active .Index-nav-indicator {
+    background-color: @tweak-index-nav-overlay-indicator-active-color;
+  }
+}
+
+.tweak-index-nav-style-faded-dots {
+  @duration: 170ms;
+  @easing: ease-out;
+
+  .Index-nav-indicator {
+    width: @tweak-index-nav-indicator-size;
+    height: @tweak-index-nav-indicator-size;
+    border-radius: 300px;
+    background-color: @tweak-index-nav-indicator-color;
+    transition: background-color @duration @easing;
+  }
+  .Index-nav.overlay .Index-nav-indicator {
+    background-color: @tweak-index-nav-overlay-indicator-color;
+  }
+  .Index-nav-item.active .Index-nav-indicator {
+    background-color: @tweak-index-nav-indicator-active-color;
+  }
+  .Index-nav.overlay .Index-nav-item.active .Index-nav-indicator {
+    background-color: @tweak-index-nav-overlay-indicator-active-color;
+  }
+}
+
+.tweak-index-nav-style-horizontal-lines {
+  @duration: 170ms;
+  @easing: ease-out;
+
+  .Index-nav-indicator {
+    width: @tweak-index-nav-indicator-size;
+    height: @tweak-index-nav-indicator-line-width;
+    background-color: @tweak-index-nav-indicator-color;
+    transition: background-color @duration @easing;
+  }
+  .Index-nav.overlay .Index-nav-indicator {
+    background-color: @tweak-index-nav-overlay-indicator-color;
+  }
+  .Index-nav-item.active .Index-nav-indicator {
+    background-color: @tweak-index-nav-indicator-active-color;
+  }
+  .Index-nav.overlay .Index-nav-item.active .Index-nav-indicator {
+    background-color: @tweak-index-nav-overlay-indicator-active-color;
+  }
+
+  // Hide text separator
+  .Index-nav-text {
+    margin-right: @tweak-index-nav-font-font-size;
+  }
+  .Index-nav-text:after {
+    display: none;
+  }
+}
+
+.tweak-index-nav-style-vertical-lines {
+  @duration: 170ms;
+  @easing: ease-out;
+
+  .Index-nav-indicator {
+    width: @tweak-index-nav-indicator-line-width;
+    height: @tweak-index-nav-indicator-size;
+    margin-left: 4px; // Provide some margin-left so the clickable area is larger
+    background-color: @tweak-index-nav-indicator-color;
+    transition: background-color @duration @easing;
+  }
+  .Index-nav.overlay .Index-nav-indicator {
+    background-color: @tweak-index-nav-overlay-indicator-color;
+  }
+  .Index-nav-item.active .Index-nav-indicator {
+    background-color: @tweak-index-nav-indicator-active-color;
+  }
+  .Index-nav.overlay .Index-nav-item.active .Index-nav-indicator {
+    background-color: @tweak-index-nav-overlay-indicator-active-color;
+  }
+}
+
+.tweak-index-nav-style-expanding-horizontal-lines {
+  @duration: 170ms;
+  @easing: ease-out;
+
+  .Index-nav-indicator {
+    width: @tweak-index-nav-indicator-size * 1.6;
+    text-align: right;
+    font-size: 0;
+    line-height: 0;
+    &:before {
+      content: '';
+      display: inline-block;
+      width: @tweak-index-nav-indicator-size;
+      height: @tweak-index-nav-indicator-line-width;
+      background-color: @tweak-index-nav-indicator-color;
+      transition: background-color @duration @easing, width @duration @easing;
+    }
+  }
+  .Index-nav.overlay .Index-nav-indicator:before {
+    background-color: @tweak-index-nav-overlay-indicator-color;
+  }
+  .Index-nav-item.active .Index-nav-indicator:before {
+    width: @tweak-index-nav-indicator-size * 1.6;
+    margin-left: 0;
+    background-color: @tweak-index-nav-indicator-active-color;
+  }
+  .Index-nav.overlay .Index-nav-item.active .Index-nav-indicator:before {
+    background-color: @tweak-index-nav-overlay-indicator-active-color;
+  }
+
+  // Hide text
+  .Index-nav-text {
+    margin-right: @tweak-index-nav-font-font-size;
+  }
+  .Index-nav-text:after {
+    display: none;
+  }
+}
+
+
+
+
+
+.Index {
 
 
 

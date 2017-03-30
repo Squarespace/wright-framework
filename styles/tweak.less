@@ -430,7 +430,49 @@
 //  Index Navigation
 
 
-// tweak: { "category" : "Index: Navigation", "label" : "Style", "title" : "tweak-index-nav-style", "type" : "dropdown", "options" : [ "Radio" ], "default" : "Radio", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : ".Index-nav" }
+// tweak: { "category" : "Index: Navigation", "label" : "Style", "title" : "tweak-index-nav-style", "type" : "dropdown", "options" : [ "None", "Radio", "Filled Dots", "Faded Dots", "Horizontal Lines", "Vertical Lines", "Expanding Horizontal Lines" ], "default" : "Radio", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : ".Index-nav" }
+
+// tweak: { "category" : "Index: Navigation", "label" : "Offset", "title" : "tweak-index-nav-offset", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-offset: 20px;
+
+// tweak: { "category" : "Index: Navigation", "label" : "Spacing", "title" : "tweak-index-nav-spacing", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-spacing: 10px;
+
+// tweak: { "category" : "Index: Navigation", "label" : "Indicator Size", "title" : "tweak-index-nav-indicator-size", "type" : "value", "step" : 1, "min" : 0, "max" : 40, "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-indicator-size: 12px;
+
+// tweak: { "category" : "Index: Navigation", "label" : "Indicator Size", "title" : "tweak-index-nav-indicator-line-width", "type" : "value", "step" : 1, "min" : 0, "max" : 20, "target" : ".Index-nav-inner", "showOnlyWhenPresent" : ".tweak-index-nav-style-horizontal-lines .Index-nav, .tweak-index-nav-style-vertical-lines .Index-nav" }
+@tweak-index-nav-indicator-line-width: 2px;
+
+// tweak: { "category" : "Index: Navigation", "label" : "Color", "title" : "tweak-index-nav-indicator-color", "type" : "color", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-indicator-color: rgba(0, 0, 0, 0.5);
+
+// tweak: { "category" : "Index: Navigation", "label" : "Active Color", "title" : "tweak-index-nav-indicator-active-color", "type" : "color", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-indicator-active-color: rgba(17, 17, 17, 1);
+
+// tweak: { "category" : "Index: Navigation", "label" : "Color (Overlay)", "title" : "tweak-index-nav-overlay-indicator-color", "type" : "color", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-overlay-indicator-color: rgba(255, 255, 255, 0.5);
+
+// tweak: { "category" : "Index: Navigation", "label" : "Active Color (Overlay)", "title" : "tweak-index-nav-overlay-indicator-active-color", "type" : "color", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-overlay-indicator-active-color: rgba(255, 255, 255, 1);
+
+// tweak: { "category" : "Index: Navigation", "label" : "Show Titles", "title" : "tweak-index-nav-text-show", "type" : "checkbox", "active" : true, "target" : ".Index-nav-inner", "showOnlyWhenPresent": "body:not(.tweak-index-nav-style-none) .Index-nav" }
+
+// tweak: { "category": "Index: Navigation", "label" : "Font", "title" : "tweak-index-nav-font", "type" : "font", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : ".tweak-index-nav-text-show:not(.tweak-index-nav-style-none) .Index-nav" }
+.tweak-index-nav-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 0em;
+  text-transform: uppercase;
+}
+
+// tweak: { "category" : "Index: Navigation", "label" : "Text Color", "title" : "tweak-index-nav-text-color", "type" : "color", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : ".tweak-index-nav-text-show:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-text-color: rgba(17, 17, 17, 1);
+
+// tweak: { "category" : "Index: Navigation", "label" : "Text Color (Overlay)", "title" : "tweak-index-nav-overlay-text-color", "type" : "color", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : ".tweak-index-nav-text-show:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-overlay-text-color: rgba(255, 255, 255, 1);
 
 
 
