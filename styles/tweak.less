@@ -432,6 +432,9 @@
 
 // tweak: { "category" : "Index: Navigation", "label" : "Style", "title" : "tweak-index-nav-style", "type" : "dropdown", "options" : [ "None", "Radio", "Filled Dots", "Faded Dots", "Horizontal Lines", "Vertical Lines", "Expanding Horizontal Lines" ], "default" : "Radio", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : ".Index-nav" }
 
+// tweak: { "category" : "Index: Navigation", "label" : "Breakpoint", "title" : "tweak-index-nav-breakpoint", "type" : "value", "step" : 1, "min" : 1, "max" : 1280, "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-breakpoint: 640px;
+
 // tweak: { "category" : "Index: Navigation", "label" : "Offset", "title" : "tweak-index-nav-offset", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
 @tweak-index-nav-offset: 20px;
 
