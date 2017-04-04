@@ -1111,8 +1111,9 @@
 
 
 
+// tweak: { "category" : "Mobile Menu: Secondary", "label" : "Inherit Primary Nav Styles", "title" : "tweak-mobile-overlay-menu-secondary-inherit", "type" : "checkbox", "active" : false, "target" : ".Mobile-overlay-menu" }
 
-// tweak: { "category": "Mobile Menu: Secondary", "label" : "Font", "title" : "tweak-mobile-overlay-menu-secondary-font", "type" : "font", "target" : ".Mobile-overlay-menu" }
+// tweak: { "category": "Mobile Menu: Secondary", "label" : "Font", "title" : "tweak-mobile-overlay-menu-secondary-font", "type" : "font", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": "body:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 .tweak-mobile-overlay-menu-secondary-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -1123,16 +1124,16 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Mobile Menu: Secondary", "label": "Text Color", "title" : "tweak-mobile-overlay-menu-secondary-text-color", "type" : "color", "target" : ".Mobile-overlay-menu" }
+// tweak: { "category": "Mobile Menu: Secondary", "label": "Text Color", "title" : "tweak-mobile-overlay-menu-secondary-text-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": "body:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 @tweak-mobile-overlay-menu-secondary-text-color: #000000;
 
-// tweak: { "category" : "Mobile Menu: Secondary", "label" : "Convert Secondary Nav to Buttons", "title" : "tweak-mobile-overlay-menu-secondary-style-button", "type" : "checkbox", "active" : false, "target" : ".Mobile-overlay-menu" }
+// tweak: { "category" : "Mobile Menu: Secondary", "label" : "Convert Secondary Nav to Buttons", "title" : "tweak-mobile-overlay-menu-secondary-style-button", "type" : "checkbox", "active" : false, "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": "body:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 
-// tweak: { "category" : "Mobile Menu: Secondary", "label": "Button Style", "title" : "tweak-mobile-overlay-menu-secondary-button-style", "type" : "dropdown", "options" : [ "Solid", "Outline", "Raised" ], "default" : "Solid", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button" }
+// tweak: { "category" : "Mobile Menu: Secondary", "label": "Button Style", "title" : "tweak-mobile-overlay-menu-secondary-button-style", "type" : "dropdown", "options" : [ "Solid", "Outline", "Raised" ], "default" : "Solid", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 
-// tweak: { "category" : "Mobile Menu: Secondary", "label": "Button Shape", "title" : "tweak-mobile-overlay-menu-secondary-button-shape", "type" : "dropdown", "options" : [ "Square", "Rounded", "Pill" ], "default" : "Square", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button" }
+// tweak: { "category" : "Mobile Menu: Secondary", "label": "Button Shape", "title" : "tweak-mobile-overlay-menu-secondary-button-shape", "type" : "dropdown", "options" : [ "Square", "Rounded", "Pill" ], "default" : "Square", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 
-// tweak: { "category": "Mobile Menu: Secondary", "label" : "Font", "title" : "tweak-mobile-overlay-menu-secondary-button-font", "type" : "font", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": ".tweak-mobile-overlay-menu-secondary-style-button" }
+// tweak: { "category": "Mobile Menu: Secondary", "label" : "Font", "title" : "tweak-mobile-overlay-menu-secondary-button-font", "type" : "font", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": ".tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 .tweak-mobile-overlay-menu-secondary-button-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -1143,10 +1144,10 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Mobile Menu: Secondary", "label": "Button Color", "title" : "tweak-mobile-overlay-menu-secondary-button-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": ".tweak-mobile-overlay-menu-secondary-style-button" }
+// tweak: { "category": "Mobile Menu: Secondary", "label": "Button Color", "title" : "tweak-mobile-overlay-menu-secondary-button-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": ".tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 @tweak-mobile-overlay-menu-secondary-button-color: #000000;
 
-// tweak: { "category": "Mobile Menu: Secondary", "label": "Button Text Color", "title" : "tweak-mobile-overlay-menu-secondary-button-text-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-button-style-outline)" }
+// tweak: { "category": "Mobile Menu: Secondary", "label": "Button Text Color", "title" : "tweak-mobile-overlay-menu-secondary-button-text-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-button-style-outline):not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 @tweak-mobile-overlay-menu-secondary-button-text-color: #ffffff;
 
 
