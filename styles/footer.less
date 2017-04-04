@@ -278,8 +278,8 @@
 
     // Nav
     &-nav {
-      .flex(1 1 0px);
       min-width: 0;
+      .flex(0 0 auto);
     }
     &-nav-group {
       float: left;
@@ -301,7 +301,24 @@
       &.empty:not(.sqs-editing) { .flex(0 1 0px); }
     }
 
+  }
 
+  &.tweak-footer-layout-columns.tweak-footer-business-info-show:not(.tweak-footer-layout-columns-auto) {
+    .Footer-business-info {
+      width: @tweak-footer-business-info-column-width;
+    }
+  }
+
+  &.tweak-footer-layout-columns.tweak-footer-business-hours-show:not(.tweak-footer-layout-columns-auto) {
+    .Footer-business-hours {
+      width: @tweak-footer-business-hours-column-width;
+    }
+  }
+
+  &.tweak-footer-layout-columns:not(.tweak-footer-layout-columns-auto) {
+    .Footer-nav-group {
+      width: @tweak-footer-nav-column-width;
+    }
   }
 
   .mixin-footer-mid-styles() {

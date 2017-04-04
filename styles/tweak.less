@@ -794,6 +794,8 @@
 
 // tweak: { "category" : "Footer", "label" : "Layout", "title" : "tweak-footer-layout", "type" : "dropdown", "options" : [ "Stacked", "Columns" ], "default" : "Stacked", "target" : ".Footer", "showOnlyWhenPresent": ".tweak-footer-show", "js" : true }
 
+// tweak: { "category" : "Footer", "label" : "Auto Width Columns", "title" : "tweak-footer-layout-columns-auto", "type" : "checkbox", "active" : true, "target" : ".Footer", "showOnlyWhenPresent": ".tweak-footer-show.tweak-footer-layout-columns" }
+
 // tweak: { "category" : "Footer", "label" : "Padding", "title" : "tweak-footer-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Footer", "showOnlyWhenPresent": ".tweak-footer-show" }
 @tweak-footer-padding: 48px;
 
@@ -810,6 +812,9 @@
 
 
 // tweak: { "category" : "Footer: Business", "label" : "Show Business Info", "title" : "tweak-footer-business-info-show", "type" : "checkbox", "active" : false, "target" : ".Footer, .Footer-business-info", "showOnlyWhenPresent": ".tweak-footer-show" }
+
+// tweak: { "category" : "Footer: Navigation", "label" : "Business Info Width", "title" : "tweak-footer-business-info-column-width", "type" : "value", "step" : 1, "min" : 40, "max" : 240, "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-layout-columns.tweak-footer-business-info-show:not(.tweak-footer-layout-columns-auto)" }
+@tweak-footer-business-info-column-width: 160px;
 
 // tweak: { "category": "Footer: Business", "label" : "Name Font", "title" : "tweak-footer-business-name-font", "type" : "font", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-info-show .Footer-business-info-item--name" }
 .tweak-footer-business-name-font {
@@ -841,6 +846,9 @@
 
 
 // tweak: { "category" : "Footer: Business", "label" : "Show Business Hours", "title" : "tweak-footer-business-hours-show", "type" : "checkbox", "active" : false, "target" : ".Footer, .Footer-business-hours", "showOnlyWhenPresent": ".tweak-footer-show" }
+
+// tweak: { "category" : "Footer: Navigation", "label" : "Business Hours Width", "title" : "tweak-footer-business-hours-column-width", "type" : "value", "step" : 1, "min" : 40, "max" : 240, "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-layout-columns.tweak-footer-business-hours-show:not(.tweak-footer-layout-columns-auto)" }
+@tweak-footer-business-hours-column-width: 160px;
 
 // tweak: { "category": "Footer: Business", "label" : "Hours Heading Font", "title" : "tweak-footer-business-hours-heading-font", "type" : "font", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-hours-show .Footer-business-hours-heading" }
 .tweak-footer-business-hours-heading-font {
@@ -876,6 +884,9 @@
 
 //  Nav
 
+
+// tweak: { "category" : "Footer: Navigation", "label" : "Navigation Column Width", "title" : "tweak-footer-nav-column-width", "type" : "value", "step" : 1, "min" : 40, "max" : 240, "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-layout-columns:not(.tweak-footer-layout-columns-auto)" }
+@tweak-footer-nav-column-width: 160px;
 
 // tweak: { "category": "Footer: Navigation", "label" : "Navigation Heading Font", "title" : "tweak-footer-nav-heading-font", "type" : "font", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-layout-columns .Footer-nav-folder-heading" }
 .tweak-footer-nav-heading-font {
