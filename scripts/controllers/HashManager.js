@@ -40,7 +40,8 @@ function HashManager(element) {
 
       window.history.replaceState(undefined, undefined, hash);
 
-      jump(hashElement.getBoundingClientRect().top, {
+      const hashElementTop = Math.ceil(hashElement.getBoundingClientRect().top);
+      jump(hashElementTop, {
         duration: 500
       });
     }

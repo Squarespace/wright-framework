@@ -5,7 +5,7 @@ import rafScroll from '../utils/rafScroll';
 import resizeEnd from '../utils/resizeEnd';
 import { indexEditEvents } from '../constants';
 
-const parallaxOffset = 500;
+const parallaxOffset = 300;
 
 /**
  * Where the magic happens. Performs all setup for parallax for indexes and page
@@ -111,12 +111,9 @@ function Parallax(element) {
     }
     matrix.forEach((matrixItem) => {
       const {
-        mediaElement,
-        parallaxItem,
+        mediaWrapper,
         top,
         bottom,
-        left,
-        width,
         height,
         focalPoint
       } = matrixItem;
@@ -130,27 +127,13 @@ function Parallax(element) {
 
         // Apply this proportion (max of 1) to the parallax offset, which is the
         // total number of invisible pixels that can be scrolled.
-        const elementTransformString = 'translatey(' + (parallaxProportion * parallaxOffset) + 'px)';
+        const elementTransformString = `translate3d(0, ${parallaxProportion * parallaxOffset}px, 0)`;
 
         // Sync to DOM
-        mediaElement.style.webkitTransform = elementTransformString;
-        mediaElement.style.msTransform = elementTransformString;
-        mediaElement.style.transform = elementTransformString;
-
-        // Offset fixed container
-        const parallaxItemTransformString = 'translatey(' + (-1 * scrollTop) + 'px)';
-        parallaxItem.style.webkitTransform = parallaxItemTransformString;
-        parallaxItem.style.msTransform = parallaxItemTransformString;
-        parallaxItem.style.transform = parallaxItemTransformString;
-
-        return;
+        mediaWrapper.style.webkitTransform = elementTransformString;
+        mediaWrapper.style.msTransform = elementTransformString;
+        mediaWrapper.style.transform = elementTransformString;
       }
-
-      // Out of range
-      const parallaxItemTransformString = 'translate3d(' + (-1 * width - left) + 'px, 0, 0)';
-      parallaxItem.style.webkitTransform = parallaxItemTransformString;
-      parallaxItem.style.msTransform = parallaxItemTransformString;
-      parallaxItem.style.transform = parallaxItemTransformString;
     });
   };
 

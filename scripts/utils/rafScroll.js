@@ -12,49 +12,54 @@ let scrollTimeout;
  * @return {Function}     Unified scroll handler
  */
 const getUnifiedScrollHandler = () => {
+  let scrollTop = window.pageYOffset;
   let scrolling = false;
+  let ticking = false;
 
   const scroll = () => {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    ticking = false;
     scrollHandlers.forEach(({ fn, type }) => {
-      if (!type === 'scroll') {
+      if (type !== 'scroll') {
         return;
       }
       fn(scrollTop);
     });
   };
 
-  const scrollCallback = () => {
-    scroll(window.pageYOffset);
-    if (scrolling === true) {
-      window.requestAnimationFrame(scrollCallback);
+  const requestTick = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(scroll);
     }
+    ticking = true;
   };
 
   return () => {
     if (scrolling === false) {
       scrolling = true;
+      document.documentElement.style.pointerEvents = 'none';
       scrollHandlers.forEach(({ fn, type }) => {
-        if (!type === 'start') {
+        if (type !== 'start') {
           return;
         }
         fn();
       });
-      document.documentElement.style.pointerEvents = 'none';
-      scrollCallback();
     }
+
+    scrollTop = window.pageYOffset;
+    requestTick();
+
     if (scrollTimeout) {
       clearTimeout(scrollTimeout);
     }
     scrollTimeout = setTimeout(() => {
       scrolling = false;
+      document.documentElement.style.pointerEvents = '';
       scrollHandlers.forEach(({ fn, type }) => {
-        if (!type === 'end') {
+        if (type !== 'end') {
           return;
         }
         fn();
       });
-      document.documentElement.style.pointerEvents = 'auto';
     }, 100);
   };
 
