@@ -6,6 +6,7 @@ import resizeEnd from '../utils/resizeEnd';
 import { indexEditEvents } from '../constants';
 
 const parallaxOffset = 300;
+const parallaxFactor = 0.4;
 
 /**
  * Where the magic happens. Performs all setup for parallax for indexes and page
@@ -122,12 +123,11 @@ function Parallax(element) {
         // In view, find the 'parallax proportion' - the percentage of the total
         // vertical screen space that has elapsed since the element scrolled
         // into view vs when it would scroll out of view.
-        const focalPointVertical = height * focalPoint;
-        const parallaxProportion = 1 - ((top + focalPointVertical - scrollTop) / windowHeight);
+        const parallaxAmount = -1 * parallaxFactor * (top - scrollTop);
 
         // Apply this proportion (max of 1) to the parallax offset, which is the
         // total number of invisible pixels that can be scrolled.
-        const elementTransformString = `translate3d(0, ${parallaxProportion * parallaxOffset}px, 0)`;
+        const elementTransformString = `translate3d(0, ${parallaxAmount}px, 0)`;
 
         // Sync to DOM
         mediaWrapper.style.webkitTransform = elementTransformString;
@@ -223,8 +223,8 @@ function Parallax(element) {
         parallaxItem.style.width = width + 'px';
         parallaxItem.style.height = height + 'px';
 
-        // Offset top of mediaWrapper to allow for room to scroll
-        mediaWrapper.style.top = (-1 * parallaxOffset) + 'px';
+        // Offset bottom of mediaWrapper to allow for room to scroll
+        mediaWrapper.style.bottom = -1 * parallaxFactor * (window.innerHeight - height) + 'px';
 
       } else {
 
@@ -237,8 +237,8 @@ function Parallax(element) {
           parallaxItem.style.height = '';
         }
 
-        // Clear offset top
-        mediaWrapper.style.top = '';
+        // Clear offset bottom
+        mediaWrapper.style.bottom = '';
 
         // Clear transforms
         mediaElement.style.webkitTransform = '';
