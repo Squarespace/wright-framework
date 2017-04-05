@@ -5,8 +5,7 @@ import rafScroll from '../utils/rafScroll';
 import resizeEnd from '../utils/resizeEnd';
 import { indexEditEvents } from '../constants';
 
-const parallaxOffset = 300;
-const parallaxFactor = 0.4;
+const parallaxFactor = 0.5;
 
 /**
  * Where the magic happens. Performs all setup for parallax for indexes and page
@@ -115,8 +114,6 @@ function Parallax(element) {
         mediaWrapper,
         top,
         bottom,
-        height,
-        focalPoint
       } = matrixItem;
       if (scrollTop + windowHeight > top && scrollTop < bottom) {
 
