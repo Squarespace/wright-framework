@@ -18,13 +18,15 @@ export const getIndexSectionRect = (section) => {
   const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   const rect = section.getBoundingClientRect();
 
+  // Math.floor, Math.ceil, and +2 here are to solve lines appearing between
+  // parallax sections due to pixel rounding issues in safari
   map[id] = {
-    top: rect.top + scrollTop,
+    top: Math.floor(rect.top + scrollTop),
     right: rect.right,
-    bottom: rect.bottom + scrollTop,
+    bottom: Math.ceil(rect.bottom + scrollTop),
     left: rect.left,
     width: section.offsetWidth,
-    height: section.offsetHeight
+    height: section.offsetHeight + 2
   };
 
   return map[id];

@@ -485,20 +485,6 @@
       .mixin-template-link-color(@tweak-overlay-link-color);
       .mixin-template-line-color(@tweak-overlay-line-color);
 
-      &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-
-        width: 100%;
-        height: 100%;
-
-        background-color: @tweak-overlay-color;
-      }
-
     }
 
     &-content {
@@ -521,6 +507,20 @@
     }
 
     &-image {
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+
+        width: 100%;
+        height: 100%;
+
+        background-color: @tweak-overlay-color;
+      }
 
       position: absolute;
       top: 0;
