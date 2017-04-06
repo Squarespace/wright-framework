@@ -1,5 +1,6 @@
 import { ImageLoader, Tweak } from '@squarespace/core';
 import Darwin from '@squarespace/darwin';
+import { get3dTransformProperty } from '../utils/get3dTransformProperty';
 import { getIndexSectionRect, invalidateIndexSectionRectCache } from '../utils/getIndexSectionRect';
 import rafScroll from '../utils/rafScroll';
 import resizeEnd from '../utils/resizeEnd';
@@ -18,6 +19,8 @@ function Parallax(element) {
   let windowHeight;
   let matrix = [];
   let isEditingIndex = false;
+
+  const transformProp = get3dTransformProperty();
 
   /**
    * Find out whether or not to use parallax, based on user option in tweak and
@@ -127,9 +130,7 @@ function Parallax(element) {
         const elementTransformString = `translate3d(0, ${parallaxAmount}px, 0)`;
 
         // Sync to DOM
-        mediaWrapper.style.webkitTransform = elementTransformString;
-        mediaWrapper.style.msTransform = elementTransformString;
-        mediaWrapper.style.transform = elementTransformString;
+        mediaWrapper.style[transformProp] = elementTransformString;
       }
     });
   };
