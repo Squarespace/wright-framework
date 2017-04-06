@@ -30,10 +30,6 @@ function IndexNavigation(element) {
     }, {});
   };
 
-  const updateUrl = (hashId) => {
-    window.history.replaceState(undefined, undefined, hashId);
-  };
-
   const isOverlaySection = (section) => {
     const isGallery = section.classList.contains('Index-gallery');
     const isOverlayPage = section.classList.contains('Index-page--has-image');
@@ -59,8 +55,6 @@ function IndexNavigation(element) {
         currentIndexNavItem.classList.remove('active');
         const indexNavItem = indexNavItemMap[hashId];
         indexNavItem.classList.add('active');
-
-        updateUrl(hashId);
 
         currentId = id;
         currentIndexNavItem = indexNavItem;
