@@ -239,9 +239,9 @@ function Parallax(element) {
         mediaWrapper.style.bottom = '';
 
         // Clear transforms
-        mediaElement.style.webkitTransform = '';
-        mediaElement.style.msTransform = '';
-        mediaElement.style.transform = '';
+        mediaWrapper.style.webkitTransform = '';
+        mediaWrapper.style.msTransform = '';
+        mediaWrapper.style.transform = '';
       }
 
       // Load image

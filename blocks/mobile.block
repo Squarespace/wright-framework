@@ -22,6 +22,16 @@
           <use xlink:href="/assets/ui-icons.svg#hamburger-icon--even" class="use--even"></use>
           <use xlink:href="/assets/ui-icons.svg#hamburger-icon--odd" class="use--odd"></use>
         </svg>
+        <svg class="Icon Icon--hotdog" viewBox="0 0 24 14">
+          <use xlink:href="/assets/ui-icons.svg#hotdog-icon--even" class="use--even"></use>
+          <use xlink:href="/assets/ui-icons.svg#hotdog-icon--odd" class="use--odd"></use>
+        </svg>
+        <svg class="Icon Icon--dots-horizontal" viewBox="0 0 37 13">
+          <use xlink:href="/assets/ui-icons.svg#dots-horizontal-icon"></use>
+        </svg>
+        <svg class="Icon Icon--dots-vertical" viewBox="0 0 11 33">
+          <use xlink:href="/assets/ui-icons.svg#dots-vertical-icon"></use>
+        </svg>
       </button>
     </div>
     <div data-nc-container="bottom-center">

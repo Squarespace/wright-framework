@@ -86,7 +86,7 @@
     color: @tweak-index-nav-text-color;
     opacity: 0;
 
-    transition: opacity @duration @easing, transform @duration @easing, right 0s @duration;
+    .transition3(opacity @duration @easing, transform @duration @easing, right 0s @duration);
 
     span {
       display: inline-block;
@@ -104,7 +104,7 @@
   }
   &-item:hover &-text {
     opacity: 1;
-    transform: translatex(0);
+    .transform(translatex(0));
   }
 
   .tweak-index-nav-text-show &-text {
@@ -128,11 +128,11 @@
     right: 100vw;
     margin-right: @tweak-index-nav-font-font-size;
     text-align: right;
-    transform: translatex(20%);
+    .transform(translatex(20%));
   }
   .Index-nav-item:hover .Index-nav-text {
     right: 100%;
-    transition: opacity @duration @easing, transform @duration @easing, right 0s 0s;
+    .transition3(opacity @duration @easing, transform @duration @easing, right 0s 0s);
   }
   &.tweak-index-nav-style-expanding-horizontal-lines {
     .Index-nav-indicator {
@@ -157,11 +157,11 @@
     left: 100vw;
     margin-left: @tweak-index-nav-font-font-size;
     text-align: left;
-    transform: translatex(-20%);
+    .transform(translatex(-20%));
   }
   .Index-nav-item:hover .Index-nav-text {
     left: 100%;
-    transition: opacity @duration @easing, transform @duration @easing, left 0s 0s;
+    .transition3(opacity @duration @easing, transform @duration @easing, left 0s 0s);
   }
 
   &.tweak-index-nav-style-expanding-horizontal-lines {
@@ -184,7 +184,7 @@
     border-color: @tweak-index-nav-indicator-color;
     width: @tweak-index-nav-indicator-size;
     height: @tweak-index-nav-indicator-size;
-    transform: scale(0.95);
+    .transform(scale(0.95));
     &:before {
       content: '';
       display: block;
@@ -193,10 +193,11 @@
       margin: @dot-size;
       border-radius: 300px;
       background-color: @tweak-index-nav-indicator-active-color;
-      transform: scale(0);
-      transition: transform @duration @easing;
+      .transform(scale(0))
+      .transition(transform @duration @easing);
+      .transition-webkit(-webkit-transform @duration @easing);
     }
-    transition: border-color @duration @easing, transform @duration @easing, margin @duration @easing;
+    .transition3(border-color @duration @easing, transform @duration @easing, margin @duration @easing);
   }
   .Index-nav.overlay .Index-nav-indicator {
     border-color: @tweak-index-nav-overlay-indicator-color;
@@ -216,9 +217,9 @@
     border-color: @tweak-index-nav-overlay-indicator-active-color;
   }
   .Index-nav-item.active .Index-nav-indicator {
-    transform: scale(1.4);
+    .transform(scale(1.4));
     &:before {
-      transform: scale(1);
+      .transform(scale(1));
     }
   }
 }
@@ -234,7 +235,7 @@
     border-width: (@tweak-index-nav-indicator-size / 6);
     border-style: solid;
     border-color: @tweak-index-nav-indicator-color;
-    transition: border-color @duration @easing, background-color @duration @easing;
+    .transition2(border-color @duration @easing, background-color @duration @easing);
   }
   .Index-nav.overlay .Index-nav-indicator {
     border-color: @tweak-index-nav-overlay-indicator-color;
@@ -264,7 +265,7 @@
     height: @tweak-index-nav-indicator-size;
     border-radius: 300px;
     background-color: @tweak-index-nav-indicator-color;
-    transition: background-color @duration @easing;
+    .transition(background-color @duration @easing);
   }
   .Index-nav.overlay .Index-nav-indicator {
     background-color: @tweak-index-nav-overlay-indicator-color;
@@ -285,7 +286,7 @@
     width: @tweak-index-nav-indicator-size;
     height: @tweak-index-nav-indicator-line-width;
     background-color: @tweak-index-nav-indicator-color;
-    transition: background-color @duration @easing;
+    .transition(background-color @duration @easing);
   }
   .Index-nav.overlay .Index-nav-indicator {
     background-color: @tweak-index-nav-overlay-indicator-color;
@@ -307,7 +308,7 @@
     height: @tweak-index-nav-indicator-size;
     margin: 0 4px; // Provide some horizontal margin so the clickable area is larger
     background-color: @tweak-index-nav-indicator-color;
-    transition: background-color @duration @easing;
+    .transition(background-color @duration @easing);
   }
   .Index-nav.overlay .Index-nav-indicator {
     background-color: @tweak-index-nav-overlay-indicator-color;
@@ -334,7 +335,7 @@
       width: @tweak-index-nav-indicator-size;
       height: @tweak-index-nav-indicator-line-width;
       background-color: @tweak-index-nav-indicator-color;
-      transition: background-color @duration @easing, width @duration @easing;
+      .transition2(background-color @duration @easing, width @duration @easing);
     }
   }
   .Index-nav.overlay .Index-nav-indicator:before {
@@ -965,7 +966,7 @@
     width: @tweak-index-gallery-indicators-width;
     height: @tweak-index-gallery-indicators-height;
     background-color: @tweak-index-gallery-indicators-color;
-    transition: background-color 270ms ease-out;
+    .transition(background-color 270ms ease-out);
   }
   &:not(.tweak-index-gallery-autoplay-enable) {
     .Index-gallery-indicators-item {
@@ -1051,11 +1052,11 @@
     .Index-gallery-item {
       opacity: 0;
       z-index: 0;
-      transition: opacity 0ms @duration, z-index 0ms 0ms;
+      .transition2(opacity 0ms @duration, z-index 0ms 0ms);
       &.active {
         opacity: 1;
         z-index: 1;
-        transition: opacity @duration ease-out, z-index 0ms 0ms;
+        .transition2(opacity @duration ease-out, z-index 0ms 0ms);
       }
     }
   }
@@ -1063,20 +1064,20 @@
   &.tweak-index-gallery-transition-slide {
     @easing: cubic-bezier(0.770, 0.000, 0.175, 1.000);
     .Index-gallery.loaded .Index-gallery-item {
-      transition: transform @duration @easing;
+      .transition(transform @duration @easing);
     }
     .Index-gallery-item {
       &:not(.active) {
         // override
         z-index: 1;
         opacity: 1;
-        transform: translate3d(-100%, 0, 0);
+        .transform(translate3d(-100%, 0, 0));
       }
       &.active {
-        transform: translate3d(0, 0, 0);
+        .transform(translate3d(0, 0, 0));
       }
       &.active ~ .Index-gallery-item {
-        transform: translate3d(100%, 0, 0);
+        .transform(translate3d(100%, 0, 0));
       }
     }
   }
@@ -1084,20 +1085,20 @@
   &.tweak-index-gallery-transition-cards {
     @easing: cubic-bezier(0.770, 0.000, 0.175, 1.000);
     .Index-gallery.loaded .Index-gallery-item {
-      transition: transform @duration @easing;
+      .transition(transform @duration @easing);
     }
     .Index-gallery-item {
       &:not(.active) {
         // override
         z-index: 1;
         opacity: 1;
-        transform: translate3d(0, 0, 0);
+        .transform(translate3d(0, 0, 0));
       }
       &.active {
-        transform: translate3d(0, 0, 0);
+        .transform(translate3d(0, 0, 0));
       }
       &.active ~ .Index-gallery-item {
-        transform: translate3d(100%, 0, 0);
+        .transform(translate3d(100%, 0, 0));
       }
     }
   }

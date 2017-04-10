@@ -9,7 +9,9 @@
   }
   .Cart-label { display: none; }
   .Icon--cart,
-  .Icon--bag { display: none; }
+  .Icon--bag,
+  .Icon--cart-alt,
+  .Icon--bag-alt { display: none; }
 }
 .mixin-cart(@option, @cart-color, @flag-color, @flag-text-color) when (@option = text) {
 
@@ -46,7 +48,7 @@
     padding: 0.5em;
 
     background-color: @flag-color;
-    .font-smoothing (@flag-color);
+    .font-smoothing(@flag-color);
     color: @flag-text-color;
 
     text-align: center;
@@ -71,21 +73,70 @@
   }
 
 }
+.mixin-cart(@option, @cart-color, @flag-color, @flag-text-color) when (@option = bagalt) {
+
+  stroke: @cart-color;
+  .Icon--bag-alt { display: block; }
+  .sqs-cart-quantity {
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    text-align: center;
+    line-height: 31px;
+    color: @cart-color;
+
+  }
+
+}
+.mixin-cart(@option, @cart-color, @flag-color, @flag-text-color) when (@option = cartalt) {
+
+  fill: @cart-color; // for the wheels
+  stroke: @cart-color;
+  .Cart-inner { padding-top: 0.5em; padding-bottom: 0.5em; }
+  .Icon--cart-alt { display: inline-block; }
+  .sqs-cart-quantity {
+    display: inline-block;
+    vertical-align: top;
+
+    min-width: 1em;
+    margin-top: -0.5em;
+    margin-left: -1em;
+    border-radius: 1em;
+    padding: 0.5em;
+
+    background-color: @flag-color;
+    .font-smoothing(@flag-color);
+    color: @flag-text-color;
+
+    text-align: center;
+    line-height: 1em;
+  }
+
+}
 
 
 .Header .Cart { .tweak-header-cart-font; }
 .tweak-header-cart-style-text .Header .Cart { .mixin-cart(text, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color); }
 .tweak-header-cart-style-cart .Header .Cart { .mixin-cart(cart, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color); }
+.tweak-header-cart-style-cart-alternate .Header .Cart { .mixin-cart(cartalt, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color); }
 .tweak-header-cart-style-bag .Header .Cart { .mixin-cart(bag, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color); }
+.tweak-header-cart-style-bag-alternate .Header .Cart { .mixin-cart(bagalt, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color); }
 .tweak-header-cart-style-text .Header.Header--overlay .Cart { .mixin-cart(text, @tweak-header-overlay-cart-color, @tweak-header-overlay-cart-flag-color, @tweak-header-overlay-cart-flag-text-color); }
 .tweak-header-cart-style-cart .Header.Header--overlay .Cart { .mixin-cart(cart, @tweak-header-overlay-cart-color, @tweak-header-overlay-cart-flag-color, @tweak-header-overlay-cart-flag-text-color); }
+.tweak-header-cart-style-cart-alternate .Header.Header--overlay .Cart { .mixin-cart(cartalt, @tweak-header-overlay-cart-color, @tweak-header-overlay-cart-flag-color, @tweak-header-overlay-cart-flag-text-color); }
 .tweak-header-cart-style-bag .Header.Header--overlay .Cart { .mixin-cart(bag, @tweak-header-overlay-cart-color, @tweak-header-overlay-cart-flag-color, @tweak-header-overlay-cart-flag-text-color); }
+.tweak-header-cart-style-bag-alternate .Header.Header--overlay .Cart { .mixin-cart(bagalt, @tweak-header-overlay-cart-color, @tweak-header-overlay-cart-flag-color, @tweak-header-overlay-cart-flag-text-color); }
 
 
 .Mobile-bar .Cart { .tweak-mobile-bar-cart-font; }
 .tweak-mobile-bar-cart-style-text .Mobile-bar .Cart { .mixin-cart(text, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
 .tweak-mobile-bar-cart-style-cart .Mobile-bar .Cart { .mixin-cart(cart, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
+.tweak-mobile-bar-cart-style-cart-alternate .Mobile-bar .Cart { .mixin-cart(cartalt, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
 .tweak-mobile-bar-cart-style-bag .Mobile-bar .Cart { .mixin-cart(bag, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
+.tweak-mobile-bar-cart-style-bag-alternate .Mobile-bar .Cart { .mixin-cart(bagalt, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
 
 
 

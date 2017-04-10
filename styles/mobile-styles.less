@@ -140,6 +140,25 @@
       .no-select;
       stroke: @tweak-mobile-bar-menu-icon-color;
 
+      .Icon {
+        display: none;
+      }
+
+      .tweak-mobile-bar-menu-icon-hamburger & .Icon--hamburger {
+        display: block;
+      }
+      .tweak-mobile-bar-menu-icon-two-lines & .Icon--hotdog {
+        display: block;
+      }
+      .tweak-mobile-bar-menu-icon-horizontal-dots & .Icon--dots-horizontal {
+        display: block;
+        fill: @tweak-mobile-bar-menu-icon-color;
+      }
+      .tweak-mobile-bar-menu-icon-vertical-dots & .Icon--dots-vertical {
+        display: block;
+        fill: @tweak-mobile-bar-menu-icon-color;
+      }
+
     }
 
 
