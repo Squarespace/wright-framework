@@ -75,9 +75,6 @@ function Parallax(element) {
    * @return {Boolean}            Whether or not it was udpated
    */
   const updateMatrixItem = (matrixItem) => {
-    // const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    // const rect = matrixItem.originalNode.getBoundingClientRect();
-
     const currentDims = getIndexSectionRect(matrixItem.originalNode);
 
     for (const prop in currentDims) {
@@ -134,18 +131,20 @@ function Parallax(element) {
         let parallaxAmount;
 
         if (isNewMethodology()) {
+          // New methodology, determine the amount of the added area that has
+          // passed by using scroll and parallax factor, and offset by that.
           parallaxAmount = -1 * parallaxFactor * (top - scrollTop);
         } else {
-          // In view, find the 'parallax proportion' - the percentage of the total
-          // vertical screen space that has elapsed since the element scrolled
-          // into view vs when it would scroll out of view.
+          // Old methodology. Element is in view, find the 'parallax proportion'
+          // - the percentage of the total vertical screen space that has
+          // elapsed since the element scrolled into view vs when it would
+          // scroll out of view.
           const focalPointVertical = height * focalPoint;
           const parallaxProportion = 1 - ((top + focalPointVertical - scrollTop) / windowHeight);
           parallaxAmount = parallaxProportion * parallaxOffset;
         }
 
-        // Apply this proportion (max of 1) to the parallax offset, which is the
-        // total number of invisible pixels that can be scrolled.
+        // Apply amount of parallax
         const elementTransformString = `translate3d(0, ${parallaxAmount}px, 0)`;
 
         // Sync to DOM
@@ -391,7 +390,6 @@ function Parallax(element) {
       darwin.destroy();
       darwin = null;
     }
-    // window.removeEventListener('scroll', handleScroll);
 
     window.removeEventListener(indexEditEvents.enabled, handleIndexEditEnabled);
     window.removeEventListener(indexEditEvents.disabled, handleIndexEditDisabled);
