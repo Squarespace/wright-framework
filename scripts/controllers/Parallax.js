@@ -7,6 +7,7 @@ import resizeEnd from '../utils/resizeEnd';
 import { indexEditEvents } from '../constants';
 
 const parallaxFactor = 0.5;
+const parallaxOffset = 300;
 
 /**
  * Where the magic happens. Performs all setup for parallax for indexes and page
@@ -29,6 +30,14 @@ function Parallax(element) {
    */
   const isParallaxEnabled = () => {
     return isEditingIndex ? false : Tweak.getValue('tweak-overlay-parallax-enabled') === 'true';
+  };
+
+  /**
+   * Find out whether to use the new math for parallax.
+   * @return {Boolean}
+   */
+  const isNewMethodology = () => {
+    return Tweak.getValue('tweak-overlay-parallax-new-math') === 'true';
   };
 
   /**
@@ -117,13 +126,23 @@ function Parallax(element) {
         mediaWrapper,
         top,
         bottom,
+        height,
+        focalPoint
       } = matrixItem;
       if (scrollTop + windowHeight > top && scrollTop < bottom) {
 
-        // In view, find the 'parallax proportion' - the percentage of the total
-        // vertical screen space that has elapsed since the element scrolled
-        // into view vs when it would scroll out of view.
-        const parallaxAmount = -1 * parallaxFactor * (top - scrollTop);
+        let parallaxAmount;
+
+        if (isNewMethodology()) {
+          parallaxAmount = -1 * parallaxFactor * (top - scrollTop);
+        } else {
+          // In view, find the 'parallax proportion' - the percentage of the total
+          // vertical screen space that has elapsed since the element scrolled
+          // into view vs when it would scroll out of view.
+          const focalPointVertical = height * focalPoint;
+          const parallaxProportion = 1 - ((top + focalPointVertical - scrollTop) / windowHeight);
+          parallaxAmount = parallaxProportion * parallaxOffset;
+        }
 
         // Apply this proportion (max of 1) to the parallax offset, which is the
         // total number of invisible pixels that can be scrolled.
@@ -221,8 +240,14 @@ function Parallax(element) {
         parallaxItem.style.width = width + 'px';
         parallaxItem.style.height = height + 'px';
 
-        // Offset bottom of mediaWrapper to allow for room to scroll
-        mediaWrapper.style.bottom = -1 * parallaxFactor * (window.innerHeight - height) + 'px';
+        if (isNewMethodology()) {
+          // Offset bottom of mediaWrapper to allow for room to scroll
+          mediaWrapper.style.bottom = -1 * parallaxFactor * (window.innerHeight - height) + 'px';
+          mediaWrapper.style.top = '';
+        } else {
+          mediaWrapper.style.top = (-1 * parallaxOffset) + 'px';
+          mediaWrapper.style.bottom = '';
+        }
 
       } else {
 
@@ -235,7 +260,8 @@ function Parallax(element) {
           parallaxItem.style.height = '';
         }
 
-        // Clear offset bottom
+        // Clear offset top and bottom
+        mediaWrapper.style.top = '';
         mediaWrapper.style.bottom = '';
 
         // Clear transforms
@@ -316,6 +342,7 @@ function Parallax(element) {
 
     Tweak.watch([
       'tweak-overlay-parallax-enabled',
+      'tweak-overlay-parallax-new-math',
       'tweak-site-width-option',
       'tweak-site-width',
       'tweak-index-page-padding',
@@ -334,7 +361,7 @@ function Parallax(element) {
   const init = () => {
     initParallax();
     moveParallaxElements();
-    window.requestAnimationFrame(syncParallax);
+    syncParallax();
     bindListeners();
     darwin = new Darwin({
       targets: [
