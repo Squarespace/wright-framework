@@ -1,6 +1,7 @@
 import { getIndexSectionRect } from '../utils/getIndexSectionRect';
-import rafScroll from '../utils/rafScroll';
+import { addScrollListener, removeScrollListener } from '../utils/rafScroll';
 import resizeEnd from '../utils/resizeEnd';
+import { addIndexGalleryChangeListener, removeIndexGalleryChangeListener } from './IndexGallery';
 
 function IndexNavigation(element) {
   let sectionRects;
@@ -22,6 +23,11 @@ function IndexNavigation(element) {
   let currentId = currentIndexNavItem.getAttribute('href').substring(1);
   let currentIdForColor = currentId;
 
+  /**
+   * Get relevant section rects so we can know where the positions are and where
+   * to update the state of the index nav.
+   * @return {Array} Array of section rect positions
+   */
   const getSectionRects = () => {
     return sections.reduce((acc, section) => {
       const { top, bottom } = getIndexSectionRect(section);
@@ -30,12 +36,23 @@ function IndexNavigation(element) {
     }, {});
   };
 
+  /**
+   * Convenience method for determining if a section is an overlay section.
+   * @param  {HTMLElement} section
+   * @return {Boolean}
+   */
   const isOverlaySection = (section) => {
     const isGallery = section.classList.contains('Index-gallery');
     const isOverlayPage = section.classList.contains('Index-page--has-image');
     return isGallery || isOverlayPage;
   };
 
+  /**
+   * Scroll handler. Updates the color of the index nav depending on whether
+   * it's over an overlay section, and updates the index nav element that's
+   * currently active.
+   * @param  {Number} scrollTop
+   */
   const handleScroll = (scrollTop) => {
     const scrollMid = scrollTop + viewportHeight / 2;
 
@@ -49,7 +66,7 @@ function IndexNavigation(element) {
         currentIdForColor = id;
       }
 
-      // Update address bar
+      // Update active index nav element
       if (currentId !== id && scrollTop >= top && scrollTop < bottom) {
         const hashId = '#' + id;
         currentIndexNavItem.classList.remove('active');
@@ -62,14 +79,31 @@ function IndexNavigation(element) {
     });
   };
 
-  sectionRects = getSectionRects();
-  indexNav.classList.toggle('overlay', isOverlaySection(sections[0]));
-
-  resizeEnd(() => {
-    viewportHeight = window.innerHeight;
+  const sync = () => {
     sectionRects = getSectionRects();
-  });
-  rafScroll(handleScroll);
+    handleScroll(window.pageYOffset);
+  };
+
+  const bindListeners = () => {
+    resizeEnd(() => {
+      viewportHeight = window.innerHeight;
+      sectionRects = getSectionRects();
+    });
+    addScrollListener('scroll', handleScroll);
+    addIndexGalleryChangeListener(sync);
+  };
+
+  const destroy = () => {
+    removeScrollListener('scroll', handleScroll);
+    removeIndexGalleryChangeListener(sync);
+  };
+
+  sync();
+  bindListeners();
+
+  return {
+    destroy: destroy
+  };
 }
 
 export default IndexNavigation;

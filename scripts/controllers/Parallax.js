@@ -2,9 +2,10 @@ import { ImageLoader, Tweak } from '@squarespace/core';
 import Darwin from '@squarespace/darwin';
 import { get3dTransformProperty } from '../utils/get3dTransformProperty';
 import { getIndexSectionRect, invalidateIndexSectionRectCache } from '../utils/getIndexSectionRect';
-import rafScroll from '../utils/rafScroll';
+import { addScrollListener, removeScrollListener } from '../utils/rafScroll';
 import resizeEnd from '../utils/resizeEnd';
 import { indexEditEvents } from '../constants';
+import { addIndexGalleryChangeListener, removeIndexGalleryChangeListener } from './IndexGallery';
 
 const parallaxFactor = 0.5;
 const parallaxOffset = 300;
@@ -327,7 +328,9 @@ function Parallax(element) {
    * listeners, and tweak watcher.
    */
   const bindListeners = () => {
-    rafScroll(handleScroll);
+    addScrollListener('scroll', handleScroll);
+
+    addIndexGalleryChangeListener(syncParallax);
 
     resizeEnd(() => {
       invalidateIndexSectionRectCache();
@@ -361,6 +364,7 @@ function Parallax(element) {
     initParallax();
     moveParallaxElements();
     syncParallax();
+
     bindListeners();
     darwin = new Darwin({
       targets: [
@@ -386,6 +390,10 @@ function Parallax(element) {
    * as removing event listeners.
    */
   const destroy = () => {
+    removeScrollListener('scroll', handleScroll);
+
+    removeIndexGalleryChangeListener(syncParallax);
+
     if (darwin) {
       darwin.destroy();
       darwin = null;

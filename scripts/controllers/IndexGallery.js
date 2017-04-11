@@ -3,8 +3,10 @@ import { Tweak, ImageLoader } from '@squarespace/core';
 import { authenticated } from '../constants';
 import resizeEnd from '../utils/resizeEnd';
 import isMobileUA from '../utils/isMobileUA';
-import { rafScrollStart, rafScrollEnd } from '../utils/rafScroll';
+import { addScrollListener, removeScrollListener } from '../utils/rafScroll';
+import { invalidateIndexSectionRectCache } from '../utils/getIndexSectionRect';
 
+let changeListeners = [];
 
 /**
  * Bootstraps the index gallery, ensuring that it will always have a smooth
@@ -15,9 +17,7 @@ import { rafScrollStart, rafScrollEnd } from '../utils/rafScroll';
 function IndexGallery(element) {
 
   const galleryItems = Array.from(element.querySelectorAll('.Index-gallery-item'));
-  const galleryIndicators = element.querySelector('.Index-gallery-indicators');
   const galleryIndicatorsItems = Array.from(element.querySelectorAll('.Index-gallery-indicators-item'));
-  // const galleryIndicators = Array.from(element.querySelectorAll('.Index-gallery-indicator'));
   const innerWrapper = element.querySelector('.Index-gallery-wrapper');
   const numWrappers = Math.floor(galleryItems.length / 9) + 1;
   const numLastWrapperItems = galleryItems.length % 9;
@@ -49,6 +49,12 @@ function IndexGallery(element) {
     });
   };
 
+  /**
+   * For Packed and Split grid styles for the index gallery, we need to split
+   * the elements up into containers with 9 elements each, and indicate how many
+   * elements are in the last container and add that as a data-attribute so our
+   * CSS hooks can style them properly.
+   */
   const wrapGalleryItems = () => {
     for (let i = 0; i < numWrappers; i++) {
       const wrapper = document.createElement('div');
@@ -65,6 +71,10 @@ function IndexGallery(element) {
     }
   };
 
+  /**
+   * Reverse the logic in wrapGalleryItems by removing the added wrappers and
+   * returning elements to their original place.
+   */
   const unwrapGalleryItems = () => {
     galleryItems.forEach((galleryItem) => {
       innerWrapper.appendChild(galleryItem);
@@ -75,6 +85,9 @@ function IndexGallery(element) {
     }, []);
   };
 
+  /**
+   * Load all images in the images array.
+   */
   const loadImages = () => {
     images.forEach((image) => {
       ImageLoader.load(image, {
@@ -85,6 +98,10 @@ function IndexGallery(element) {
     promoteLayers();
   };
 
+  /**
+   * Sync the gallery, running whatever logic is relevant based on the user-
+   * selected tweak option.
+   */
   const sync = () => {
     const layout = Tweak.getValue('tweak-index-gallery-layout');
 
@@ -139,6 +156,26 @@ function IndexGallery(element) {
       loadImages();
     }
     element.classList.add('loaded');
+    invalidateIndexSectionRectCache();
+    changeListeners.forEach(fn => fn());
+  };
+
+  /**
+   * If relevant, stop autoplay on the slideshow.
+   */
+  const stopAutoplay = () => {
+    if (slideshow instanceof Slideshow) {
+      slideshow.stopAutoplay();
+    }
+  };
+
+  /**
+   * If relevant start autoplay on the slideshow.
+   */
+  const startAutoplay = () => {
+    if (slideshow instanceof Slideshow) {
+      slideshow.startAutoplay();
+    }
   };
 
   const bindListeners = () => {
@@ -161,26 +198,58 @@ function IndexGallery(element) {
       Tweak.watch(tweaksToWatch, sync);
     }
 
-    rafScrollStart(() => {
-      if (slideshow instanceof Slideshow) {
-        slideshow.stopAutoplay();
-      }
-    });
-
-    rafScrollEnd(() => {
-      if (slideshow instanceof Slideshow) {
-        slideshow.startAutoplay();
-      }
-    });
+    addScrollListener('start', stopAutoplay);
+    addScrollListener('end', startAutoplay);
 
     resizeEnd(loadImages);
+  };
+
+  const destroy = () => {
+    changeListeners = [];
+    removeScrollListener('start', stopAutoplay);
+    removeScrollListener('end', startAutoplay);
   };
 
   // Init
   sync();
   bindListeners();
 
+  return {
+    destroy
+  };
+
 }
+
+/**
+ * Given a function, add it to the change listeners array. This is so other
+ * controllers can update when the Index Gallery changes, potentially affecting
+ * other things in the DOM like parallax image positioning.
+ *
+ * @param  {Function} fn  Listener to bind to change
+ */
+export const addIndexGalleryChangeListener = (fn) => {
+  const alreadyRegistered = changeListeners.some((listener) => {
+    return changeListeners === fn;
+  });
+  if (alreadyRegistered) {
+    return;
+  }
+  changeListeners.push(fn);
+};
+
+/**
+ * Removes the change listener, if one is currently in the array matching the fn.
+ * @param  {Function} fn  Listener to detach
+ */
+export const removeIndexGalleryChangeListener = (fn) => {
+  changeListeners.some((listener, i) => {
+    const isSameFunction = listener === fn;
+    if (isSameFunction) {
+      changeListeners.splice(i, 1);
+    }
+    return isSameFunction;
+  });
+};
 
 
 

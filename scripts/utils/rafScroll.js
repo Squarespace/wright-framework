@@ -1,5 +1,3 @@
-let handleScroll = () => {};
-let destructor = () => {};
 let scrollHandlers = [];
 let scrollTimeout;
 
@@ -66,72 +64,50 @@ const getUnifiedScrollHandler = () => {
 };
 
 /**
- * Given a scroll handler, get the destructor for that scroll handler.
- * @param  {Function} fn   Scroll Handler.
- * @return {Function}      Destructor
+ * Clear out scroll handlers array and scroll timeout.
  */
-const getScrollDestructor = (fn) => {
-  return () => {
-    scrollHandlers = [];
-    handleScroll = () => {};
-    clearTimeout(scrollTimeout);
-    window.removeEventListener('scroll', fn);
-  };
+const destroy = () => {
+  clearTimeout(scrollTimeout);
 };
 
 /**
- * When a new function is added, unbind and rebind the event listeners for
- * scroll and mercury:unload.
+ * Initialize scroll by binding unified scroll handler to scroll and destructor
+ * to mercury unload.
  */
-const rebindListeners = () => {
-  window.removeEventListener('scroll', handleScroll);
-  window.removeEventListener('mercury:unload', destructor);
-
-  handleScroll = getUnifiedScrollHandler(scrollHandlers);
-  destructor = getScrollDestructor(handleScroll);
-
+const initScroll = () => {
+  const handleScroll = getUnifiedScrollHandler();
   window.addEventListener('scroll', handleScroll);
-  window.addEventListener('mercury:unload', destructor);
+  window.addEventListener('mercury:unload', destroy);
+};
+
+
+initScroll();
+
+/**
+ * Add a function to be run in the unified scroll handler.
+ *
+ * @param  {String}   type   'start', 'scroll', or 'end'
+ * @param  {Function} fn     Function to attach
+ */
+export const addScrollListener = (type, fn) => {
+  scrollHandlers.push({ type, fn });
 };
 
 /**
- * Add a function to the unified scroll handler to be run each frame during
- * scroll.
+ * Remove a given function from unified scroll handler.
  *
- * @param  {Function} fn   Function to bind to scroll
+ * @param  {String}   type   'start', 'scroll', or 'end'
+ * @param  {Function} fn     Function to detach
  */
-export const rafScroll = (fn) => {
-  scrollHandlers.push({
-    fn,
-    type: 'scroll'
+export const removeScrollListener = (type, fn) => {
+  scrollHandlers.some((handler, i) => {
+    const isSameHandler = handler.type === type && handler.fn === fn;
+    if (isSameHandler) {
+      scrollHandlers.splice(i, 1);
+      return true;
+    }
+    return false;
   });
-  rebindListeners();
 };
 
-/**
- * Add a function to the unified scroll handler to be run when scroll starts.
- *
- * @param  {Function} fn   Function to bind to scroll start
- */
-export const rafScrollStart = (fn) => {
-  scrollHandlers.push({
-    fn,
-    type: 'start'
-  });
-  rebindListeners();
-};
-
-/**
- * Add a function to the unified scroll handler to be run when scroll ends.
- *
- * @param  {Function} fn   Function to bind to scroll start
- */
-export const rafScrollEnd = (fn) => {
-  scrollHandlers.push({
-    fn,
-    type: 'end'
-  });
-  rebindListeners();
-};
-
-export default rafScroll;
+export default { addScrollListener, removeScrollListener };

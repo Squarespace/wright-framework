@@ -1,6 +1,6 @@
 import jump from 'jump.js';
 import { Tweak } from '@squarespace/core';
-import rafScroll from '../utils/rafScroll';
+import { addScrollListener, removeScrollListener } from '../utils/rafScroll';
 
 const tweaks = [
   'indicator',
@@ -56,8 +56,7 @@ function ScrollIndicator(element) {
   };
 
   const bindListeners = () => {
-    rafScroll(handleScroll);
-    // window.addEventListener('scroll', handleScroll);
+    addScrollListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
     element.addEventListener('click', handleClick);
 
@@ -69,7 +68,7 @@ function ScrollIndicator(element) {
   };
 
   const destroy = () => {
-    // window.removeEventListener('scroll', handleScroll);
+    removeScrollListener('scroll', handleScroll);
     window.removeEventListener('resize', handleResize);
     element.removeEventListener('click', handleClick);
     clearTimeout(showTimeout);
