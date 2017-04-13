@@ -7,7 +7,8 @@ const mobileLayoutTweaks = [
   'ancillary-mobile-bar-branding-position',
   'ancillary-mobile-bar-menu-icon-position',
   'ancillary-mobile-bar-search-icon-position',
-  'ancillary-mobile-bar-cart-position'
+  'ancillary-mobile-bar-cart-position',
+  'ancillary-mobile-bar-account-position'
 ];
 
 const desktopLayoutTweaks = [

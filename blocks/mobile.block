@@ -12,7 +12,11 @@
         {.end}
       </a>
     </div>
-    <div data-nc-container="top-center"></div>
+    <div data-nc-container="top-center">
+      {.if websiteSettings.userAccountsSettings.loginAllowed}
+        <button class="Mobile-bar-account" data-nc-element="account" data-controller="UserAccountLink"><span class="unauth">Sign In</span><span class="auth">My Account</span></button>
+      {.end}
+    </div>
     <div data-nc-container="top-right"></div>
   </div>
   <div class="Mobile-bar Mobile-bar--bottom" data-nc-group="bottom" data-controller="MobileOffset">

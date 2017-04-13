@@ -1,9 +1,11 @@
-import { UserAccounts } from '@squarespace/core';
+import { UserAccounts } from '@sqs/core';
 
 function UserAccountLink(element) {
   const init = () => {
-    if (UserAccounts.isUserAuthenticated()) {
-      element.innerHTML = 'My Account';
+    const unusedSelector = UserAccounts.isUserAuthenticated() ? '.unauth' : '.auth';
+    const unusedNode = element.querySelector(unusedSelector);
+    if (unusedNode) {
+      element.removeChild(unusedNode);
     }
     element.classList.add('loaded');
   };
