@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { UserAccounts } from '@sqs/core';
 
 function UserAccountLink(element) {
@@ -7,14 +6,6 @@ function UserAccountLink(element) {
     const unusedNode = element.querySelector(unusedSelector);
     if (unusedNode) {
       element.removeChild(unusedNode);
-=======
-import { UserAccounts } from '@squarespace/core';
-
-function UserAccountLink(element) {
-  const init = () => {
-    if (UserAccounts.isUserAuthenticated()) {
-      element.innerHTML = 'My Account';
->>>>>>> Adding user account link in header
     }
     element.classList.add('loaded');
   };
