@@ -18,6 +18,7 @@ const mobileOverlayTweaks = [
   'menu-primary-button-font',
   'menu-primary-button-color',
   'menu-primary-button-text-color',
+  'menu-secondary-inherit',
   'menu-secondary-font',
   'menu-secondary-text-color',
   'menu-secondary-style-button',
