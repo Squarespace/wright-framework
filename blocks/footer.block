@@ -28,13 +28,13 @@
           {.section businessHours}
             <div class="Footer-business-hours">
               <div class="Footer-business-hours-heading">Hours</div>
-              {.section monday}<div class="Footer-business-hours-item">Mon {text}</div>{.end}
-              {.section tuesday}<div class="Footer-business-hours-item">Tue {text}</div>{.end}
-              {.section wednesday}<div class="Footer-business-hours-item">Wed {text}</div>{.end}
-              {.section thursday}<div class="Footer-business-hours-item">Thu {text}</div>{.end}
-              {.section friday}<div class="Footer-business-hours-item">Fri {text}</div>{.end}
-              {.section saturday}<div class="Footer-business-hours-item">Sat {text}</div>{.end}
-              {.section sunday}<div class="Footer-business-hours-item">Sun {text}</div>{.end}
+              {.section monday}{.section text}<div class="Footer-business-hours-item">Mon {text}</div>{.end}{.end}
+              {.section tuesday}{.section text}<div class="Footer-business-hours-item">Tue {text}</div>{.end}{.end}
+              {.section wednesday}{.section text}<div class="Footer-business-hours-item">Wed {text}</div>{.end}{.end}
+              {.section thursday}{.section text}<div class="Footer-business-hours-item">Thu {text}</div>{.end}{.end}
+              {.section friday}{.section text}<div class="Footer-business-hours-item">Fri {text}</div>{.end}{.end}
+              {.section saturday}{.section text}<div class="Footer-business-hours-item">Sat {text}</div>{.end}{.end}
+              {.section sunday}{.section text}<div class="Footer-business-hours-item">Sun {@}</div>{.end}{.end}
             </div>
           {.end}
         {.end}
