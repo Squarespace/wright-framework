@@ -42,11 +42,11 @@
   display: none;
   @media screen and (min-width: @tweak-index-nav-breakpoint) {
     body:not(.tweak-index-nav-style-none) & {
-      display: flex;
+      .flex-parent();
     }
   }
 
-  align-items: center;
+  .flex-align-items(center);
 
   // TODO: responsive border
   position: fixed;
@@ -56,10 +56,9 @@
   width: 0;
 
   &-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
+    .flex-parent();
+    .flex-direction(column);
+    .flex-align-items(center);
     width: auto;
     .transform(translatez(0));
   }
@@ -374,13 +373,13 @@
     .tweak-index-page-fullscreen-first-page-only &:first-child,
     .tweak-index-page-fullscreen-pages-with-backgrounds-only &--has-image,
     .tweak-index-page-fullscreen-all-pages & {
-      display: flex;
+      .flex-parent();
       min-height: @tweak-index-page-min-height;
       .Index-page-content {
-        display: flex;
+        .flex-parent();
+        .flex-direction(column);
+        .flex-justify-content(center);
         width: 100%;
-        flex-direction: column;
-        justify-content: center;
       }
     }
 
