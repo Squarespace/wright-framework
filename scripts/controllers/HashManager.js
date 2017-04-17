@@ -8,7 +8,7 @@ function HashManager(element) {
     const url = new URL(href);
     const loc = new URL(window.location.href);
 
-    if (url.host !== loc.host || url.pathname !== loc.pathname || url.hash === '') {
+    if (url.host !== loc.host || url.pathname !== loc.pathname || url.hash === '' || url.hash === '#') {
       return null;
     }
 
