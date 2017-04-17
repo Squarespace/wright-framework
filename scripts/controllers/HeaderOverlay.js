@@ -74,6 +74,11 @@ function HeaderOverlay(element) {
     Object.values(indexEditEvents).forEach((eventName) => {
       window.addEventListener(eventName, sync);
     });
+    Tweak.watch([
+      'tweak-header-bottom-overlay-on-index-gallery'
+    ], () => {
+      sync();
+    });
   };
 
   /**
