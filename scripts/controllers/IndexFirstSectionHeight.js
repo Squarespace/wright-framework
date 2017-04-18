@@ -104,6 +104,7 @@ function IndexFirstSectionHeight(element) {
 
   const bindListeners = () => {
     Tweak.watch([
+      'tweak-header-bottom-overlay-on-index-gallery',
       'tweak-index-page-fullscreen',
       'tweak-index-page-min-height',
       'tweak-index-page-apply-bottom-spacing',
