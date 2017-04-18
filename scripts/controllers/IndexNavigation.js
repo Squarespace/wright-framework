@@ -21,7 +21,7 @@ function IndexNavigation(element) {
     return item.classList.contains('active');
   })[0];
   let currentId = currentIndexNavItem.getAttribute('href').substring(1);
-  let currentIdForColor = currentId;
+  let currentIdForColor = null;
 
   /**
    * Get relevant section rects so we can know where the positions are and where
