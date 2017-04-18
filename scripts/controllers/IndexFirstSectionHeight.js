@@ -27,7 +27,7 @@ function IndexFirstSectionHeight(element) {
     if (parseFloat(Tweak.getValue('tweak-site-border-width')) <= 0) {
       return 0;
     }
-    const borderWidth = parseFloat(window.getComputedStyle(site).borderWidth);
+    const borderWidth = parseFloat(window.getComputedStyle(site).borderTopWidth);
     const doubleBorderGallery = isGallery && Tweak.getValue('tweak-index-gallery-apply-bottom-spacing') === 'true';
     const doubleBorderPage = !isGallery && Tweak.getValue('tweak-index-page-apply-bottom-spacing') === 'true';
     if (doubleBorderGallery || doubleBorderPage) {
