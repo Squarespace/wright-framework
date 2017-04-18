@@ -122,6 +122,9 @@
 
 .Header-inner--bottom {
   padding-top: @tweak-header-bottom-padding;
+  body:not(.tweak-header-bottom-overlay-on-index-gallery) .Header--index-gallery & {
+    padding-bottom: @tweak-header-bottom-padding;
+  }
 }
 
 // Show
