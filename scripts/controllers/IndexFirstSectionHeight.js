@@ -15,6 +15,7 @@ function IndexFirstSectionHeight(element) {
   let darwin;
   const site = document.querySelector('.Site');
   const headerTop = document.querySelector('.Header--top');
+  const headerBottom = document.querySelector('.Header--bottom');
   const announcementBar = document.querySelector('.sqs-announcement-bar-dropzone');
   const firstSection = element.querySelector('.Index-page, .Index-gallery');
   const isGallery = firstSection.classList.contains('Index-gallery');
@@ -35,6 +36,13 @@ function IndexFirstSectionHeight(element) {
     return borderWidth;
   };
 
+  const getHeaderBottomHeight = () => {
+    const isOverlaidOnIndexGallery = Tweak.getValue('tweak-header-bottom-overlay-on-index-gallery') === 'true';
+    const hasIndexGallery = headerBottom.classList.contains('Header--index-gallery');
+
+    return !isOverlaidOnIndexGallery && hasIndexGallery ? headerBottom.offsetHeight : 0;
+  };
+
   const applyHeight = (height, heightElement = firstSection) => {
     const prop = isGallery ? 'height' : 'minHeight';
 
@@ -44,10 +52,11 @@ function IndexFirstSectionHeight(element) {
     }
 
     const borderHeight = getBorderHeight();
-    const headerHeight = headerTop.offsetHeight;
+    const headerTopHeight = headerTop.offsetHeight;
+    const headerBottomHeight = getHeaderBottomHeight();
     const announcementBarHeight = announcementBar ? announcementBar.offsetHeight : 0;
 
-    const totalHeight = borderHeight + headerHeight + announcementBarHeight;
+    const totalHeight = borderHeight + headerTopHeight + headerBottomHeight + announcementBarHeight;
     if (totalHeight > 0) {
       heightElement.style[prop] = `calc(${height} - ${totalHeight}px)`;
     } else {
