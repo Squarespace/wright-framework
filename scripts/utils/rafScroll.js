@@ -64,7 +64,7 @@ const getUnifiedScrollHandler = () => {
 };
 
 /**
- * Clear out scroll handlers array and scroll timeout.
+ * Destructor.
  */
 const destroy = () => {
   clearTimeout(scrollTimeout);
