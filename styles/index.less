@@ -1036,10 +1036,21 @@
         display: none;
       }
     }
+
+    // This should theoretically not be necessary, but Safari gets the wrong
+    // clientHeight on this node on page load unless we apply a set height here.
+    .Index-gallery-item {
+      height: @tweak-index-gallery-height;
+    }
     .Index-gallery-item:after {
       display: none;
     }
   }
+
+  .Index-gallery-item {
+    float: none;
+  }
+
 
   .Index-gallery-item-inner {
     bottom: 0;

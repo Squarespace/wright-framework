@@ -150,6 +150,7 @@ function IndexGallery(element) {
         }
       });
       slideshow.layout();
+
     } else {
       // Slideshow handles its own image loading logic, so we don't need to call
       // loadImages for it.
