@@ -1005,10 +1005,6 @@
 
 .tweak-index-gallery-layout-slideshow {
 
-  .Index-gallery {
-    background-color: rgba(red(@tweak-index-gallery-image-overlay-color), green(@tweak-index-gallery-image-overlay-color), blue(@tweak-index-gallery-image-overlay-color), 1);
-  }
-
   &.tweak-index-gallery-spacing-top-bottom-show .Index-gallery {
     padding-top: @tweak-index-gallery-spacing;
     padding-bottom: @tweak-index-gallery-spacing;
@@ -1018,6 +1014,11 @@
     padding-left: @tweak-index-gallery-spacing;
     padding-right: @tweak-index-gallery-spacing;
     .responsive-padding-horizontal(@tweak-index-gallery-spacing);
+  }
+
+  .Index-gallery-wrapper {
+    overflow: hidden;
+    background-color: rgba(red(@tweak-index-gallery-image-overlay-color), green(@tweak-index-gallery-image-overlay-color), blue(@tweak-index-gallery-image-overlay-color), 1);
   }
 
   .Index-gallery-wrapper:after {
