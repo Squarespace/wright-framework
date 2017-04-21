@@ -180,6 +180,8 @@ function IndexGallery(element) {
 
   const bindListeners = () => {
     const tweaksToWatch = [
+      'tweak-site-border-show',
+      'tweak-site-border-width',
       'layout',
       'items-per-row',
       'min-item-width',
@@ -192,7 +194,7 @@ function IndexGallery(element) {
       'transition',
       'transition-duration'
     ].map((str) => {
-      return 'tweak-index-gallery-' + str;
+      return str.indexOf('tweak') === 0 ? str : 'tweak-index-gallery-' + str;
     });
     if (authenticated) {
       Tweak.watch(tweaksToWatch, sync);

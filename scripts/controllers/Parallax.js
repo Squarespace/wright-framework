@@ -343,6 +343,8 @@ function Parallax(element) {
     window.addEventListener(indexEditEvents.reorder, handleIndexEditReorder);
 
     Tweak.watch([
+      'tweak-site-border-show',
+      'tweak-site-border-width',
       'tweak-overlay-parallax-enabled',
       'tweak-overlay-parallax-new-math',
       'tweak-site-width-option',
@@ -352,6 +354,7 @@ function Parallax(element) {
       'tweak-index-page-fullscreen',
       'tweak-index-page-min-height'
     ], () => {
+      invalidateIndexSectionRectCache();
       syncParallax(true);
     });
   };
