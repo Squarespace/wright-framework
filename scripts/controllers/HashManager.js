@@ -50,7 +50,7 @@ function HashManager(element) {
     }
 
     const hash = getSamePageHash(target.href);
-    const hashElement = element.querySelector(hash);
+    const hashElement = hash ? element.querySelector(hash) : null;
 
     if (hash && hashElement) {
       e.preventDefault();
