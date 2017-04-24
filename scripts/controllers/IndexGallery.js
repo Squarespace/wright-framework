@@ -6,6 +6,7 @@ import isMobileUA from '../utils/isMobileUA';
 import { addScrollListener, removeScrollListener } from '../utils/rafScroll';
 import { invalidateIndexSectionRectCache } from '../utils/getIndexSectionRect';
 
+const itemsPerGalleryWrapper = 9;
 let changeListeners = [];
 
 /**
@@ -19,8 +20,8 @@ function IndexGallery(element) {
   const galleryItems = Array.from(element.querySelectorAll('.Index-gallery-item'));
   const galleryIndicatorsItems = Array.from(element.querySelectorAll('.Index-gallery-indicators-item'));
   const innerWrapper = element.querySelector('.Index-gallery-wrapper');
-  const numWrappers = Math.floor(galleryItems.length / 9) + 1;
-  const numLastWrapperItems = galleryItems.length % 9;
+  const numWrappers = Math.floor(galleryItems.length / itemsPerGalleryWrapper) + 1;
+  const numLastWrapperItems = galleryItems.length % itemsPerGalleryWrapper;
 
   let slideshow;
   let galleryInnerWrappers = [];
@@ -58,11 +59,11 @@ function IndexGallery(element) {
   const wrapGalleryItems = () => {
     for (let i = 0; i < numWrappers; i++) {
       const wrapper = document.createElement('div');
-      const numWrapperItems = i === numWrappers - 1 ? numLastWrapperItems : 9;
+      const numWrapperItems = i === numWrappers - 1 ? numLastWrapperItems : itemsPerGalleryWrapper;
       wrapper.className = 'Index-gallery-inner clear';
       wrapper.setAttribute('data-index-gallery-images', numWrapperItems);
 
-      const currentWrapperItems = galleryItems.slice(i * 9, (i + 1) * 9);
+      const currentWrapperItems = galleryItems.slice(i * itemsPerGalleryWrapper, (i + 1) * itemsPerGalleryWrapper);
       currentWrapperItems.forEach((galleryItem) => {
         wrapper.appendChild(galleryItem);
       });
