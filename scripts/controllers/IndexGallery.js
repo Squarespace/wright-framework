@@ -127,6 +127,10 @@ function IndexGallery(element) {
           enabled: isAutoplayEnabled,
           delay: parseFloat(Tweak.getValue('tweak-index-gallery-autoplay-duration')) * 1000
         },
+        imageLoaderOptions: {
+          load: true,
+          mode: 'fill'
+        },
         controls: {
           previous: '.Index-gallery-control--left',
           next: '.Index-gallery-control--right',

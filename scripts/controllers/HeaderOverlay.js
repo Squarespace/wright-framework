@@ -5,7 +5,6 @@ import { indexEditEvents } from '../constants';
 const overlayClassname = 'Header--overlay';
 const indexContentSelector = '.Index-page--has-image:first-child .Index-page-content';
 const introContentSelector = '.Intro--has-image .Intro-content';
-// const indexGalleryContentSelector = '.Index-gallery-item-content';
 
 /**
  * Manages overlay header in two ways:
@@ -28,7 +27,7 @@ function HeaderOverlay(element) {
    * offset that element.
    * @param  {HTMLElement} offsetElement
    */
-  const applyOffset = (offsetElement, prop) => {
+  const applyOffset = (offsetElement) => {
     if (!document.body.classList.contains('is-mobile')) {
       offsetElement.style.marginTop = header.offsetHeight + 'px';
     } else {
@@ -46,9 +45,6 @@ function HeaderOverlay(element) {
 
     if (overlayOnIndexGallery && isOverIndexGallery) {
       header.classList.add(overlayClassname);
-      // indexGalleryContents.forEach((content) => {
-      //   applyOffset(content);
-      // });
       return;
     }
 

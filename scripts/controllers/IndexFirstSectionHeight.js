@@ -3,14 +3,25 @@ import Darwin from '@squarespace/darwin';
 import resizeEnd from '../utils/resizeEnd';
 
 /**
- * If min-height tweak is applied to the first index page, we need to account
- * for the height of the top header and announcement bar (and border) and
- * subtract that from the vh height of the first section, so the bottom of the
- * section lines up with the bottom of the screen.
+ * A simple value parser to return a number and unit from a string value e.g.
+ * '40px'. WARNING: Only works with values that have digits first, followed by
+ * an alphabetical string unit.
  *
- * @return {Object}  controller lifecycle methods
+ * @param  {String} val  String value to parse
+ * @return {Object}      Parsed object with keys 'number' and 'unit'
  */
+const parseValue = (val) => {
+  const [ number, unit ] = val.match(/([\d\.])+|([A-Za-z])+/g);
+  return { number: parseFloat(number), unit };
+};
 
+/**
+ * If min-height tweak is applied to the first index page or gallery, we need to
+ * potentially account for the height of the top header, bottom header, top
+ * mobile bar, announcement bar, and border, and subtract that from the vh
+ * height of the first section, so the bottom of the section lines up with the
+ * bottom of the screen.
+ */
 function IndexFirstSectionHeight(element) {
   let darwin;
   const site = document.querySelector('.Site');
@@ -21,6 +32,12 @@ function IndexFirstSectionHeight(element) {
   const firstSection = element.querySelector('.Index-page, .Index-gallery');
   const isGallery = firstSection.classList.contains('Index-gallery');
 
+  /**
+   * Get the height of the border that we need to offset, taking into account
+   * cases like the border tweak being on or off, border being mirrored, top
+   * border not showing due to mobile header being the same color, etc.
+   * @return {Number}  Border width needing to be offset
+   */
   const getBorderHeight = () => {
     if (Tweak.getValue('tweak-site-border-show') !== 'true') {
       return 0;
@@ -44,6 +61,13 @@ function IndexFirstSectionHeight(element) {
     return borderWidth;
   };
 
+  /**
+   * When a gallery is first in the index, the user has the option to not
+   * overlay the bottom header on the gallery. This function gets the height
+   * of the bottom header, taking into account whether or not it's overlaid on
+   * the first index gallery.
+   * @return {Number}  Bottom header height needing to be offset
+   */
   const getHeaderBottomHeight = () => {
     const isOverlaidOnIndexGallery = Tweak.getValue('tweak-header-bottom-overlay-on-index-gallery') === 'true';
     const hasIndexGallery = headerBottom.classList.contains('Header--index-gallery');
@@ -51,6 +75,13 @@ function IndexFirstSectionHeight(element) {
     return !isOverlaidOnIndexGallery && hasIndexGallery ? headerBottom.offsetHeight : 0;
   };
 
+  /**
+   * Function to actually apply the offset to the first section. If given 0,
+   * will clear out the height instead.
+   *
+   * @param  {String}      height         Height of first section (Raw CSS value, not parsed number)
+   * @param  {HTMLElement} heightElement  Element to apply adjusted height to
+   */
   const applyHeight = (height, heightElement = firstSection) => {
     const prop = isGallery ? 'height' : 'minHeight';
 
@@ -65,7 +96,14 @@ function IndexFirstSectionHeight(element) {
     const mobileBarTopHeight = mobileBarTop.offsetHeight;
     const announcementBarHeight = announcementBar ? announcementBar.offsetHeight : 0;
 
-    const totalHeight = borderHeight + headerTopHeight + headerBottomHeight + mobileBarTopHeight + announcementBarHeight;
+    const totalHeight = [
+      borderHeight,
+      headerTopHeight,
+      headerBottomHeight,
+      mobileBarTopHeight,
+      announcementBarHeight
+    ].reduce((a, b) => a + b, 0);
+
     if (totalHeight > 0) {
       heightElement.style[prop] = `calc(${height} - ${totalHeight}px)`;
     } else {
@@ -73,11 +111,10 @@ function IndexFirstSectionHeight(element) {
     }
   };
 
-  const parseValue = (val) => {
-    const [ number, unit ] = val.match(/([\d\.])+|([A-Za-z])+/g);
-    return { number: parseFloat(number), unit };
-  };
-
+  /**
+   * Sync function that determines which element to set height on (if any), and
+   * calls the applyHeight function with the proper values.
+   */
   const setMinHeight = () => {
 
     if (isGallery) {
