@@ -11,7 +11,7 @@
 .mixin-index-gallery-image-opacity (@opacity) when (@opacity < 0.8) {
   opacity: (0.9 - @opacity);
 }
-.mixin-index-gallery-image-opacity (@opacity) when (@opacity > 0.8) {
+.mixin-index-gallery-image-opacity (@opacity) when (@opacity >= 0.8) {
   opacity: 0;
 }
 
