@@ -1,6 +1,6 @@
 import { ImageLoader, Tweak } from '@squarespace/core';
 import Darwin from '@squarespace/darwin';
-import { get3dTransformProperty } from '../utils/get3dTransformProperty';
+import get3dTransformProperty from '../utils/get3dTransformProperty';
 import { getIndexSectionRect, invalidateIndexSectionRectCache } from '../utils/getIndexSectionRect';
 import { addScrollListener, removeScrollListener } from '../utils/rafScroll';
 import resizeEnd from '../utils/resizeEnd';

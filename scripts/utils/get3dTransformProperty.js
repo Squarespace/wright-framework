@@ -6,7 +6,7 @@ let propToUse;
  *
  * @return {String} Supported 3d transform property, or 'transform' if none
  */
-export const get3dTransformProperty = () => {
+const get3dTransformProperty = () => {
   if (propToUse) {
     return propToUse;
   }
@@ -35,3 +35,5 @@ export const get3dTransformProperty = () => {
   document.body.removeChild(testElement);
   return propToUse;
 };
+
+export default get3dTransformProperty;
