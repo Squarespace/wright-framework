@@ -80,10 +80,10 @@ function IndexGallery(element) {
     galleryItems.forEach((galleryItem) => {
       innerWrapper.appendChild(galleryItem);
     });
-    galleryInnerWrappers = galleryInnerWrappers.reduce((acc, wrapper) => {
+    galleryInnerWrappers.forEach((wrapper) => {
       wrapper.parentNode.removeChild(wrapper);
-      return acc;
-    }, []);
+    });
+    galleryInnerWrappers = [];
   };
 
   /**
