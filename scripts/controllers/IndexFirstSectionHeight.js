@@ -16,6 +16,7 @@ function IndexFirstSectionHeight(element) {
   const site = document.querySelector('.Site');
   const headerTop = document.querySelector('.Header--top');
   const headerBottom = document.querySelector('.Header--bottom');
+  const mobileBarTop = document.querySelector('.Mobile-bar--top');
   const announcementBar = document.querySelector('.sqs-announcement-bar-dropzone');
   const firstSection = element.querySelector('.Index-page, .Index-gallery');
   const isGallery = firstSection.classList.contains('Index-gallery');
@@ -27,7 +28,14 @@ function IndexFirstSectionHeight(element) {
     if (parseFloat(Tweak.getValue('tweak-site-border-width')) <= 0) {
       return 0;
     }
-    const borderWidth = parseFloat(window.getComputedStyle(site).borderTopWidth);
+    const borderWidth = parseFloat(window.getComputedStyle(site).borderLeftWidth);
+    const borderTopWidth = parseFloat(window.getComputedStyle(site).borderTopWidth);
+
+    const isMobileBorderTopRemoved = borderWidth !== borderTopWidth && borderTopWidth === 0;
+    if (isMobileBorderTopRemoved) {
+      return borderWidth;
+    }
+
     const doubleBorderGallery = isGallery && Tweak.getValue('tweak-index-gallery-apply-bottom-spacing') === 'true';
     const doubleBorderPage = !isGallery && Tweak.getValue('tweak-index-page-apply-bottom-spacing') === 'true';
     if (doubleBorderGallery || doubleBorderPage) {
@@ -54,9 +62,10 @@ function IndexFirstSectionHeight(element) {
     const borderHeight = getBorderHeight();
     const headerTopHeight = headerTop.offsetHeight;
     const headerBottomHeight = getHeaderBottomHeight();
+    const mobileBarTopHeight = mobileBarTop.offsetHeight;
     const announcementBarHeight = announcementBar ? announcementBar.offsetHeight : 0;
 
-    const totalHeight = borderHeight + headerTopHeight + headerBottomHeight + announcementBarHeight;
+    const totalHeight = borderHeight + headerTopHeight + headerBottomHeight + mobileBarTopHeight + announcementBarHeight;
     if (totalHeight > 0) {
       heightElement.style[prop] = `calc(${height} - ${totalHeight}px)`;
     } else {
