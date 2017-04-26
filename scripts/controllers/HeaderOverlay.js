@@ -1,4 +1,5 @@
-import { resizeEnd } from '../util';
+import { Tweak } from '@squarespace/core';
+import resizeEnd from '../utils/resizeEnd';
 import { indexEditEvents } from '../constants';
 
 const overlayClassname = 'Header--overlay';
@@ -39,6 +40,14 @@ function HeaderOverlay(element) {
    * classname and applies offset where appropriate.
    */
   const sync = () => {
+    const overlayOnIndexGallery = Tweak.getValue('tweak-header-bottom-overlay-on-index-gallery') === 'true';
+    const isOverIndexGallery = header.classList.contains('Header--index-gallery');
+
+    if (overlayOnIndexGallery && isOverIndexGallery) {
+      header.classList.add(overlayClassname);
+      return;
+    }
+
     const indexPageContent = element.querySelector(indexContentSelector);
     const introContent = element.querySelector(introContentSelector);
     const offsetElement = indexPageContent || introContent;
@@ -46,9 +55,11 @@ function HeaderOverlay(element) {
     if (offsetElement) {
       header.classList.add(overlayClassname);
       applyOffset(offsetElement);
-    } else {
-      header.classList.remove(overlayClassname);
+
+      return;
     }
+
+    header.classList.remove(overlayClassname);
   };
 
   /**
@@ -58,6 +69,11 @@ function HeaderOverlay(element) {
     resizeEnd(sync);
     Object.values(indexEditEvents).forEach((eventName) => {
       window.addEventListener(eventName, sync);
+    });
+    Tweak.watch([
+      'tweak-header-bottom-overlay-on-index-gallery'
+    ], () => {
+      sync();
     });
   };
 

@@ -1,9 +1,14 @@
 import { ImageLoader, Tweak } from '@squarespace/core';
 import Darwin from '@squarespace/darwin';
-import { resizeEnd } from '../util';
+import get3dTransformProperty from '../utils/get3dTransformProperty';
+import { getIndexSectionRect, invalidateIndexSectionRectCache } from '../utils/getIndexSectionRect';
+import { addScrollListener, removeScrollListener } from '../utils/rafScroll';
+import resizeEnd from '../utils/resizeEnd';
 import { indexEditEvents } from '../constants';
+import { addIndexGalleryChangeListener, removeIndexGalleryChangeListener } from './IndexGallery';
 
-const parallaxOffset = 500;
+const parallaxFactor = 0.5;
+const parallaxOffset = 300;
 
 /**
  * Where the magic happens. Performs all setup for parallax for indexes and page
@@ -13,11 +18,11 @@ const parallaxOffset = 500;
 function Parallax(element) {
 
   let darwin;
-  let scrolling = false;
-  let scrollTimeout;
   let windowHeight;
   let matrix = [];
   let isEditingIndex = false;
+
+  const transformProp = get3dTransformProperty();
 
   /**
    * Find out whether or not to use parallax, based on user option in tweak and
@@ -26,6 +31,14 @@ function Parallax(element) {
    */
   const isParallaxEnabled = () => {
     return isEditingIndex ? false : Tweak.getValue('tweak-overlay-parallax-enabled') === 'true';
+  };
+
+  /**
+   * Find out whether to use the new math for parallax.
+   * @return {Boolean}
+   */
+  const isNewMethodology = () => {
+    return Tweak.getValue('tweak-overlay-parallax-new-math') === 'true';
   };
 
   /**
@@ -63,21 +76,13 @@ function Parallax(element) {
    * @return {Boolean}            Whether or not it was udpated
    */
   const updateMatrixItem = (matrixItem) => {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const rect = matrixItem.originalNode.getBoundingClientRect();
-
-    const currentDims = {
-      top: rect.top + scrollTop,
-      left: rect.left,
-      width: matrixItem.originalNode.offsetWidth,
-      height: matrixItem.originalNode.offsetHeight
-    };
+    const currentDims = getIndexSectionRect(matrixItem.originalNode);
 
     for (const prop in currentDims) {
       if (matrixItem[prop] !== currentDims[prop]) {
         matrixItem.top = currentDims.top;
-        matrixItem.right = rect.right;
-        matrixItem.bottom = rect.bottom + scrollTop;
+        matrixItem.right = currentDims.right;
+        matrixItem.bottom = currentDims.bottom;
         matrixItem.left = currentDims.left;
         matrixItem.width = currentDims.width;
         matrixItem.height = currentDims.height;
@@ -109,85 +114,46 @@ function Parallax(element) {
    * setting a transform. Most of the heavy lifting occurs in syncParallax.
    * @param  {Number} scrollTop  Current scrollTop (passed in for performance)
    */
-  const scroll = function (scrollTop) {
-    scrollTop = scrollTop || (document.documentElement.scrollTop || document.body.scrollTop);
+  const handleScroll = (scrollTop) => {
 
     if (!isParallaxEnabled()) {
       return;
     }
     matrix.forEach((matrixItem) => {
       const {
-        mediaElement,
-        parallaxItem,
+        mediaWrapper,
         top,
         bottom,
-        left,
-        width,
         height,
         focalPoint
       } = matrixItem;
       if (scrollTop + windowHeight > top && scrollTop < bottom) {
 
-        // In view, find the 'parallax proportion' - the percentage of the total
-        // vertical screen space that has elapsed since the element scrolled
-        // into view vs when it would scroll out of view.
-        const focalPointVertical = height * focalPoint;
-        const parallaxProportion = 1 - ((top + focalPointVertical - scrollTop) / windowHeight);
+        let parallaxAmount;
 
-        // Apply this proportion (max of 1) to the parallax offset, which is the
-        // total number of invisible pixels that can be scrolled.
-        const elementTransformString = 'translatey(' + (parallaxProportion * parallaxOffset) + 'px)';
+        if (isNewMethodology()) {
+          // New methodology, determine the amount of the added area that has
+          // passed by using scroll and parallax factor, and offset by that.
+          parallaxAmount = -1 * parallaxFactor * (top - scrollTop);
+        } else {
+          // Old methodology. Element is in view, find the 'parallax proportion'
+          // - the percentage of the total vertical screen space that has
+          // elapsed since the element scrolled into view vs when it would
+          // scroll out of view.
+          const focalPointVertical = height * focalPoint;
+          const parallaxProportion = 1 - ((top + focalPointVertical - scrollTop) / windowHeight);
+          parallaxAmount = parallaxProportion * parallaxOffset;
+        }
+
+        // Apply amount of parallax
+        const elementTransformString = `translate3d(0, ${parallaxAmount}px, 0)`;
 
         // Sync to DOM
-        mediaElement.style.webkitTransform = elementTransformString;
-        mediaElement.style.msTransform = elementTransformString;
-        mediaElement.style.transform = elementTransformString;
-
-        // Offset fixed container
-        const parallaxItemTransformString = 'translatey(' + (-1 * scrollTop) + 'px)';
-        parallaxItem.style.webkitTransform = parallaxItemTransformString;
-        parallaxItem.style.msTransform = parallaxItemTransformString;
-        parallaxItem.style.transform = parallaxItemTransformString;
-
-        return;
+        mediaWrapper.style[transformProp] = elementTransformString;
       }
-
-      // Out of range
-      const parallaxItemTransformString = 'translate3d(' + (-1 * width - left) + 'px, 0, 0)';
-      parallaxItem.style.webkitTransform = parallaxItemTransformString;
-      parallaxItem.style.msTransform = parallaxItemTransformString;
-      parallaxItem.style.transform = parallaxItemTransformString;
     });
   };
 
-  /**
-   * A wrapper for the scroll logic that can be called recursively by raf.
-   */
-  const scrollCallback = () => {
-    scroll(window.pageYOffset);
-    if (scrolling === true) {
-      window.requestAnimationFrame(scrollCallback);
-    }
-  };
-
-  /**
-   * The actual scroll handler that wraps the scroll callback and starts the
-   * raf calls.
-   */
-  const handleScroll = () => {
-    if (scrolling === false) {
-      scrolling = true;
-      document.documentElement.style.pointerEvents = 'none';
-      scrollCallback();
-    }
-    if (scrollTimeout) {
-      clearTimeout(scrollTimeout);
-    }
-    scrollTimeout = setTimeout(() => {
-      scrolling = false;
-      document.documentElement.style.pointerEvents = 'auto';
-    }, 100);
-  };
 
   /**
    * Uses ImageLoader to load the image for a given media element.
@@ -207,33 +173,13 @@ function Parallax(element) {
     });
   };
 
-  /**
-   * Based on whether parallax is enabled or not, move elements into the proper
-   * containers (or remove them), position them, size them, and load images.
-   * @param  {Boolean} force  Here you can force all elements to update even if
-   *                          updateAllMatrixItems hasn't picked up any changes
-   *                          to their position or size. Useful for changes
-   *                          propagated by /config
-   */
-  const syncParallax = (force) => {
+  const moveParallaxElements = () => {
     const parallaxHost = document.body.querySelector('[data-parallax-host]');
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    windowHeight = window.innerHeight;
 
-    const hasUpdated = updateAllMatrixItems();
-    if (!hasUpdated && force === false) {
-      return;
-    }
-
-    matrix.filter((matrixItem) => {
+    matrix = matrix.filter((matrixItem) => {
       const {
         originalNode,
-        mediaWrapper,
-        mediaElement,
-        top,
-        left,
-        width,
-        height
+        mediaWrapper
       } = matrixItem;
       let { parallaxItem } = matrixItem;
 
@@ -263,27 +209,47 @@ function Parallax(element) {
           parallaxItem.appendChild(mediaWrapper);
         }
 
+      } else if (mediaWrapper.parentNode !== originalNode) {
+        // Parallax is off, so if the mediaWrapper is not in its original
+        // node, move it back.
+        originalNode.appendChild(mediaWrapper);
+      }
+
+      return true;
+    });
+  };
+
+  const applyParallaxStyles = () => {
+
+    matrix.forEach((matrixItem) => {
+      const {
+        mediaWrapper,
+        mediaElement,
+        top,
+        left,
+        width,
+        height
+      } = matrixItem;
+      let { parallaxItem } = matrixItem;
+
+      if (isParallaxEnabled()) {
+
         // Apply styles to parallaxItem so it has the right position
         parallaxItem.style.top = top + 'px';
         parallaxItem.style.left = left + 'px';
         parallaxItem.style.width = width + 'px';
         parallaxItem.style.height = height + 'px';
 
-        // Offset top of mediaWrapper to allow for room to scroll
-        mediaWrapper.style.top = (-1 * parallaxOffset) + 'px';
-
-        // Load image only
-        loadImage(mediaElement);
-
-        // Add loaded class
-        mediaWrapper.classList.add('loaded');
+        if (isNewMethodology()) {
+          // Offset bottom of mediaWrapper to allow for room to scroll
+          mediaWrapper.style.bottom = -1 * parallaxFactor * (window.innerHeight - height) + 'px';
+          mediaWrapper.style.top = '';
+        } else {
+          mediaWrapper.style.top = (-1 * parallaxOffset) + 'px';
+          mediaWrapper.style.bottom = '';
+        }
 
       } else {
-        // Parallax is off, so if the mediaWrapper is not in its original
-        // node, move it back.
-        if (mediaWrapper.parentNode !== originalNode) {
-          originalNode.appendChild(mediaWrapper);
-        }
 
         // Parallax is off, but if it was on at some point, we'll need to
         // clear styles from affected elements
@@ -294,13 +260,14 @@ function Parallax(element) {
           parallaxItem.style.height = '';
         }
 
-        // Clear offset top
+        // Clear offset top and bottom
         mediaWrapper.style.top = '';
+        mediaWrapper.style.bottom = '';
 
         // Clear transforms
-        mediaElement.style.webkitTransform = '';
-        mediaElement.style.msTransform = '';
-        mediaElement.style.transform = '';
+        mediaWrapper.style.webkitTransform = '';
+        mediaWrapper.style.msTransform = '';
+        mediaWrapper.style.transform = '';
       }
 
       // Load image
@@ -308,13 +275,33 @@ function Parallax(element) {
 
       // Add loaded class
       mediaWrapper.classList.add('loaded');
-
-      return true;
     });
+
+  };
+
+  /**
+   * Based on whether parallax is enabled or not, move elements into the proper
+   * containers (or remove them), position them, size them, and load images.
+   * @param  {Boolean} force  Here you can force all elements to update even if
+   *                          updateAllMatrixItems hasn't picked up any changes
+   *                          to their position or size. Useful for changes
+   *                          propagated by /config
+   */
+  const syncParallax = (force = false) => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    windowHeight = window.innerHeight;
+
+    const hasUpdated = updateAllMatrixItems();
+    if (!hasUpdated && force === false) {
+      return;
+    }
+
+    moveParallaxElements();
+    applyParallaxStyles();
 
     // Calculate proper position of images by calling scroll
     if (isParallaxEnabled()) {
-      scroll(scrollTop);
+      handleScroll(scrollTop);
     }
   };
 
@@ -341,8 +328,14 @@ function Parallax(element) {
    * listeners, and tweak watcher.
    */
   const bindListeners = () => {
-    window.addEventListener('scroll', handleScroll);
-    resizeEnd(syncParallax);
+    addScrollListener('scroll', handleScroll);
+
+    addIndexGalleryChangeListener(syncParallax);
+
+    resizeEnd(() => {
+      invalidateIndexSectionRectCache();
+      syncParallax();
+    });
 
     window.addEventListener(indexEditEvents.enabled, handleIndexEditEnabled);
     window.addEventListener(indexEditEvents.disabled, handleIndexEditDisabled);
@@ -350,12 +343,18 @@ function Parallax(element) {
     window.addEventListener(indexEditEvents.reorder, handleIndexEditReorder);
 
     Tweak.watch([
+      'tweak-site-border-show',
+      'tweak-site-border-width',
       'tweak-overlay-parallax-enabled',
+      'tweak-overlay-parallax-new-math',
       'tweak-site-width-option',
       'tweak-site-width',
       'tweak-index-page-padding',
-      'tweak-index-page-overlay-padding'
+      'tweak-index-page-overlay-padding',
+      'tweak-index-page-fullscreen',
+      'tweak-index-page-min-height'
     ], () => {
+      invalidateIndexSectionRectCache();
       syncParallax(true);
     });
   };
@@ -366,17 +365,23 @@ function Parallax(element) {
    */
   const init = () => {
     initParallax();
-    window.requestAnimationFrame(syncParallax);
+    moveParallaxElements();
+    syncParallax();
+
     bindListeners();
     darwin = new Darwin({
       targets: [
         '.sqs-block-form',
         '.sqs-block-tourdates',
         '.sqs-block-code',
+        '.sqs-block-image',
         '.Header',
         '.sqs-announcement-bar-dropzone'
       ],
-      callback: syncParallax
+      callback: () => {
+        invalidateIndexSectionRectCache();
+        syncParallax();
+      }
     });
     if (darwin) {
       darwin.init();
@@ -388,11 +393,14 @@ function Parallax(element) {
    * as removing event listeners.
    */
   const destroy = () => {
+    removeScrollListener('scroll', handleScroll);
+
+    removeIndexGalleryChangeListener(syncParallax);
+
     if (darwin) {
       darwin.destroy();
       darwin = null;
     }
-    window.removeEventListener('scroll', handleScroll);
 
     window.removeEventListener(indexEditEvents.enabled, handleIndexEditEnabled);
     window.removeEventListener(indexEditEvents.disabled, handleIndexEditDisabled);

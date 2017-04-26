@@ -6,7 +6,7 @@
 
     {squarespace-headers}
   </head>
-  <body id="{squarespace.page-id}" class="{squarespace.page-classes}{.if website.logoImageUrl} has-logo-image{.or} has-site-title{.end}{.if website.siteTagLine} has-tagline{.end}{.if website.socialAccounts.0} has-social{.end}{.if showCart} has-cart{.end}{.if item}{.or}{.equal? collection.typeName "index"}{.section collection}{.repeated section collections}{.background-source-video?} has-parallax-images{.or}{.section mainImage} has-parallax-images{.end}{.end}{.end}{.end}{.or}{.section collection}{.background-source-video?} has-parallax-images{.or}{.section mainImage} has-parallax-images{.end}{.end}{.end}{.end}{.end} enable-load-effects<squarespace:navigation navigationId="mainNavigation">{.if items.0} has-primary-nav{.end}</squarespace:navigation><squarespace:navigation navigationId="secondaryNavigation">{.if items.0} has-secondary-nav{.end}</squarespace:navigation><squarespace:navigation navigationId="footerMainNavigation">{.if items.0} has-footer-nav{.end}</squarespace:navigation>" data-controller="SiteLoader, MobileClassname">
+  <body id="{squarespace.page-id}" class="{squarespace.page-classes} sqs-has-custom-cart{.if website.logoImageUrl} has-logo-image{.or} has-site-title{.end}{.if website.siteTagLine} has-tagline{.end}{.if website.socialAccounts.0} has-social{.end}{.if showCart} has-cart{.end}{.if item}{.or}{.equal? collection.typeName "index"}{.section collection}{.repeated section collections}{.background-source-video?} has-parallax-images{.or}{.section mainImage} has-parallax-images{.end}{.end}{.end}{.end}{.or}{.section collection}{.background-source-video?} has-parallax-images{.or}{.section mainImage} has-parallax-images{.end}{.end}{.end}{.end}{.end} enable-load-effects<squarespace:navigation navigationId="mainNavigation">{.if items.0} has-primary-nav{.end}</squarespace:navigation><squarespace:navigation navigationId="secondaryNavigation">{.if items.0} has-secondary-nav{.end}</squarespace:navigation><squarespace:navigation navigationId="footerMainNavigation">{.if items.0} has-footer-nav{.end}</squarespace:navigation>{.equal? collection.typeName "index"}{.section collection}{.section collections.0}{.equal? typeName "gallery"} has-index-gallery-first{.end}{.end}{.end}{.end}" data-controller="HashManager, SiteLoader, MobileClassname">
 
     <div class="Loader"></div>
 
@@ -55,7 +55,7 @@
               <form class="Header-search-form" action="/search" method="get">
                 <input class="Header-search-form-input" name="q" type="text" spellcheck="false" value="" autocomplete="off" placeholder="Search" />
                 <button class="Header-search-form-submit" type="submit" data-test="template-search">
-                  <svg class="Icon Icon--search--small" viewBox="0 0 20 20">
+                  <svg class="Icon Icon--search--small" viewBox="0 0 15 15">
                     <use xlink:href="/assets/ui-icons.svg#search-icon--small"></use>
                   </svg>
                   <svg class="Icon Icon--search" viewBox="0 0 20 20">
@@ -81,9 +81,9 @@
         </div>
       </header>
 
-      <div class="Site-inner{.equal? collection.typeName "index"} Site-inner--index{.end}"{.equal? collection.typeName "index"}{.section collection}{.section collections.0}{.equal? typeName "page"}{.background-source-video?} data-controller="HeaderOverlay"{.or}{.section mainImage} data-controller="HeaderOverlay"{.end}{.end}{.end}{.end}{.end}{.or}{.if item}{.or}{.section collection}{.background-source-video?} data-controller="HeaderOverlay"{.or}{.section mainImage} data-controller="HeaderOverlay"{.end}{.end}{.end}{.end}{.end}>
+      <div class="Site-inner{.equal? collection.typeName "index"} Site-inner--index{.end}"{.equal? collection.typeName "index"}{.section collection}{.section collections.0}{.equal? typeName "page"}{.background-source-video?} data-controller="HeaderOverlay"{.or}{.section mainImage} data-controller="HeaderOverlay"{.end}{.end}{.end}{.equal? typeName "gallery"} data-controller="HeaderOverlay"{.end}{.end}{.end}{.or}{.if item}{.or}{.section collection}{.background-source-video?} data-controller="HeaderOverlay"{.or}{.section mainImage} data-controller="HeaderOverlay"{.end}{.end}{.end}{.end}{.end}>
 
-        <header class="Header Header--bottom{.if item}{.or}{.equal? collection.typeName "index"}{.section collection}{.section collections.0}{.equal? typeName "page"}{.background-source-video?} Header--overlay{.or}{.section mainImage} Header--overlay{.end}{.end}{.end}{.end}{.end}{.or}{.section collection}{.background-source-video?} Header--overlay{.or}{.section mainImage} Header--overlay{.end}{.end}{.end}{.end}{.end}">
+        <header class="Header Header--bottom{.if item}{.or}{.equal? collection.typeName "index"}{.section collection}{.section collections.0}{.equal? typeName "page"}{.background-source-video?} Header--overlay{.or}{.section mainImage} Header--overlay{.end}{.end}{.end}{.equal? typeName "gallery"} Header--index-gallery{.end}{.end}{.end}{.or}{.section collection}{.background-source-video?} Header--overlay{.or}{.section mainImage} Header--overlay{.end}{.end}{.end}{.end}{.end}">
           <div class="Header-inner Header-inner--bottom" data-nc-group="bottom">
             <div data-nc-container="bottom-left">
               <nav class="Header-nav Header-nav--primary" data-nc-element="primary-nav" data-content-field="navigation">
@@ -131,7 +131,7 @@
             {.end}
           {.end}{.end}{.end}
 
-          <main class="{.equal? collection.typeName "index"}Index{.or}Main{.if collection.typeName} Main--{collection.typeName}{.equal? collection.typeName "page"}{.or}{.if item}-item{.or}-list{.end}{.end}{.end}{.end}" {.equal? collection.typeName "index"}data-collection-id="{collection.id}"{.end}{.equal? collection.typeName "index"} data-controller="Parallax"{.end}>
+          <main class="{.equal? collection.typeName "index"}Index{.or}Main{.if collection.typeName} Main--{collection.typeName}{.equal? collection.typeName "page"}{.or}{.if item}-item{.or}-list{.end}{.end}{.end}{.end}" {.equal? collection.typeName "index"}data-collection-id="{collection.id}"{.end}{.equal? collection.typeName "index"} data-controller="IndexFirstSectionHeight, Parallax, IndexNavigation"{.end}>
             {.equal? collection.typeName "index"}
               {squarespace.main-content}
             {.or}

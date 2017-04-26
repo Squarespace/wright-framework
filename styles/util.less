@@ -56,12 +56,16 @@
 //  Search
 
 
-.placeholder-color (@color, @opacity: 1) {
+.placeholder-color(@color, @opacity: 1) {
   ::-webkit-input-placeholder { .alpha-color(@color, @opacity); }
   ::-moz-placeholder { .alpha-color(@color, @opacity); }
   :-ms-input-placeholder { .alpha-color(@color, @opacity); }
 }
-
+.hide-placeholder() {
+  ::-webkit-input-placeholder { visibility: hidden; opacity: 0; }
+  ::-moz-placeholder { visibility: hidden; opacity: 0; }
+  :-ms-input-placeholder { visibility: hidden; opacity: 0; }
+}
 
 // -----------------------------------------
 
@@ -155,6 +159,9 @@
 }
 .max-padding-right (@padding, @max) when (@padding > @max) {
   padding-right: @max;
+}
+.max-padding-left (@padding, @max) when (@padding > @max) {
+  padding-left: @max;
 }
 .max-position-horizontal (@position, @max) when (@position > @max) {
   left: @max;
@@ -301,6 +308,23 @@
   //   .max-padding-bottom (@padding, @paddingXS);
   // }
 }
+.responsive-padding-left (@padding) {
+  @media screen and (max-width: 1024px) {
+    .max-padding-left (@padding, @paddingXL);
+  }
+  @media screen and (max-width: 960px) {
+    .max-padding-left (@padding, @paddingL);
+  }
+  @media screen and (max-width: 768px) {
+    .max-padding-left (@padding, @paddingM);
+  }
+  @media screen and (max-width: 640px) {
+    .max-padding-left (@padding, @paddingS);
+  }
+  // @media screen and (max-width: 480px) {
+  //   .max-padding-right (@padding, @paddingXS);
+  // }
+}
 
 
 // =======================================================
@@ -383,6 +407,54 @@
   -ms-flex-order: @num; // IE 10
   -webkit-order: @num; // Safari 7+
   order: @num; // Modern browsers
+}
+.flex-align-items (@string) when (@string = flex-start) {
+  -webkit-box-align: start; // Safari 6
+  -ms-flex-align: start; // IE 10
+  -webkit-align-items: flex-start; // Safari 7+
+  align-items: flex-start; // Modern browsers
+}
+.flex-align-items (@string) when (@string = center) {
+  -webkit-box-align: center; // Safari 6
+  -ms-flex-align: center; // IE 10
+  -webkit-align-items: center; // Safari 7+
+  align-items: center; // Modern browsers
+}
+.flex-align-items (@string) when (@string = flex-end) {
+  -webkit-box-align: end; // Safari 6
+  -ms-flex-align: end; // IE 10
+  -webkit-align-items: flex-end; // Safari 7+
+  align-items: flex-end; // Modern browsers
+}
+.flex-align-items (@string) when (@string = stretch) {
+  -webkit-box-align: stretch; // Safari 6
+  -ms-flex-align: stretch; // IE 10
+  -webkit-align-items: stretch; // Safari 7+
+  align-items: stretch; // Modern browsers
+}
+.flex-align-items (@string) when (@string = baseline) {
+  -webkit-box-align: baseline; // Safari 6
+  -ms-flex-align: baseline; // IE 10
+  -webkit-align-items: baseline; // Safari 7+
+  align-items: baseline; // Modern browsers
+}
+.flex-justify-content (@string) when (@string = flex-start) {
+  -webkit-box-pack: start; // Safari 6
+  -ms-flex-pack: start; // IE 10
+  -webkit-justify-content: flex-start; // Safari 7+
+  justify-content: flex-start; // Modern browsers
+}
+.flex-justify-content (@string) when (@string = center) {
+  -webkit-box-pack: center; // Safari 6
+  -ms-flex-pack: center; // IE 10
+  -webkit-justify-content: center; // Safari 7+
+  justify-content: center; // Modern browsers
+}
+.flex-justify-content (@string) when (@string = flex-end) {
+  -webkit-box-pack: end; // Safari 6
+  -ms-flex-pack: end; // IE 10
+  -webkit-justify-content: flex-end; // Safari 7+
+  justify-content: flex-end; // Modern browsers
 }
 .hyphens (@string) {
   -webkit-hyphens: @string;

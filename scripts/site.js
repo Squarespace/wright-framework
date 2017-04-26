@@ -6,8 +6,11 @@ import './polyfills/classList';
 
 import AncillaryLayout from './controllers/AncillaryLayout';
 import FooterBreakpoints from './controllers/FooterBreakpoints';
+import HashManager from './controllers/HashManager';
+import IndexFirstSectionHeight from './controllers/IndexFirstSectionHeight';
 import IndexGallery from './controllers/IndexGallery';
 import IndexGalleryVideo from './controllers/IndexGalleryVideo';
+import IndexNavigation from './controllers/IndexNavigation';
 import HeaderNavFolderTouch from './controllers/HeaderNavFolderTouch';
 import HeaderOverlay from './controllers/HeaderOverlay';
 import MobileClassname from './controllers/MobileClassname';
@@ -20,8 +23,11 @@ import SiteLoader from './controllers/SiteLoader';
 
 controller.register('AncillaryLayout', AncillaryLayout);
 controller.register('FooterBreakpoints', FooterBreakpoints);
+controller.register('HashManager', HashManager);
+controller.register('IndexFirstSectionHeight', IndexFirstSectionHeight);
 controller.register('IndexGallery', IndexGallery);
 controller.register('IndexGalleryVideo', IndexGalleryVideo);
+controller.register('IndexNavigation', IndexNavigation);
 controller.register('HeaderNavFolderTouch', HeaderNavFolderTouch);
 controller.register('HeaderOverlay', HeaderOverlay);
 controller.register('MobileClassname', MobileClassname);

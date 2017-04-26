@@ -140,6 +140,39 @@
       .no-select;
       stroke: @tweak-mobile-bar-menu-icon-color;
 
+      .Icon {
+        display: none;
+      }
+
+      .tweak-mobile-bar-menu-icon-hamburger & .Icon--hamburger {
+        display: block;
+      }
+      .tweak-mobile-bar-menu-icon-two-lines & .Icon--hotdog {
+        display: block;
+      }
+      .tweak-mobile-bar-menu-icon-plus & .Icon--plus {
+        display: block;
+      }
+      .tweak-mobile-bar-menu-icon-horizontal-dots & .Icon--dots-horizontal {
+        display: block;
+        fill: @tweak-mobile-bar-menu-icon-color;
+      }
+      .tweak-mobile-bar-menu-icon-vertical-dots & .Icon--dots-vertical {
+        display: block;
+        fill: @tweak-mobile-bar-menu-icon-color;
+      }
+      .tweak-mobile-bar-menu-icon-horizontal-squares & .Icon--squares-horizontal {
+        display: block;
+        fill: @tweak-mobile-bar-menu-icon-color;
+      }
+      .tweak-mobile-bar-menu-icon-vertical-squares & .Icon--squares-vertical {
+        display: block;
+        fill: @tweak-mobile-bar-menu-icon-color;
+      }
+      .tweak-mobile-bar-menu-icon-plus & .Icon--plus {
+        display: block;
+      }
+
     }
 
 
@@ -470,14 +503,18 @@
     color: @tweak-mobile-overlay-menu-primary-text-color;
   }
 
-  &-folder-item--toggle {
+}
+
+body:not(.tweak-mobile-overlay-menu-secondary-inherit) {
+
+
+  .Mobile-overlay-folder-item--toggle {
     .tweak-mobile-overlay-menu-secondary-font;
   }
 
-  &-folder-item--toggle {
+  .Mobile-overlay-folder-item--toggle {
     color: @tweak-mobile-overlay-menu-secondary-text-color;
   }
-
 }
 
 
@@ -549,13 +586,13 @@
 
 
 body:not(.tweak-mobile-overlay-menu-primary-style-button) {
-  .Mobile-overlay-nav--primary .Mobile-overlay-nav-item {
+  .Mobile-overlay-nav .Mobile-overlay-nav-item {
     .tweak-mobile-overlay-menu-primary-font;
     color: @tweak-mobile-overlay-menu-primary-text-color;
   }
 }
 
-.tweak-mobile-overlay-menu-primary-style-button {
+.tweak-mobile-overlay-menu-primary-style-button:not(.tweak-mobile-overlay-menu-secondary-inherit) {
 
   // General
   .Mobile-overlay-nav--primary .Mobile-overlay-nav-item {
@@ -599,16 +636,60 @@ body:not(.tweak-mobile-overlay-menu-primary-style-button) {
 
 }
 
+.tweak-mobile-overlay-menu-primary-style-button.tweak-mobile-overlay-menu-secondary-inherit {
+
+  // General
+  .Mobile-overlay-nav .Mobile-overlay-nav-item {
+    .tweak-mobile-overlay-menu-primary-button-font;
+    .mixin-mobile-nav-style-button();
+  }
+
+  // Shape
+  &.tweak-mobile-overlay-menu-primary-button-shape-square {
+    .Mobile-overlay-nav .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-shape(square);
+    }
+  }
+  &.tweak-mobile-overlay-menu-primary-button-shape-rounded {
+    .Mobile-overlay-nav .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-shape(rounded);
+    }
+  }
+  &.tweak-mobile-overlay-menu-primary-button-shape-pill {
+    .Mobile-overlay-nav .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-shape(pill);
+    }
+  }
+
+  // Style
+  &.tweak-mobile-overlay-menu-primary-button-style-solid {
+    .Mobile-overlay-nav .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-style(primary, solid);
+    }
+  }
+  &.tweak-mobile-overlay-menu-primary-button-style-outline {
+    .Mobile-overlay-nav .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-style(primary, outline);
+    }
+  }
+  &.tweak-mobile-overlay-menu-primary-button-style-raised {
+    .Mobile-overlay-nav .Mobile-overlay-nav-item {
+      .mixin-mobile-nav-button-style(primary, raised);
+    }
+  }
+
+}
 
 
-body:not(.tweak-mobile-overlay-menu-secondary-style-button) {
+
+body:not(.tweak-mobile-overlay-menu-secondary-style-button):not(.tweak-mobile-overlay-menu-secondary-inherit) {
   .Mobile-overlay-nav--secondary .Mobile-overlay-nav-item {
     .tweak-mobile-overlay-menu-secondary-font;
     color: @tweak-mobile-overlay-menu-secondary-text-color;
   }
 }
 
-.tweak-mobile-overlay-menu-secondary-style-button {
+.tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-inherit) {
 
   // General
   .Mobile-overlay-nav--secondary .Mobile-overlay-nav-item {

@@ -1,6 +1,6 @@
 import { Tweak } from '@squarespace/core';
 import Ancillary from '@squarespace/ancillary';
-import { resizeEnd } from '../util';
+import resizeEnd from '../utils/resizeEnd';
 import { debug } from '../constants';
 
 const mobileLayoutTweaks = [

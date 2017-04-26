@@ -1,5 +1,6 @@
 import jump from 'jump.js';
 import { Tweak } from '@squarespace/core';
+import { addScrollListener, removeScrollListener } from '../utils/rafScroll';
 
 const tweaks = [
   'indicator',
@@ -15,6 +16,7 @@ const tweaks = [
 function ScrollIndicator(element) {
   let showTimeout;
   let hideTimeout;
+  let windowHeight = window.innerHeight;
   let bottomEdge = element.getBoundingClientRect().bottom;
 
   /**
@@ -23,9 +25,9 @@ function ScrollIndicator(element) {
    * timeout to hide the element so the user can see it for a little bit before
    * scrolling past it.
    */
-  const handleScroll = () => {
-    if (bottomEdge > window.innerHeight) {
-      if (window.pageYOffset + window.innerHeight < bottomEdge) {
+  const handleScroll = (scrollTop) => {
+    if (bottomEdge > windowHeight) {
+      if (scrollTop + windowHeight < bottomEdge) {
         clearTimeout(hideTimeout);
         hideTimeout = null;
         element.classList.remove('hidden');
@@ -39,7 +41,7 @@ function ScrollIndicator(element) {
 
     clearTimeout(hideTimeout);
     hideTimeout = null;
-    element.classList.toggle('hidden', window.pageYOffset > 0);
+    element.classList.toggle('hidden', scrollTop > 0);
   };
 
   const handleClick = () => {
@@ -49,11 +51,12 @@ function ScrollIndicator(element) {
   };
 
   const handleResize = () => {
+    windowHeight = window.innerHeight;
     bottomEdge = window.pageYOffset + element.getBoundingClientRect().bottom;
   };
 
   const bindListeners = () => {
-    window.addEventListener('scroll', handleScroll);
+    addScrollListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
     element.addEventListener('click', handleClick);
 
@@ -65,7 +68,7 @@ function ScrollIndicator(element) {
   };
 
   const destroy = () => {
-    window.removeEventListener('scroll', handleScroll);
+    removeScrollListener('scroll', handleScroll);
     window.removeEventListener('resize', handleResize);
     element.removeEventListener('click', handleClick);
     clearTimeout(showTimeout);

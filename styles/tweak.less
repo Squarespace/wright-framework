@@ -25,9 +25,9 @@
 
 //  Border
 
-// tweak: { "category" : "Site: Border", "label" : "Show Border", "title" : "tweak-site-border-show", "type" : "checkbox", "active" : false }
+// tweak: { "category" : "Site: Border", "label" : "Show Border", "title" : "tweak-site-border-show", "type" : "checkbox", "active" : false, "js": true }
 
-// tweak: { "category" : "Site: Border", "label" : "Width", "title" : "tweak-site-border-width", "type" : "value", "step" : 1, "min" : 1, "max" : 120, "target" : ".Site", "showOnlyWhenPresent" : ".tweak-site-border-show" }
+// tweak: { "category" : "Site: Border", "label" : "Width", "title" : "tweak-site-border-width", "type" : "value", "step" : 1, "min" : 1, "max" : 120, "target" : ".Site", "showOnlyWhenPresent" : ".tweak-site-border-show", "js": true }
 @tweak-site-border-width: 5px;
 
 // tweak: { "category" : "Site: Border", "label" : "Color", "title" : "tweak-site-border-color", "type" : "color", "disableTransparency" : "true", "showOnlyWhenPresent" : ".tweak-site-border-show" }
@@ -173,6 +173,9 @@
 //  Primary Navigation
 
 
+// tweak: { "category" : "Header: Primary Navigation", "label" : "Link Spacing", "title" : "tweak-header-primary-nav-link-spacing", "type" : "value", "step" : 0.01, "min" : 0, "max" : 5, "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav:not(.ancillary-header-primary-nav-position-hide)" }
+@tweak-header-primary-nav-link-spacing: 0.618em;
+
 // tweak: { "category" : "Header: Primary Navigation", "label": "Style", "title" : "tweak-header-primary-nav-hover-style", "type" : "dropdown", "options" : [ "Plain", "Fade", "Spotlight", "Active", "Button" ], "default" : "Spotlight", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav:not(.ancillary-header-primary-nav-position-hide)" }
 
 // tweak: { "category" : "Header: Primary Navigation", "label": "Button Style", "title" : "tweak-header-primary-nav-button-style", "type" : "dropdown", "options" : [ "Solid", "Outline", "Raised" ], "default" : "Solid", "target" : ".Header-nav--primary", "showOnlyWhenPresent" : ".has-primary-nav.tweak-header-primary-nav-hover-style-button:not(.ancillary-header-primary-nav-position-hide)" }
@@ -227,6 +230,9 @@
 
 // tweak: { "category" : "Header: Secondary Navigation", "label" : "Inherit Primary Navigation Styles", "title" : "tweak-header-secondary-nav-inherit-styles", "type" : "checkbox", "active" : true, "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav:not(.ancillary-header-secondary-nav-position-hide)" }
 
+// tweak: { "category" : "Header: Secondary Navigation", "label" : "Link Spacing", "title" : "tweak-header-secondary-nav-link-spacing", "type" : "value", "step" : 0.01, "min" : 0, "max" : 5, "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav:not(.ancillary-header-secondary-nav-position-hide)" }
+@tweak-header-secondary-nav-link-spacing: 0.618em;
+
 // tweak: { "category" : "Header: Secondary Navigation", "label": "Style", "title" : "tweak-header-secondary-nav-hover-style", "type" : "dropdown", "options" : [ "Plain", "Fade", "Spotlight", "Active", "Button" ], "default" : "Spotlight", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles)" }
 
 // tweak: { "category" : "Header: Secondary Navigation", "label": "Button Style", "title" : "tweak-header-secondary-nav-button-style", "type" : "dropdown", "options" : [ "Solid", "Outline", "Raised" ], "default" : "Solid", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav.tweak-header-secondary-nav-hover-style-button:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles)" }
@@ -246,7 +252,7 @@
 // tweak: { "category": "Header: Secondary Navigation", "label": "Color", "title" : "tweak-header-secondary-nav-link-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles) .Header:not(.Header--overlay) .Header-nav--secondary" }
 @tweak-header-secondary-nav-link-color: #ffffff;
 
-// tweak: { "category": "Header: Secondary Navigation", "label": "Active Color", "title" : "tweak-header-secondary-nav-link-active-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav.tweak-header-secondary-nav-hover-style-active.tweak-header-nav-secondary-hover-style-active:not(.ancillary-header-secondary-nav-position-hide) .Header:not(.Header--overlay) .Header-nav--secondary" }
+// tweak: { "category": "Header: Secondary Navigation", "label": "Active Color", "title" : "tweak-header-secondary-nav-link-active-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav.tweak-header-secondary-nav-hover-style-active:not(.ancillary-header-secondary-nav-position-hide) .Header:not(.Header--overlay) .Header-nav--secondary" }
 @tweak-header-secondary-nav-link-active-color: #000000;
 
 // tweak: { "category": "Header: Secondary Navigation", "label": "Button Text Color", "title" : "tweak-header-secondary-nav-button-text-color", "type" : "color", "target" : ".Header-nav--secondary", "showOnlyWhenPresent" : ".has-secondary-nav.tweak-header-secondary-nav-hover-style-button:not(.ancillary-header-secondary-nav-position-hide):not(.tweak-header-secondary-nav-inherit-styles) .Header:not(.Header--overlay) .Header-nav--secondary" }
@@ -288,7 +294,9 @@
 //  Search
 
 
-// tweak: { "category" : "Header: Search", "label" : "Style", "title" : "tweak-header-search-style", "type" : "dropdown", "options" : [ "Rectangle", "Underlined" ], "default" : "Underlined", "target" : ".Header-search", "showOnlyWhenPresent" : "body:not(.ancillary-header-search-position-hide)" }
+// tweak: { "category" : "Header: Search", "label" : "Style", "title" : "tweak-header-search-style", "type" : "dropdown", "options" : [ "Rectangle", "Underlined", "Icon Only" ], "default" : "Underlined", "target" : ".Header-search", "showOnlyWhenPresent" : "body:not(.ancillary-header-search-position-hide)" }
+
+// tweak: { "category" : "Header: Search", "label" : "Show Placeholder Text", "title" : "tweak-header-search-placeholder-show", "type" : "checkbox", "active": true, "target" : ".Header-search", "showOnlyWhenPresent" : "body:not(.ancillary-header-search-position-hide):not(.tweak-header-search-style-icon-only)" }
 
 // tweak: { "category": "Header: Search", "label" : "Font", "title" : "tweak-header-search-font", "type" : "font", "target" : ".Header-search", "showOnlyWhenPresent" : "body:not(.ancillary-header-search-position-hide)" }
 .tweak-header-search-font {
@@ -299,6 +307,9 @@
   letter-spacing: 0em;
   text-transform: uppercase;
 }
+
+// tweak: { "category" : "Header: Search", "label" : "Icon Scale", "title" : "tweak-header-search-icon-scale", "type" : "value", "step" : 0.01, "min" : 0.1, "max" : 3, "target" : ".Header-search", "showOnlyWhenPresent" : "body:not(.ancillary-header-search-position-hide)" }
+@tweak-header-search-icon-scale: 1;
 
 // tweak: { "category": "Header: Search", "label" : "Icon Color", "title" : "tweak-header-search-icon-color", "type" : "color", "target" : ".Header-search", "showOnlyWhenPresent" : "body:not(.ancillary-header-search-position-hide) .Header:not(.Header--overlay) .Header-search" }
 @tweak-header-search-icon-color: #ffffff;
@@ -331,7 +342,7 @@
 //  Cart
 
 
-// tweak: { "category" : "Header: Cart", "label" : "Style", "title" : "tweak-header-cart-style", "type" : "dropdown", "options" : [ "Text", "Cart", "Bag" ], "default" : "Text", "target" : ".Header .Cart", "showOnlyWhenPresent" : ".has-cart:not(.ancillary-header-cart-position-hide)" }
+// tweak: { "category" : "Header: Cart", "label" : "Style", "title" : "tweak-header-cart-style", "type" : "dropdown", "options" : [ "Text", "Cart", "Bag", "Cart (Alternate)", "Bag (Alternate)" ], "default" : "Text", "target" : ".Header .Cart", "showOnlyWhenPresent" : ".has-cart:not(.ancillary-header-cart-position-hide)" }
 
 // tweak: { "category": "Header: Cart", "label" : "Font", "title" : "tweak-header-cart-font", "type" : "font", "target" : ".Header .Cart", "showOnlyWhenPresent" : ".has-cart:not(.ancillary-header-cart-position-hide)" }
 .tweak-header-cart-font {
@@ -382,7 +393,7 @@
 // tweak: { "category" : "Main", "label" : "Content Section Padding", "title" : "tweak-main-content-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 240, "target" : ".Main", "showOnlyWhenPresent" : ".Main" }
 @tweak-main-content-padding: 48px;
 
-// tweak: { "category" : "Main", "label" : "Content Inset", "title" : "tweak-main-content-inset", "label" : "Content Inset", "type" : "value", "step" : 1, "min" : 0, "max" : 5, "target" : ".Intro--has-image, .Intro:not(.Intro--has-image), .Main-content, .Index-page.Index-page--has-image, .Index-page:not(.Index-page--has-image), .Footer-blocks--top, .Footer-blocks--bottom", "showOnlyWhenPresent" : ".Intro-content .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .Main:not(.Main--events-list):not(.Main--events-item):not(.Main--blog-list) .Main-content .sqs-layout .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .tweak-blog-list-style-stacked .BlogList--posts-full .sqs-layout .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .Index-page .sqs-layout .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .Footer-blocks--top .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .Footer-blocks--bottom .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .tweak-footer-layout-stacked .Footer-blocks--middle .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram)" }
+// tweak: { "category" : "Main", "label" : "Content Inset", "title" : "tweak-main-content-inset", "label" : "Content Inset", "type" : "value", "step" : 0.05, "min" : 0, "max" : 5, "target" : ".Intro--has-image, .Intro:not(.Intro--has-image), .Main-content, .Index-page.Index-page--has-image, .Index-page:not(.Index-page--has-image), .Footer-blocks--top, .Footer-blocks--bottom", "showOnlyWhenPresent" : ".Intro-content .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .Main:not(.Main--events-list):not(.Main--events-item):not(.Main--blog-list) .Main-content .sqs-layout .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .tweak-blog-list-style-stacked .BlogList--posts-full .sqs-layout .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .Index-page .sqs-layout .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .Footer-blocks--top .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .Footer-blocks--bottom .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram), .tweak-footer-layout-stacked .Footer-blocks--middle .sqs-col-12 > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram)" }
 @tweak-main-content-inset: 3;
 
 
@@ -394,8 +405,7 @@
 
 // tweak: { "category" : "Main: Overlay", "label" : "Enable Parallax", "title" : "tweak-overlay-parallax-enabled", "type" : "checkbox", "active" : true, "js" : true, "target" : ".Index-page--has-image, .Intro--has-image", "showOnlyWhenPresent" : ".Index-page--has-image, .Intro--has-image" }
 
-// offtweak: { "category" : "Main: Overlay", "label" : "Parallax Scrolling Factor", "title" : "tweak-overlay-parallax-factor", "type" : "value", "step" : 1, "min" : 1, "max" : 10, "js" : true, "target" : ".Index-page--has-image, .Intro--has-image", "showOnlyWhenPresent" : ".Index-page--has-image, .Intro--has-image" }
-@tweak-overlay-parallax-factor: 6;
+// tweak: { "category" : "Main: Overlay", "label" : "Parallax Smart Crop", "title" : "tweak-overlay-parallax-new-math", "type" : "checkbox", "active" : false, "js" : true, "target" : ".Index-page--has-image, .Intro--has-image", "showOnlyWhenPresent" : ".tweak-overlay-parallax-enabled .Index-page--has-image, .tweak-overlay-parallax-enabled .Intro--has-image" }
 
 // tweak: { "category" : "Main: Overlay", "label" : "Overlay Color", "title" : "tweak-overlay-color", "type" : "color", "target" : ".Index-page--has-image, .Intro--has-image", "showOnlyWhenPresent" : ".Index-page--has-image, .Intro--has-image" }
 @tweak-overlay-color: rgba(0,0,0,0.3);
@@ -414,6 +424,63 @@
 
 // -----------------------------------------
 
+//  Index Navigation
+
+
+// tweak: { "category" : "Index: Navigation", "label" : "Style", "title" : "tweak-index-nav-style", "type" : "dropdown", "options" : [ "None", "Radio", "Filled Dots", "Faded Dots", "Horizontal Lines", "Vertical Lines", "Expanding Horizontal Lines" ], "default" : "Radio", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : ".Index-nav" }
+
+// tweak: { "category" : "Index: Navigation", "label" : "Position", "title" : "tweak-index-nav-position", "type" : "dropdown", "options" : [ "Left", "Right" ], "default" : "Right", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav", "js": true }
+
+// tweak: { "category" : "Index: Navigation", "label" : "Breakpoint", "title" : "tweak-index-nav-breakpoint", "type" : "value", "step" : 1, "min" : 1, "max" : 1280, "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-breakpoint: 640px;
+
+// tweak: { "category" : "Index: Navigation", "label" : "Offset", "title" : "tweak-index-nav-offset", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-offset: 20px;
+
+// tweak: { "category" : "Index: Navigation", "label" : "Spacing", "title" : "tweak-index-nav-spacing", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-spacing: 10px;
+
+// tweak: { "category" : "Index: Navigation", "label" : "Indicator Size", "title" : "tweak-index-nav-indicator-size", "type" : "value", "step" : 1, "min" : 0, "max" : 40, "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-indicator-size: 12px;
+
+// tweak: { "category" : "Index: Navigation", "label" : "Indicator Size", "title" : "tweak-index-nav-indicator-line-width", "type" : "value", "step" : 1, "min" : 0, "max" : 20, "target" : ".Index-nav-inner", "showOnlyWhenPresent" : ".tweak-index-nav-style-horizontal-lines .Index-nav, .tweak-index-nav-style-vertical-lines .Index-nav" }
+@tweak-index-nav-indicator-line-width: 2px;
+
+// tweak: { "category" : "Index: Navigation", "label" : "Color", "title" : "tweak-index-nav-indicator-color", "type" : "color", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-indicator-color: rgba(0, 0, 0, 0.5);
+
+// tweak: { "category" : "Index: Navigation", "label" : "Active Color", "title" : "tweak-index-nav-indicator-active-color", "type" : "color", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-indicator-active-color: rgba(17, 17, 17, 1);
+
+// tweak: { "category" : "Index: Navigation", "label" : "Color (Overlay)", "title" : "tweak-index-nav-overlay-indicator-color", "type" : "color", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-overlay-indicator-color: rgba(255, 255, 255, 0.5);
+
+// tweak: { "category" : "Index: Navigation", "label" : "Active Color (Overlay)", "title" : "tweak-index-nav-overlay-indicator-active-color", "type" : "color", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : "body:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-overlay-indicator-active-color: rgba(255, 255, 255, 1);
+
+// tweak: { "category" : "Index: Navigation", "label" : "Show Titles", "title" : "tweak-index-nav-text-show", "type" : "checkbox", "active" : true, "target" : ".Index-nav-inner", "showOnlyWhenPresent": "body:not(.tweak-index-nav-style-none) .Index-nav" }
+
+// tweak: { "category": "Index: Navigation", "label" : "Font", "title" : "tweak-index-nav-font", "type" : "font", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : ".tweak-index-nav-text-show:not(.tweak-index-nav-style-none) .Index-nav" }
+.tweak-index-nav-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 0em;
+  text-transform: uppercase;
+}
+
+// tweak: { "category" : "Index: Navigation", "label" : "Text Color", "title" : "tweak-index-nav-text-color", "type" : "color", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : ".tweak-index-nav-text-show:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-text-color: rgba(17, 17, 17, 1);
+
+// tweak: { "category" : "Index: Navigation", "label" : "Text Color (Overlay)", "title" : "tweak-index-nav-overlay-text-color", "type" : "color", "target" : ".Index-nav-inner", "showOnlyWhenPresent" : ".tweak-index-nav-text-show:not(.tweak-index-nav-style-none) .Index-nav" }
+@tweak-index-nav-overlay-text-color: rgba(255, 255, 255, 1);
+
+
+
+
+// -----------------------------------------
+
 //  Index Page
 
 
@@ -421,11 +488,15 @@
 // tweak: { "category" : "Index: Page", "label" : "Padding", "title" : "tweak-index-page-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 240, "target" : ".Index-page:not(.Index-page--has-image)", "showOnlyWhenPresent" : ".Index-page:not(.Index-page--has-image)" }
 @tweak-index-page-padding: 48px;
 
-
 // tweak: { "category" : "Index: Page", "label" : "Padding (Overlay Pages)", "title" : "tweak-index-page-overlay-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 240, "target" : ".Index-page--has-image", "showOnlyWhenPresent" : ".Index-page--has-image" }
 @tweak-index-page-overlay-padding: 240px;
 
-// tweak: { "category" : "Index: Page", "label" : "Fullscreen Pages", "title" : "tweak-index-page-fullscreen", "type" : "dropdown", "options" : [ "None", "First Page Only", "Pages with Backgrounds Only", "All Pages" ], "default" : "None", "target" : ".Index-page", "showOnlyWhenPresent" : ".Index-page" }
+// tweak: { "category" : "Index: Page", "label" : "Apply Minimum Height", "title" : "tweak-index-page-fullscreen", "type" : "dropdown", "options" : [ "None", "First Page Only", "Pages with Backgrounds Only", "All Pages" ], "default" : "None", "target" : ".Index-page", "showOnlyWhenPresent" : ".Index-page", "js": true }
+
+// tweak: { "category" : "Index: Page", "label" : "Minimum Height", "title" : "tweak-index-page-min-height", "type" : "value", "step" : 1, "min" : 50, "max" : 100, "target" : ".Index-page", "showOnlyWhenPresent" : ".Index-page", "js": true }
+@tweak-index-page-min-height: 100vh;
+
+// tweak: { "category" : "Index: Page", "label" : "Mirror Border Below First Page", "title" : "tweak-index-page-apply-bottom-spacing", "type" : "checkbox", "active" : false, "target" : ".Index-page", "showOnlyWhenPresent": ".tweak-site-border-show.tweak-index-page-fullscreen-first-page-only .Index-page:first-child, .tweak-site-border-show.tweak-index-page-fullscreen-all-pages .Index-page:first-child, .tweak-site-border-show.tweak-index-page-fullscreen-pages-with-backgrounds-only .Index-page--has-image:first-child", "js": true }
 
 // tweak: { "category" : "Index: Scroll Indicator", "label" : "Option", "title" : "tweak-index-page-scroll-indicator", "type" : "dropdown", "options" : [ "None", "Icon Only", "Icon and Text" ], "default" : "None", "target" : ".Index-page-scroll-indicator", "showOnlyWhenPresent" : ".Index-page-scroll-indicator" }
 
@@ -454,42 +525,126 @@
 //  Index Gallery
 
 
-// tweak: { "category" : "Index: Gallery", "label" : "Layout", "title" : "tweak-index-gallery-layout", "type" : "dropdown", "options" : [ "Packed", "Split" ], "default" : "Packed", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
+// tweak: { "category" : "Index: Gallery", "label" : "Overlay Header on First Index Gallery", "title" : "tweak-header-bottom-overlay-on-index-gallery", "type" : "checkbox", "active" : false, "target" : ".Index-gallery-item", "showOnlyWhenPresent": ".Header--index-gallery", "js": true }
 
-// tweak: { "category" : "Index: Gallery", "label" : "Hover Style", "title" : "tweak-index-gallery-hover-style", "type" : "dropdown", "options" : [ "Plain", "Fade" ], "default" : "Plain", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
+// tweak: { "category" : "Index: Gallery", "label" : "Layout", "title" : "tweak-index-gallery-layout", "type" : "dropdown", "options" : [ "Packed", "Split", "Grid", "Slideshow" ], "default" : "Packed", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery", "js": true }
 
 // tweak: { "category" : "Index: Gallery", "label" : "Spacing", "title" : "tweak-index-gallery-spacing", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
 @tweak-index-gallery-spacing: 5px;
 
-// tweak: { "category" : "Index: Gallery", "label" : "Aspect Ratio", "title" : "tweak-index-gallery-aspect", "type" : "value", "step" : 1, "min" : 30, "max" : 160, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
+// tweak: { "category" : "Index: Gallery", "label" : "Apply Spacing on Sides", "title" : "tweak-index-gallery-spacing-sides-show", "type" : "checkbox", "active" : true, "target" : ".Index-gallery-item", "showOnlyWhenPresent": ".Index-gallery" }
+
+// tweak: { "category" : "Index: Gallery", "label" : "Apply Spacing on Top/Bottom", "title" : "tweak-index-gallery-spacing-top-bottom-show", "type" : "checkbox", "active" : true, "target" : ".Index-gallery-item", "showOnlyWhenPresent": ".Index-gallery" }
+
+// tweak: { "category" : "Index: Gallery", "label" : "Use Fixed Height", "title" : "tweak-index-gallery-fixed-height", "type" : "checkbox", "active" : true, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow .Index-gallery", "js": true }
+
+// tweak: { "category" : "Index: Gallery", "label" : "Fixed Height", "title" : "tweak-index-gallery-height", "type" : "value", "step" : 1, "min" : 10, "max" : 100, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow.tweak-index-gallery-fixed-height .Index-gallery", "js": true }
+@tweak-index-gallery-height: 100vh;
+
+// tweak: { "category" : "Index: Gallery", "label" : "Mirror Border Below First Gallery", "title" : "tweak-index-gallery-apply-bottom-spacing", "type" : "checkbox", "active" : true, "target" : ".Index-gallery", "showOnlyWhenPresent": ".tweak-site-border-show.tweak-index-gallery-fixed-height .Index-gallery:first-child", "js": true }
+
+// tweak: { "category" : "Index: Gallery", "label" : "Aspect Ratio", "title" : "tweak-index-gallery-aspect", "type" : "value", "step" : 1, "min" : 30, "max" : 160, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow:not(.tweak-index-gallery-fixed-height) .Index-gallery, body:not(.tweak-index-gallery-layout-slideshow) .Index-gallery" }
 @tweak-index-gallery-aspect: 100;
+
+// tweak: { "category" : "Index: Gallery", "label" : "Max Items Per Row", "title" : "tweak-index-gallery-items-per-row", "type" : "value", "step" : 1, "min" : 1, "max" : 4, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-grid .Index-gallery" }
+@tweak-index-gallery-items-per-row: 4;
+
+// tweak: { "category" : "Index: Gallery", "label" : "Min Item Width", "title" : "tweak-index-gallery-min-item-width", "type" : "value", "step" : 1, "min" : 100, "max" : 600, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-grid .Index-gallery" }
+@tweak-index-gallery-min-item-width: 400px;
+
+// tweak: { "category" : "Index: Gallery", "label" : "Hover Style", "title" : "tweak-index-gallery-hover-style", "type" : "dropdown", "options" : [ "Plain", "Fade" ], "default" : "Plain", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
 
 // tweak: { "category" : "Index: Gallery", "label" : "Image Overlay", "title" : "tweak-index-gallery-image-overlay-color", "type" : "color", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery" }
 @tweak-index-gallery-image-overlay-color: rgba(0,0,0,0.3);
 
-// tweak: { "category" : "Index: Gallery", "label" : "Content Position", "title" : "tweak-index-gallery-content-position", "type" : "dropdown", "options" : [ "Top Left", "Top Center", "Top Right", "Middle Left", "Middle Center", "Middle Right", "Bottom Left", "Bottom Center", "Bottom Right" ], "default" : "Bottom Left", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
 
-// tweak: { "category" : "Index: Gallery", "label" : "Content Offset (Top)", "title" : "tweak-index-gallery-content-offset-top", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-left .Index-gallery-item-content, .tweak-index-gallery-content-position-top-center .Index-gallery-item-content, .tweak-index-gallery-content-position-top-right .Index-gallery-item-content" }
+
+
+// -----------------------------------------
+
+//  Index Slideshow Gallery
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Next/Previous Controls", "title" : "tweak-index-gallery-controls", "type" : "dropdown", "options" : [ "None", "Large Arrows", "Small Arrows" ], "default" : "Small Arrows", "target" : ".Index-gallery-item, .Index-gallery-control", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow .Index-gallery" }
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Controls Offset", "title" : "tweak-index-gallery-controls-offset", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item, .Index-gallery-control", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow:not(.tweak-index-gallery-controls-none) .Index-gallery" }
+@tweak-index-gallery-controls-offset: 5px;
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Controls Padding", "title" : "tweak-index-gallery-controls-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item, .Index-gallery-control", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow:not(.tweak-index-gallery-controls-none) .Index-gallery" }
+@tweak-index-gallery-controls-padding: 5px;
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Controls Weight", "title" : "tweak-index-gallery-controls-icon-weight", "type" : "dropdown", "options" : [ "Hairline", "Light", "Medium", "Heavy" ], "default" : "Hairline", "target" : ".Index-gallery-item, .Index-gallery-control", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow:not(.tweak-index-gallery-controls-none) .Index-gallery" }
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Controls Color", "title" : "tweak-index-gallery-controls-color", "type" : "color", "target" : ".Index-gallery-item, .Index-gallery-control", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow:not(.tweak-index-gallery-controls-none) .Index-gallery" }
+@tweak-index-gallery-controls-color: rgba(255, 255, 255, 1);
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Controls Background Color", "title" : "tweak-index-gallery-controls-background-color", "type" : "color", "target" : ".Index-gallery-item, .Index-gallery-control", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow:not(.tweak-index-gallery-controls-none) .Index-gallery" }
+@tweak-index-gallery-controls-background-color: rgba(255, 255, 255, 0);
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicators", "title" : "tweak-index-gallery-indicators", "type" : "dropdown", "options" : [ "None", "Dots", "Lines" ], "default" : "Lines", "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow .Index-gallery", "js": true }
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicators Offset", "title" : "tweak-index-gallery-indicators-offset", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
+@tweak-index-gallery-indicators-offset: 5px;
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Width", "title" : "tweak-index-gallery-indicators-width", "type" : "value", "step" : 1, "min" : 1, "max" : 160, "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow.tweak-index-gallery-indicators-lines .Index-gallery" }
+@tweak-index-gallery-indicators-width: 5px;
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Height", "title" : "tweak-index-gallery-indicators-height", "type" : "value", "step" : 1, "min" : 1, "max" : 20, "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
+@tweak-index-gallery-indicators-height: 5px;
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Spacing", "title" : "tweak-index-gallery-indicators-spacing", "type" : "value", "step" : 1, "min" : 0, "max" : 40, "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
+@tweak-index-gallery-indicators-spacing: 5px;
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Color", "title" : "tweak-index-gallery-indicators-color", "type" : "color", "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
+@tweak-index-gallery-indicators-color: rgba(255, 255, 255, 0.3);
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Indicator Color (Active)", "title" : "tweak-index-gallery-indicators-active-color", "type" : "color", "target" : ".Index-gallery-item, .Index-gallery-indicators", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow:not(.tweak-index-gallery-indicators-none) .Index-gallery" }
+@tweak-index-gallery-indicators-active-color: rgba(255, 255, 255, 1);
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Autoplay", "title" : "tweak-index-gallery-autoplay-enable", "type" : "checkbox", "active" : true, "target" : ".Index-gallery-item", "showOnlyWhenPresent": ".tweak-index-gallery-layout-slideshow.tweak-index-gallery-layout-slideshow .Index-gallery", "js": true }
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Autoplay Duration (Seconds)", "title" : "tweak-index-gallery-autoplay-duration", "type" : "value", "step" : 0.1, "min" : 0.1, "max" : 10, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow.tweak-index-gallery-layout-slideshow .Index-gallery", "js": true }
+@tweak-index-gallery-autoplay-duration: 2;
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Transitions", "title" : "tweak-index-gallery-transition", "type" : "dropdown", "options" : [ "None", "Fade", "Slide", "Cards" ], "default" : "Fade", "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow.tweak-index-gallery-layout-slideshow .Index-gallery", "js": true }
+
+// tweak: { "category" : "Index: Slideshow Gallery", "label" : "Transition Duration (Milliseconds)", "title" : "tweak-index-gallery-transition-duration", "type" : "value", "step" : 1, "min" : 20, "max" : 1000, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-layout-slideshow.tweak-index-gallery-layout-slideshow .Index-gallery", "js": true }
+@tweak-index-gallery-transition-duration: 500;
+
+
+
+
+
+// -----------------------------------------
+
+//  Index Gallery Content
+
+
+// tweak: { "category" : "Index: Gallery Content", "label" : "Content Position", "title" : "tweak-index-gallery-content-position", "type" : "dropdown", "options" : [ "Top Left", "Top Center", "Top Right", "Middle Left", "Middle Center", "Middle Right", "Bottom Left", "Bottom Center", "Bottom Right" ], "default" : "Bottom Left", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+
+// tweak: { "category" : "Index: Gallery Content", "label" : "Content Offset (Top)", "title" : "tweak-index-gallery-content-offset-top", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-left .Index-gallery-item-content, .tweak-index-gallery-content-position-top-center .Index-gallery-item-content, .tweak-index-gallery-content-position-top-right .Index-gallery-item-content" }
 @tweak-index-gallery-content-offset-top: 12px;
 
-// tweak: { "category" : "Index: Gallery", "label" : "Content Offset (Right)", "title" : "tweak-index-gallery-content-offset-right", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-right .Index-gallery-item-content, .tweak-index-gallery-content-position-middle-right .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-right .Index-gallery-item-content" }
+// tweak: { "category" : "Index: Gallery Content", "label" : "Content Offset (Right)", "title" : "tweak-index-gallery-content-offset-right", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-right .Index-gallery-item-content, .tweak-index-gallery-content-position-middle-right .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-right .Index-gallery-item-content" }
 @tweak-index-gallery-content-offset-right: 12px;
 
-// tweak: { "category" : "Index: Gallery", "label" : "Content Offset (Bottom)", "title" : "tweak-index-gallery-content-offset-bottom", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-bottom-left .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-center .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-right .Index-gallery-item-content" }
+// tweak: { "category" : "Index: Gallery Content", "label" : "Content Offset (Bottom)", "title" : "tweak-index-gallery-content-offset-bottom", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-bottom-left .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-center .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-right .Index-gallery-item-content" }
 @tweak-index-gallery-content-offset-bottom: 12px;
 
-// tweak: { "category" : "Index: Gallery", "label" : "Content Offset (Left)", "title" : "tweak-index-gallery-content-offset-left", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-left .Index-gallery-item-content, .tweak-index-gallery-content-position-middle-left .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-left .Index-gallery-item-content" }
+// tweak: { "category" : "Index: Gallery Content", "label" : "Content Offset (Left)", "title" : "tweak-index-gallery-content-offset-left", "type" : "value", "step" : 1, "min" : 0, "max" : 200, "target" : ".Index-gallery-item", "showOnlyWhenPresent" : ".tweak-index-gallery-content-position-top-left .Index-gallery-item-content, .tweak-index-gallery-content-position-middle-left .Index-gallery-item-content, .tweak-index-gallery-content-position-bottom-left .Index-gallery-item-content" }
 @tweak-index-gallery-content-offset-left: 12px;
 
-// tweak: { "category" : "Index: Gallery", "label" : "Content Padding", "title" : "tweak-index-gallery-content-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+// tweak: { "category" : "Index: Gallery Content", "label" : "Content Max Width", "title" : "tweak-index-gallery-content-max-width", "type" : "value", "step" : 1, "min" : 10, "max" : 100, "target" : ".Index-gallery-item-content", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+@tweak-index-gallery-content-max-width: 100%;
+
+// tweak: { "category" : "Index: Gallery Content", "label" : "Content Padding", "title" : "tweak-index-gallery-content-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 60, "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
 @tweak-index-gallery-content-padding: 16px;
 
-// tweak: { "category" : "Index: Gallery", "label" : "Content Text Alignment", "title" : "tweak-index-gallery-content-text-alignment", "type" : "dropdown", "options" : [ "Left", "Center", "Right" ], "default" : "Left", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+// tweak: { "category" : "Index: Gallery Content", "label" : "Content Text Alignment", "title" : "tweak-index-gallery-content-text-alignment", "type" : "dropdown", "options" : [ "Left", "Center", "Right" ], "default" : "Left", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
 
-// tweak: { "category" : "Index: Gallery", "label" : "Content Background", "title" : "tweak-index-gallery-content-background-color", "type" : "color", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+// tweak: { "category" : "Index: Gallery Content", "label" : "Content Background", "title" : "tweak-index-gallery-content-background-color", "type" : "color", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
 @tweak-index-gallery-content-background-color: rgba(255,255,255,1);
 
-// tweak: { "category": "Index: Gallery", "label" : "Title Font", "title" : "tweak-index-gallery-content-heading-font", "type" : "font", "target" : ".Index-gallery-item-content", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+// tweak: { "category": "Index: Gallery Content", "label" : "Title Font", "title" : "tweak-index-gallery-content-heading-font", "type" : "font", "target" : ".Index-gallery-item-content", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
 .tweak-index-gallery-content-heading-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -500,10 +655,10 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Index: Gallery", "label": "Title Color", "title" : "tweak-index-gallery-content-heading-color", "type" : "color", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+// tweak: { "category": "Index: Gallery Content", "label": "Title Color", "title" : "tweak-index-gallery-content-heading-color", "type" : "color", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
 @tweak-index-gallery-content-heading-color: #000000;
 
-// tweak: { "category": "Index: Gallery", "label" : "Body Font", "title" : "tweak-index-gallery-content-body-font", "type" : "font", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+// tweak: { "category": "Index: Gallery Content", "label" : "Body Font", "title" : "tweak-index-gallery-content-body-font", "type" : "font", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
 .tweak-index-gallery-content-body-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -514,9 +669,8 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Index: Gallery", "label": "Body Color", "title" : "tweak-index-gallery-content-body-color", "type" : "color", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
+// tweak: { "category": "Index: Gallery Content", "label": "Body Color", "title" : "tweak-index-gallery-content-body-color", "type" : "color", "target" : ".Index-gallery-item-content, .Index-gallery-item", "showOnlyWhenPresent" : ".Index-gallery-item-content" }
 @tweak-index-gallery-content-body-color: #000000;
-
 
 
 
@@ -545,7 +699,7 @@
   text-transform: none;
 }
 
-// tweak: { "category" : "Content: Fonts", "label" : "Heading 1", "title" : "tweak-h1-font", "type" : "font", "loadAllVariants" : true, "target" : ".Intro:not(.Intro--has-image) .sqs-layout h1, .Main-content .sqs-layout h1, .Index-page:not(.Index-page--has-image) .sqs-layout h1, .Intro--has-image .sqs-layout h1, .Index-page--has-image .sqs-layout h1, .Footer .sqs-layout h1", "showOnlyWhenPresent" : ".sqs-layout h1" }
+// tweak: { "category" : "Content: Fonts", "label" : "Heading 1", "title" : "tweak-h1-font", "type" : "font", "loadAllVariants" : true, "target" : ".Intro:not(.Intro--has-image) .sqs-layout h1, .Main-content .sqs-layout h1, .Index-page:not(.Index-page--has-image) .sqs-layout h1, .Intro--has-image .sqs-layout h1, .Index-page--has-image .sqs-layout h1, .Footer .sqs-layout h1, .eventlist-title, .eventitem-title", "showOnlyWhenPresent" : ".sqs-layout h1, .eventlist-title, .eventitem-title" }
 .tweak-h1-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -567,7 +721,7 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Content: Fonts", "label" : "Heading 3", "title" : "tweak-h3-font", "type" : "font", "loadAllVariants" : true, "target" : ".Intro:not(.Intro--has-image) .sqs-layout h3, .Main-content .sqs-layout h3, .Index-page:not(.Index-page--has-image) .sqs-layout h3, .Intro--has-image .sqs-layout h3, .Index-page--has-image .sqs-layout h3, .Footer .sqs-layout h3", "showOnlyWhenPresent" : ".sqs-layout h3" }
+// tweak: { "category": "Content: Fonts", "label" : "Heading 3", "title" : "tweak-h3-font", "type" : "font", "loadAllVariants" : true, "target" : ".Intro:not(.Intro--has-image) .sqs-layout h3, .Main-content .sqs-layout h3, .Index-page:not(.Index-page--has-image) .sqs-layout h3, .Intro--has-image .sqs-layout h3, .Index-page--has-image .sqs-layout h3, .Footer .sqs-layout h3, h3.comment-count", "showOnlyWhenPresent" : ".sqs-layout h3, h3.comment-count" }
 .tweak-h3-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -588,16 +742,16 @@
 // tweak: { "category": "Content: Colors", "label" : "Body Text", "title" : "tweak-body-text-color", "type" : "color", "target" : ".Intro:not(.Intro--has-image) .sqs-layout p, .Main-content .sqs-layout p, .Index-page:not(.Index-page--has-image) .sqs-layout p" }
 @tweak-body-text-color: #000000;
 
-// tweak: { "category": "Content: Colors", "label" : "Heading 1", "title" : "tweak-h1-color", "type" : "color", "target" : ".Intro:not(.Intro--has-image) .sqs-layout h1, .Main-content .sqs-layout h1, .Index-page:not(.Index-page--has-image) .sqs-layout h1", "showOnlyWhenPresent" : ".sqs-layout h1" }
+// tweak: { "category": "Content: Colors", "label" : "Heading 1", "title" : "tweak-h1-color", "type" : "color", "target" : ".Intro:not(.Intro--has-image) .sqs-layout h1, .Main-content .sqs-layout h1, .Index-page:not(.Index-page--has-image) .sqs-layout h1, .eventlist-title, .eventitem-title", "showOnlyWhenPresent" : ".sqs-layout h1, .eventlist-title, .eventitem-title" }
 @tweak-h1-color: #000000;
 
 // tweak: { "category": "Content: Colors", "label" : "Heading 2", "title" : "tweak-h2-color", "type" : "color", "target" : ".Intro:not(.Intro--has-image) .sqs-layout h2, .Main-content .sqs-layout h2, .Index-page:not(.Index-page--has-image) .sqs-layout h2", "showOnlyWhenPresent" : ".sqs-layout h2" }
 @tweak-h2-color: #000000;
 
-// tweak: { "category": "Content: Colors", "label" : "Heading 3", "title" : "tweak-h3-color", "type" : "color", "target" : ".Intro:not(.Intro--has-image) .sqs-layout h3, .Main-content .sqs-layout h3, .Index-page:not(.Index-page--has-image) .sqs-layout h3", "showOnlyWhenPresent" : ".sqs-layout h3" }
+// tweak: { "category": "Content: Colors", "label" : "Heading 3", "title" : "tweak-h3-color", "type" : "color", "target" : ".Intro:not(.Intro--has-image) .sqs-layout h3, .Main-content .sqs-layout h3, .Index-page:not(.Index-page--has-image) .sqs-layout h3, h3.comment-count", "showOnlyWhenPresent" : ".sqs-layout h3, h3.comment-count" }
 @tweak-h3-color: #000000;
 
-// tweak: { "category": "Content: Colors", "label" : "Links", "title" : "tweak-link-color", "type" : "color", "target" : ".Intro:not(.Intro--has-image) .sqs-layout p, .Main-content .sqs-layout p, .Index-page:not(.Index-page--has-image) .sqs-layout p", "showOnlyWhenPresent" : ".sqs-layout p a" }
+// tweak: { "category": "Content: Colors", "label" : "Links", "title" : "tweak-link-color", "type" : "color", "target" : ".Intro:not(.Intro--has-image) .sqs-layout p, .Main-content .sqs-layout p, .Index-page:not(.Index-page--has-image) .sqs-layout p", "showOnlyWhenPresent" : ".sqs-layout p a, .sqs-layout ol a, .sqs-layout ul a" }
 @tweak-link-color: #00aeef;
 
 // tweak: { "category" : "Content: Colors", "label" : "Lines", "title" : "tweak-line-color", "type" : "color", "target" : ".Main .sqs-block-horizontalrule, .Main .sqs-block-markdown blockquote, .Main .sqs-block-html blockquote, .Intro:not(.Intro--has-image) .sqs-block-horizontalrule, .Intro:not(.Intro--has-image) .sqs-block-html blockquote, .Intro:not(.Intro--has-image) .sqs-block-markdown blockquote, .Index-page:not(.Index-page--has-image) .sqs-block-horizontalrule, .Index-page:not(.Index-page--has-image) .sqs-block-html blockquote, .Index-page:not(.Index-page--has-image) .sqs-block-markdown blockquote", "showOnlyWhenPresent" : ".Main .sqs-block-horizontalrule, .Main .sqs-block-markdown blockquote, .Main .sqs-block-html blockquote, .Intro:not(.Intro--has-image) .sqs-block-horizontalrule, .Intro:not(.Intro--has-image) .sqs-block-html blockquote, .Intro:not(.Intro--has-image) .sqs-block-markdown blockquote, .Index-page:not(.Index-page--has-image) .sqs-block-horizontalrule, .Index-page:not(.Index-page--has-image) .sqs-block-html blockquote, .Index-page:not(.Index-page--has-image) .sqs-block-markdown blockquote" }
@@ -616,7 +770,7 @@
 // tweak: { "category": "Content: Colors", "label" : "Heading 3 (Overlay)", "title" : "tweak-overlay-h3-color", "type" : "color", "target" : ".Intro--has-image .sqs-layout h3, .Index-page--has-image .sqs-layout h3", "showOnlyWhenPresent" : ".Intro--has-image .sqs-layout h3, .Index-page--has-image .sqs-layout h3" }
 @tweak-overlay-h3-color: #000000;
 
-// tweak: { "category": "Content: Colors", "label" : "Links (Overlay)", "title" : "tweak-overlay-link-color", "type" : "color", "target" : ".Intro--has-image .sqs-layout p, .Index-page--has-image .sqs-layout p", "showOnlyWhenPresent" : ".Intro--has-image .sqs-layout p, .Index-page--has-image .sqs-layout p" }
+// tweak: { "category": "Content: Colors", "label" : "Links (Overlay)", "title" : "tweak-overlay-link-color", "type" : "color", "target" : ".Intro--has-image .sqs-layout p, .Index-page--has-image .sqs-layout p", "showOnlyWhenPresent" : ".Intro--has-image .sqs-layout p a, .Index-page--has-image .sqs-layout p a, .Intro--has-image .sqs-layout ol a, .Index-page--has-image .sqs-layout ol a, .Intro--has-image .sqs-layout ul a, .Index-page--has-image .sqs-layout ul a" }
 @tweak-overlay-link-color: #00aeef;
 
 // tweak: { "category" : "Content: Colors", "label" : "Lines (Overlay)", "title" : "tweak-overlay-line-color", "type" : "color", "target" : ".Intro--has-image .sqs-block-horizontalrule, .Intro--has-image .sqs-block-html blockquote, .Intro--has-image .sqs-block-markdown blockquote, .Index-page--has-image .sqs-block-horizontalrule, .Index-page--has-image .sqs-block-html blockquote, .Index-page--has-image .sqs-block-markdown blockquote", "showOnlyWhenPresent" : ".Intro--has-image .sqs-block-horizontalrule, .Intro--has-image .sqs-block-html blockquote, .Intro--has-image .sqs-block-markdown blockquote, .Index-page--has-image .sqs-block-horizontalrule, .Index-page--has-image .sqs-block-html blockquote, .Index-page--has-image .sqs-block-markdown blockquote" }
@@ -637,15 +791,18 @@
 
 //  Overall
 
+// tweak: { "category" : "Footer", "label" : "Show Footer", "title" : "tweak-footer-show", "type" : "checkbox", "active" : true, "target" : ".Footer" }
 
-// tweak: { "category" : "Footer", "label" : "Layout", "title" : "tweak-footer-layout", "type" : "dropdown", "options" : [ "Stacked", "Columns" ], "default" : "Stacked", "target" : ".Footer", "js" : true }
+// tweak: { "category" : "Footer", "label" : "Layout", "title" : "tweak-footer-layout", "type" : "dropdown", "options" : [ "Stacked", "Columns" ], "default" : "Stacked", "target" : ".Footer", "showOnlyWhenPresent": ".tweak-footer-show", "js" : true }
 
-// tweak: { "category" : "Footer", "label" : "Padding", "title" : "tweak-footer-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Footer" }
+// tweak: { "category" : "Footer", "label" : "Auto Width Columns", "title" : "tweak-footer-layout-columns-auto", "type" : "checkbox", "active" : true, "target" : ".Footer", "showOnlyWhenPresent": ".tweak-footer-show.tweak-footer-layout-columns" }
+
+// tweak: { "category" : "Footer", "label" : "Padding", "title" : "tweak-footer-padding", "type" : "value", "step" : 1, "min" : 0, "max" : 120, "target" : ".Footer", "showOnlyWhenPresent": ".tweak-footer-show" }
 @tweak-footer-padding: 48px;
 
-// tweak: { "category" : "Footer", "label" : "Alignment", "title" : "tweak-footer-stacked-alignment", "type" : "dropdown", "options" : [ "Left", "Center", "Right" ], "default" : "Left", "target" : ".Footer", "showOnlyWhenPresent" : ".tweak-footer-layout-stacked" }
+// tweak: { "category" : "Footer", "label" : "Alignment", "title" : "tweak-footer-stacked-alignment", "type" : "dropdown", "options" : [ "Left", "Center", "Right" ], "default" : "Left", "target" : ".Footer", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-layout-stacked" }
 
-// tweak: { "category": "Footer", "label": "Background Color", "title" : "tweak-footer-color", "type" : "color", "target" : ".Footer" }
+// tweak: { "category": "Footer", "label": "Background Color", "title" : "tweak-footer-color", "type" : "color", "target" : ".Footer", "showOnlyWhenPresent": ".tweak-footer-show" }
 @tweak-footer-color: #000000;
 
 
@@ -655,9 +812,12 @@
 //  Business
 
 
-// tweak: { "category" : "Footer: Business", "label" : "Show Business Info", "title" : "tweak-footer-business-info-show", "type" : "checkbox", "active" : false, "target" : ".Footer, .Footer-business-info" }
+// tweak: { "category" : "Footer: Business", "label" : "Show Business Info", "title" : "tweak-footer-business-info-show", "type" : "checkbox", "active" : false, "target" : ".Footer, .Footer-business-info", "showOnlyWhenPresent": ".tweak-footer-show" }
 
-// tweak: { "category": "Footer: Business", "label" : "Name Font", "title" : "tweak-footer-business-name-font", "type" : "font", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-business-info-show .Footer-business-info-item--name" }
+// tweak: { "category" : "Footer: Business", "label" : "Business Info Width", "title" : "tweak-footer-business-info-column-width", "type" : "value", "step" : 1, "min" : 40, "max" : 240, "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-layout-columns.tweak-footer-business-info-show:not(.tweak-footer-layout-columns-auto)" }
+@tweak-footer-business-info-column-width: 160px;
+
+// tweak: { "category": "Footer: Business", "label" : "Name Font", "title" : "tweak-footer-business-name-font", "type" : "font", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-info-show .Footer-business-info-item--name" }
 .tweak-footer-business-name-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -668,10 +828,10 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Footer: Business", "label": "Name Color", "title" : "tweak-footer-business-name-color", "type" : "color", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-business-info-show .Footer-business-info-item--name" }
+// tweak: { "category": "Footer: Business", "label": "Name Color", "title" : "tweak-footer-business-name-color", "type" : "color", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-info-show .Footer-business-info-item--name" }
 @tweak-footer-business-name-color: #000000;
 
-// tweak: { "category": "Footer: Business", "label" : "Info Font", "title" : "tweak-footer-business-info-font", "type" : "font", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-business-info-show .Footer-business-info-item:not(.Footer-business-info-item--name)" }
+// tweak: { "category": "Footer: Business", "label" : "Info Font", "title" : "tweak-footer-business-info-font", "type" : "font", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-info-show .Footer-business-info-item:not(.Footer-business-info-item--name)" }
 .tweak-footer-business-info-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -682,13 +842,16 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Footer: Business", "label": "Info Color", "title" : "tweak-footer-business-info-color", "type" : "color", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-business-info-show .Footer-business-info-item:not(.Footer-business-info-item--name)" }
+// tweak: { "category": "Footer: Business", "label": "Info Color", "title" : "tweak-footer-business-info-color", "type" : "color", "target" : ".Footer-business-info", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-info-show .Footer-business-info-item:not(.Footer-business-info-item--name)" }
 @tweak-footer-business-info-color: #000000;
 
 
-// tweak: { "category" : "Footer: Business", "label" : "Show Business Hours", "title" : "tweak-footer-business-hours-show", "type" : "checkbox", "active" : false, "target" : ".Footer, .Footer-business-hours" }
+// tweak: { "category" : "Footer: Business", "label" : "Show Business Hours", "title" : "tweak-footer-business-hours-show", "type" : "checkbox", "active" : false, "target" : ".Footer, .Footer-business-hours", "showOnlyWhenPresent": ".tweak-footer-show" }
 
-// tweak: { "category": "Footer: Business", "label" : "Hours Heading Font", "title" : "tweak-footer-business-hours-heading-font", "type" : "font", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-business-hours-show .Footer-business-hours-heading" }
+// tweak: { "category" : "Footer: Business", "label" : "Business Hours Width", "title" : "tweak-footer-business-hours-column-width", "type" : "value", "step" : 1, "min" : 40, "max" : 240, "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-layout-columns.tweak-footer-business-hours-show:not(.tweak-footer-layout-columns-auto)" }
+@tweak-footer-business-hours-column-width: 160px;
+
+// tweak: { "category": "Footer: Business", "label" : "Hours Heading Font", "title" : "tweak-footer-business-hours-heading-font", "type" : "font", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-hours-show .Footer-business-hours-heading" }
 .tweak-footer-business-hours-heading-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -699,10 +862,10 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Footer: Business", "label": "Hours Heading Color", "title" : "tweak-footer-business-hours-heading-color", "type" : "color", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-business-hours-show .Footer-business-hours-heading" }
+// tweak: { "category": "Footer: Business", "label": "Hours Heading Color", "title" : "tweak-footer-business-hours-heading-color", "type" : "color", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-hours-show .Footer-business-hours-heading" }
 @tweak-footer-business-hours-heading-color: #000000;
 
-// tweak: { "category": "Footer: Business", "label" : "Hours Font", "title" : "tweak-footer-business-hours-font", "type" : "font", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-business-hours-show .Footer-business-hours-item" }
+// tweak: { "category": "Footer: Business", "label" : "Hours Font", "title" : "tweak-footer-business-hours-font", "type" : "font", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-hours-show .Footer-business-hours-item" }
 .tweak-footer-business-hours-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -713,7 +876,7 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Footer: Business", "label": "Hours Color", "title" : "tweak-footer-business-hours-color", "type" : "color", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-business-hours-show .Footer-business-hours-item" }
+// tweak: { "category": "Footer: Business", "label": "Hours Color", "title" : "tweak-footer-business-hours-color", "type" : "color", "target" : ".Footer-business-hours", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-business-hours-show .Footer-business-hours-item" }
 @tweak-footer-business-hours-color: #000000;
 
 
@@ -723,7 +886,10 @@
 //  Nav
 
 
-// tweak: { "category": "Footer: Navigation", "label" : "Navigation Heading Font", "title" : "tweak-footer-nav-heading-font", "type" : "font", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-layout-columns .Footer-nav-folder-heading" }
+// tweak: { "category" : "Footer: Navigation", "label" : "Navigation Column Width", "title" : "tweak-footer-nav-column-width", "type" : "value", "step" : 1, "min" : 40, "max" : 240, "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-layout-columns:not(.tweak-footer-layout-columns-auto)" }
+@tweak-footer-nav-column-width: 160px;
+
+// tweak: { "category": "Footer: Navigation", "label" : "Navigation Heading Font", "title" : "tweak-footer-nav-heading-font", "type" : "font", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-layout-columns .Footer-nav-folder-heading" }
 .tweak-footer-nav-heading-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -734,10 +900,10 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Footer: Navigation", "label": "Navigation Heading Color", "title" : "tweak-footer-nav-heading-color", "type" : "color", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-layout-columns .Footer-nav-folder-heading" }
+// tweak: { "category": "Footer: Navigation", "label": "Navigation Heading Color", "title" : "tweak-footer-nav-heading-color", "type" : "color", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-show.tweak-footer-layout-columns .Footer-nav-folder-heading" }
 @tweak-footer-nav-heading-color: #000000;
 
-// tweak: { "category": "Footer: Navigation", "label" : "Navigation Font", "title" : "tweak-footer-nav-font", "type" : "font", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".Footer-nav-item, .Footer-nav-folder-heading, .Footer-nav-folder-item" }
+// tweak: { "category": "Footer: Navigation", "label" : "Navigation Font", "title" : "tweak-footer-nav-font", "type" : "font", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-show .Footer-nav-item, .tweak-footer-show .Footer-nav-folder-heading, .tweak-footer-show .Footer-nav-folder-item" }
 .tweak-footer-nav-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -748,7 +914,7 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Footer: Navigation", "label": "Navigation Color", "title" : "tweak-footer-nav-color", "type" : "color", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".Footer-nav-item, .Footer-nav-folder-heading, .Footer-nav-folder-item" }
+// tweak: { "category": "Footer: Navigation", "label": "Navigation Color", "title" : "tweak-footer-nav-color", "type" : "color", "target" : ".Footer-nav-group", "showOnlyWhenPresent" : ".tweak-footer-show .Footer-nav-item, .tweak-footer-show .Footer-nav-folder-heading, .tweak-footer-show .Footer-nav-folder-item" }
 @tweak-footer-nav-color: #000000;
 
 
@@ -758,22 +924,22 @@
 //  Colors (Footer)
 
 
-// tweak: { "category": "Footer Content: Colors", "label" : "Body Text", "title" : "tweak-footer-body-text-color", "type" : "color", "target" : ".Footer .sqs-layout p", "showOnlyWhenPresent" : ".Footer .sqs-layout:not(.empty)" }
+// tweak: { "category": "Footer Content: Colors", "label" : "Body Text", "title" : "tweak-footer-body-text-color", "type" : "color", "target" : ".Footer .sqs-layout p", "showOnlyWhenPresent" : ".tweak-footer-show .Footer .sqs-layout:not(.empty)" }
 @tweak-footer-body-text-color: #ffffff;
 
-// tweak: { "category": "Footer Content: Colors", "label" : "Heading 1", "title" : "tweak-footer-h1-color", "type" : "color", "target" : ".Footer .sqs-layout h1", "showOnlyWhenPresent" : ".Footer .sqs-layout h1" }
+// tweak: { "category": "Footer Content: Colors", "label" : "Heading 1", "title" : "tweak-footer-h1-color", "type" : "color", "target" : ".Footer .sqs-layout h1", "showOnlyWhenPresent" : ".tweak-footer-show .Footer .sqs-layout h1" }
 @tweak-footer-h1-color: #ffffff;
 
-// tweak: { "category": "Footer Content: Colors", "label" : "Heading 2", "title" : "tweak-footer-h2-color", "type" : "color", "target" : ".Footer .sqs-layout h2", "showOnlyWhenPresent" : ".Footer .sqs-layout h2" }
+// tweak: { "category": "Footer Content: Colors", "label" : "Heading 2", "title" : "tweak-footer-h2-color", "type" : "color", "target" : ".Footer .sqs-layout h2", "showOnlyWhenPresent" : ".tweak-footer-show .Footer .sqs-layout h2" }
 @tweak-footer-h2-color: #ffffff;
 
-// tweak: { "category": "Footer Content: Colors", "label" : "Heading 3", "title" : "tweak-footer-h3-color", "type" : "color", "target" : ".Footer .sqs-layout h3", "showOnlyWhenPresent" : ".Footer .sqs-layout h3" }
+// tweak: { "category": "Footer Content: Colors", "label" : "Heading 3", "title" : "tweak-footer-h3-color", "type" : "color", "target" : ".Footer .sqs-layout h3", "showOnlyWhenPresent" : ".tweak-footer-show .Footer .sqs-layout h3" }
 @tweak-footer-h3-color: #ffffff;
 
-// tweak: { "category": "Footer Content: Colors", "label" : "Links", "title" : "tweak-footer-link-color", "type" : "color", "target" : ".Footer .sqs-layout p a", "showOnlyWhenPresent" : ".Footer .sqs-layout p a" }
+// tweak: { "category": "Footer Content: Colors", "label" : "Links", "title" : "tweak-footer-link-color", "type" : "color", "target" : ".Footer .sqs-layout p a", "showOnlyWhenPresent" : ".tweak-footer-show .Footer .sqs-layout p a" }
 @tweak-footer-link-color: #ffffff;
 
-// tweak: { "category" : "Footer Content: Colors", "label" : "Lines", "title" : "tweak-footer-line-color", "type" : "color", "target" : ".Footer .sqs-block-horizontalrule, .Footer .sqs-block-html blockquote, .Footer .sqs-block-markdown blockquote", "showOnlyWhenPresent" : ".Footer .sqs-block-horizontalrule, .Footer .sqs-block-html blockquote, .Footer .sqs-block-markdown blockquote" }
+// tweak: { "category" : "Footer Content: Colors", "label" : "Lines", "title" : "tweak-footer-line-color", "type" : "color", "target" : ".Footer .sqs-block-horizontalrule, .Footer .sqs-block-html blockquote, .Footer .sqs-block-markdown blockquote", "showOnlyWhenPresent" : ".tweak-footer-show .Footer .sqs-block-horizontalrule, .tweak-footer-show .Footer .sqs-block-html blockquote, .tweak-footer-show .Footer .sqs-block-markdown blockquote" }
 @tweak-footer-line-color: rgba(255,255,255,0.2);
 
 
@@ -844,6 +1010,8 @@
 
 
 // tweak: { "category" : "Mobile: Menu Icon", "label" : "Menu Icon Position", "title" : "ancillary-mobile-bar-menu-icon-position", "type" : "dropdown", "options" : [ "Hide", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right" ], "default" : "Top Left", "target" : ".Mobile-bar-menu, .Mobile-bar--top, .Mobile-bar--bottom" }
+
+// tweak: { "category" : "Mobile: Menu Icon", "label" : "Menu Icon", "title" : "tweak-mobile-bar-menu-icon", "type" : "dropdown", "options" : [ "Hamburger", "Two Lines", "Plus", "Horizontal Dots", "Vertical Dots", "Horizontal Squares", "Vertical Squares" ], "default" : "Hamburger", "target" : ".Mobile-bar-menu" }
 
 // tweak: { "category": "Mobile: Menu Icon", "label" : "Menu Icon Color", "title" : "tweak-mobile-bar-menu-icon-color", "type" : "color", "target" : ".Mobile-bar-menu", "showOnlyWhenPresent" : "body:not(.ancillary-mobile-bar-menu-icon-position-hide)" }
 @tweak-mobile-bar-menu-icon-color: #ffffff;
@@ -957,8 +1125,9 @@
 
 
 
+// tweak: { "category" : "Mobile Menu: Secondary", "label" : "Inherit Primary Nav Styles", "title" : "tweak-mobile-overlay-menu-secondary-inherit", "type" : "checkbox", "active" : false, "target" : ".Mobile-overlay-menu" }
 
-// tweak: { "category": "Mobile Menu: Secondary", "label" : "Font", "title" : "tweak-mobile-overlay-menu-secondary-font", "type" : "font", "target" : ".Mobile-overlay-menu" }
+// tweak: { "category": "Mobile Menu: Secondary", "label" : "Font", "title" : "tweak-mobile-overlay-menu-secondary-font", "type" : "font", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": "body:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 .tweak-mobile-overlay-menu-secondary-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -969,16 +1138,16 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Mobile Menu: Secondary", "label": "Text Color", "title" : "tweak-mobile-overlay-menu-secondary-text-color", "type" : "color", "target" : ".Mobile-overlay-menu" }
+// tweak: { "category": "Mobile Menu: Secondary", "label": "Text Color", "title" : "tweak-mobile-overlay-menu-secondary-text-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": "body:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 @tweak-mobile-overlay-menu-secondary-text-color: #000000;
 
-// tweak: { "category" : "Mobile Menu: Secondary", "label" : "Convert Secondary Nav to Buttons", "title" : "tweak-mobile-overlay-menu-secondary-style-button", "type" : "checkbox", "active" : false, "target" : ".Mobile-overlay-menu" }
+// tweak: { "category" : "Mobile Menu: Secondary", "label" : "Convert Secondary Nav to Buttons", "title" : "tweak-mobile-overlay-menu-secondary-style-button", "type" : "checkbox", "active" : false, "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": "body:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 
-// tweak: { "category" : "Mobile Menu: Secondary", "label": "Button Style", "title" : "tweak-mobile-overlay-menu-secondary-button-style", "type" : "dropdown", "options" : [ "Solid", "Outline", "Raised" ], "default" : "Solid", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button" }
+// tweak: { "category" : "Mobile Menu: Secondary", "label": "Button Style", "title" : "tweak-mobile-overlay-menu-secondary-button-style", "type" : "dropdown", "options" : [ "Solid", "Outline", "Raised" ], "default" : "Solid", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 
-// tweak: { "category" : "Mobile Menu: Secondary", "label": "Button Shape", "title" : "tweak-mobile-overlay-menu-secondary-button-shape", "type" : "dropdown", "options" : [ "Square", "Rounded", "Pill" ], "default" : "Square", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button" }
+// tweak: { "category" : "Mobile Menu: Secondary", "label": "Button Shape", "title" : "tweak-mobile-overlay-menu-secondary-button-shape", "type" : "dropdown", "options" : [ "Square", "Rounded", "Pill" ], "default" : "Square", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 
-// tweak: { "category": "Mobile Menu: Secondary", "label" : "Font", "title" : "tweak-mobile-overlay-menu-secondary-button-font", "type" : "font", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": ".tweak-mobile-overlay-menu-secondary-style-button" }
+// tweak: { "category": "Mobile Menu: Secondary", "label" : "Font", "title" : "tweak-mobile-overlay-menu-secondary-button-font", "type" : "font", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": ".tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 .tweak-mobile-overlay-menu-secondary-button-font {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -989,10 +1158,10 @@
   text-transform: none;
 }
 
-// tweak: { "category": "Mobile Menu: Secondary", "label": "Button Color", "title" : "tweak-mobile-overlay-menu-secondary-button-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": ".tweak-mobile-overlay-menu-secondary-style-button" }
+// tweak: { "category": "Mobile Menu: Secondary", "label": "Button Color", "title" : "tweak-mobile-overlay-menu-secondary-button-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent": ".tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 @tweak-mobile-overlay-menu-secondary-button-color: #000000;
 
-// tweak: { "category": "Mobile Menu: Secondary", "label": "Button Text Color", "title" : "tweak-mobile-overlay-menu-secondary-button-text-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-button-style-outline)" }
+// tweak: { "category": "Mobile Menu: Secondary", "label": "Button Text Color", "title" : "tweak-mobile-overlay-menu-secondary-button-text-color", "type" : "color", "target" : ".Mobile-overlay-menu", "showOnlyWhenPresent" : ".tweak-mobile-overlay-menu-secondary-style-button:not(.tweak-mobile-overlay-menu-secondary-button-style-outline):not(.tweak-mobile-overlay-menu-secondary-inherit)" }
 @tweak-mobile-overlay-menu-secondary-button-text-color: #ffffff;
 
 

@@ -22,6 +22,30 @@
           <use xlink:href="/assets/ui-icons.svg#hamburger-icon--even" class="use--even"></use>
           <use xlink:href="/assets/ui-icons.svg#hamburger-icon--odd" class="use--odd"></use>
         </svg>
+        <svg class="Icon Icon--hotdog" viewBox="0 0 24 14">
+          <use xlink:href="/assets/ui-icons.svg#hotdog-icon--even" class="use--even"></use>
+          <use xlink:href="/assets/ui-icons.svg#hotdog-icon--odd" class="use--odd"></use>
+        </svg>
+        <svg class="Icon Icon--plus" viewBox="0 0 20 20">
+          <use xlink:href="/assets/ui-icons.svg#plus-icon--even" class="use--even"></use>
+          <use xlink:href="/assets/ui-icons.svg#plus-icon--odd" class="use--odd"></use>
+        </svg>
+        <svg class="Icon Icon--dots-horizontal" viewBox="0 0 25 7">
+          <use xlink:href="/assets/ui-icons.svg#dots-horizontal-icon--even" class="use--even"></use>
+          <use xlink:href="/assets/ui-icons.svg#dots-horizontal-icon--odd" class="use--odd"></use>
+        </svg>
+        <svg class="Icon Icon--dots-vertical" viewBox="0 0 7 25">
+          <use xlink:href="/assets/ui-icons.svg#dots-vertical-icon--even" class="use--even"></use>
+          <use xlink:href="/assets/ui-icons.svg#dots-vertical-icon--odd" class="use--odd"></use>
+        </svg>
+        <svg class="Icon Icon--squares-horizontal" viewBox="0 0 25 7">
+          <use xlink:href="/assets/ui-icons.svg#squares-horizontal-icon--even" class="use--even"></use>
+          <use xlink:href="/assets/ui-icons.svg#squares-horizontal-icon--odd" class="use--odd"></use>
+        </svg>
+        <svg class="Icon Icon--squares-vertical" viewBox="0 0 7 25">
+          <use xlink:href="/assets/ui-icons.svg#squares-vertical-icon--even" class="use--even"></use>
+          <use xlink:href="/assets/ui-icons.svg#squares-vertical-icon--odd" class="use--odd"></use>
+        </svg>
       </button>
     </div>
     <div data-nc-container="bottom-center">

@@ -23,7 +23,11 @@ var config = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: false
+      }
+    })
   ],
   resolve: {
     modulesDirectories: [

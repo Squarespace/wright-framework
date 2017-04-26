@@ -1,4 +1,4 @@
-import { resizeEnd } from '../util';
+import resizeEnd from '../utils/resizeEnd';
 
 /**
  * Sets a classname `is-mobile` on body depending on whether or not the .Mobile
@@ -15,6 +15,10 @@ function MobileClassname(element) {
 
   resizeEnd(setClassname);
   setClassname();
+
+  return {
+    sync: setClassname
+  };
 }
 
 export default MobileClassname;
