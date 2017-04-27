@@ -493,7 +493,7 @@
 
 // tweak: { "category" : "Index: Page", "label" : "Apply Minimum Height", "title" : "tweak-index-page-fullscreen", "type" : "dropdown", "options" : [ "None", "First Page Only", "Pages with Backgrounds Only", "All Pages" ], "default" : "None", "target" : ".Index-page", "showOnlyWhenPresent" : ".Index-page", "js": true }
 
-// tweak: { "category" : "Index: Page", "label" : "Minimum Height", "title" : "tweak-index-page-min-height", "type" : "value", "step" : 1, "min" : 50, "max" : 100, "target" : ".Index-page", "showOnlyWhenPresent" : ".Index-page", "js": true }
+// tweak: { "category" : "Index: Page", "label" : "Minimum Height", "title" : "tweak-index-page-min-height", "type" : "value", "step" : 1, "min" : 50, "max" : 100, "target" : ".Index-page", "showOnlyWhenPresent" : "body:not(.tweak-index-page-fullscreen-none) .Index-page", "js": true }
 @tweak-index-page-min-height: 100vh;
 
 // tweak: { "category" : "Index: Page", "label" : "Mirror Border Below First Page", "title" : "tweak-index-page-apply-bottom-spacing", "type" : "checkbox", "active" : false, "target" : ".Index-page", "showOnlyWhenPresent": ".tweak-site-border-show.tweak-index-page-fullscreen-first-page-only .Index-page:first-child, .tweak-site-border-show.tweak-index-page-fullscreen-all-pages .Index-page:first-child, .tweak-site-border-show.tweak-index-page-fullscreen-pages-with-backgrounds-only .Index-page--has-image:first-child", "js": true }
