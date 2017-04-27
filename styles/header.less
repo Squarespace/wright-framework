@@ -217,13 +217,11 @@
 // =======================================================
 
 .mixin-header-nav(@name, @colors, @option, @button-style: solid) when (@name = primary) {
-  .Header-nav-inner { margin: (-1 * @tweak-header-primary-nav-link-spacing); }
-  .Header-nav-item { margin: @tweak-header-primary-nav-link-spacing; }
+  .Header-nav-inner { margin: -0.618em (-1 * @tweak-header-primary-nav-link-spacing); }
 }
 
 .mixin-header-nav(@name, @colors, @option, @button-style: solid) when (@name = secondary) {
-  .Header-nav-inner { margin: (-1 * @tweak-header-secondary-nav-link-spacing); }
-  .Header-nav-item { margin: @tweak-header-secondary-nav-link-spacing; }
+  .Header-nav-inner { margin: -0.618em (-1 * @tweak-header-secondary-nav-link-spacing); }
 }
 
 .mixin-header-nav(@name, @colors, @option, @button-style: solid) when (@name = primary) and (@colors = regular) {
@@ -287,9 +285,6 @@
 }
 
 .mixin-header-nav-style-button() {
-  .Header-nav-item {
-    padding: 12px 18px;
-  }
   .Header-nav-folder {
     min-width: 100%;
     margin-left: 0;
@@ -660,6 +655,37 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
     &.tweak-header-bottom-overlay-on-index-gallery .Header--index-gallery .Header-nav--secondary {
       .mixin-header-nav(secondary, overlay, button, raised);
     }
+  }
+}
+
+
+// Padding is a special case because it requires particular specificity for
+// overrides.
+
+.tweak-header-primary-nav-hover-style-button {
+  .Header-nav--primary .Header-nav-item,
+  &.tweak-header-secondary-nav-inherit-styles .Header-nav--secondary .Header-nav-item {
+    padding: 12px 18px;
+    margin: 0.618em @tweak-header-primary-nav-link-spacing;
+  }
+}
+body:not(.tweak-header-primary-nav-hover-style-button) {
+  .Header-nav--primary .Header-nav-item,
+  &.tweak-header-secondary-nav-inherit-styles .Header-nav--secondary .Header-nav-item {
+    margin: 0 @tweak-header-primary-nav-link-spacing;
+    padding: 0.618em 0;
+  }
+}
+.tweak-header-secondary-nav-hover-style-button:not(.tweak-header-secondary-nav-inherit-styles) {
+  .Header-nav--secondary .Header-nav-item {
+    padding: 12px 18px;
+    margin: 0.618em @tweak-header-secondary-nav-link-spacing;
+  }
+}
+body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secondary-nav-inherit-styles) {
+  .Header-nav--secondary .Header-nav-item {
+    margin: 0 @tweak-header-secondary-nav-link-spacing;
+    padding: 0.618em 0;
   }
 }
 
