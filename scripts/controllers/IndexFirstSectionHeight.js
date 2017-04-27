@@ -23,6 +23,10 @@ const parseValue = (val) => {
  * bottom of the screen.
  */
 function IndexFirstSectionHeight(element) {
+  if (element.classList.contains('Index--empty')) {
+    return;
+  }
+
   let darwin;
   const site = document.querySelector('.Site');
   const headerTop = document.querySelector('.Header--top');

@@ -5,6 +5,10 @@ import resizeEnd from '../utils/resizeEnd';
 import { addIndexGalleryChangeListener, removeIndexGalleryChangeListener } from './IndexGallery';
 
 function IndexNavigation(element) {
+  if (element.classList.contains('Index--empty')) {
+    return;
+  }
+
   let sectionRects;
   let viewportHeight = window.innerHeight;
   const sections = Array.from(element.querySelectorAll('.Index-page, .Index-gallery'));

@@ -131,7 +131,7 @@
             {.end}
           {.end}{.end}{.end}
 
-          <main class="{.equal? collection.typeName "index"}Index{.or}Main{.if collection.typeName} Main--{collection.typeName}{.equal? collection.typeName "page"}{.or}{.if item}-item{.or}-list{.end}{.end}{.end}{.end}" {.equal? collection.typeName "index"}data-collection-id="{collection.id}"{.end}{.equal? collection.typeName "index"} data-controller="IndexFirstSectionHeight, Parallax, IndexNavigation"{.end}>
+          <main class="{.equal? collection.typeName "index"}Index{.if collection.collections.0}{.or} Index--empty{.end}{.or}Main{.if collection.typeName} Main--{collection.typeName}{.equal? collection.typeName "page"}{.or}{.if item}-item{.or}-list{.end}{.end}{.end}{.end}" {.equal? collection.typeName "index"}data-collection-id="{collection.id}"{.end}{.equal? collection.typeName "index"} data-controller="IndexFirstSectionHeight, Parallax, IndexNavigation"{.end}>
             {.equal? collection.typeName "index"}
               {squarespace.main-content}
             {.or}
