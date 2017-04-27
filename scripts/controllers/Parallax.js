@@ -352,7 +352,8 @@ function Parallax(element) {
       'tweak-index-page-padding',
       'tweak-index-page-overlay-padding',
       'tweak-index-page-fullscreen',
-      'tweak-index-page-min-height'
+      'tweak-index-page-min-height',
+      'tweak-index-page-apply-bottom-spacing'
     ], () => {
       invalidateIndexSectionRectCache();
       syncParallax(true);
