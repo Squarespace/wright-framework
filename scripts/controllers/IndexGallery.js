@@ -7,7 +7,27 @@ import { addScrollListener, removeScrollListener } from '../utils/rafScroll';
 import { invalidateIndexSectionRectCache } from '../utils/getIndexSectionRect';
 
 const itemsPerGalleryWrapper = 9;
+const minItemsInLastWrapper = 3;
 let changeListeners = [];
+
+/**
+ * To ensure that the last gallery wrapper always has at least 3 items, we need
+ * to take some items from the previous wrapper and move those into the last
+ * wrapper. This function calculates the number of items in the the last and
+ * second-to-last wrappers after this adjustment.
+ * @param  {Number} totalItems  Total items, voerall
+ * @return {Array}              Array with number of items in last and second to last wrappers
+ */
+const getLastAndSecondToLastWrapperItems = (totalItems) => {
+  const remainder = totalItems % itemsPerGalleryWrapper;
+  if (remainder < minItemsInLastWrapper && totalItems >= minItemsInLastWrapper) {
+    const numSecondToLastWrapperItems = itemsPerGalleryWrapper - minItemsInLastWrapper + remainder;
+    const numLastWrapperItems = minItemsInLastWrapper;
+    return [ numSecondToLastWrapperItems, numLastWrapperItems ];
+  }
+
+  return [ itemsPerGalleryWrapper, remainder ];
+};
 
 /**
  * Bootstraps the index gallery, ensuring that it will always have a smooth
@@ -20,10 +40,15 @@ function IndexGallery(element) {
   const galleryItems = Array.from(element.querySelectorAll('.Index-gallery-item'));
   const galleryIndicatorsItems = Array.from(element.querySelectorAll('.Index-gallery-indicators-item'));
   const innerWrapper = element.querySelector('.Index-gallery-wrapper');
-  const numWrappers = Math.floor(galleryItems.length / itemsPerGalleryWrapper) + 1;
-  const numLastWrapperItems = galleryItems.length % itemsPerGalleryWrapper;
+  const numWrappers = Math.ceil(galleryItems.length / itemsPerGalleryWrapper);
+
+  const [
+    numSecondToLastWrapperItems,
+    numLastWrapperItems
+  ] = getLastAndSecondToLastWrapperItems(galleryItems.length);
 
   let slideshow;
+  let itemsWrapper;
   let galleryInnerWrappers = [];
 
   if (galleryItems.length === 0) {
@@ -50,26 +75,77 @@ function IndexGallery(element) {
     });
   };
 
+
+  /**
+   * Convenience function to get the number of items in a wrapper given its
+   * order amongst all the wrappers.
+   * @param  {Number} wrapperIndex
+   * @return {Number}
+   */
+  const getNumItemsInGalleryWrapper = (wrapperIndex) => {
+    if (numWrappers === 1) {
+      return galleryItems.length;
+    }
+    if (wrapperIndex === numWrappers - 2) {
+      return numSecondToLastWrapperItems;
+    }
+    if (wrapperIndex === numWrappers - 1) {
+      return numLastWrapperItems;
+    }
+    return itemsPerGalleryWrapper;
+  };
+
+  /**
+   * Creates a gallery wrapper and returns it.
+   * @param  {Number} numWrapperItems  Applied as a data-attribute
+   * @return {HTMLElement}
+   */
+  const createInnerWrapper = (numWrapperItems) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'Index-gallery-inner clear';
+    wrapper.setAttribute('data-index-gallery-images', numWrapperItems);
+
+    return wrapper;
+  };
+
+  /**
+   * Creates items wrapper and returns it.
+   * @return {HTMLElement}
+   */
+  const createItemsWrapper = () => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'Index-gallery-items';
+
+    return wrapper;
+  };
+
   /**
    * For Packed and Split grid styles for the index gallery, we need to split
    * the elements up into containers with 9 elements each, and indicate how many
    * elements are in the last container and add that as a data-attribute so our
    * CSS hooks can style them properly.
+   *
+   * The last wrapper must have at least 3 items. Items can be moved from the
+   * second-to-last wrapper to the last if necessary to satisfy this rule.
    */
   const wrapGalleryItems = () => {
-    for (let i = 0; i < numWrappers; i++) {
-      const wrapper = document.createElement('div');
-      const numWrapperItems = i === numWrappers - 1 ? numLastWrapperItems : itemsPerGalleryWrapper;
-      wrapper.className = 'Index-gallery-inner clear';
-      wrapper.setAttribute('data-index-gallery-images', numWrapperItems);
+    itemsWrapper = createItemsWrapper();
+    const currentGalleryItems = [].concat(galleryItems);
 
-      const currentWrapperItems = galleryItems.slice(i * itemsPerGalleryWrapper, (i + 1) * itemsPerGalleryWrapper);
+    for (let i = 0; i < numWrappers; i++) {
+      const numWrapperItems = getNumItemsInGalleryWrapper(i);
+      const wrapper = createInnerWrapper(numWrapperItems);
+
+      const currentWrapperItems = currentGalleryItems.splice(0, numWrapperItems);
+
       currentWrapperItems.forEach((galleryItem) => {
         wrapper.appendChild(galleryItem);
       });
-      innerWrapper.appendChild(wrapper);
+      itemsWrapper.appendChild(wrapper);
       galleryInnerWrappers.push(wrapper);
     }
+
+    innerWrapper.appendChild(itemsWrapper);
   };
 
   /**
@@ -84,6 +160,8 @@ function IndexGallery(element) {
       wrapper.parentNode.removeChild(wrapper);
     });
     galleryInnerWrappers = [];
+    itemsWrapper.parentNode.removeChild(itemsWrapper);
+    itemsWrapper = null;
   };
 
   /**

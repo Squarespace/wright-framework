@@ -5,6 +5,27 @@
 
       <section id="{urlId}" class="Index-gallery" data-controller="IndexGallery" data-collection-id="{id}">
         <div class="Index-gallery-wrapper">
+          <button class="Index-gallery-control Index-gallery-control--left">
+            <svg class="Icon Icon--caretLarge--left" viewBox="0 0 23 48">
+              <use xlink:href="/assets/ui-icons.svg#caret-left-icon--large"></use>
+            </svg>
+            <svg class="Icon Icon--caretSmall--left" viewBox="0 0 9 16">
+              <use xlink:href="/assets/ui-icons.svg#caret-left-icon--small"></use>
+            </svg>
+          </button>
+          <button class="Index-gallery-control Index-gallery-control--right">
+            <svg class="Icon Icon--caretLarge--right" viewBox="0 0 23 48">
+              <use xlink:href="/assets/ui-icons.svg#caret-right-icon--large"></use>
+            </svg>
+            <svg class="Icon Icon--caretSmall--left" viewBox="0 0 9 16">
+              <use xlink:href="/assets/ui-icons.svg#caret-right-icon--small"></use>
+            </svg>
+          </button>
+          {.section items}
+            <div class="Index-gallery-indicators">
+              {.repeated section @}<button class="Index-gallery-indicators-item"><span class="Index-gallery-indicators-item-inner"></span></button>{.end}
+            </div>
+          {.end}
           {.repeated section items}
 
             <article class="Index-gallery-item"{.video?} data-controller="IndexGalleryVideo"{.end}>
@@ -48,27 +69,6 @@
 
             </article>
 
-          {.end}
-          <button class="Index-gallery-control Index-gallery-control--left">
-            <svg class="Icon Icon--caretLarge--left" viewBox="0 0 23 48">
-              <use xlink:href="/assets/ui-icons.svg#caret-left-icon--large"></use>
-            </svg>
-            <svg class="Icon Icon--caretSmall--left" viewBox="0 0 9 16">
-              <use xlink:href="/assets/ui-icons.svg#caret-left-icon--small"></use>
-            </svg>
-          </button>
-          <button class="Index-gallery-control Index-gallery-control--right">
-            <svg class="Icon Icon--caretLarge--right" viewBox="0 0 23 48">
-              <use xlink:href="/assets/ui-icons.svg#caret-right-icon--large"></use>
-            </svg>
-            <svg class="Icon Icon--caretSmall--left" viewBox="0 0 9 16">
-              <use xlink:href="/assets/ui-icons.svg#caret-right-icon--small"></use>
-            </svg>
-          </button>
-          {.section items}
-            <div class="Index-gallery-indicators">
-              {.repeated section @}<button class="Index-gallery-indicators-item"><span class="Index-gallery-indicators-item-inner"></span></button>{.end}
-            </div>
           {.end}
         </div>
       </section>
