@@ -40,8 +40,8 @@ function IndexGallery(element) {
   const galleryItems = Array.from(element.querySelectorAll('.Index-gallery-item'));
   const galleryIndicatorsItems = Array.from(element.querySelectorAll('.Index-gallery-indicators-item'));
   const innerWrapper = element.querySelector('.Index-gallery-wrapper');
-  const itemsWrapper = element.querySelector('.Index-gallery-items');
   const numWrappers = Math.ceil(galleryItems.length / itemsPerGalleryWrapper);
+  let itemsWrapper;
 
   const [
     numSecondToLastWrapperItems,
@@ -100,10 +100,17 @@ function IndexGallery(element) {
    * @param  {Number} numWrapperItems  Applied as a data-attribute
    * @return {HTMLElement}
    */
-  const createGalleryWrapper = (numWrapperItems) => {
+  const createInnerWrapper = (numWrapperItems) => {
     const wrapper = document.createElement('div');
     wrapper.className = 'Index-gallery-inner clear';
     wrapper.setAttribute('data-index-gallery-images', numWrapperItems);
+
+    return wrapper;
+  };
+
+  const createItemsWrapper = () => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'Index-gallery-items';
 
     return wrapper;
   };
@@ -118,12 +125,12 @@ function IndexGallery(element) {
    * second-to-last wrapper to the last if necessary to satisfy this rule.
    */
   const wrapGalleryItems = () => {
-
+    itemsWrapper = createItemsWrapper();
     const currentGalleryItems = [].concat(galleryItems);
 
     for (let i = 0; i < numWrappers; i++) {
       const numWrapperItems = getNumItemsInGalleryWrapper(i);
-      const wrapper = createGalleryWrapper(numWrapperItems);
+      const wrapper = createInnerWrapper(numWrapperItems);
 
       const currentWrapperItems = currentGalleryItems.splice(0, numWrapperItems);
 
@@ -133,6 +140,8 @@ function IndexGallery(element) {
       itemsWrapper.appendChild(wrapper);
       galleryInnerWrappers.push(wrapper);
     }
+
+    innerWrapper.appendChild(itemsWrapper);
   };
 
   /**
@@ -141,12 +150,14 @@ function IndexGallery(element) {
    */
   const unwrapGalleryItems = () => {
     galleryItems.forEach((galleryItem) => {
-      itemsWrapper.appendChild(galleryItem);
+      innerWrapper.appendChild(galleryItem);
     });
     galleryInnerWrappers.forEach((wrapper) => {
       wrapper.parentNode.removeChild(wrapper);
     });
     galleryInnerWrappers = [];
+    itemsWrapper.parentNode.removeChild(itemsWrapper);
+    itemsWrapper = null;
   };
 
   /**
