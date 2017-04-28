@@ -41,7 +41,6 @@ function IndexGallery(element) {
   const galleryIndicatorsItems = Array.from(element.querySelectorAll('.Index-gallery-indicators-item'));
   const innerWrapper = element.querySelector('.Index-gallery-wrapper');
   const numWrappers = Math.ceil(galleryItems.length / itemsPerGalleryWrapper);
-  let itemsWrapper;
 
   const [
     numSecondToLastWrapperItems,
@@ -49,6 +48,7 @@ function IndexGallery(element) {
   ] = getLastAndSecondToLastWrapperItems(galleryItems.length);
 
   let slideshow;
+  let itemsWrapper;
   let galleryInnerWrappers = [];
 
   if (galleryItems.length === 0) {
@@ -108,6 +108,10 @@ function IndexGallery(element) {
     return wrapper;
   };
 
+  /**
+   * Creates items wrapper and returns it.
+   * @return {HTMLElement}
+   */
   const createItemsWrapper = () => {
     const wrapper = document.createElement('div');
     wrapper.className = 'Index-gallery-items';
