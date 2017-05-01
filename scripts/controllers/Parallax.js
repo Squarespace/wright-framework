@@ -121,9 +121,12 @@ function Parallax(element) {
     }
     matrix.forEach((matrixItem) => {
       const {
+        parallaxItem,
         mediaWrapper,
         top,
         bottom,
+        left,
+        width,
         height,
         focalPoint
       } = matrixItem;
@@ -147,9 +150,13 @@ function Parallax(element) {
 
         // Apply amount of parallax
         const elementTransformString = `translate3d(0, ${parallaxAmount}px, 0)`;
+        const parallaxItemTransformString = `translate3d(0, ${-scrollTop}px, 0)`;
 
         // Sync to DOM
         mediaWrapper.style[transformProp] = elementTransformString;
+        parallaxItem.style[transformProp] = parallaxItemTransformString;
+      } else {
+        parallaxItem.style[transformProp] = `translate3d(${-width - left}px, 0, 0)`;
       }
     });
   };

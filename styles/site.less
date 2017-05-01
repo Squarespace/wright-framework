@@ -416,13 +416,18 @@ a {
     display: block;
   }
   .Parallax-item {
-    position: absolute;
+
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: -1;
     overflow: hidden;
 
     background-color: rgba(red(@tweak-overlay-color), green(@tweak-overlay-color), blue(@tweak-overlay-color), 1);
+
+    -webkit-transform: translatez(0);
+    transform: translatez(0);
+    will-change: transform;
 
     [data-parallax-image-wrapper] {
       position: absolute;
@@ -435,10 +440,6 @@ a {
       -webkit-transform: translatez(0);
       transform: translatez(0);
       will-change: transform;
-
-      > img,
-      .video-background {
-      }
 
     }
 
