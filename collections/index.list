@@ -33,7 +33,7 @@
               <div class="Index-gallery-item-inner">
 
                 {.if title || body}
-                  <div class="Index-gallery-item-content">
+                  <div class="Index-gallery-item-content{.if title && body} Index-gallery-item-content--has-title-and-body{.end}">
                     {.section title}<h2 class="Index-gallery-item-content-heading">{@}</h2>{.end}
                     {.section body}<div class="Index-gallery-item-content-body">{@}</div>{.end}
                     {.section clickthroughUrl}<a href="{@}" class="Index-gallery-item-content-link"></a>{.end}
