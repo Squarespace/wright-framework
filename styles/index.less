@@ -751,9 +751,6 @@
 
         &-heading {
           margin-bottom: 0;
-          &:not(:only-child) {
-            padding-bottom: 0.3em;
-          }
 
           .tweak-index-gallery-content-heading-font;
           .responsive-font-size-index-gallery-content-heading;
@@ -767,15 +764,21 @@
         }
 
         &-body {
-          &:not(:only-child) {
-            padding-top: 0.3em;
-          }
           .tweak-index-gallery-content-body-font;
           color: @tweak-index-gallery-content-body-color;
           a {
             position: relative;
             z-index: 2;
             .link-color(@tweak-index-gallery-content-body-color);
+          }
+        }
+
+        &--has-title-and-body & {
+          &-heading {
+            padding-bottom: 0.3em;
+          }
+          &-body {
+            padding-top: 0.3em;
           }
         }
 
