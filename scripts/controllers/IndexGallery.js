@@ -15,7 +15,7 @@ let changeListeners = [];
  * to take some items from the previous wrapper and move those into the last
  * wrapper. This function calculates the number of items in the the last and
  * second-to-last wrappers after this adjustment.
- * @param  {Number} totalItems  Total items, voerall
+ * @param  {Number} totalItems  Total items, overall
  * @return {Array}              Array with number of items in last and second to last wrappers
  */
 const getLastAndSecondToLastWrapperItems = (totalItems) => {
