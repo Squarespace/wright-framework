@@ -20,6 +20,10 @@ let changeListeners = [];
  */
 const getLastAndSecondToLastWrapperItems = (totalItems) => {
   const remainder = totalItems % itemsPerGalleryWrapper;
+  if (remainder === 0) {
+    return [ itemsPerGalleryWrapper, itemsPerGalleryWrapper ];
+  }
+
   if (remainder < minItemsInLastWrapper && totalItems >= minItemsInLastWrapper) {
     const numSecondToLastWrapperItems = itemsPerGalleryWrapper - minItemsInLastWrapper + remainder;
     const numLastWrapperItems = minItemsInLastWrapper;
