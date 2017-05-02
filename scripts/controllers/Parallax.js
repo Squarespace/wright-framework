@@ -376,6 +376,7 @@ function Parallax(element) {
         '.sqs-block-tourdates',
         '.sqs-block-code',
         '.sqs-block-image',
+        '.sqs-block-product',
         '.Header',
         '.sqs-announcement-bar-dropzone'
       ],
