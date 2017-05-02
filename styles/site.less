@@ -417,17 +417,12 @@ a {
   }
   .Parallax-item {
 
-    position: fixed;
     top: 0;
     width: 100%;
     z-index: -1;
     overflow: hidden;
 
     background-color: rgba(red(@tweak-overlay-color), green(@tweak-overlay-color), blue(@tweak-overlay-color), 1);
-
-    -webkit-transform: translatez(0);
-    transform: translatez(0);
-    will-change: transform;
 
     [data-parallax-image-wrapper] {
       position: absolute;
@@ -437,12 +432,23 @@ a {
       left: 0;
 
       margin: 0; // Override
-      -webkit-transform: translatez(0);
-      transform: translatez(0);
-      will-change: transform;
+      .will-change-transform();
 
     }
 
+  }
+
+  &.parallax-item-positioning-method-fixed {
+    .Parallax-item {
+      position: fixed;
+      .will-change-transform();
+    }
+  }
+
+  &.parallax-item-positioning-method-absolute {
+    .Parallax-item {
+      position: absolute;
+    }
   }
 
 }

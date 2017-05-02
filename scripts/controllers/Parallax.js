@@ -4,11 +4,34 @@ import get3dTransformProperty from '../utils/get3dTransformProperty';
 import { getIndexSectionRect, invalidateIndexSectionRectCache } from '../utils/getIndexSectionRect';
 import { addScrollListener, removeScrollListener } from '../utils/rafScroll';
 import resizeEnd from '../utils/resizeEnd';
+import isMobileUA from '../utils/isMobileUA';
+import isSafari10UA from '../utils/isSafari10UA';
 import { indexEditEvents } from '../constants';
 import { addIndexGalleryChangeListener, removeIndexGalleryChangeListener } from './IndexGallery';
 
 const parallaxFactor = 0.5;
 const parallaxOffset = 300;
+
+// Parallax is implemeneted here with two possible methodologies:
+//
+// 1) absolute, where Parallax-item is absolutely positoned where its
+//    corresponding original position is on the page, and
+//
+// 2) fixed, where Parallax-item is fixed positioned, and transformed so that it
+//    appears to "scroll" with the page
+//
+// We've found that the fixed method appears to work best for desktop browsers,
+// most likely because the renderer is better able to handle large layers if
+// it's in relation to the viewport and not the entire document. Without the
+// fixed methodology, parallax becomes noticeably jittery on desktop Firefox.
+//
+// However, fixed causes issues on mobile, where the browser's ability to paint
+// the background layers appears to lag behind its ability to paint naturally
+// scrolling elements. As a result, we need to use method (1) on mobile (and
+// desktop Safari 10, which behaves like mobile), and method (2) on all other
+// browsers (desktop).
+const parallaxItemPositioningMethod = isMobileUA() || isSafari10UA() ? 'absolute' : 'fixed';
+document.body.classList.add(`parallax-item-positioning-method-${parallaxItemPositioningMethod}`);
 
 /**
  * Where the magic happens. Performs all setup for parallax for indexes and page
@@ -150,12 +173,13 @@ function Parallax(element) {
 
         // Apply amount of parallax
         const elementTransformString = `translate3d(0, ${parallaxAmount}px, 0)`;
-        const parallaxItemTransformString = `translate3d(0, ${-scrollTop}px, 0)`;
-
-        // Sync to DOM
         mediaWrapper.style[transformProp] = elementTransformString;
-        parallaxItem.style[transformProp] = parallaxItemTransformString;
-      } else {
+
+        if (parallaxItemPositioningMethod === 'fixed') {
+          const parallaxItemTransformString = `translate3d(0, ${-scrollTop}px, 0)`;
+          parallaxItem.style[transformProp] = parallaxItemTransformString;
+        }
+      } else if (parallaxItemPositioningMethod === 'fixed') {
         parallaxItem.style[transformProp] = `translate3d(${-width - left}px, 0, 0)`;
       }
     });

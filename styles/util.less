@@ -510,3 +510,8 @@
   -o-transition: @transition1, @transition2, @transition3;
   transition: @transition1, @transition2, @transition3;
 }
+.will-change-transform() {
+  -webkit-transform: translatez(0);
+  transform: translatez(0);
+  will-change: transform;
+}
