@@ -344,6 +344,17 @@ function Parallax(element) {
   };
 
   /**
+   * In order to fix a bug in Safari 10 where LayoutEngine sections are not the
+   * correct size before all their fonts have finished loading, we rerun the
+   * sync on the window load event. If none of the containers have changed, as
+   * should be the case in normal browsers, this essentially amounts to a noop.
+   */
+  const handleLoad = () => {
+    invalidateIndexSectionRectCache();
+    syncParallax();
+  };
+
+  /**
    * Handlers for index editing
    */
   const handleIndexEditEnabled = () => {
@@ -374,6 +385,8 @@ function Parallax(element) {
       invalidateIndexSectionRectCache();
       syncParallax();
     });
+
+    window.addEventListener('load', handleLoad);
 
     window.addEventListener(indexEditEvents.enabled, handleIndexEditEnabled);
     window.addEventListener(indexEditEvents.disabled, handleIndexEditDisabled);
@@ -407,7 +420,6 @@ function Parallax(element) {
     initParallax();
     moveParallaxElements();
     syncParallax();
-
     bindListeners();
     darwin = new Darwin({
       targets: [
@@ -442,6 +454,8 @@ function Parallax(element) {
       darwin.destroy();
       darwin = null;
     }
+
+    window.removeEventListener('load', handleLoad);
 
     window.removeEventListener(indexEditEvents.enabled, handleIndexEditEnabled);
     window.removeEventListener(indexEditEvents.disabled, handleIndexEditDisabled);
