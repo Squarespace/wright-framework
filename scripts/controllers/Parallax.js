@@ -31,7 +31,6 @@ const parallaxOffset = 300;
 // desktop Safari 10, which behaves like mobile), and method (2) on all other
 // browsers (desktop).
 const parallaxItemPositioningMethod = isMobileUA() || isSafari10UA() ? 'absolute' : 'fixed';
-document.body.classList.add(`parallax-item-positioning-method-${parallaxItemPositioningMethod}`);
 
 /**
  * Where the magic happens. Performs all setup for parallax for indexes and page
@@ -46,6 +45,14 @@ function Parallax(element) {
   let isEditingIndex = false;
 
   const transformProp = get3dTransformProperty();
+
+  /**
+   * Apply the body classname that acts as the hook for CSS specific to each
+   * parallax item positioning method (absolute or fixed).
+   */
+  const applyParallaxItemPositioningMethodBodyClassname = () => {
+    document.body.classList.add(`parallax-item-positioning-method-${parallaxItemPositioningMethod}`);
+  };
 
   /**
    * Find out whether or not to use parallax, based on user option in tweak and
@@ -396,6 +403,7 @@ function Parallax(element) {
    * initializing Darwin MutationObserver instance.
    */
   const init = () => {
+    applyParallaxItemPositioningMethodBodyClassname();
     initParallax();
     moveParallaxElements();
     syncParallax();
