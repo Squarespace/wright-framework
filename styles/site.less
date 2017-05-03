@@ -416,7 +416,7 @@ a {
     display: block;
   }
   .Parallax-item {
-    position: absolute;
+
     top: 0;
     width: 100%;
     z-index: -1;
@@ -432,16 +432,23 @@ a {
       left: 0;
 
       margin: 0; // Override
-      -webkit-transform: translatez(0);
-      transform: translatez(0);
-      will-change: transform;
-
-      > img,
-      .video-background {
-      }
+      .will-change-transform();
 
     }
 
+  }
+
+  &.parallax-item-positioning-method-fixed {
+    .Parallax-item {
+      position: fixed;
+      .will-change-transform();
+    }
+  }
+
+  &.parallax-item-positioning-method-absolute {
+    .Parallax-item {
+      position: absolute;
+    }
   }
 
 }

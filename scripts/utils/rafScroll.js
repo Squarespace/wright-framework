@@ -34,7 +34,6 @@ const getUnifiedScrollHandler = () => {
   return () => {
     if (scrolling === false) {
       scrolling = true;
-      document.documentElement.style.pointerEvents = 'none';
       scrollHandlers.forEach(({ fn, type }) => {
         if (type !== 'start') {
           return;
@@ -51,7 +50,6 @@ const getUnifiedScrollHandler = () => {
     }
     scrollTimeout = setTimeout(() => {
       scrolling = false;
-      document.documentElement.style.pointerEvents = '';
       scrollHandlers.forEach(({ fn, type }) => {
         if (type !== 'end') {
           return;
