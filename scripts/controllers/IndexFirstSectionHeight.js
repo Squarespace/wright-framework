@@ -16,6 +16,18 @@ const parseValue = (val) => {
 };
 
 /**
+ * Convenience method to apply a style to all elements in an array.
+ * @param  {Array} els
+ * @param  {String} prop
+ * @param  {String} style
+ */
+const applyStyleTo = (els, prop, style) => {
+  els.forEach((el) => {
+    el.style[prop] = style;
+  });
+};
+
+/**
  * If min-height tweak is applied to the first index page or gallery, we need to
  * potentially account for the height of the top header, bottom header, top
  * mobile bar, announcement bar, and border, and subtract that from the vh
@@ -35,6 +47,7 @@ function IndexFirstSectionHeight(element) {
   const announcementBar = document.querySelector('.sqs-announcement-bar-dropzone');
   const firstSection = element.querySelector('.Index-page, .Index-gallery');
   const isGallery = firstSection.classList.contains('Index-gallery');
+  const galleryItems = isGallery && Array.from(firstSection.querySelectorAll('.Index-gallery-item'));
 
   /**
    * Get the height of the border that we need to offset, taking into account
@@ -86,11 +99,11 @@ function IndexFirstSectionHeight(element) {
    * @param  {String}      height         Height of first section (Raw CSS value, not parsed number)
    * @param  {HTMLElement} heightElement  Element to apply adjusted height to
    */
-  const applyHeight = (height, heightElement = firstSection) => {
+  const applyHeight = (height, heightElements = [ firstSection ]) => {
     const prop = isGallery ? 'height' : 'minHeight';
 
     if (!height) {
-      heightElement.style[prop] = '';
+      applyStyleTo(heightElements, prop, '');
       return;
     }
 
@@ -109,9 +122,9 @@ function IndexFirstSectionHeight(element) {
     ].reduce((a, b) => a + b, 0);
 
     if (totalHeight > 0) {
-      heightElement.style[prop] = `calc(${height} - ${totalHeight}px)`;
+      applyStyleTo(heightElements, prop, `calc(${height} - ${totalHeight}px)`);
     } else {
-      heightElement.style[prop] = '';
+      applyStyleTo(heightElements, prop, '');
     }
   };
 
@@ -127,14 +140,17 @@ function IndexFirstSectionHeight(element) {
       const height = Tweak.getValue('tweak-index-gallery-height');
       const { unit } = parseValue(height);
 
+      // Height is applied on all .Index-gallery-item and not just the wrapper
+      // in order to fix a Safari clientHeight issue. See index.less for more info
       const innerWrapper = firstSection.querySelector('.Index-gallery-wrapper');
+      const heightElements = [ innerWrapper ].concat(galleryItems);
 
       if (!isSlideshow || !isFixedHeight || unit !== 'vh') {
-        applyHeight(0, innerWrapper);
+        applyHeight(0, heightElements);
         return;
       }
 
-      applyHeight(height, innerWrapper);
+      applyHeight(height, heightElements);
       return;
     }
 
