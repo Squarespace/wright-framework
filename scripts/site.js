@@ -1,7 +1,9 @@
 import 'raf/polyfill';
 import controller from '@squarespace/controller';
+import { Tweak } from '@squarespace/core';
 import VideoBackground from '@squarespace/video-background';
 
+import resizeEnd from './utils/resizeEnd';
 import './polyfills/classList';
 
 import AncillaryLayout from './controllers/AncillaryLayout';
@@ -38,5 +40,11 @@ controller.register('Parallax', Parallax);
 controller.register('ScrollIndicator', ScrollIndicator);
 controller.register('SiteLoader', SiteLoader);
 controller.register('VideoBackground', (element) => {
-  return VideoBackground(element, [ 'tweak-overlay-parallax-enabled' ]);
+  return VideoBackground(element, ({ instantiateRenderer, destroyRenderer, scaleRendererVideo }) => {
+    resizeEnd(scaleRendererVideo, 105);
+    Tweak.watch('tweak-overlay-parallax-enabled', ()=> {
+      destroyRenderer();
+      instantiateRenderer();
+    });
+  });
 });

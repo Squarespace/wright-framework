@@ -5,17 +5,14 @@
  * @param  {Function} fn      Function to bind
  * @param  {Object}   thisArg Context
  */
-const resizeEnd = (fn, thisArg) => {
-  thisArg = thisArg || window;
-
-  const RESIZE_TIMEOUT = 100;
+const resizeEnd = (fn, timeout = 100) => {
   let _resizeMeasureTimer;
 
   const resize = () => {
     clearTimeout(_resizeMeasureTimer);
     _resizeMeasureTimer = setTimeout(() => {
-      fn.apply(thisArg);
-    }, RESIZE_TIMEOUT);
+      fn();
+    }, timeout);
   };
 
   window.addEventListener('resize', resize);
