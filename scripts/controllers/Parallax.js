@@ -341,7 +341,6 @@ function Parallax(element) {
     if (isParallaxEnabled()) {
       handleScroll(scrollTop);
     }
-
   };
 
   /**
