@@ -40,11 +40,8 @@ controller.register('Parallax', Parallax);
 controller.register('ScrollIndicator', ScrollIndicator);
 controller.register('SiteLoader', SiteLoader);
 controller.register('VideoBackground', (element) => {
-  return VideoBackground(element, ({ instantiateRenderer, destroyRenderer, scaleRendererVideo }) => {
-    resizeEnd(scaleRendererVideo, 105);
-    Tweak.watch('tweak-overlay-parallax-enabled', ()=> {
-      destroyRenderer();
-      instantiateRenderer();
-    });
+  return VideoBackground(element, ({ handleResize, handleTweak }) => {
+    resizeEnd(handleResize, 105);
+    Tweak.watch('tweak-overlay-parallax-enabled', handleTweak);
   });
 });
