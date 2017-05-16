@@ -187,24 +187,48 @@
     //  Account
 
     &-account {
-
-      // Override
-      outline: 0;
-      background: transparent;
-      border: 0;
-      padding: 0;
-
-      .no-select;
-      display: none;
-      white-space: nowrap;
       .tweak-mobile-bar-account-font;
-      color: @tweak-mobile-bar-account-color;
+      line-height: 1em;
 
-      &.loaded {
-        display: inline-block;
+      button {
+        display: none;
+        .tweak-mobile-bar-account-font;
+        line-height: 1em;
+        // Override
+        outline: 0;
+        background: transparent;
+        border: 0;
+        padding: 0;
+        .no-select;
+        white-space: nowrap;
+        color: @tweak-mobile-bar-account-color;
       }
 
+      .Icon--user-accounts {
+        display: none;
+        stroke: @tweak-mobile-bar-account-icon-color;
+        fill: none;
+        overflow: visible;
 
+        svg,
+        a {
+          display: block;
+          width: 30px;
+          height: 30px;
+        }
+      }
+
+      .tweak-mobile-bar-account-style-text & {
+        button.loaded {
+          display: inline-block;
+        }
+      }
+
+      .tweak-mobile-bar-account-style-icon & {
+        .Icon--user-accounts {
+          display: inline-block;
+        }
+      }
     }
 
 

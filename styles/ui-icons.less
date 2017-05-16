@@ -64,6 +64,11 @@
 
   }
 
+  &--user-accounts {
+    width: 30px;
+    height: 30px;
+  }
+
 
   &--cart-alt {
 
@@ -189,26 +194,31 @@
   &--hotdog,
   &--plus,
   &--squares-horizontal,
-  &--squares-vertical {
+  &--squares-vertical,
+  &--user-accounts {
 
     .tweak-icon-weight-hairline & {
       stroke-width: 1;
       .use--even { display: none; }
+      .use--thick { display: none; }
     }
 
     .tweak-icon-weight-light & {
       stroke-width: 2;
       .use--odd { display: none; }
+      .use--thick { display: none; }
     }
 
     .tweak-icon-weight-medium & {
       stroke-width: 3;
       .use--even { display: none; }
+      .use--thin { display: none; }
     }
 
     .tweak-icon-weight-heavy & {
       stroke-width: 4;
       .use--odd { display: none; }
+      .use--thin { display: none; }
     }
 
   }

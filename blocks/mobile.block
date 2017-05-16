@@ -13,9 +13,6 @@
       </a>
     </div>
     <div data-nc-container="top-center">
-      {.if websiteSettings.userAccountsSettings.loginAllowed}
-        <button class="Mobile-bar-account" data-nc-element="account" data-controller="UserAccountLink"><span class="unauth">Sign In</span><span class="auth">My Account</span></button>
-      {.end}
     </div>
     <div data-nc-container="top-right"></div>
   </div>
@@ -56,6 +53,16 @@
       {@|apply cart.block}
     </div>
     <div data-nc-container="bottom-right">
+      {.if websiteSettings.userAccountsSettings.loginAllowed}
+      <div class="Mobile-bar-account" data-nc-element="account">
+        <button data-controller="UserAccountLink"><span class="unauth">Sign In</span><span class="auth">My Account</span></button>
+        <div class="Icon Icon--user-accounts" data-controller="UserAccountLink">
+          <a href="#">
+            {@|apply user-account-icon.block}
+          </a>
+        </div>
+      </div>
+      {.end}
       <a href="/search" class="Mobile-bar-search" data-nc-element="search-icon">
         <svg class="Icon Icon--search" viewBox="0 0 20 20">
           <use xlink:href="/assets/ui-icons.svg#search-icon"></use>

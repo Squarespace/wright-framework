@@ -35,7 +35,7 @@
 
   fill: @cart-color; // for the wheels
   stroke: @cart-color;
-  .Cart-inner { padding-top: 0.5em; padding-bottom: 0.5em; }
+  .Cart-inner { padding-top: 0.8em; padding-bottom: 0.5em; }
   .Icon--cart { display: inline-block; }
   .sqs-cart-quantity {
     display: inline-block;
@@ -58,6 +58,7 @@
 .mixin-cart(@option, @cart-color, @flag-color, @flag-text-color) when (@option = bag) {
 
   stroke: @cart-color;
+  .Cart-inner { margin-top: -2px; }
   .Icon--bag { display: block; }
   .sqs-cart-quantity {
 
