@@ -98,7 +98,7 @@ function IndexNavigation(element) {
     const borderWidth = sectionRects[Object.keys(sectionRects)[0]].left;
     const position = Tweak.getValue('tweak-index-nav-position').toLowerCase();
     const offset = parseFloat(window.getComputedStyle(indexNav)[position]);
-    isWithinBorder = borderWidth >= offset;
+    isWithinBorder = borderWidth > offset;
 
     handleScroll(window.pageYOffset);
   };
