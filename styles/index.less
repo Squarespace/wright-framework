@@ -66,7 +66,7 @@
   &-item {
     display: block;
     position: relative;
-    padding: (@tweak-index-nav-spacing / 2) 0;
+    padding: round(@tweak-index-nav-spacing / 2) 0;
   }
 
   &-text {
@@ -174,7 +174,7 @@
 .tweak-index-nav-style-radio {
   @duration: 170ms;
   @easing: ease-out;
-  @dot-size: (@tweak-index-nav-indicator-size / 3);
+  @dot-size: floor((@tweak-index-nav-indicator-size / 3));
 
   .Index-nav-indicator {
     border-radius: 300px;
@@ -189,7 +189,7 @@
       display: block;
       width: @dot-size;
       height: @dot-size;
-      margin: @dot-size;
+      margin: floor((@tweak-index-nav-indicator-size - @dot-size) / 2);
       border-radius: 300px;
       background-color: @tweak-index-nav-indicator-active-color;
       .transform(scale(0));
@@ -209,7 +209,7 @@
     border-color: @tweak-index-nav-indicator-active-color;
   }
   .Index-nav-item.active .Index-nav-indicator {
-    margin: (@tweak-index-nav-indicator-size / 6) 0;
+    margin: round(@tweak-index-nav-indicator-size / 6) 0;
   }
   .Index-nav.overlay .Index-nav-item.active .Index-nav-indicator,
   .Index-nav.overlay .Index-nav-item:hover .Index-nav-indicator {
@@ -231,7 +231,7 @@
     width: @tweak-index-nav-indicator-size;
     height: @tweak-index-nav-indicator-size;
     border-radius: 300px;
-    border-width: (@tweak-index-nav-indicator-size / 6);
+    border-width: round(@tweak-index-nav-indicator-size / 6);
     border-style: solid;
     border-color: @tweak-index-nav-indicator-color;
     .transition2(border-color @duration @easing, background-color @duration @easing);
