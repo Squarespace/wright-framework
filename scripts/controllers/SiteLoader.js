@@ -46,7 +46,8 @@ const updateMatrix = [
   { selector: '.Header--bottom', updateAttrs: true },
   { selector: '.Header-nav--primary', updateHTML: true },
   { selector: '.Header-nav--secondary', updateHTML: true },
-  { selector: '.Content-outer', updateHTML: true }
+  { selector: '.Content-outer', updateHTML: true },
+  { selector: '[data-name="static-context"]', updateScript: true }
 ];
 
 /**
@@ -70,11 +71,16 @@ function SiteLoader() {
 
   // Squarespace init and destroy
   window.addEventListener('mercury:load', function() {
+    // console.log('hi from mercury in wright');
+    // let x = document.querySelector('[data-name="static-context"]').innerText.toString();
+    // window.eval(x);
     Lifecycle.init();
     document.documentElement.setAttribute('data-mercury-loading', 'done');
     setTimeout(function() {
       document.documentElement.removeAttribute('data-mercury-loading');
     }, 500);
+    // mercury.evalScripts('[data-name="static-context"]');
+
   });
   window.addEventListener('mercury:unload', function() {
     Lifecycle.destroy();
