@@ -71,16 +71,11 @@ function SiteLoader() {
 
   // Squarespace init and destroy
   window.addEventListener('mercury:load', function() {
-    // console.log('hi from mercury in wright');
-    // let x = document.querySelector('[data-name="static-context"]').innerText.toString();
-    // window.eval(x);
     Lifecycle.init();
     document.documentElement.setAttribute('data-mercury-loading', 'done');
     setTimeout(function() {
       document.documentElement.removeAttribute('data-mercury-loading');
     }, 500);
-    // mercury.evalScripts('[data-name="static-context"]');
-
   });
   window.addEventListener('mercury:unload', function() {
     Lifecycle.destroy();
