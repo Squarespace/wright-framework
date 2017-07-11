@@ -47,7 +47,7 @@ const updateMatrix = [
   { selector: '.Header-nav--primary', updateHTML: true },
   { selector: '.Header-nav--secondary', updateHTML: true },
   { selector: '.Content-outer', updateHTML: true },
-  { selector: '[data-name="static-context"]', updateScript: true }
+  { selector: 'script[data-name="static-context"]', updateScript: true }
 ];
 
 /**
