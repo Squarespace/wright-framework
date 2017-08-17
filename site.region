@@ -70,8 +70,8 @@
             {.if websiteSettings.userAccountsSettings.loginAllowed}
             <div class="Header-account" data-nc-element="account">
               <button data-controller="UserAccountLink"><span class="unauth">Sign In</span><span class="auth">My Account</span></button>
-              <div class="Icon Icon--user-accounts" data-controller="UserAccountLink">
-                <a href="#">
+              <div class="Icon Icon--user-accounts">
+                <a href="#" data-controller="UserAccountLink">
                   {@|apply user-account-icon.block}
                 </a>
               </div>

@@ -1,4 +1,4 @@
-import { UserAccounts } from '@sqs/core';
+import { UserAccounts } from '@squarespace/core';
 
 function UserAccountLink(element) {
   const init = () => {
@@ -11,6 +11,7 @@ function UserAccountLink(element) {
   };
 
   const handleClick = (e) => {
+    e.preventDefault();
     UserAccounts.openAccountScreen();
   };
 
