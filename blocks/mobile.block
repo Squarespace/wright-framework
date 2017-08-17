@@ -12,8 +12,7 @@
         {.end}
       </a>
     </div>
-    <div data-nc-container="top-center">
-    </div>
+    <div data-nc-container="top-center"></div>
     <div data-nc-container="top-right"></div>
   </div>
   <div class="Mobile-bar Mobile-bar--bottom" data-nc-group="bottom" data-controller="MobileOffset">
