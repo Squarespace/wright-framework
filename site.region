@@ -68,14 +68,15 @@
           </div>
           <div data-nc-container="top-center">
             {.if websiteSettings.userAccountsSettings.loginAllowed}
-            <div class="Header-account" data-nc-element="account">
-              <button data-controller="UserAccountLink"><span class="unauth">Sign In</span><span class="auth">My Account</span></button>
-              <div class="Icon Icon--user-accounts">
-                <a href="#" data-controller="UserAccountLink">
+              <div class="Header-account" data-nc-element="account" data-controller="UserAccountLink">
+                <button class="user-accounts-text-link">
+                  <span class="unauth">Sign In</span>
+                  <span class="auth">My Account</span>
+                </button>
+                <div class="user-accounts-icon">
                   {@|apply user-account-icon.block}
-                </a>
+                </div>
               </div>
-            </div>
             {.end}
             {.if website.socialAccounts.0}
               <div class="Header-social" data-nc-element="social">

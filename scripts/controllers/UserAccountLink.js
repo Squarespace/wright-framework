@@ -3,9 +3,11 @@ import { UserAccounts } from '@squarespace/core';
 function UserAccountLink(element) {
   const init = () => {
     const unusedSelector = UserAccounts.isUserAuthenticated() ? '.unauth' : '.auth';
-    const unusedNode = element.querySelector(unusedSelector);
+    const textLink = element.querySelector('.user-accounts-text-link');
+    console.log(textLink.querySelector(unusedSelector));
+    const unusedNode = textLink.querySelector(unusedSelector);
     if (unusedNode) {
-      element.removeChild(unusedNode);
+      textLink.removeChild(unusedNode);
     }
     element.classList.add('loaded');
   };
@@ -27,7 +29,7 @@ function UserAccountLink(element) {
   bindListeners();
 
   return {
-    destroy: destroy
+    destroy
   };
 }
 

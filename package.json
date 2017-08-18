@@ -21,7 +21,7 @@
   "dependencies": {
     "@squarespace/ancillary": "1.0.2",
     "@squarespace/controller": "1.0.1",
-    "@squarespace/core": "^1.1.0",
+    "@squarespace/core": "1.1.0",
     "@squarespace/darwin": "1.0.2",
     "@squarespace/layout-slideshow": "1.0.1",
     "@squarespace/mercury": "1.1.4",
