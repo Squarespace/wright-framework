@@ -4,7 +4,6 @@ function UserAccountLink(element) {
   const init = () => {
     const unusedSelector = UserAccounts.isUserAuthenticated() ? '.unauth' : '.auth';
     const textLink = element.querySelector('.user-accounts-text-link');
-    console.log(textLink.querySelector(unusedSelector));
     const unusedNode = textLink.querySelector(unusedSelector);
     if (unusedNode) {
       textLink.removeChild(unusedNode);
