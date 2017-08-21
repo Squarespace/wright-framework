@@ -22,6 +22,7 @@ import MobileOverlayToggle from './controllers/MobileOverlayToggle';
 import Parallax from './controllers/Parallax';
 import ScrollIndicator from './controllers/ScrollIndicator';
 import SiteLoader from './controllers/SiteLoader';
+import UserAccountLink from './controllers/UserAccountLink';
 
 controller.register('AncillaryLayout', AncillaryLayout);
 controller.register('FooterBreakpoints', FooterBreakpoints);
@@ -39,6 +40,7 @@ controller.register('MobileOverlayToggle', MobileOverlayToggle);
 controller.register('Parallax', Parallax);
 controller.register('ScrollIndicator', ScrollIndicator);
 controller.register('SiteLoader', SiteLoader);
+controller.register('UserAccountLink', UserAccountLink);
 controller.register('VideoBackground', (element) => {
   return VideoBackground(element, ({ handleResize, handleTweak }) => {
     resizeEnd(handleResize, 105);

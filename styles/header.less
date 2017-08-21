@@ -854,3 +854,58 @@ body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secon
 
 
 
+
+
+// =======================================================
+
+//    User Accounts
+
+// =======================================================
+
+.Header-account {
+  .tweak-header-account-font;
+  line-height: 1em;
+
+  .user-accounts-text-link {
+    display: none;
+    .tweak-header-account-font;
+    line-height: 1em;
+    // Override
+    outline: 0;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    color: @tweak-header-account-color;
+    .Header--overlay & {
+      color: @tweak-header-overlay-account-color;
+    }
+  }
+
+  .user-accounts-icon {
+    display: none;
+    stroke: @tweak-header-account-icon-color;
+		fill: none;
+		overflow: visible;
+
+    .Icon--user-accounts {
+      display: block;
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .tweak-header-account-style-text & {
+    &.loaded .user-accounts-text-link {
+      display: inline-block;
+    }
+  }
+
+  .tweak-header-account-style-icon & {
+    .user-accounts-icon {
+      display: block;
+    }
+  }
+}
+
+

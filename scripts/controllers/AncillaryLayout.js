@@ -7,7 +7,8 @@ const mobileLayoutTweaks = [
   'ancillary-mobile-bar-branding-position',
   'ancillary-mobile-bar-menu-icon-position',
   'ancillary-mobile-bar-search-icon-position',
-  'ancillary-mobile-bar-cart-position'
+  'ancillary-mobile-bar-cart-position',
+  'ancillary-mobile-bar-account-position'
 ];
 
 const desktopLayoutTweaks = [
@@ -17,7 +18,8 @@ const desktopLayoutTweaks = [
   'ancillary-header-secondary-nav-position',
   'ancillary-header-social-position',
   'ancillary-header-search-position',
-  'ancillary-header-cart-position'
+  'ancillary-header-cart-position',
+  'ancillary-header-account-position'
 ];
 
 

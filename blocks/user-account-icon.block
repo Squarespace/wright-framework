@@ -1,0 +1,4 @@
+<svg class="Icon Icon--user-accounts" viewBox="0 0 28 28">
+  <use class="use--odd" xlink:href="/assets/ui-icons.svg#accounts-icon--odd"></use>
+  <use class="use--even" xlink:href="/assets/ui-icons.svg#accounts-icon--even"></use>
+</svg>
