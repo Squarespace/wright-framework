@@ -53,7 +53,7 @@
     </div>
     <div data-nc-container="bottom-right">
       {.if websiteSettings.userAccountsSettings.loginAllowed}
-        <div class="Header-account" data-nc-element="account" data-controller="UserAccountLink">
+        <div class="Mobile-bar-account" data-nc-element="account" data-controller="UserAccountLink">
           <button class="user-accounts-text-link">
             <span class="unauth">Sign In</span>
             <span class="auth">My Account</span>
