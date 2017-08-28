@@ -877,9 +877,6 @@ body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secon
     padding: 0;
     white-space: nowrap;
     color: @tweak-header-account-color;
-    .Header--overlay & {
-      color: @tweak-header-overlay-account-color;
-    }
   }
 
   .user-accounts-icon {
@@ -892,6 +889,16 @@ body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secon
       display: block;
       width: 28px;
       height: 28px;
+    }
+  }
+
+  .Header--overlay & {
+    .user-accounts-text-link {
+      color: @tweak-header-overlay-account-color;
+    }
+
+    .user-accounts-icon {
+      stroke: @tweak-header-overlay-account-icon-color;
     }
   }
 
