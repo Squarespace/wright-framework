@@ -33,7 +33,7 @@
     "url-parse": "1.1.8"
   },
   "devDependencies": {
-    "@squarespace/toolbelt": "^0.8.3",
+    "@squarespace/toolbelt": "^0.8.6",
     "babel-core": "^6.17.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
