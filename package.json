@@ -24,7 +24,7 @@
     "@squarespace/core": "1.1.0",
     "@squarespace/darwin": "1.0.2",
     "@squarespace/layout-slideshow": "1.0.1",
-    "@squarespace/mercury": "1.1.4",
+    "@squarespace/mercury": "1.1.5",
     "@squarespace/social-links": "1.0.2",
     "@squarespace/video-background": "2.0.0",
     "babel-runtime": "6.22.0",
