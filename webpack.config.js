@@ -28,17 +28,7 @@ var config = {
         comments: false
       }
     })
-  ],
-  resolve: {
-    modulesDirectories: [
-      path.resolve(__dirname, 'node_modules')
-    ]
-  },
-  resolveLoader: {
-    modulesDirectories: [
-      path.resolve(__dirname, 'node_modules')
-    ]
-  }
+  ]
 };
 
 module.exports = config;
