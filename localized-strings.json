@@ -14,5 +14,9 @@
     "fri": "Fri",
     "sat": "Sat",
     "sun": "Sun",
+    "intro": "Intro",
+    "footerTopBlocks": "Footer Top Blocks",
+    "footerMiddleBlocks": "Footer Middle Blocks",
+    "footerBottomBlocks": "Footer Bottom Blocks"
   }
 }
