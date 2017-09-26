@@ -2,7 +2,7 @@
 
   <div class="Footer-inner clear">
 
-    <squarespace:block-field id="footerBlocksTop" class="Footer-blocks Footer-blocks--top sqs-alternate-block-style-container" columns="12" label="Footer Top Blocks" />
+    <squarespace:block-field id="footerBlocksTop" class="Footer-blocks Footer-blocks--top sqs-alternate-block-style-container" columns="12" label="{localizedStrings.footerTopBlocks}" />
 
     <div class="Footer-middle">
       <div class="Footer-business">
@@ -41,12 +41,12 @@
 
       </div>
 
-      <squarespace:block-field id="footerBlocksMiddle" class="Footer-blocks Footer-blocks--middle sqs-alternate-block-style-container" columns="12" label="Footer Middle Blocks" />
+      <squarespace:block-field id="footerBlocksMiddle" class="Footer-blocks Footer-blocks--middle sqs-alternate-block-style-container" columns="12" label="{localizedStrings.footerMiddleBlocks}" />
 
       <squarespace:navigation navigationId="footerMainNavigation" template="footer-nav" />
     </div>
 
-    <squarespace:block-field id="footerBlocksBottom" class="Footer-blocks Footer-blocks--bottom sqs-alternate-block-style-container" columns="12" label="Footer Bottom Blocks" />
+    <squarespace:block-field id="footerBlocksBottom" class="Footer-blocks Footer-blocks--bottom sqs-alternate-block-style-container" columns="12" label="{localizedStrings.footerBottomBlocks}" />
 
   </div>
 
