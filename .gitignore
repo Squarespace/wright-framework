@@ -3,3 +3,4 @@ build
 .npmrc
 .DS_Store
 npm-debug.log
+package-lock.json
