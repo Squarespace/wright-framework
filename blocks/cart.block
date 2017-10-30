@@ -1,7 +1,7 @@
 {.if showCart}
   <a href="{shoppingCart|cart-url}" class="Cart {squarespace.cart-classes}" data-nc-element="cart" data-test="template-cart">
     <span class="Cart-inner">
-      <span class="Cart-label">{localizedStrings.cart}</span>
+      <span class="Cart-label"></span>
 
       <svg class="Icon Icon--bag-alt" viewBox="0 0 28 28">
         <use class="use--odd" xlink:href="/assets/ui-icons.svg#bag-icon-alt--odd"></use>

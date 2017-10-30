@@ -2,7 +2,7 @@
   {.folder?}{.index?}{.or}
     <div class="Mobile-overlay-folder" data-controller-folder="{collection.urlId}">
       <button class="Mobile-overlay-folder-item Mobile-overlay-folder-item--toggle" data-controller-folder-toggle="{collection.urlId}">
-        <span class="Mobile-overlay-folder-item--toggle-label">{localizedStrings.back}</span>
+        <span class="Mobile-overlay-folder-item--toggle-label">Back</span>
       </button>
       {.repeated section items}
         {.collection?}

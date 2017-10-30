@@ -2,7 +2,7 @@
 
   <div class="Footer-inner clear">
 
-    <squarespace:block-field id="footerBlocksTop" class="Footer-blocks Footer-blocks--top sqs-alternate-block-style-container" columns="12" label="{localizedStrings.footerTopBlocks}" />
+    <squarespace:block-field id="footerBlocksTop" class="Footer-blocks Footer-blocks--top sqs-alternate-block-style-container" columns="12" label="Footer Top Blocks" />
 
     <div class="Footer-middle">
       <div class="Footer-business">
@@ -27,26 +27,26 @@
         {.section websiteSettings}
           {.section businessHours}
             <div class="Footer-business-hours">
-              <div class="Footer-business-hours-heading">{localizedStrings.hours}</div>
-              {.section monday}{.section text}<div class="Footer-business-hours-item">{localizedStrings.mon} {text}</div>{.end}{.end}
-              {.section tuesday}{.section text}<div class="Footer-business-hours-item">{localizedStrings.tue} {text}</div>{.end}{.end}
-              {.section wednesday}{.section text}<div class="Footer-business-hours-item">{localizedStrings.wed} {text}</div>{.end}{.end}
-              {.section thursday}{.section text}<div class="Footer-business-hours-item">{localizedStrings.thu} {text}</div>{.end}{.end}
-              {.section friday}{.section text}<div class="Footer-business-hours-item">{localizedStrings.fri} {text}</div>{.end}{.end}
-              {.section saturday}{.section text}<div class="Footer-business-hours-item">{localizedStrings.sat} {text}</div>{.end}{.end}
-              {.section sunday}{.section text}<div class="Footer-business-hours-item">{localizedStrings.sun} {@}</div>{.end}{.end}
+              <div class="Footer-business-hours-heading">Hours</div>
+              {.section monday}{.section text}<div class="Footer-business-hours-item">Mon {text}</div>{.end}{.end}
+              {.section tuesday}{.section text}<div class="Footer-business-hours-item">Tue {text}</div>{.end}{.end}
+              {.section wednesday}{.section text}<div class="Footer-business-hours-item">Wed {text}</div>{.end}{.end}
+              {.section thursday}{.section text}<div class="Footer-business-hours-item">Thu {text}</div>{.end}{.end}
+              {.section friday}{.section text}<div class="Footer-business-hours-item">Fri {text}</div>{.end}{.end}
+              {.section saturday}{.section text}<div class="Footer-business-hours-item">Sat {text}</div>{.end}{.end}
+              {.section sunday}{.section text}<div class="Footer-business-hours-item">Sun {@}</div>{.end}{.end}
             </div>
           {.end}
         {.end}
 
       </div>
 
-      <squarespace:block-field id="footerBlocksMiddle" class="Footer-blocks Footer-blocks--middle sqs-alternate-block-style-container" columns="12" label="{localizedStrings.footerMiddleBlocks}" />
+      <squarespace:block-field id="footerBlocksMiddle" class="Footer-blocks Footer-blocks--middle sqs-alternate-block-style-container" columns="12" label="Footer Middle Blocks" />
 
       <squarespace:navigation navigationId="footerMainNavigation" template="footer-nav" />
     </div>
 
-    <squarespace:block-field id="footerBlocksBottom" class="Footer-blocks Footer-blocks--bottom sqs-alternate-block-style-container" columns="12" label="{localizedStrings.footerBottomBlocks}" />
+    <squarespace:block-field id="footerBlocksBottom" class="Footer-blocks Footer-blocks--bottom sqs-alternate-block-style-container" columns="12" label="Footer Bottom Blocks" />
 
   </div>
 
