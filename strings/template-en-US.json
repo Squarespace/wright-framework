@@ -1,0 +1,22 @@
+{
+  "prev": "Previous",
+  "next": "Next",
+  "cart": "Cart",
+  "back": "Back",
+  "search": "Search",
+  "scroll": "Scroll",
+  "hours": "Hours",
+  "mon": "Mon",
+  "tue": "Tue",
+  "wed": "Wed",
+  "thu": "Thu",
+  "fri": "Fri",
+  "sat": "Sat",
+  "sun": "Sun",
+  "intro": "Intro",
+  "footerTopBlocks": "Footer Top Blocks",
+  "footerMiddleBlocks": "Footer Middle Blocks",
+  "footerBottomBlocks": "Footer Bottom Blocks",
+  "signIn": "Sign In",
+  "myAccount": "My Account"
+}
