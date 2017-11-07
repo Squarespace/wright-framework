@@ -53,7 +53,7 @@
 
             <div class="Header-search" data-nc-element="search">
               <form class="Header-search-form" action="/search" method="get">
-                <input class="Header-search-form-input" name="q" type="text" spellcheck="false" value="" autocomplete="off" placeholder="Search" />
+                <input class="Header-search-form-input" name="q" type="text" spellcheck="false" value="" autocomplete="off" placeholder="{localizedStrings.search}" />
                 <button class="Header-search-form-submit" type="submit" data-test="template-search">
                   <svg class="Icon Icon--search--small" viewBox="0 0 15 15">
                     <use xlink:href="/assets/ui-icons.svg#search-icon--small"></use>
@@ -70,8 +70,8 @@
             {.if websiteSettings.userAccountsSettings.loginAllowed}
               <div class="Header-account" data-nc-element="account" data-controller="UserAccountLink">
                 <button class="user-accounts-text-link">
-                  <span class="unauth">Sign In</span>
-                  <span class="auth">My Account</span>
+                  <span class="unauth">{localizedStrings.signIn}</span>
+                  <span class="auth">{localizedStrings.myAccount}</span>
                 </button>
                 <div class="user-accounts-icon">
                   {@|apply user-account-icon.block}
