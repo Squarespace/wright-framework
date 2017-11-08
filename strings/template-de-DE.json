@@ -1,0 +1,22 @@
+{
+  "prev" : "Zurück",
+  "next" : "weiter",
+  "cart" : "Warenkorb",
+  "back" : "Zurück",
+  "search" : "Suchen",
+  "scroll" : "scrollen",
+  "hours" : "Stunden",
+  "mon" : "Mon",
+  "tue" : "Di",
+  "wed" : "Mi",
+  "thu" : "Do",
+  "fri" : "Fr",
+  "sat" : "Sa",
+  "sun" : "So",
+  "intro" : "Intro",
+  "footerTopBlocks" : "Obere Fußzeilen-Blöcke",
+  "footerMiddleBlocks" : "Mittlere Fußzeilen-Blöcke",
+  "footerBottomBlocks" : "Untere Fußzeilen-Blöcke",
+  "signIn" : "Einloggen",
+  "myAccount" : "Mein Konto"
+}

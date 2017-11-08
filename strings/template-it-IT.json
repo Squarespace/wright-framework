@@ -1,0 +1,22 @@
+{
+  "prev" : "Indietro",
+  "next" : "Avanti",
+  "cart" : "Carrello",
+  "back" : "Indietro",
+  "search" : "Cerca",
+  "scroll" : "scorrere",
+  "hours" : "Orari",
+  "mon" : "lunedì",
+  "tue" : "martedì",
+  "wed" : "mercoledì",
+  "thu" : "giovedì",
+  "fri" : "venerdì",
+  "sat" : "sabato",
+  "sun" : "domenica",
+  "intro" : "Intro",
+  "footerTopBlocks" : "Blocchi nella parte superiore del piè di pagina",
+  "footerMiddleBlocks" : "Blocchi nella parte centrale del piè di pagina",
+  "footerBottomBlocks" : "Blocchi nella parte inferiore del piè di pagina",
+  "signIn" : "Accedi",
+  "myAccount" : "Il mio account"
+}
