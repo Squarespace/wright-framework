@@ -1,0 +1,22 @@
+{
+  "prev" : "Précédent",
+  "next" : "Suivant",
+  "cart" : "Panier",
+  "back" : "Back",
+  "search" : "Recherche",
+  "scroll" : "Faire défiler",
+  "hours" : "Heures",
+  "mon" : "Lun",
+  "tue" : "Mar",
+  "wed" : "Mer",
+  "thu" : "Jeu",
+  "fri" : "Ven",
+  "sat" : "Sam",
+  "sun" : "Dim",
+  "intro" : "Intro",
+  "footerTopBlocks" : "Blocs en haut du pied de page",
+  "footerMiddleBlocks" : "Blocs au milieu du pied de page",
+  "footerBottomBlocks" : "Blocs en bas du pied de page",
+  "signIn" : "Se Connecter",
+  "myAccount" : "Mon Compte"
+}

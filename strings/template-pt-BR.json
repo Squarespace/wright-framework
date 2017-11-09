@@ -1,0 +1,22 @@
+{
+  "prev" : "Anterior",
+  "next" : "Próximo",
+  "cart" : "Carrinho",
+  "back" : "Voltar",
+  "search" : "Busca",
+  "scroll" : "rolar",
+  "hours" : "Horas",
+  "mon" : "Seg",
+  "tue" : "Ter",
+  "wed" : "Qua",
+  "thu" : "Qui",
+  "fri" : "Sex",
+  "sat" : "Sáb",
+  "sun" : "Dom",
+  "intro" : "Introdução",
+  "footerTopBlocks" : "Blocos Superiores do Rodapé",
+  "footerMiddleBlocks" : "Blocos do Meio do Rodapé",
+  "footerBottomBlocks" : "Blocos Inferiores do Rodapé",
+  "signIn" : "Entrar",
+  "myAccount" : "Minha Conta"
+}
