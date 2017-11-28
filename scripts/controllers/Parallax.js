@@ -39,6 +39,8 @@ const parallaxItemPositioningMethod = isMobileUA() || isSafari10UA() ? 'absolute
  */
 function Parallax(element) {
 
+  invalidateIndexSectionRectCache();
+
   let darwin;
   let windowHeight;
   let matrix = [];
