@@ -430,6 +430,7 @@ function Parallax(element) {
         '.sqs-block-code',
         '.sqs-block-image',
         '.sqs-block-product',
+        '.sqs-block-summary-v2',
         '.Header',
         '.sqs-announcement-bar-dropzone'
       ],
