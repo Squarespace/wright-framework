@@ -113,10 +113,10 @@
     // Overriding style set in site.less
     background: transparent;
 
-    // I would like the z-index here to be 3,
-    // but anything below 10 makes the tweak
-    // overlay unclickable.
-    z-index: 10;
+    // I would like the z-index here to be lower,
+    // but anything below 1000 makes causes dropdown menus 
+    // to be hidden behind image galleries.
+    z-index: 1000;
     width: 100%;
     .font-smoothing(@tweak-overlay-color);
   }
