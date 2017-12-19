@@ -1,12 +1,12 @@
 {
   "template" : {
-    "Main Navigation" : "Main Navigation (Navegación Principal)",
+    "Main Navigation" : "Navegación Principal",
     "Secondary Navigation" : "Navegación Secundaria",
     "Footer Main Navigation" : "Pie de Página de la Navegación Principal",
     "Default" : "Predeterminado"
   },
   "album" : {
-    "Album" : "Album Page (Página de Álbum)",
+    "Album" : "Álbum",
     "Add Track" : "Añade una Pista"
   },
   "blog" : {
@@ -14,7 +14,7 @@
     "Add Post" : "Añade una Entrada"
   },
   "events" : {
-    "Events" : "Events Page (Página de Eventos)",
+    "Events" : "Eventos",
     "Add Event" : "Añade un Evento"
   },
   "folders" : {
