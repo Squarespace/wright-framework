@@ -19,10 +19,10 @@
   "Site: Loading" : "Sitio: Carga",
   "Show Loading Bar" : "Mostrar la Barra de Carga",
   "Header: Top" : "Encabezado: Superior",
-  "Padding" : "Padding (Relleno)",
+  "Padding" : "Relleno",
   "Left Layout" : "Distribución a la Izquierda",
   "Horizontal" : "Horizontal",
-  "Stacked" : "Stacked (Apilado)",
+  "Stacked" : "Apilado",
   "Center Layout" : "Distribución en el Centro",
   "Right Layout" : "Distribución a la Derecha",
   "Header: Bottom" : "Encabezado: Parte Inferior",
@@ -44,7 +44,11 @@
   "Search Position" : "Posición de Búsqueda",
   "Cart Position" : "Posición del Carrito",
   "Customer Accounts Link Position" : "Posición del Enlace de Cuentas de Clientes",
+<<<<<<< HEAD
   "Logo Width" : "Logo Width (Ancho del Logo)",
+=======
+  "Logo Width" : "Ancho del Logo",
+>>>>>>> Translation brought to you by Idioma
   "Header: Branding" : "Encabezado: Marca",
   "Font" : "Fuente (Fuente)",
   "Color (Overlay)" : "Color (Superpuesto)",
