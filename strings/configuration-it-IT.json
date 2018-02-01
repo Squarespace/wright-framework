@@ -1,6 +1,6 @@
 {
   "template" : {
-    "Main Navigation" : "Main Navigation (Navigazione principale)",
+    "Main Navigation" : "Navigazione principale",
     "Secondary Navigation" : "Navigazione Secondaria",
     "Footer Main Navigation" : "Navigazione Principale Piè di pagina",
     "Default" : "Default"
@@ -23,6 +23,6 @@
   },
   "index" : {
     "Index" : "Indice",
-    "Add Section" : "Aggiungi una sezione"
+    "Add Section" : "Aggiungi una Sezione"
   }
 }

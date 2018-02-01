@@ -13,10 +13,6 @@
   "fri" : "Viernes",
   "sat" : "Sábado",
   "sun" : "Domingo",
-  "intro" : "Introducción",
-  "footerTopBlocks" : "Bloques Superior del Pie de Página",
-  "footerMiddleBlocks" : "Bloques Intermedio del Pie de Página",
-  "footerBottomBlocks" : "Bloques Inferior del Pie de Página",
   "signIn" : "Iniciar Sesión",
   "myAccount" : "Mi Cuenta"
 }
