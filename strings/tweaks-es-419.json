@@ -158,7 +158,11 @@
   "Min Item Width" : "Ancho Mínimo por Artículo",
   "Hover Style" : "Estilo al posicionar el cursor sobre el elemento",
   "Image Overlay" : "Superposición de Imagen",
+<<<<<<< HEAD
   "Next/Previous Controls" : "Controles Siguiente/Anterior",
+=======
+  "Next/Previous Controls" : "Controles Anterior/Previo",
+>>>>>>> master
   "Index: Slideshow Gallery" : "Índice: Galería en Diapositiva",
   "Large Arrows" : "Flechas Grandes",
   "Small Arrows" : "Flechas Pequeñas",

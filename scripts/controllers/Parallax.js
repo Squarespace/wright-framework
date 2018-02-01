@@ -39,6 +39,8 @@ const parallaxItemPositioningMethod = isMobileUA() || isSafari10UA() ? 'absolute
  */
 function Parallax(element) {
 
+  invalidateIndexSectionRectCache();
+
   let darwin;
   let windowHeight;
   let matrix = [];
@@ -428,6 +430,7 @@ function Parallax(element) {
         '.sqs-block-code',
         '.sqs-block-image',
         '.sqs-block-product',
+        '.sqs-block-summary-v2',
         '.Header',
         '.sqs-announcement-bar-dropzone'
       ],
