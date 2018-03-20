@@ -104,6 +104,19 @@ body {
 
 // =======================================================
 
+//    Images
+
+// =======================================================
+
+// Hide ImageLoader images prior to being loaded, so you
+// don't see the broken image graphic in some browsers
+img[data-src]:not([src]) {
+  opacity: 0;
+}
+
+
+// =======================================================
+
 //    Content Colors
 
 // =======================================================
