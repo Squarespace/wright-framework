@@ -7,22 +7,27 @@
   },
   "album" : {
     "Album" : "Album",
+    "New Album" : "Neues Album",
     "Add Track" : "Track hinzufügen"
   },
   "blog" : {
     "Blog" : "Blog",
+    "New Blog" : "Neuer Blog",
     "Add Post" : "Eintrag hinzufügen"
   },
   "events" : {
     "Events" : "Events",
+    "New Events" : "Neue Events",
     "Add Event" : "Veranstaltung hinzufügen"
   },
   "folders" : {
     "Folder" : "Ordner",
+    "New Folder" : "Neuer Ordner",
     "Add Page" : "Seite hinzufügen"
   },
   "index" : {
     "Index" : "Index",
+    "New Index" : "Neuer Index",
     "Add Section" : "Abschnitt hinzufügen"
   }
 }
