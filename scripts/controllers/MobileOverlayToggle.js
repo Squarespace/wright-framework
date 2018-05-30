@@ -1,7 +1,7 @@
 import { Tweak } from '@squarespace/core';
 import resizeEnd from '../utils/resizeEnd';
 
-const mobileOverlayActiveClassname = 'is-mobile-overlay-active';
+export const mobileOverlayActiveClassname = 'is-mobile-overlay-active';
 const mobileOverlayTweaks = [
   'slide-origin',
   'back-color',
@@ -32,6 +32,23 @@ const mobileOverlayTweaks = [
 let scrollPos;
 
 /**
+ * Checks to see if the overlay is currently open
+ * @return {Boolean}
+ */
+export const isOverlayOpen = () => {
+  return document.body.classList.contains(mobileOverlayActiveClassname);
+};
+
+/**
+ * Close the mobile overlay
+ */
+export const closeOverlay = () => {
+  document.body.classList.remove(mobileOverlayActiveClassname);
+  document.body.style.top = '';
+  window.scrollTo(0, scrollPos);
+};
+
+/**
  * Binds the functionality to toggle the mobile overlay's visibility.
  */
 function MobileOverlayToggle(element) {
@@ -39,12 +56,10 @@ function MobileOverlayToggle(element) {
   const handleClick = (e) => {
     e.preventDefault();
 
-    if (document.body.classList.contains(mobileOverlayActiveClassname)) {
-      document.body.classList.remove(mobileOverlayActiveClassname);
-      document.body.style.top = '';
-      window.scrollTo(0, scrollPos);
+    if (isOverlayOpen()) {
+      closeOverlay();
     } else {
-      scrollPos = document.body.scrollTop;
+      scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
       document.body.classList.add(mobileOverlayActiveClassname);
       document.body.style.top = -1 * scrollPos + 'px';
     }
