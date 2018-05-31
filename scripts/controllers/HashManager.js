@@ -1,5 +1,6 @@
 import jump from 'jump.js';
 import URL from 'url-parse';
+import { isOverlayOpen, closeOverlay } from './MobileOverlayToggle';
 
 /**
  * We need to figure out whether or not a given link hash a hash that possibly
@@ -55,6 +56,10 @@ function HashManager(element) {
     if (hash && hashElement) {
       e.preventDefault();
       e.stopImmediatePropagation();
+
+      if (isOverlayOpen()) {
+        closeOverlay();
+      }
 
       window.history.replaceState(undefined, undefined, hash);
 
