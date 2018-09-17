@@ -28,14 +28,24 @@
             {.end}
           {.end}
         {.or}
-          {.if item}{.or}
+          {.equal? collection.typeName "products"}
+          {#  The system Product collection does not support video backgrounds  }
             {.section collection}
               {.var @collectionId id}
-              {.background-source-video?}
+              {.section mainImage}
                 <div class="Parallax-item" data-parallax-item data-parallax-id="{@collectionId}"></div>
-              {.or}
-                {.section mainImage}
+              {.end}
+            {.end}
+          {.or}
+            {.if item}{.or}
+              {.section collection}
+                {.var @collectionId id}
+                {.background-source-video?}
                   <div class="Parallax-item" data-parallax-item data-parallax-id="{@collectionId}"></div>
+                {.or}
+                  {.section mainImage}
+                    <div class="Parallax-item" data-parallax-item data-parallax-id="{@collectionId}"></div>
+                  {.end}
                 {.end}
               {.end}
             {.end}
