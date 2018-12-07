@@ -52,7 +52,7 @@
       {@|apply cart.block}
     </div>
     <div data-nc-container="bottom-right">
-      {.if websiteSettings.userAccountsSettings.loginAllowed}
+      {.if userAccountsContext.showSignInLink}
         <div class="Mobile-bar-account" data-nc-element="account" data-controller="UserAccountLink">
           <button class="user-accounts-text-link">
             <span class="unauth">{localizedStrings.signIn}</span>
