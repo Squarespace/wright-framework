@@ -47,3 +47,5 @@ controller.register('VideoBackground', (element) => {
     Tweak.watch('tweak-overlay-parallax-enabled', handleTweak);
   });
 });
+
+window.addEventListener('controller:refresh', controller.refresh);

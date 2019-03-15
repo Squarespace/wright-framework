@@ -466,10 +466,17 @@ function Parallax(element) {
     window.removeEventListener(indexEditEvents.reorder, handleIndexEditReorder);
   };
 
+  /** Destroy parallax and reinitialize it (used when an image gets changed) */
+  const sync = () => {
+    destroy();
+    init();
+  }
+
   init();
 
   return {
-    destroy
+    destroy,
+    sync
   };
 
 }
