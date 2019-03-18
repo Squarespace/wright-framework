@@ -47,3 +47,11 @@ controller.register('VideoBackground', (element) => {
     Tweak.watch('tweak-overlay-parallax-enabled', handleTweak);
   });
 });
+
+/**
+ * Event controller:refresh allows code running elsewhere on the window to force the controller
+ * to refresh all of its registered controllers. Usually refreshes happen automatically due
+ * to bindings, but there are use cases when this needs to be done manually, and this event
+ * allows a trigger of that refresh without exposing the whole controller to the window
+ */
+window.addEventListener('controller:refresh', controller.refresh);
