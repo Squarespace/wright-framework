@@ -86,8 +86,14 @@ function Parallax(element) {
     matrix = nodes.map((originalNode) => {
       // Get original parallax node, image wrapper, and element
       const mediaWrapper = originalNode.querySelector('[data-parallax-image-wrapper]');
+      if (mediaWrapper === null) {
+        return null;
+      }
       const mediaElement = mediaWrapper.querySelector('img:not(.custom-fallback-image)') ||
         mediaWrapper.querySelector('div.sqs-video-background');
+      if (mediaElement === null) {
+        return null;
+      }
 
       // Construct object to be pushed to matrix
       const focalPointString = mediaElement.getAttribute('data-image-focal-point');
@@ -98,7 +104,7 @@ function Parallax(element) {
         mediaElement,
         focalPoint
       };
-    });
+    }).filter(matrixObject => matrixObject !== null);
   };
 
   /**
