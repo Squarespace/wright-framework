@@ -91,9 +91,6 @@ function Parallax(element) {
       }
       const mediaElement = mediaWrapper.querySelector('img:not(.custom-fallback-image)') ||
         mediaWrapper.querySelector('div.sqs-video-background');
-      if (mediaElement === null) {
-        return null;
-      }
 
       // Construct object to be pushed to matrix
       const focalPointString = mediaElement.getAttribute('data-image-focal-point');
