@@ -86,6 +86,8 @@ function Parallax(element) {
     matrix = nodes.map((originalNode) => {
       // Get original parallax node, image wrapper, and element
       const mediaWrapper = originalNode.querySelector('[data-parallax-image-wrapper]');
+      // The media wrapper queyr selector may be null if initParallax is called with only some of the original parallax
+      // nodes having been moved. These nodes are filtered at the end of the map to prevent null errors later on
       if (mediaWrapper === null) {
         return null;
       }
