@@ -86,6 +86,14 @@ function Parallax(element) {
     matrix = nodes.map((originalNode) => {
       // Get original parallax node, image wrapper, and element
       const mediaWrapper = originalNode.querySelector('[data-parallax-image-wrapper]');
+      // The media wrapper query selector may be null if initParallax is
+      // called with only some of the original parallax nodes having been
+      // moved. InitParallax may be called again on a page with only one image
+      // replaced in certain scenarios. The not-new nodes are filtered at the
+      // end of the map to prevent null errors later on
+      if (mediaWrapper === null) {
+        return null;
+      }
       const mediaElement = mediaWrapper.querySelector('img:not(.custom-fallback-image)') ||
         mediaWrapper.querySelector('div.sqs-video-background');
 
@@ -98,7 +106,7 @@ function Parallax(element) {
         mediaElement,
         focalPoint
       };
-    });
+    }).filter(matrixObject => matrixObject !== null);
   };
 
   /**
