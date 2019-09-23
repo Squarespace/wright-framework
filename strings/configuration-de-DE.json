@@ -1,8 +1,8 @@
 {
   "template" : {
-    "Primary Navigation" : "Hauptnavigation",
-    "Secondary Navigation" : "Sekundäre Navigation",
-    "Footer Navigation" : "Fußzeilen-Hauptnavigation",
+    "Main Navigation" : "Hauptnavigation",
+    "Secondary Navigation" : "Sekundärnavigation",
+    "Footer Main Navigation" : "Fußzeilen-Hauptnavigation",
     "Default" : "Standard"
   },
   "album" : {
@@ -18,7 +18,7 @@
   "events" : {
     "Events" : "Events",
     "New Events" : "Neue Events",
-    "Add Event" : "Veranstaltung hinzufügen"
+    "Add Event" : "Event hinzufügen"
   },
   "folders" : {
     "Folder" : "Ordner",
