@@ -30,7 +30,7 @@
     "babel-runtime": "6.22.0",
     "jump.js": "1.0.2",
     "raf": "3.3.0",
-    "url-parse": "1.1.8"
+    "url-parse": "1.4.7"
   },
   "devDependencies": {
     "@squarespace/toolbelt": "^0.8.7",
