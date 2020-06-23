@@ -1,0 +1,17 @@
+pipeline:
+  build:
+    image: node:12
+    commands:
+      - npm install
+      - npm run build
+
+  publish:
+    image: quay.squarespace.net/plugins/template-deployer
+    source: ./build
+    subdomain: wright-framework
+    deploy_qa: true
+    deploy_stage: true
+    deploy_production: true
+    secrets: [ template_deployer_credentials ]
+    when:
+      branch: master
