@@ -868,5 +868,8 @@ a {
 @defaultDarkNewsletterTextColor: #272727;
 
 .newsletter-form-field-element {
+  // The input fields have a hardcoded white background.
+  // This line forces the text color to the default dark color defined above,
+  // or the tweak-defined @newsletterTextColor if that color is darker than the default.
   color: contrast(#ffffff, @defaultDarkNewsletterTextColor, @newsletterTextColor);
 }
