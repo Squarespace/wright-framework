@@ -860,3 +860,13 @@ a {
 .sqs-alternate-block-style-container .sqs-block-form input {
   color: #272727;
 }
+
+
+// -----------------------------------------
+
+//  Fix for Newsletter Block input text
+@defaultDarkNewsletterTextColor: #272727;
+
+.newsletter-form-field-element {
+  color: contrast(#ffffff, @defaultDarkNewsletterTextColor, @newsletterTextColor);
+}
