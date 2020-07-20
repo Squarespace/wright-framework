@@ -1,8 +1,8 @@
 {
   "template" : {
-    "Primary Navigation" : "Navegación Principal",
+    "Primary Navigation" : "Navegación principal",
     "Secondary Navigation" : "Navegación Secundaria",
-    "Footer Navigation" : "Área de Pie de Página",
+    "Footer Navigation" : "Navegación de pies de página",
     "Default" : "Predeterminado"
   },
   "album" : {
@@ -17,7 +17,7 @@
   },
   "events" : {
     "Events" : "Eventos",
-    "New Events" : "Nuevos Eventos",
+    "New Events" : "Nuevos eventos",
     "Add Event" : "Añade un Evento"
   },
   "folders" : {
@@ -27,7 +27,7 @@
   },
   "index" : {
     "Index" : "Índice",
-    "New Index" : "Nuevo Índice",
+    "New Index" : "Nuevo índice",
     "Add Section" : "Añade una sección"
   }
 }
