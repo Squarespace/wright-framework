@@ -1,8 +1,8 @@
 {
   "template" : {
-    "Main Navigation" : "Hauptnavigation",
+    "Primary Navigation" : "Hauptnavigation",
     "Secondary Navigation" : "Sekundärnavigation",
-    "Footer Main Navigation" : "Fußzeilen-Hauptnavigation",
+    "Footer Navigation" : "Footer-Navigation",
     "Default" : "Standard"
   },
   "album" : {
